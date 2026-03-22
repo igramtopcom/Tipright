@@ -3,23 +3,424 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Coming Soon — tipright.app</title>
+  <meta name="robots" content="index, follow">
+
+  <title>Tip Calculator — How Much to Tip for Any Service (2025)</title>
+  <meta name="description" content="Free tip calculators for 18 services — tattoo, nail salon, hair salon, massage, barber, and more. Instant results, no signup needed.">
   <link rel="canonical" href="https://tipright.app/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipright.app/">
+  <meta property="og:title" content="Tip Calculator — How Much to Tip for Any Service">
+  <meta property="og:description" content="Free tip calculators for 18 services. Instant results for tattoo, nail salon, hair salon, massage, barber, and more.">
+  <meta property="og:image" content="https://tipright.app/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tip Calculator — How Much to Tip for Any Service">
+  <meta name="twitter:description" content="Free tip calculators for 18 services. Instant results, no signup needed.">
+  <meta name="twitter:image" content="https://tipright.app/assets/img/og-default.png">
+
   <link rel="icon" href="/assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #0F1210; color: #F0F0EE; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      .bg-white { background-color: #1A201D !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      .border-gray-200 { border-color: #2E3532 !important; }
+      .border-gray-100 { border-color: #2E3532 !important; }
+      .text-gray-900 { color: #F0F0EE !important; }
+      .text-gray-800 { color: #E0E0DE !important; }
+      .text-gray-700 { color: #C0C0BE !important; }
+      .text-gray-600 { color: #A0A09E !important; }
+      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
+      #search-input { background-color: #222922 !important; border-color: #2E3532 !important; color: #F0F0EE !important; }
+      .bg-brand-pale { background-color: #0D2820 !important; }
+    }
+  </style>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE' } } } }
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' }
+          },
+          fontFamily: {
+            sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif']
+          }
+        }
+      }
     }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "tipright.app",
+        "url": "https://tipright.app",
+        "description": "Free tip calculators for 18 services",
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "name": "Tip Calculators",
+        "description": "Free tip calculators for every service",
+        "numberOfItems": 18,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1,  "name": "Tattoo Tip Calculator",           "url": "https://tipright.app/tip/tattoo" },
+          { "@type": "ListItem", "position": 2,  "name": "Nail Salon Tip Calculator",        "url": "https://tipright.app/tip/nail-salon" },
+          { "@type": "ListItem", "position": 3,  "name": "Hair Salon Tip Calculator",        "url": "https://tipright.app/tip/hair-salon" },
+          { "@type": "ListItem", "position": 4,  "name": "Massage Tip Calculator",           "url": "https://tipright.app/tip/massage" },
+          { "@type": "ListItem", "position": 5,  "name": "Barber Tip Calculator",            "url": "https://tipright.app/tip/barber" },
+          { "@type": "ListItem", "position": 6,  "name": "Dog Groomer Tip Calculator",       "url": "https://tipright.app/tip/dog-groomer" },
+          { "@type": "ListItem", "position": 7,  "name": "Hotel Housekeeping Tip Calculator","url": "https://tipright.app/tip/hotel-housekeeping" },
+          { "@type": "ListItem", "position": 8,  "name": "Movers Tip Calculator",            "url": "https://tipright.app/tip/movers" },
+          { "@type": "ListItem", "position": 9,  "name": "Valet Parking Tip Calculator",     "url": "https://tipright.app/tip/valet" },
+          { "@type": "ListItem", "position": 10, "name": "Piercing Tip Calculator",          "url": "https://tipright.app/tip/piercing" },
+          { "@type": "ListItem", "position": 11, "name": "Day Spa Tip Calculator",           "url": "https://tipright.app/tip/spa" },
+          { "@type": "ListItem", "position": 12, "name": "Food Delivery Tip Calculator",     "url": "https://tipright.app/tip/food-delivery" },
+          { "@type": "ListItem", "position": 13, "name": "Personal Trainer Tip Calculator",  "url": "https://tipright.app/tip/personal-trainer" },
+          { "@type": "ListItem", "position": 14, "name": "Airport Shuttle Tip Calculator",   "url": "https://tipright.app/tip/airport-shuttle" },
+          { "@type": "ListItem", "position": 15, "name": "Waxing Tip Calculator",            "url": "https://tipright.app/tip/waxing" },
+          { "@type": "ListItem", "position": 16, "name": "Tattoo Removal Tip Calculator",    "url": "https://tipright.app/tip/tattoo-removal" },
+          { "@type": "ListItem", "position": 17, "name": "Laser Hair Removal Tip Calculator","url": "https://tipright.app/tip/laser-hair-removal" },
+          { "@type": "ListItem", "position": 18, "name": "No Tax on Tips Calculator",        "url": "https://tipright.app/guide/no-tax-on-tips" }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 font-sans flex items-center justify-center min-h-screen">
-  <div class="text-center p-8">
-    <a href="/" class="text-2xl font-bold text-brand">tipright<span class="text-brand-dark">.app</span></a>
-    <p class="mt-4 text-gray-500 text-sm">This calculator is coming soon.</p>
-    <a href="/" class="mt-6 inline-block text-sm text-brand hover:underline">← All calculators</a>
+
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+
+<!-- NAV -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+  <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
+    <span class="font-bold text-brand text-lg tracking-tight">
+      tipright<span class="text-brand-dark">.app</span>
+    </span>
+    <a href="/about" class="text-sm text-gray-500 hover:text-brand transition-colors">
+      About
+    </a>
   </div>
+</nav>
+
+<!-- HERO -->
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-[672px] mx-auto px-4 pt-8 pb-6">
+    <h1 class="text-[28px] sm:text-[32px] font-bold text-gray-900 tracking-tight leading-tight">
+      Free Tip Calculators for Every Service
+    </h1>
+    <p class="text-gray-500 text-sm mt-2 leading-relaxed">
+      Instant tip amounts for 18 services. No signup, no ads, no math.
+    </p>
+
+    <!-- Search filter -->
+    <div class="relative mt-4">
+      <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Search calculators..."
+        autocomplete="off"
+        class="w-full h-10 pl-9 pr-4 text-sm rounded-lg border border-gray-200 bg-gray-50 text-gray-800 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
+      >
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
+
+  <!-- ═══ POPULAR ═══ -->
+  <section data-section="popular">
+    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+      Most Popular
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-popular">
+
+      <a href="/tip/tattoo" data-name="tattoo artist"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">🎨</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">How much to tip your artist</p>
+        </div>
+      </a>
+
+      <a href="/tip/nail-salon" data-name="nail salon manicure pedicure"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">💅</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Nail Salon</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Manicure & pedicure tips</p>
+        </div>
+      </a>
+
+      <a href="/tip/hair-salon" data-name="hair salon stylist colorist"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">💇</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hair Salon</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Stylist & colorist tips</p>
+        </div>
+      </a>
+
+      <a href="/tip/massage" data-name="massage therapist"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">💆</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Massage</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Deep tissue, Swedish & more</p>
+        </div>
+      </a>
+
+      <a href="/tip/barber" data-name="barber haircut fade"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">✂️</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Barber</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Haircut, fade & beard trim</p>
+        </div>
+      </a>
+
+      <a href="/tip/food-delivery" data-name="food delivery uber eats doordash"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">🛵</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Food Delivery</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">UberEats, DoorDash & more</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ BEAUTY & WELLNESS ═══ -->
+  <section data-section="beauty">
+    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+      Beauty &amp; Wellness
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-beauty">
+
+      <a href="/tip/spa" data-name="spa day spa"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">🧖</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Day Spa</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Full spa service tips</p>
+        </div>
+      </a>
+
+      <a href="/tip/waxing" data-name="waxing brazilian legs"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">🌸</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Waxing</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Brazilian, legs & more</p>
+        </div>
+      </a>
+
+      <a href="/tip/piercing" data-name="body piercing"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">💎</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Body Piercing</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Piercer tipping guide</p>
+        </div>
+      </a>
+
+      <a href="/tip/personal-trainer" data-name="personal trainer gym"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">🏋️</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Personal Trainer</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Gym trainer tipping</p>
+        </div>
+      </a>
+
+      <a href="/tip/laser-hair-removal" data-name="laser hair removal med spa"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">💡</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Laser Hair Removal</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Med spa tipping guide</p>
+        </div>
+      </a>
+
+      <a href="/tip/tattoo-removal" data-name="tattoo removal laser"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">⚡</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo Removal</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Laser removal tipping</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ HOME & TRAVEL ═══ -->
+  <section data-section="home">
+    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+      Home &amp; Travel
+    </h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-home">
+
+      <a href="/tip/dog-groomer" data-name="dog groomer pet grooming"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">🐕</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Dog Groomer</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Pet grooming tips</p>
+        </div>
+      </a>
+
+      <a href="/tip/hotel-housekeeping" data-name="hotel housekeeping maid"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">🏨</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hotel Housekeeping</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Per night vs checkout</p>
+        </div>
+      </a>
+
+      <a href="/tip/movers" data-name="movers moving company"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">📦</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Movers</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Local & long-distance tips</p>
+        </div>
+      </a>
+
+      <a href="/tip/valet" data-name="valet parking"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">🚗</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Valet Parking</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Drop-off & pick-up tips</p>
+        </div>
+      </a>
+
+      <a href="/tip/airport-shuttle" data-name="airport shuttle driver"
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+        <span class="text-2xl flex-shrink-0">✈️</span>
+        <div class="min-w-0">
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Airport Shuttle</p>
+          <p class="text-xs text-gray-400 mt-0.5 truncate">Shared & private tips</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ═══ NO TAX CALLOUT ═══ -->
+  <section>
+    <a href="/guide/no-tax-on-tips"
+       class="flex items-start gap-4 p-4 bg-brand-pale border border-brand/25 rounded-xl hover:border-brand transition-colors group">
+      <span class="text-2xl flex-shrink-0 mt-0.5">📋</span>
+      <div>
+        <p class="text-sm font-semibold text-brand-dark group-hover:text-brand transition-colors leading-tight">
+          No Tax on Tips — 2025 Calculator
+        </p>
+        <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+          Since July 2025, tip income is federally tax-exempt for workers earning under $160K/year. Calculate your tax savings →
+        </p>
+      </div>
+    </a>
+  </section>
+
+  <!-- ═══ INTRO CONTENT ═══ -->
+  <section class="text-gray-600 text-sm leading-relaxed space-y-3" style="max-width:65ch">
+    <h2 class="text-base font-semibold text-gray-800">About tipright.app</h2>
+    <p>Tipping in the US is expected for most personal services, but knowing the right amount isn't always obvious. tipright.app gives you a specific number in seconds — no ranges, no "it depends," just the amount for your service.</p>
+    <p>Every calculator shows five tip levels at once (10% through 25%), highlights the most common percentage for that service, and lets you split the tip with friends or compare multiple totals side by side. All calculations happen instantly as you type — no button to press, no page to reload.</p>
+    <p>The shareable URL feature means you can calculate your tip and send the link to whoever you're with — they'll see the same numbers with no setup required.</p>
+  </section>
+
+  <!-- No search results message (hidden by default) -->
+  <div id="no-results" class="hidden text-center py-12 text-gray-400 text-sm">
+    No calculators found for "<span id="search-term"></span>"
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-200 mt-8 py-8 text-center text-sm text-gray-400">
+  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p class="mt-1">
+    <a href="/about" class="hover:text-brand transition-colors">About</a>
+  </p>
+</footer>
+
+<script>
+(function () {
+  const searchInput = document.getElementById('search-input');
+  const noResults   = document.getElementById('no-results');
+  const searchTerm  = document.getElementById('search-term');
+  const sections    = document.querySelectorAll('main > section[data-section]');
+  const cards       = document.querySelectorAll('.service-card');
+
+  searchInput.addEventListener('input', function () {
+    const q = this.value.trim().toLowerCase();
+
+    if (!q) {
+      // Reset — show everything
+      cards.forEach(c => c.classList.remove('hidden'));
+      sections.forEach(s => s.classList.remove('hidden'));
+      noResults.classList.add('hidden');
+      return;
+    }
+
+    let anyVisible = false;
+
+    // Filter cards
+    cards.forEach(card => {
+      const name = (card.dataset.name || '') + ' ' + card.querySelector('p').textContent;
+      if (name.toLowerCase().includes(q)) {
+        card.classList.remove('hidden');
+        anyVisible = true;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    // Hide empty section headers
+    sections.forEach(section => {
+      const visibleCards = section.querySelectorAll('.service-card:not(.hidden)');
+      section.classList.toggle('hidden', visibleCards.length === 0);
+    });
+
+    // No results message
+    if (!anyVisible) {
+      noResults.classList.remove('hidden');
+      searchTerm.textContent = this.value.trim();
+    } else {
+      noResults.classList.add('hidden');
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
