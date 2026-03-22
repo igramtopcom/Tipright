@@ -3,23 +3,465 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Coming Soon — tipright.app</title>
+  <meta name="robots" content="index, follow">
+
+  <title>Nail Salon Tip Calculator — How Much to Tip? (2025)</title>
+  <meta name="description" content="Calculate your nail salon tip instantly. Enter your total and see fair tip amounts for manicures, pedicures, gel, and acrylics. Split tip with friends.">
   <link rel="canonical" href="https://tipright.app/tip/nail-salon">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipright.app/tip/nail-salon">
+  <meta property="og:title" content="Nail Salon Tip Calculator — How Much to Tip?">
+  <meta property="og:description" content="Calculate your nail salon tip instantly. See fair tip amounts for manicures, pedicures, gel, and acrylics.">
+  <meta property="og:image" content="https://tipright.app/assets/img/og-nail-salon.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nail Salon Tip Calculator — How Much to Tip?">
+  <meta name="twitter:description" content="Calculate your nail salon tip instantly. See fair tip amounts for manicures, pedicures, gel, and acrylics.">
+  <meta name="twitter:image" content="https://tipright.app/assets/img/og-nail-salon.png">
+
   <link rel="icon" href="/assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #0F1210; color: #F0F0EE; }
+      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      .bg-white { background-color: #1A201D !important; }
+      .bg-gray-50 { background-color: #222922 !important; }
+      .border-gray-200 { border-color: #2E3532 !important; }
+      .border-gray-100 { border-color: #2E3532 !important; }
+      .text-gray-900 { color: #F0F0EE !important; }
+      .text-gray-800 { color: #E0E0DE !important; }
+      .text-gray-700 { color: #C0C0BE !important; }
+      .text-gray-600 { color: #A0A09E !important; }
+      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
+    }
+  </style>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE' } } } }
+      theme: {
+        extend: {
+          colors: {
+            brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' }
+          },
+          fontFamily: {
+            sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif']
+          }
+        }
+      }
     }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Nail Salon Tip Calculator",
+        "description": "Free nail salon tip calculator. Enter your total to see 15%, 18%, and 20% tip amounts instantly.",
+        "url": "https://tipright.app/tip/nail-salon",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
+          { "@type": "ListItem", "position": 2, "name": "Nail Salon Tip Calculator", "item": "https://tipright.app/tip/nail-salon" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much should you tip at a nail salon?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The standard tip at a nail salon is 18–20% of the total service cost. For a $50 manicure and pedicure, that's $9–10. Always tip at least $3–5 even for low-cost services — a $15 basic manicure still deserves a meaningful tip." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it rude not to tip at a nail salon?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Nail technicians rely heavily on tips. Many work on commission or booth rental and pay for their own supplies. Not tipping for satisfactory service is considered very rude in the nail salon industry." }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I tip in cash at a nail salon?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Cash is strongly preferred at nail salons. Many nail technicians share card tips with the salon owner or pay processing fees on card transactions. A cash tip handed directly to your technician ensures they receive the full amount." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip for a $50 nail service?",
+            "acceptedAnswer": { "@type": "Answer", "text": "For a $50 nail service, tip $8–10 (15–20%). A $10 tip (20%) is the standard for good service. Tip $12–13 (25%) for exceptional work or a particularly complex design." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip extra for nail art or complex designs?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Nail art, 3D designs, ombre, or intricate patterns take significantly more skill and time. Add an extra $5–10 on top of your standard tip, or bump up to 22–25% for complex custom designs." }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip the nail salon owner?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Traditionally, tipping the salon owner was considered unnecessary since they set their own prices and keep all revenue. However, norms have shifted — most clients now tip owners 15–20% as well, and it is always appreciated." }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I tip separately if two technicians worked on me?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes, when two technicians work on you — for example, one doing your manicure and another your pedicure — tip each one separately based on their portion of the service. Don't leave one tip expecting the salon to split it." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do nail salons prefer cash tips?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Cash tips go directly to the technician with no processing fees, no delay, and no share with the salon. Card tips sometimes get pooled, deducted for fees, or processed on a different pay cycle. Cash is immediate and 100% theirs." }
+          },
+          {
+            "@type": "Question",
+            "name": "How much should I tip for a gel manicure?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Tip 18–20% on a gel manicure, the same as a standard service. If the gel set is especially complex — nail art, extensions, or a full soak-off and redo — consider 20–25% for the extra time and skill involved." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the minimum tip at a nail salon?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The minimum tip at a nail salon is $3–5 regardless of service cost. Even for a $12–15 basic manicure, leave at least $3. A percentage-only approach produces tips that are too small to be meaningful for low-cost services." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 font-sans flex items-center justify-center min-h-screen">
-  <div class="text-center p-8">
-    <a href="/" class="text-2xl font-bold text-brand">tipright<span class="text-brand-dark">.app</span></a>
-    <p class="mt-4 text-gray-500 text-sm">This calculator is coming soon.</p>
-    <a href="/" class="mt-6 inline-block text-sm text-brand hover:underline">← All calculators</a>
+
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+
+<!-- NAV -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+  <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="font-bold text-brand text-lg tracking-tight">
+      tipright<span class="text-brand-dark">.app</span>
+    </a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand transition-colors">
+      All calculators →
+    </a>
   </div>
+</nav>
+
+<!-- HEADER -->
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-[672px] mx-auto px-4 py-6">
+    <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">
+      Nail Salon Tip Calculator
+    </h1>
+    <p class="text-gray-500 text-sm mt-1">How much should you tip your nail technician?</p>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
+
+  <!-- CALCULATOR CARD -->
+  <section id="calculator" aria-label="Nail salon tip calculator">
+    <div class="bg-white rounded-xl border border-gray-200 p-5 sm:p-7">
+
+      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
+        Service total (before tax)
+      </label>
+
+      <div class="relative mb-4">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl font-medium pointer-events-none select-none">$</span>
+        <input
+          id="cost"
+          type="text"
+          inputmode="decimal"
+          placeholder="0"
+          autocomplete="off"
+          style="font-size:20px"
+          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-gray-200 bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20"
+        >
+      </div>
+
+      <!-- Preset buttons -->
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs text-gray-400 self-center">Quick:</span>
+        <button data-preset="25"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$25</button>
+        <button data-preset="40"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$40</button>
+        <button data-preset="50"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$50</button>
+        <button data-preset="75"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$75</button>
+        <button data-preset="100" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$100</button>
+        <button data-preset="150" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$150</button>
+      </div>
+
+      <!-- Split toggle -->
+      <details class="mb-5 group">
+        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand transition-colors list-none flex items-center gap-1">
+          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          Split tip with friends
+        </summary>
+        <div class="mt-3 flex items-center gap-3 pl-1">
+          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of people:</label>
+          <input
+            id="split"
+            type="number"
+            value="1"
+            min="1"
+            max="20"
+            class="w-20 h-10 rounded-lg border border-gray-200 text-center text-base font-medium focus:border-brand outline-none transition-colors"
+          >
+        </div>
+      </details>
+
+      <!-- Results grid -->
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
+        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">
+          Enter your service total above
+        </div>
+      </div>
+
+      <!-- Share button -->
+      <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end">
+        <button id="share-btn" class="text-sm text-gray-400 hover:text-brand transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+          </svg>
+          Share this calculation
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUICK REFERENCE TABLE -->
+  <section>
+    <h2 class="text-lg font-semibold text-gray-800 mb-3">Quick reference — common nail service totals</h2>
+    <div class="overflow-x-auto rounded-xl border border-gray-200">
+      <table id="ref-table" class="w-full text-sm">
+        <thead>
+          <tr class="bg-brand text-white">
+            <th class="px-4 py-3 text-left font-medium text-[13px]">Service total</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">15% tip</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px] bg-brand-dark">20% tip ★</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">25% tip</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">Total (20%)</th>
+          </tr>
+        </thead>
+        <tbody id="ref-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTIONS -->
+  <section class="space-y-7 text-gray-700 leading-relaxed" style="max-width:65ch">
+
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">How much should you tip at a nail salon?</h2>
+      <p>The standard tip at a nail salon is <strong>18–20%</strong> of your service total. For a $50 mani-pedi, that's $9–10. For a $30 gel manicure, $5–6 is appropriate.</p>
+      <p class="mt-3">One rule that sets nail salons apart: always tip <strong>at least $3–5</strong> regardless of how low the service cost is. A $15 basic manicure at a budget salon still deserves a real tip — percentage math alone produces amounts too small to be meaningful. The $3–5 floor is widely accepted in the industry.</p>
+      <p class="mt-3">Nail technicians typically earn <strong>minimum wage plus commission</strong> or pay booth rental fees out of their own earnings. Tips are not optional income — they're a core part of what makes the job viable.</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <ul class="space-y-2 text-gray-600 list-disc pl-5">
+        <li><strong>Service complexity:</strong> A basic clear coat is a 10-minute job. A full set of acrylics with nail art can take 90+ minutes. Tip proportionally — 20% minimum, 25% for complex custom designs.</li>
+        <li><strong>Number of technicians:</strong> If one tech did your manicure and another did your pedicure, tip each separately based on their portion of the service. Don't leave one combined tip expecting the salon to divide it fairly.</li>
+        <li><strong>Gel vs acrylic vs natural:</strong> Gel and acrylic services require more technical skill and take longer to apply properly. A 20% tip on these services is appropriate; bumping to 22–25% for very detailed work is a thoughtful gesture.</li>
+        <li><strong>Add-ons and nail art:</strong> Every extra — nail art, gems, ombre gradients, 3D designs — adds time and skill. Add $5–10 on top of your base tip for significant custom work.</li>
+        <li><strong>Cash vs card:</strong> Cash is the preferred method at nail salons. Card tips sometimes get pooled, delayed, or reduced by processing fees. A cash tip handed directly to your tech is immediate and complete.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Nail salon tipping etiquette</h2>
+      <p>The longstanding question about tipping the <strong>salon owner</strong> has largely been resolved: tip them 15–20% just like any other technician. The old rule ("don't tip the owner") was based on an assumption that owners set their own prices and keep all revenue — which is true, but tips are still appreciated and now widely expected.</p>
+      <p class="mt-3">Hand your cash tip directly to your technician rather than leaving it at the front desk or on the service tray. This ensures they receive it personally. If you're paying by card, the tip option will appear on the terminal — but know that cash is always preferred in this industry.</p>
+      <p class="mt-3">If you're a <strong>regular client</strong>, consistent tipping is more valuable than occasional large tips. It builds the relationship and ensures you get priority booking and attentive service at every visit.</p>
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
+    <div class="space-y-2" id="faq-container" itemscope itemtype="https://schema.org/FAQPage"></div>
+  </section>
+
+  <!-- RELATED CALCULATORS -->
+  <section>
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Related tip calculators</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <a href="/tip/hair-salon" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group">
+        <span class="text-xl flex-shrink-0">💇</span>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hair Salon Tip</p>
+          <p class="text-xs text-gray-400 mt-0.5">Stylists & colorists</p>
+        </div>
+      </a>
+      <a href="/tip/waxing" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group">
+        <span class="text-xl flex-shrink-0">🌸</span>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Waxing Tip</p>
+          <p class="text-xs text-gray-400 mt-0.5">Wax service tipping</p>
+        </div>
+      </a>
+      <a href="/tip/spa" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group">
+        <span class="text-xl flex-shrink-0">🧖</span>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Day Spa Tip</p>
+          <p class="text-xs text-gray-400 mt-0.5">Full spa services</p>
+        </div>
+      </a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group">
+        <span class="text-xl flex-shrink-0">💆</span>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Massage Tip</p>
+          <p class="text-xs text-gray-400 mt-0.5">Therapist tipping</p>
+        </div>
+      </a>
+      <a href="/tip/tattoo" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group">
+        <span class="text-xl flex-shrink-0">🎨</span>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo Tip</p>
+          <p class="text-xs text-gray-400 mt-0.5">Artist tipping</p>
+        </div>
+      </a>
+      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group">
+        <span class="text-xl flex-shrink-0">🧮</span>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">All Calculators</p>
+          <p class="text-xs text-gray-400 mt-0.5">18 tip calculators</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-400">
+  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p class="mt-1">
+    <a href="/about" class="hover:text-brand transition-colors">About</a>
+     · 
+    <a href="/" class="hover:text-brand transition-colors">All calculators</a>
+  </p>
+</footer>
+
+<script src="/assets/js/calculator.js"></script>
+<script>
+(function () {
+  const costInput = document.getElementById('cost');
+  const splitInput = document.getElementById('split');
+  const resultsEl  = document.getElementById('results');
+  const shareBtn   = document.getElementById('share-btn');
+
+  function update() {
+    const cost  = TR.parseCost(costInput.value);
+    const split = parseInt(splitInput?.value) || 1;
+    if (cost === 0) {
+      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter your service total above</div>';
+      TR.writeURL({ cost: costInput.value, split });
+      return;
+    }
+    const tiers = TR.calcTips(cost, split);
+    TR.renderResults(tiers, split, resultsEl);
+    TR.writeURL({ cost: costInput.value, split });
+  }
+
+  const state = TR.readURL();
+  if (state.cost) {
+    costInput.value = state.cost;
+    if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; }
+    update();
+  }
+
+  costInput.addEventListener('input', update);
+  splitInput.addEventListener('input', update);
+  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
+
+  document.querySelectorAll('[data-preset]').forEach(btn => {
+    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
+  });
+
+  // Quick Reference Table — nail salon amounts
+  (function buildRefTable() {
+    const AMOUNTS = [20, 30, 40, 50, 60, 75, 100, 120, 150];
+    const tbody = document.getElementById('ref-tbody');
+    if (!tbody) return;
+    AMOUNTS.forEach((amt, i) => {
+      const tr = document.createElement('tr');
+      tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+      const cells = [
+        { val: TR.fmt(amt),        cls: 'font-medium text-gray-700' },
+        { val: TR.fmt(amt * 0.15), cls: 'text-right text-gray-600' },
+        { val: TR.fmt(amt * 0.20), cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
+        { val: TR.fmt(amt * 0.25), cls: 'text-right text-gray-600' },
+        { val: TR.fmt(amt * 1.20), cls: 'text-right text-gray-500' },
+      ];
+      cells.forEach(c => {
+        const td = document.createElement('td');
+        td.className = 'px-4 py-2.5 text-sm ' + c.cls;
+        td.textContent = c.val;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  })();
+
+  // FAQ
+  const FAQ_DATA = [
+    { q: "How much should you tip at a nail salon?", a: "The standard tip is 18–20% of your service total. For a $50 mani-pedi, tip $9–10. Always tip a minimum of $3–5 regardless of service cost — percentage math produces amounts too small for low-cost services." },
+    { q: "Is it rude not to tip at a nail salon?", a: "Yes. Nail technicians depend heavily on tips to supplement their wages. Many earn minimum wage plus commission, or pay booth rental out of pocket. Not tipping for satisfactory work is considered very rude in the nail salon industry." },
+    { q: "Should I tip in cash at a nail salon?", a: "Cash is strongly preferred. Card tips may be pooled, delayed, or reduced by processing fees. A cash tip handed directly to your technician ensures they receive the full amount immediately." },
+    { q: "How much do you tip for a $50 nail service?", a: "Tip $8–10 for a $50 nail service. A $10 tip (20%) is standard for good work. Bump to $12–13 (25%) for exceptional quality or a complex design." },
+    { q: "Do you tip extra for nail art or complex designs?", a: "Yes. Nail art, 3D designs, ombre, and intricate patterns require significantly more skill and time. Add $5–10 on top of your standard percentage tip, or increase to 22–25% for elaborate custom work." },
+    { q: "Do you tip the nail salon owner?", a: "Yes — tip the owner 15–20%, just like any other technician. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip owners as a standard practice." },
+    { q: "Should I tip separately if two technicians worked on me?", a: "Yes. When different technicians handle different services — one for manicure, one for pedicure — tip each separately based on their portion. Don't leave a single tip expecting the salon to split it correctly." },
+    { q: "Why do nail salons prefer cash tips?", a: "Cash tips go directly to the technician with no fees, no pooling, and no delay. Card tips may be subject to processing charges or get distributed differently. Cash is always immediate and 100% for your technician." },
+    { q: "How much should I tip for a gel manicure?", a: "Tip 18–20% on a gel manicure. For a $40 gel service, that's $7–8. If the set includes intricate nail art or extensions, bump up to 22–25% to account for the extra time and skill." },
+    { q: "What is the minimum tip at a nail salon?", a: "The minimum tip is $3–5, regardless of how low the service cost is. Even for a $12–15 basic manicure, leave at least $3. Percentage-only tipping on cheap services produces tips too small to be meaningful." }
+  ];
+
+  (function buildFAQ() {
+    const container = document.getElementById('faq-container');
+    if (!container) return;
+    FAQ_DATA.forEach(item => {
+      const div = document.createElement('div');
+      div.setAttribute('itemscope',''); div.setAttribute('itemprop','mainEntity'); div.setAttribute('itemtype','https://schema.org/Question');
+      div.className = 'border border-gray-200 rounded-xl overflow-hidden';
+      const details = document.createElement('details');
+      details.className = 'group';
+      const summary = document.createElement('summary');
+      summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
+      const qText = document.createElement('span');
+      qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug';
+      qText.setAttribute('itemprop','name'); qText.textContent = item.q;
+      const chevron = document.createElement('svg');
+      chevron.setAttribute('class','w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180');
+      chevron.setAttribute('fill','none'); chevron.setAttribute('viewBox','0 0 24 24'); chevron.setAttribute('stroke','currentColor');
+      chevron.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>';
+      summary.appendChild(qText); summary.appendChild(chevron);
+      const answerDiv = document.createElement('div');
+      answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
+      answerDiv.setAttribute('itemprop','acceptedAnswer'); answerDiv.setAttribute('itemscope',''); answerDiv.setAttribute('itemtype','https://schema.org/Answer');
+      const answerText = document.createElement('div');
+      answerText.setAttribute('itemprop','text'); answerText.textContent = item.a;
+      answerDiv.appendChild(answerText);
+      details.appendChild(summary); details.appendChild(answerDiv);
+      div.appendChild(details); container.appendChild(div);
+    });
+  })();
+
+})();
+</script>
 </body>
 </html>
