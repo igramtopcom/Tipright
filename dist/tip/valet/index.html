@@ -3,23 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Coming Soon — tipright.app</title>
+  <meta name="robots" content="index, follow">
+
+  <title>Valet Parking Tip Calculator — How Much to Tip? (2025)</title>
+  <meta name="description" content="How much should you tip valet parking? Free calculator for hotel, restaurant, and event valet. Includes drop-off vs pick-up guide and free valet etiquette.">
   <link rel="canonical" href="https://tipright.app/tip/valet">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipright.app/tip/valet">
+  <meta property="og:title" content="Valet Parking Tip Calculator — How Much to Tip?">
+  <meta property="og:description" content="Free valet tip calculator. See standard tip amounts for hotel, restaurant, and event valet parking.">
+  <meta property="og:image" content="https://tipright.app/assets/img/og-valet.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Valet Parking Tip Calculator — How Much to Tip?">
+  <meta name="twitter:description" content="Free valet tip calculator. See standard tip amounts for hotel, restaurant, and event valet parking.">
+  <meta name="twitter:image" content="https://tipright.app/assets/img/og-valet.png">
+
   <link rel="icon" href="/assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #0F1210; color: #F0F0EE; }
+      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      .bg-white { background-color: #1A201D !important; }
+      .bg-gray-50 { background-color: #222922 !important; }
+      .border-gray-200 { border-color: #2E3532 !important; }
+      .border-gray-100 { border-color: #2E3532 !important; }
+      .text-gray-900 { color: #F0F0EE !important; }
+      .text-gray-800 { color: #E0E0DE !important; }
+      .text-gray-700 { color: #C0C0BE !important; }
+      .text-gray-600 { color: #A0A09E !important; }
+      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+    }
+  </style>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE' } } } }
+      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } }
     }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebApplication", "name": "Valet Parking Tip Calculator", "description": "Free valet tip calculator.", "url": "https://tipright.app/tip/valet", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" } },
+      { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" }, { "@type": "ListItem", "position": 2, "name": "Valet Parking Tip Calculator", "item": "https://tipright.app/tip/valet" } ] },
+      { "@type": "FAQPage", "mainEntity": [
+        { "@type": "Question", "name": "How much should you tip valet parking?", "acceptedAnswer": { "@type": "Answer", "text": "Tip valet parking $2–5 at pick-up for a standard restaurant or hotel valet. Tip $5–10 at luxury hotels or special events. Most people tip only at pick-up, not drop-off — the entire tip at pick-up is the standard convention." } },
+        { "@type": "Question", "name": "Do you tip valet at drop-off or pick-up?", "acceptedAnswer": { "@type": "Answer", "text": "Tip at pick-up only — this is the standard convention. The attendant who returns your car receives the tip after the full service is complete. Some guests tip $1–2 at drop-off and $3–5 at pick-up, but tipping only at pick-up is perfectly acceptable." } },
+        { "@type": "Question", "name": "Do you tip valet if the service is free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. 'Free valet' means no parking fee, not no tip. Tip $2–5 at pick-up even when valet is complimentary — the attendant still performed the same service." } },
+        { "@type": "Question", "name": "How much do you tip hotel valet?", "acceptedAnswer": { "@type": "Answer", "text": "Tip $3–5 each time you pick up your car at a standard hotel. At a luxury hotel or resort, tip $5–10. If you retrieve your car multiple times per day, tip at each pick-up." } },
+        { "@type": "Question", "name": "How much do you tip valet at a restaurant?", "acceptedAnswer": { "@type": "Answer", "text": "Tip $2–5 at pick-up for restaurant valet. At upscale restaurants or if the attendant brought your car quickly during a busy service, $5 is appropriate." } },
+        { "@type": "Question", "name": "Should you tip valet more for a nice car?", "acceptedAnswer": { "@type": "Answer", "text": "You don't need to tip more based on your car's value. The service performed is the same regardless of vehicle. Tip based on the quality and speed of service, not the car's price tag." } },
+        { "@type": "Question", "name": "Is it rude not to tip valet?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Valet attendants often earn minimum wage or slightly above and depend heavily on tips. Not tipping is considered rude, especially since the service involves trust with your vehicle." } },
+        { "@type": "Question", "name": "Do you tip valet at a hospital or medical center?", "acceptedAnswer": { "@type": "Answer", "text": "Tipping hospital valet is appreciated but less strictly expected than restaurant or hotel valet. $2–3 at pick-up is a kind gesture. Some hospital valet services are nonprofit and explicitly decline tips." } },
+        { "@type": "Question", "name": "Do you tip valet more for retrieving the car quickly?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — if an attendant retrieves your car faster than expected or handles a special request (like pulling up before you've finished paying the check), tipping at the higher end ($5–10) is appropriate." } },
+        { "@type": "Question", "name": "What if the valet damages your car?", "acceptedAnswer": { "@type": "Answer", "text": "Report any damage to the valet manager immediately and document it with photos before leaving. You're not obligated to tip for damaged property. File a claim through the valet company's insurance for any damage." } }
+      ]}
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 font-sans flex items-center justify-center min-h-screen">
-  <div class="text-center p-8">
-    <a href="/" class="text-2xl font-bold text-brand">tipright<span class="text-brand-dark">.app</span></a>
-    <p class="mt-4 text-gray-500 text-sm">This calculator is coming soon.</p>
-    <a href="/" class="mt-6 inline-block text-sm text-brand hover:underline">← All calculators</a>
+
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+  <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="font-bold text-brand text-lg tracking-tight">tipright<span class="text-brand-dark">.app</span></a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand transition-colors">All calculators →</a>
   </div>
+</nav>
+
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-[672px] mx-auto px-4 py-6">
+    <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">Valet Parking Tip Calculator</h1>
+    <p class="text-gray-500 text-sm mt-1">How much should you tip valet parking?</p>
+  </div>
+</header>
+
+<main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
+
+  <section id="calculator" aria-label="Valet tip calculator">
+    <div class="bg-white rounded-xl border border-gray-200 p-5 sm:p-7">
+
+      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
+        Enter tip amount <span class="text-gray-400 font-normal">(valet tips are flat, not % based)</span>
+      </label>
+
+      <div class="relative mb-4">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl font-medium pointer-events-none select-none">$</span>
+        <input id="cost" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
+          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-gray-200 bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
+      </div>
+
+      <!-- Flat-rate presets -->
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs text-gray-400 self-center">Common tips:</span>
+        <button data-preset="2"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$2</button>
+        <button data-preset="3"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$3</button>
+        <button data-preset="5"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$5</button>
+        <button data-preset="7"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$7</button>
+        <button data-preset="10" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$10</button>
+        <button data-preset="20" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$20</button>
+      </div>
+
+      <!-- Pick-up only callout -->
+      <div class="mb-5 flex items-start gap-2.5 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
+        <svg class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-xs text-blue-800 leading-relaxed">
+          <strong>Tip at pick-up only</strong> — not at drop-off. The attendant receives the full tip when they return your car. Free valet still requires a tip.
+        </p>
+      </div>
+
+      <details class="mb-5 group">
+        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand transition-colors list-none flex items-center gap-1">
+          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          Split tip with others
+        </summary>
+        <div class="mt-3 flex items-center gap-3 pl-1">
+          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of people:</label>
+          <input id="split" type="number" value="1" min="1" max="20"
+            class="w-20 h-10 rounded-lg border border-gray-200 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+        </div>
+      </details>
+
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
+        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter a tip amount above</div>
+      </div>
+
+      <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end">
+        <button id="share-btn" class="text-sm text-gray-400 hover:text-brand transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          Share this calculation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK REFERENCE TABLE — valet by venue type -->
+  <section>
+    <h2 class="text-lg font-semibold text-gray-800 mb-3">Valet tip guide by venue type</h2>
+    <div class="overflow-x-auto rounded-xl border border-gray-200">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-brand text-white">
+            <th class="px-4 py-3 text-left font-medium text-[13px]">Venue type</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">Minimum</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px] bg-brand-dark">Standard ★</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">Generous</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">Notes</th>
+          </tr>
+        </thead>
+        <tbody id="ref-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="space-y-7 text-gray-700 leading-relaxed" style="max-width:65ch">
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">How much should you tip valet parking?</h2>
+      <p>Valet tips are <strong>flat amounts, not percentages</strong>. The standard is <strong>$2–5 at pick-up</strong> for restaurant or standard hotel valet, and <strong>$5–10</strong> for luxury hotels or special events. Tip only at pick-up — this is the universal convention. The attendant receives the full tip when they return your car.</p>
+      <p class="mt-3"><strong>"Free valet"</strong> means no parking fee — it doesn't mean no tip. Always tip $2–5 at pick-up even when valet is complimentary. The attendant performed the same service regardless of what you paid for parking.</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <ul class="space-y-2 text-gray-600 list-disc pl-5">
+        <li><strong>Venue type:</strong> Budget hotel or casual restaurant ($2–3), standard hotel or upscale restaurant ($3–5), luxury hotel or formal event ($5–10).</li>
+        <li><strong>Service speed:</strong> If the attendant retrieved your car quickly during a busy rush, tip at the higher end. A 20-minute wait during a fully-staffed slow period warrants the standard amount.</li>
+        <li><strong>Special requests:</strong> Pulling up early, holding your car close, helping with bags or strollers — all warrant tipping toward the upper range.</li>
+        <li><strong>Multiple retrievals:</strong> If you retrieve your car multiple times (e.g., at a hotel over a multi-day stay), tip $3–5 at each pick-up, not just the first and last.</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Valet tipping etiquette</h2>
+      <p>Have your tip ready in cash before the attendant brings your car. Fumbling for cash while holding up the line is awkward for everyone. A $5 bill in your pocket before you hand over your keys makes the exchange smooth and intentional.</p>
+      <p class="mt-3">If the valet damaged your car, report it to the manager immediately and photograph the damage before leaving. You are not obligated to tip for damaged property. File a claim through the company's insurance — do not accept verbal assurances and drive away.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
+    <div class="space-y-2" id="faq-container" itemscope itemtype="https://schema.org/FAQPage"></div>
+  </section>
+
+  <section>
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Related tip calculators</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hotel Housekeeping</p><p class="text-xs text-gray-400 mt-0.5">Per-night tips</p></div></a>
+      <a href="/tip/airport-shuttle" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">✈️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Airport Shuttle</p><p class="text-xs text-gray-400 mt-0.5">Shared & private</p></div></a>
+      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📦</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Movers Tip</p><p class="text-xs text-gray-400 mt-0.5">Per-mover guide</p></div></a>
+      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🛵</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Food Delivery</p><p class="text-xs text-gray-400 mt-0.5">Delivery tips</p></div></a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💆</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Massage Tip</p><p class="text-xs text-gray-400 mt-0.5">Therapist tipping</p></div></a>
+      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🧮</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">All Calculators</p><p class="text-xs text-gray-400 mt-0.5">18 tip calculators</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-400">
+  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p class="mt-1"><a href="/about" class="hover:text-brand transition-colors">About</a> · <a href="/" class="hover:text-brand transition-colors">All calculators</a></p>
+</footer>
+
+<script src="/assets/js/calculator.js"></script>
+<script>
+(function () {
+  const costInput = document.getElementById('cost');
+  const splitInput = document.getElementById('split');
+  const resultsEl  = document.getElementById('results');
+  const shareBtn   = document.getElementById('share-btn');
+
+  function update() {
+    const cost  = TR.parseCost(costInput.value);
+    const split = parseInt(splitInput?.value) || 1;
+    if (cost === 0) {
+      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter a tip amount above</div>';
+      TR.writeURL({ cost: costInput.value, split });
+      return;
+    }
+    TR.renderResults(TR.calcTips(cost, split), split, resultsEl);
+    TR.writeURL({ cost: costInput.value, split });
+  }
+
+  const state = TR.readURL();
+  if (state.cost) { costInput.value = state.cost; if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; } update(); }
+
+  costInput.addEventListener('input', update);
+  splitInput.addEventListener('input', update);
+  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
+  document.querySelectorAll('[data-preset]').forEach(btn => {
+    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
+  });
+
+  // Custom ref table — by venue type
+  (function () {
+    const tbody = document.getElementById('ref-tbody');
+    if (!tbody) return;
+    const rows = [
+      { label: 'Casual restaurant',   min: '$2', std: '$3',  gen: '$5',  note: 'Pick-up only' },
+      { label: 'Upscale restaurant',  min: '$3', std: '$5',  gen: '$7',  note: 'Pick-up only' },
+      { label: 'Standard hotel',      min: '$3', std: '$5',  gen: '$7',  note: 'Per retrieval' },
+      { label: 'Luxury hotel/resort', min: '$5', std: '$8',  gen: '$10', note: 'Per retrieval' },
+      { label: 'Special event',       min: '$3', std: '$5',  gen: '$10', note: 'Weddings, galas' },
+    ];
+    rows.forEach((r, i) => {
+      const tr = document.createElement('tr');
+      tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+      [
+        { val: r.label, cls: 'font-medium text-gray-700' },
+        { val: r.min,   cls: 'text-right text-gray-600' },
+        { val: r.std,   cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
+        { val: r.gen,   cls: 'text-right text-gray-600' },
+        { val: r.note,  cls: 'text-right text-gray-400 text-xs' },
+      ].forEach(c => { const td = document.createElement('td'); td.className = 'px-4 py-2.5 text-sm ' + c.cls; td.textContent = c.val; tr.appendChild(td); });
+      tbody.appendChild(tr);
+    });
+  })();
+
+  const FAQ_DATA = [
+    { q: "How much should you tip valet parking?", a: "Tip $2–5 at pick-up for standard restaurant or hotel valet. Tip $5–10 at luxury hotels or special events. Tip only at pick-up, not drop-off — the attendant receives the full tip when they return your car." },
+    { q: "Do you tip valet at drop-off or pick-up?", a: "Tip at pick-up only. This is the standard convention — the tip is given after the full service is complete. Some guests tip $1–2 at drop-off and the rest at pick-up, but tipping only at pick-up is perfectly acceptable." },
+    { q: "Do you tip valet if the service is free?", a: "Yes. Free valet means no parking fee, not no tip. Tip $2–5 at pick-up even when valet is complimentary — the attendant performed the same service regardless." },
+    { q: "How much do you tip hotel valet?", a: "Tip $3–5 at pick-up at a standard hotel. At a luxury hotel or resort, tip $5–10. Tip at each car retrieval during a multi-day stay, not just once." },
+    { q: "How much do you tip valet at a restaurant?", a: "Tip $2–5 at pick-up for restaurant valet. At upscale restaurants or for quick service during a busy rush, $5 is appropriate." },
+    { q: "Should you tip more for a nice car?", a: "No — tip based on the quality and speed of service, not your car's value. The service performed is the same regardless of what you drive." },
+    { q: "Is it rude not to tip valet?", a: "Yes. Valet attendants earn near minimum wage and depend on tips. Not tipping is considered rude, especially given the trust involved in handing over your vehicle." },
+    { q: "Do you tip valet at a hospital?", a: "Appreciated but less strictly expected. $2–3 at pick-up is a kind gesture. Some hospital valet services are nonprofit and explicitly decline tips — check on arrival." },
+    { q: "Do you tip more for fast retrieval?", a: "Yes. If an attendant retrieves your car faster than expected or handles a special request, tipping at the higher end ($7–10) is appropriate acknowledgment." },
+    { q: "What if the valet damages your car?", a: "Report damage to the manager immediately and photograph it before leaving. You are not obligated to tip for damaged property. File a claim through the valet company's insurance." }
+  ];
+
+  (function () {
+    const container = document.getElementById('faq-container');
+    if (!container) return;
+    FAQ_DATA.forEach(item => {
+      const div = document.createElement('div');
+      div.setAttribute('itemscope',''); div.setAttribute('itemprop','mainEntity'); div.setAttribute('itemtype','https://schema.org/Question');
+      div.className = 'border border-gray-200 rounded-xl overflow-hidden';
+      const details = document.createElement('details'); details.className = 'group';
+      const summary = document.createElement('summary');
+      summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
+      const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.setAttribute('itemprop','name'); qText.textContent = item.q;
+      const chevron = document.createElement('svg'); chevron.setAttribute('class','w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180'); chevron.setAttribute('fill','none'); chevron.setAttribute('viewBox','0 0 24 24'); chevron.setAttribute('stroke','currentColor'); chevron.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>';
+      summary.appendChild(qText); summary.appendChild(chevron);
+      const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed'; answerDiv.setAttribute('itemprop','acceptedAnswer'); answerDiv.setAttribute('itemscope',''); answerDiv.setAttribute('itemtype','https://schema.org/Answer');
+      const answerText = document.createElement('div'); answerText.setAttribute('itemprop','text'); answerText.textContent = item.a; answerDiv.appendChild(answerText);
+      details.appendChild(summary); details.appendChild(answerDiv); div.appendChild(details); container.appendChild(div);
+    });
+  })();
+})();
+</script>
 </body>
 </html>
