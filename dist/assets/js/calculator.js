@@ -22,7 +22,7 @@ function parseCost(raw) {
 
 // ─── Calculate ─────────────────────────────────────────────
 function calcTips(cost, split = 1, tiers = TIERS) {
-  const n = Math.max(1, Math.min(20, parseInt(split) || 1));
+  const n = Math.max(1, parseInt(split) || 1);
   return tiers.map(tier => {
     const tip       = cost * (tier.pct / 100);
     const total     = cost + tip;
@@ -44,12 +44,14 @@ function round2(n) {
 }
 
 // ─── Format ────────────────────────────────────────────────
-const FMT = new Intl.NumberFormat('en-US', {
-  style: 'currency', currency: 'USD', minimumFractionDigits: 0,
-  maximumFractionDigits: 2,
-});
-
-function fmt(n) { return FMT.format(n); }
+function fmt(n) {
+  const hasDecimals = n % 1 !== 0;
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency', currency: 'USD',
+    minimumFractionDigits: hasDecimals ? 2 : 0,
+    maximumFractionDigits: 2,
+  }).format(n);
+}
 
 // ─── URL State ─────────────────────────────────────────────
 let _urlTimer = null;
