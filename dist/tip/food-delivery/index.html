@@ -3,23 +3,289 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Coming Soon — tipright.app</title>
+  <meta name="robots" content="index, follow">
+
+  <title>Food Delivery Tip Calculator — How Much to Tip Delivery Drivers? (2025)</title>
+  <meta name="description" content="How much should you tip food delivery drivers? Free calculator for DoorDash, Uber Eats, Grubhub, and more. Includes bad weather, long distance, and minimum tip guide.">
   <link rel="canonical" href="https://tipright.app/tip/food-delivery">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipright.app/tip/food-delivery">
+  <meta property="og:title" content="Food Delivery Tip Calculator — How Much to Tip Delivery Drivers?">
+  <meta property="og:description" content="Free food delivery tip calculator for DoorDash, Uber Eats, Grubhub, and more.">
+  <meta property="og:image" content="https://tipright.app/assets/img/og-food-delivery.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Food Delivery Tip Calculator — How Much to Tip Delivery Drivers?">
+  <meta name="twitter:description" content="Free food delivery tip calculator for DoorDash, Uber Eats, Grubhub, and more.">
+  <meta name="twitter:image" content="https://tipright.app/assets/img/og-food-delivery.png">
+
   <link rel="icon" href="/assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #0F1210; color: #F0F0EE; }
+      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      .bg-white { background-color: #1A201D !important; }
+      .bg-gray-50 { background-color: #222922 !important; }
+      .border-gray-200 { border-color: #2E3532 !important; }
+      .border-gray-100 { border-color: #2E3532 !important; }
+      .text-gray-900 { color: #F0F0EE !important; }
+      .text-gray-800 { color: #E0E0DE !important; }
+      .text-gray-700 { color: #C0C0BE !important; }
+      .text-gray-600 { color: #A0A09E !important; }
+      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
+      .bg-brand-pale { background-color: #0D2820 !important; }
+    }
+  </style>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE' } } } }
+      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } }
     }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebApplication", "name": "Food Delivery Tip Calculator", "description": "Free food delivery tip calculator for any order total.", "url": "https://tipright.app/tip/food-delivery", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" } },
+      { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" }, { "@type": "ListItem", "position": 2, "name": "Food Delivery Tip Calculator", "item": "https://tipright.app/tip/food-delivery" } ] },
+      { "@type": "FAQPage", "mainEntity": [
+        { "@type": "Question", "name": "How much should you tip for food delivery?", "acceptedAnswer": { "@type": "Answer", "text": "Tip 15–20% of the order total, with a $3–5 minimum for any delivery regardless of order size. For a $40 order, tip $6–8. Tip 20–25% for large orders, bad weather, long distances, or difficult deliveries like stairs or apartment buildings with no elevator." } },
+        { "@type": "Question", "name": "What is the minimum tip for food delivery?", "acceptedAnswer": { "@type": "Answer", "text": "The minimum tip for any food delivery is $3–5, regardless of order size. A percentage-only approach on a $15 order produces a $2–3 tip, which doesn't cover the driver's real costs. Always tip at least $3–5 for any delivery." } },
+        { "@type": "Question", "name": "Should you tip more in bad weather?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tip 20–25% or add an extra $2–5 on top of your standard tip in heavy rain, snow, or extreme heat. Drivers navigate dangerous conditions to bring your food, often on bikes or scooters, and a stronger tip acknowledges that risk." } },
+        { "@type": "Question", "name": "Does the delivery fee count as a tip?", "acceptedAnswer": { "@type": "Answer", "text": "No. Delivery fees, service fees, and platform fees go to the app company, not the driver. Always tip separately — the delivery fee and the driver's tip are completely independent. Paying a $5 delivery fee does not reduce your tip obligation." } },
+        { "@type": "Question", "name": "How much do you tip for a large food order?", "acceptedAnswer": { "@type": "Answer", "text": "Tip 15–20% on large orders, with a practical floor of $10 for very large or heavy deliveries. A $100 catering order warrants a $15–20 tip. Large orders are heavier to carry, take longer to pick up, and require more care in transport." } },
+        { "@type": "Question", "name": "Should you tip for grocery delivery (Instacart, Amazon Fresh)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — tip 10–15% for grocery delivery with a $5 minimum. Grocery shoppers spend 30–60 minutes selecting items, managing substitutions, and loading heavy bags. Instacart's default tip is 5% — increase it to at least 10–15%." } },
+        { "@type": "Question", "name": "Is it rude to tip zero on DoorDash or Uber Eats?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Drivers see the tip amount before accepting an order — $0 tip orders are often skipped entirely, which means your food sits at the restaurant while drivers pass. A low or zero tip also affects how quickly your order is accepted." } },
+        { "@type": "Question", "name": "Should you tip more for long-distance delivery?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Deliveries over 5 miles from the restaurant warrant a higher tip — add $1–2 per mile beyond normal delivery range, or bump to 20–25%. Long-distance deliveries take more time and fuel from the driver's own pocket." } },
+        { "@type": "Question", "name": "Can you change your tip after delivery on DoorDash or Uber Eats?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — both DoorDash and Uber Eats allow you to adjust the tip after delivery, usually within 30–60 minutes of receipt. If you experienced exceptional service or had a problem resolved well, adjusting your tip up is a great option." } },
+        { "@type": "Question", "name": "How much do you tip for free delivery promotions?", "acceptedAnswer": { "@type": "Answer", "text": "Tip the same amount you would without the promotion — 15–20% with a $3–5 minimum. Free delivery promotions are subsidies from the platform or restaurant, not the driver. The driver performed the same service regardless of the promo." } }
+      ]}
+    ]
+  }
+  </script>
 </head>
-<body class="bg-gray-50 font-sans flex items-center justify-center min-h-screen">
-  <div class="text-center p-8">
-    <a href="/" class="text-2xl font-bold text-brand">tipright<span class="text-brand-dark">.app</span></a>
-    <p class="mt-4 text-gray-500 text-sm">This calculator is coming soon.</p>
-    <a href="/" class="mt-6 inline-block text-sm text-brand hover:underline">← All calculators</a>
+
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+  <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="font-bold text-brand text-lg tracking-tight">tipright<span class="text-brand-dark">.app</span></a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand transition-colors">All calculators →</a>
   </div>
+</nav>
+
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-[672px] mx-auto px-4 py-6">
+    <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">Food Delivery Tip Calculator</h1>
+    <p class="text-gray-500 text-sm mt-1">How much should you tip your delivery driver?</p>
+  </div>
+</header>
+
+<main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
+
+  <section id="calculator" aria-label="Food delivery tip calculator">
+    <div class="bg-white rounded-xl border border-gray-200 p-5 sm:p-7">
+
+      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">Order total (before fees)</label>
+
+      <div class="relative mb-4">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl font-medium pointer-events-none select-none">$</span>
+        <input id="cost" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
+          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-gray-200 bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
+      </div>
+
+      <!-- Food delivery presets — typical order sizes -->
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs text-gray-400 self-center">Quick:</span>
+        <button data-preset="20"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$20</button>
+        <button data-preset="30"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$30</button>
+        <button data-preset="40"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$40</button>
+        <button data-preset="60"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$60</button>
+        <button data-preset="80"  class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$80</button>
+        <button data-preset="100" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$100</button>
+      </div>
+
+      <!-- Delivery fee ≠ tip callout -->
+      <div class="mb-5 flex items-start gap-2.5 bg-brand-pale border border-brand/20 rounded-lg px-4 py-3">
+        <svg class="w-4 h-4 text-brand flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-xs text-brand-dark leading-relaxed">
+          <strong>Delivery fees ≠ tip.</strong> Platform fees go to the app, not the driver. Always tip separately — bad weather and long distances warrant 20–25%.
+        </p>
+      </div>
+
+      <details class="mb-5 group">
+        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand transition-colors list-none flex items-center gap-1">
+          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          Split with roommates or coworkers
+        </summary>
+        <div class="mt-3 flex items-center gap-3 pl-1">
+          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of people:</label>
+          <input id="split" type="number" value="1" min="1" max="20"
+            class="w-20 h-10 rounded-lg border border-gray-200 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+        </div>
+      </details>
+
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
+        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter your order total above</div>
+      </div>
+
+      <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end">
+        <button id="share-btn" class="text-sm text-gray-400 hover:text-brand transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          Share this calculation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK REFERENCE TABLE -->
+  <section>
+    <h2 class="text-lg font-semibold text-gray-800 mb-3">Quick reference — common order totals</h2>
+    <div class="overflow-x-auto rounded-xl border border-gray-200">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-brand text-white">
+            <th class="px-4 py-3 text-left font-medium text-[13px]">Order total</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">15% tip</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px] bg-brand-dark">20% tip ★</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">25% tip</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">Min tip</th>
+          </tr>
+        </thead>
+        <tbody id="ref-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="space-y-7 text-gray-700 leading-relaxed" style="max-width:65ch">
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">How much should you tip for food delivery?</h2>
+      <p>The standard tip for food delivery is <strong>15–20%</strong> of the order total, with a <strong>$3–5 minimum</strong> for any delivery regardless of order size. For a $40 order, tip $6–8. For a small $15 order, don't let the percentage drop below $3.</p>
+      <p class="mt-3">The $3–5 minimum exists because delivery costs don't scale linearly with order size. A driver navigating traffic to bring a $12 order has the same fuel cost, wear, and time as someone bringing a $40 order — the smaller percentage tip dramatically underpays for that actual effort.</p>
+      <p class="mt-3">One thing to understand clearly: <strong>delivery fees and service fees go to the platform, not the driver</strong>. Paying a $4.99 delivery fee and a $2 service fee on top doesn't reduce what you should tip. These are separate revenue streams. The driver's compensation depends almost entirely on the per-delivery base pay from the app plus your tip.</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <ul class="space-y-2 text-gray-600 list-disc pl-5">
+        <li><strong>Weather conditions:</strong> Rain, snow, heat wave — tip 20–25% or add $2–5 on top of your standard amount. Drivers on bikes and scooters navigate dangerous conditions to get your order to you. This is when your tip matters most.</li>
+        <li><strong>Delivery distance:</strong> Long-distance deliveries (5+ miles from the restaurant) use more of the driver's fuel and time. Bump to 20–25% for notably long routes.</li>
+        <li><strong>Order size and weight:</strong> Large orders are heavier to carry and harder to balance on a bike or in a bag. Tip the higher end of the range for orders over $75 or with multiple large items.</li>
+        <li><strong>Delivery difficulty:</strong> Stairs, no elevator, gated buildings, unclear addresses — these add friction and time. Acknowledge with a slightly stronger tip.</li>
+        <li><strong>Speed and accuracy:</strong> If your order arrived hot, on time, and complete — that's exactly what a 20% tip is for. For exceptional service, 22–25% is appropriate.</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Food delivery tipping etiquette</h2>
+      <p>On DoorDash and Uber Eats, drivers <strong>see the tip before accepting the order</strong>. A $0 tip order is frequently skipped entirely — meaning your food sits at the restaurant while drivers pass on the delivery. A minimum tip ensures your order gets picked up promptly.</p>
+      <p class="mt-3">For <strong>grocery delivery</strong> (Instacart, Amazon Fresh, Walmart+), tip 10–15% with a $5 minimum. Grocery shoppers spend 30–60 minutes selecting items, managing substitutions, and loading heavy bags — it's more work than a standard food pickup. Instacart defaults to 5%; always increase it.</p>
+      <p class="mt-3">Both DoorDash and Uber Eats allow you to <strong>adjust your tip after delivery</strong>, usually within 30–60 minutes. If your driver went above and beyond, updating your tip after the fact is a great way to reward exceptional service.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
+    <div class="space-y-2" id="faq-container" itemscope itemtype="https://schema.org/FAQPage"></div>
+  </section>
+
+  <section>
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Related tip calculators</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🚗</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Valet Parking</p><p class="text-xs text-gray-400 mt-0.5">Drop-off & pick-up</p></div></a>
+      <a href="/tip/airport-shuttle" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">✈️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Airport Shuttle</p><p class="text-xs text-gray-400 mt-0.5">Shared & private</p></div></a>
+      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📦</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Movers Tip</p><p class="text-xs text-gray-400 mt-0.5">Per-mover guide</p></div></a>
+      <a href="/tip/tattoo" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🎨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo Tip</p><p class="text-xs text-gray-400 mt-0.5">Artist tipping</p></div></a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💆</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Massage Tip</p><p class="text-xs text-gray-400 mt-0.5">Therapist tipping</p></div></a>
+      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🧮</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">All Calculators</p><p class="text-xs text-gray-400 mt-0.5">18 tip calculators</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-400">
+  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p class="mt-1"><a href="/about" class="hover:text-brand transition-colors">About</a> · <a href="/" class="hover:text-brand transition-colors">All calculators</a></p>
+</footer>
+
+<script src="/assets/js/calculator.js"></script>
+<script>
+(function () {
+  const costInput = document.getElementById('cost');
+  const splitInput = document.getElementById('split');
+  const resultsEl  = document.getElementById('results');
+  const shareBtn   = document.getElementById('share-btn');
+
+  function update() {
+    const cost  = TR.parseCost(costInput.value);
+    const split = parseInt(splitInput?.value) || 1;
+    if (cost === 0) { resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter your order total above</div>'; TR.writeURL({ cost: costInput.value, split }); return; }
+    TR.renderResults(TR.calcTips(cost, split), split, resultsEl);
+    TR.writeURL({ cost: costInput.value, split });
+  }
+
+  const state = TR.readURL();
+  if (state.cost) { costInput.value = state.cost; if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; } update(); }
+  costInput.addEventListener('input', update);
+  splitInput.addEventListener('input', update);
+  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
+  document.querySelectorAll('[data-preset]').forEach(btn => { btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); }); });
+
+  // Custom ref table — food delivery with minimum tip column
+  (function () {
+    const AMOUNTS = [15, 20, 25, 30, 40, 50, 60, 80, 100];
+    const MINS    = ['$3', '$3', '$4', '$5', '$6', '$7', '$9', '$12', '$15'];
+    const tbody = document.getElementById('ref-tbody');
+    if (!tbody) return;
+    AMOUNTS.forEach((amt, i) => {
+      const tr = document.createElement('tr'); tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+      [
+        { val: TR.fmt(amt),        cls: 'font-medium text-gray-700' },
+        { val: TR.fmt(amt * 0.15), cls: 'text-right text-gray-600' },
+        { val: TR.fmt(amt * 0.20), cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
+        { val: TR.fmt(amt * 0.25), cls: 'text-right text-gray-600' },
+        { val: MINS[i],            cls: 'text-right text-gray-500 text-xs' },
+      ].forEach(c => { const td = document.createElement('td'); td.className = 'px-4 py-2.5 text-sm ' + c.cls; td.textContent = c.val; tr.appendChild(td); });
+      tbody.appendChild(tr);
+    });
+  })();
+
+  const FAQ_DATA = [
+    { q: "How much should you tip for food delivery?", a: "Tip 15–20% of the order total with a $3–5 minimum for any delivery. For a $40 order, tip $6–8. Tip 20–25% for bad weather, long distances, large/heavy orders, or difficult delivery locations." },
+    { q: "What is the minimum tip for food delivery?", a: "The minimum tip for any food delivery is $3–5 regardless of order size. Percentage math on small orders produces tips too low to be meaningful. A driver bringing a $15 order deserves at least $3." },
+    { q: "Should you tip more in bad weather?", a: "Yes. Tip 20–25% or add $2–5 extra in heavy rain, snow, or extreme heat. Drivers navigate dangerous conditions on bikes and scooters — a stronger tip directly acknowledges that risk." },
+    { q: "Does the delivery fee count as a tip?", a: "No. Delivery fees, service fees, and platform fees go to the app company, not the driver. Always tip separately — the delivery fee and driver tip are completely independent." },
+    { q: "How much do you tip for a large food order?", a: "Tip 15–20% with a $10 practical floor for very large or heavy deliveries. A $100 catering order warrants $15–20. Large orders are heavier, take longer to pick up, and require more care in transport." },
+    { q: "Should you tip for grocery delivery?", a: "Yes — tip 10–15% for grocery delivery with a $5 minimum. Grocery shoppers spend 30–60 minutes selecting and loading items. Instacart defaults to 5%; always increase it to at least 10–15%." },
+    { q: "Is it rude to tip zero on DoorDash or Uber Eats?", a: "Yes. Drivers see the tip amount before accepting — $0 tip orders are frequently skipped. A zero tip means your food sits at the restaurant while drivers pass on the delivery." },
+    { q: "Should you tip more for long-distance delivery?", a: "Yes. Deliveries over 5 miles from the restaurant warrant a higher tip — bump to 20–25%. Long-distance deliveries take more time and fuel from the driver's own costs." },
+    { q: "Can you change your tip after delivery on DoorDash or Uber Eats?", a: "Yes — both apps allow you to adjust the tip after delivery, usually within 30–60 minutes. If your driver went above and beyond, updating your tip after the fact is a great way to reward exceptional service." },
+    { q: "How much do you tip for free delivery promotions?", a: "Tip the same 15–20% you would without the promotion. Free delivery promos are subsidies from the platform or restaurant — not from the driver. The driver performed the same service regardless of the promo." }
+  ];
+
+  (function () {
+    const container = document.getElementById('faq-container');
+    if (!container) return;
+    FAQ_DATA.forEach(item => {
+      const div = document.createElement('div'); div.setAttribute('itemscope',''); div.setAttribute('itemprop','mainEntity'); div.setAttribute('itemtype','https://schema.org/Question'); div.className = 'border border-gray-200 rounded-xl overflow-hidden';
+      const details = document.createElement('details'); details.className = 'group';
+      const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
+      const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.setAttribute('itemprop','name'); qText.textContent = item.q;
+      const chevron = document.createElement('svg'); chevron.setAttribute('class','w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180'); chevron.setAttribute('fill','none'); chevron.setAttribute('viewBox','0 0 24 24'); chevron.setAttribute('stroke','currentColor'); chevron.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>';
+      summary.appendChild(qText); summary.appendChild(chevron);
+      const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed'; answerDiv.setAttribute('itemprop','acceptedAnswer'); answerDiv.setAttribute('itemscope',''); answerDiv.setAttribute('itemtype','https://schema.org/Answer');
+      const answerText = document.createElement('div'); answerText.setAttribute('itemprop','text'); answerText.textContent = item.a; answerDiv.appendChild(answerText);
+      details.appendChild(summary); details.appendChild(answerDiv); div.appendChild(details); container.appendChild(div);
+    });
+  })();
+})();
+</script>
 </body>
 </html>
