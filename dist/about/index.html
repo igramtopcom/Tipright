@@ -3,23 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Coming Soon — tipright.app</title>
+  <meta name="robots" content="index, follow">
+  <title>About tipright.app — Free Tip Calculators</title>
+  <meta name="description" content="tipright.app provides free, instant tip calculators for 18 services. No ads above the fold, no signup required, no math needed.">
   <link rel="canonical" href="https://tipright.app/about">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tipright.app/about">
+  <meta property="og:title" content="About tipright.app — Free Tip Calculators">
+  <meta property="og:description" content="Free tip calculators for 18 services. Instant results, no signup required.">
+  <meta property="og:image" content="https://tipright.app/assets/img/og-default.png">
   <link rel="icon" href="/assets/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #0F1210; color: #F0F0EE; }
+      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      .bg-white { background-color: #1A201D !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      .border-gray-200 { border-color: #2E3532 !important; }
+      .border-gray-100 { border-color: #2E3532 !important; }
+      .text-gray-900 { color: #F0F0EE !important; }
+      .text-gray-800 { color: #E0E0DE !important; }
+      .text-gray-700 { color: #C0C0BE !important; }
+      .text-gray-600 { color: #A0A09E !important; }
+      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
+    }
+  </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE' } } } }
+      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } }
     }
   </script>
 </head>
-<body class="bg-gray-50 font-sans flex items-center justify-center min-h-screen">
-  <div class="text-center p-8">
-    <a href="/" class="text-2xl font-bold text-brand">tipright<span class="text-brand-dark">.app</span></a>
-    <p class="mt-4 text-gray-500 text-sm">This calculator is coming soon.</p>
-    <a href="/" class="mt-6 inline-block text-sm text-brand hover:underline">← All calculators</a>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
+
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
+  <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="font-bold text-brand text-lg tracking-tight">tipright<span class="text-brand-dark">.app</span></a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand transition-colors">All calculators →</a>
   </div>
+</nav>
+
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-[672px] mx-auto px-4 py-6">
+    <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">About tipright.app</h1>
+    <p class="text-gray-500 text-sm mt-1">Free tip calculators for every service</p>
+  </div>
+</header>
+
+<main class="max-w-[672px] mx-auto px-4 py-8 space-y-8">
+
+  <section class="bg-white rounded-xl border border-gray-200 p-6 space-y-4 text-gray-700 leading-relaxed">
+    <div>
+      <h2 class="text-lg font-semibold text-gray-900 mb-2">What is tipright.app?</h2>
+      <p>tipright.app is a collection of free tip calculators for 18 personal services — from tattoo artists and nail salons to hotel housekeeping and movers. Enter your service total and see tip amounts at every level instantly, with no button to press and no page to reload.</p>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold text-gray-900 mb-2">Why we built it</h2>
+      <p>Most tip calculator sites are slow, cluttered with ads above the tool, or so generic they don't account for the norms of specific services. A hotel housekeeping tip works nothing like a tattoo tip — flat rate per night vs percentage, different etiquette, different amounts. We built a dedicated calculator for each service with the specific context, benchmarks, and etiquette that actually applies.</p>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold text-gray-900 mb-2">How it works</h2>
+      <p>Every calculator runs entirely in your browser — there's no server, no account, and no data collected. Calculations happen instantly as you type. The shareable URL feature lets you encode your calculation into a link and send it to whoever you're tipping with.</p>
+    </div>
+    <div>
+      <h2 class="text-lg font-semibold text-gray-900 mb-2">Our principles</h2>
+      <ul class="space-y-2 list-disc pl-5 text-gray-600">
+        <li><strong>Tool first.</strong> The calculator is always the first thing you see. No content wall, no email gate, no forced scroll.</li>
+        <li><strong>Specific, not generic.</strong> Each service has its own tipping culture. We research and present the real norms, not a one-size-fits-all percentage.</li>
+        <li><strong>Fast everywhere.</strong> No custom fonts, no heavy frameworks, no tracking scripts. Every page loads in under a second even on slow mobile connections.</li>
+        <li><strong>Honest.</strong> When tipping norms are genuinely debated (should you tip the salon owner?), we say so rather than pretending there's a single right answer.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Calculator grid -->
+  <section>
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">All 18 calculators</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <a href="/tip/tattoo" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🎨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo</p></div></a>
+      <a href="/tip/nail-salon" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💅</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Nail Salon</p></div></a>
+      <a href="/tip/hair-salon" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💇</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hair Salon</p></div></a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💆</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Massage</p></div></a>
+      <a href="/tip/barber" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">✂️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Barber</p></div></a>
+      <a href="/tip/dog-groomer" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🐕</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Dog Groomer</p></div></a>
+      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hotel Hskpg</p></div></a>
+      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📦</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Movers</p></div></a>
+      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🚗</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Valet</p></div></a>
+      <a href="/tip/piercing" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💎</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Piercing</p></div></a>
+      <a href="/tip/spa" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🧖</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Day Spa</p></div></a>
+      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🛵</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Food Delivery</p></div></a>
+      <a href="/tip/personal-trainer" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏋️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Personal Trainer</p></div></a>
+      <a href="/tip/airport-shuttle" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">✈️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Airport Shuttle</p></div></a>
+      <a href="/tip/waxing" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🌸</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Waxing</p></div></a>
+      <a href="/tip/tattoo-removal" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">⚡</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo Removal</p></div></a>
+      <a href="/tip/laser-hair-removal" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💡</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Laser Hair Removal</p></div></a>
+      <a href="/guide/no-tax-on-tips" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📋</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">No Tax on Tips</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-400">
+  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p class="mt-1">
+    <a href="/" class="hover:text-brand transition-colors">All calculators</a>
+     · 
+    <a href="/privacy" class="hover:text-brand transition-colors">Privacy Policy</a>
+  </p>
+</footer>
+
 </body>
 </html>
