@@ -21,20 +21,25 @@ function parseCost(raw) {
 }
 
 // ─── Calculate ─────────────────────────────────────────────
-function calcTips(cost, split = 1, tiers = TIERS) {
-  const n = Math.max(1, parseInt(split) || 1);
+function calcTips(cost, split = 1, tax = 0, tiers = TIERS) {
+  const n   = Math.max(1, Math.min(20, parseInt(split) || 1));
+  const txn = Math.max(0, parseFloat(tax) || 0);
   return tiers.map(tier => {
-    const tip       = cost * (tier.pct / 100);
-    const total     = cost + tip;
-    const perPerson = tip / n;
+    const tip            = cost * (tier.pct / 100);
+    const total          = cost + tip;
+    const grandTotal     = cost + txn + tip;
+    const totalPerPerson = grandTotal / n;
+    const tipPerPerson   = tip / n;
     return {
-      pct:       tier.pct,
-      label:     tier.label,
-      note:      tier.note,
-      highlight: !!tier.highlight,
-      tip:       round2(tip),
-      total:     round2(total),
-      perPerson: round2(perPerson),
+      pct:            tier.pct,
+      label:          tier.label,
+      note:           tier.note,
+      highlight:      !!tier.highlight,
+      tip:            round2(tip),
+      total:          round2(total),
+      grandTotal:     round2(grandTotal),
+      totalPerPerson: round2(totalPerPerson),
+      tipPerPerson:   round2(tipPerPerson),
     };
   });
 }
@@ -62,6 +67,7 @@ function readURL() {
     cost:     parseFloat(p.get('c')) || '',
     split:    parseInt(p.get('s'))  || 1,
     sessions: parseInt(p.get('n'))  || 1,
+    tax:      parseFloat(p.get('t')) || 0,
   };
 }
 
@@ -72,6 +78,7 @@ function writeURL(state) {
     if (state.cost)         p.set('c', state.cost);
     if (state.split > 1)    p.set('s', state.split);
     if (state.sessions > 1) p.set('n', state.sessions);
+    if (state.tax > 0)      p.set('t', state.tax);
     const qs = p.toString() ? '?' + p.toString() : '';
     history.replaceState(null, '', window.location.pathname + qs);
   }, 300);
@@ -130,18 +137,25 @@ function renderResults(results, split, container) {
     amount.textContent = fmt(r.tip);
 
     const total = document.createElement('span');
-    total.className = 'text-xs text-gray-400 mt-1';
-    total.textContent = 'Total: ' + fmt(r.total);
+    total.className = 'text-xs mt-1 ' + (r.highlight ? 'text-brand-dark opacity-70' : 'text-gray-400');
+    total.textContent = 'Total: ' + fmt(showSplit && r.grandTotal ? r.grandTotal : r.total);
 
     card.appendChild(label);
     card.appendChild(amount);
     card.appendChild(total);
 
     if (showSplit) {
-      const pp = document.createElement('span');
-      pp.className = 'text-xs font-semibold text-brand-dark mt-1';
-      pp.textContent = fmt(r.perPerson) + ' / person';
-      card.appendChild(pp);
+      const totalPP = document.createElement('span');
+      totalPP.className = 'text-sm font-bold mt-2 ' + (r.highlight ? 'text-brand-dark' : 'text-gray-700');
+      totalPP.style.fontSize = '16px';
+      totalPP.textContent = fmt(r.totalPerPerson) + ' / person';
+
+      const tipPP = document.createElement('span');
+      tipPP.className = 'text-xs mt-0.5 ' + (r.highlight ? 'text-brand opacity-80' : 'text-gray-400');
+      tipPP.textContent = fmt(r.tipPerPerson) + ' tip each';
+
+      card.appendChild(totalPP);
+      card.appendChild(tipPP);
     }
 
     container.appendChild(card);
@@ -149,4 +163,10 @@ function renderResults(results, split, container) {
 }
 
 // ─── Export ────────────────────────────────────────────────
-window.TR = { parseCost, calcTips, fmt, readURL, writeURL, shareResult, renderResults };
+window.TR = {
+  parseCost, calcTips, fmt, readURL, writeURL, shareResult, renderResults,
+  parseTax: function(v) {
+    const n = parseFloat(String(v).replace(/[$,\s]/g, ''));
+    return isNaN(n) || n < 0 ? 0 : n;
+  }
+};

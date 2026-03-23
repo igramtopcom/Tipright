@@ -348,7 +348,7 @@
       TR.writeURL({ cost: costInput.value, split });
       return;
     }
-    TR.renderResults(TR.calcTips(cost, split), split, resultsEl);
+    TR.renderResults(TR.calcTips(cost, split, 0), split, resultsEl);
     TR.writeURL({ cost: costInput.value, split });
   }
 

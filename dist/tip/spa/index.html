@@ -147,6 +147,14 @@
           <input id="split" type="number" value="1" min="1" max="20"
             class="w-20 h-10 rounded-lg border border-gray-200 text-center text-base font-medium focus:border-brand outline-none transition-colors">
         </div>
+              <div id="tax-row" class="mt-3 flex items-center gap-3" style="display:none">
+          <label for="tax" class="text-sm text-gray-600 whitespace-nowrap">Tax on receipt:</label>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium pointer-events-none">$</span>
+            <input id="tax" type="text" inputmode="decimal" value="" placeholder="0.00" autocomplete="off" style="font-size:16px" class="w-28 h-10 pl-7 rounded-lg border border-gray-300 text-center text-base font-medium focus:border-brand outline-none transition-colors bg-gray-50">
+          </div>
+          <span class="text-xs text-gray-400">optional</span>
+        </div>
       </details>
 
       <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
@@ -240,21 +248,34 @@
 (function () {
   const costInput = document.getElementById('cost');
   const splitInput = document.getElementById('split');
+  var taxInput   = document.getElementById('tax');
+  var taxRow     = document.getElementById('tax-row');
   const resultsEl  = document.getElementById('results');
   const shareBtn   = document.getElementById('share-btn');
+
+    var detailsEl = document.querySelector('details');
+  if (detailsEl && taxRow) {
+    detailsEl.addEventListener('toggle', function() {
+      taxRow.style.display = detailsEl.open ? 'flex' : 'none';
+      if (!detailsEl.open && taxInput) taxInput.value = '';
+      update();
+    });
+  }
 
   function update() {
     const cost  = TR.parseCost(costInput.value);
     const split = parseInt(splitInput?.value) || 1;
-    if (cost === 0) { resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter your service total above</div>'; TR.writeURL({ cost: costInput.value, split }); return; }
-    TR.renderResults(TR.calcTips(cost, split), split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split });
+    if (cost === 0) { resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter your service total above</div>'; TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' }); return; }
+    TR.renderResults(TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0), split, resultsEl);
+    TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
   }
 
   const state = TR.readURL();
-  if (state.cost) { costInput.value = state.cost; if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; } update(); }
+  if (state.cost) { costInput.value = state.cost; if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; }
+    if (state.tax && taxInput) { taxInput.value = state.tax; document.querySelector('details').open = true; if (taxRow) taxRow.style.display = 'flex'; } update(); }
   costInput.addEventListener('input', update);
   splitInput.addEventListener('input', update);
+  if (taxInput) taxInput.addEventListener('input', update);
   shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
   document.querySelectorAll('[data-preset]').forEach(btn => { btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); }); });
 

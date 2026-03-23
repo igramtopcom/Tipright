@@ -216,7 +216,7 @@
     const cost  = TR.parseCost(costInput.value);
     const split = parseInt(splitInput?.value) || 1;
     if (cost === 0) { resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter your shuttle fare above</div>'; TR.writeURL({ cost: costInput.value, split }); return; }
-    TR.renderResults(TR.calcTips(cost, split), split, resultsEl);
+    TR.renderResults(TR.calcTips(cost, split, 0), split, resultsEl);
     TR.writeURL({ cost: costInput.value, split });
   }
   const state = TR.readURL();
