@@ -108,18 +108,25 @@ function renderResults(results, split, container) {
   results.forEach(r => {
     const card = document.createElement('div');
     card.className = [
-      'flex flex-col items-center justify-center rounded-xl p-4 transition-all',
+      'flex flex-col items-center justify-center rounded-xl transition-all',
       r.highlight
-        ? 'border-2 border-brand bg-brand-light ring-1 ring-brand'
-        : 'border border-gray-200 bg-white hover:border-brand/40',
+        ? 'border-2 border-brand bg-brand-light ring-1 ring-brand p-5 scale-[1.03]'
+        : 'border border-gray-200 bg-white hover:border-brand/40 p-4',
     ].join(' ');
 
     const label = document.createElement('span');
-    label.className = 'text-xs font-medium text-gray-500 mb-1';
-    label.textContent = r.pct + '% — ' + r.label;
+    if (r.highlight) {
+      label.textContent = '★ Standard';
+      label.className = 'text-xs font-bold text-brand uppercase tracking-wide mb-1';
+    } else {
+      label.textContent = r.pct + '%';
+      label.className = 'text-xs font-medium text-gray-400 mb-1';
+    }
 
     const amount = document.createElement('span');
-    amount.className = 'text-3xl font-bold ' + (r.highlight ? 'text-brand-dark' : 'text-gray-800');
+    amount.className = r.highlight ? 'font-bold text-brand-dark' : 'font-bold text-gray-800';
+    amount.style.fontSize = r.highlight ? '40px' : '32px';
+    amount.style.lineHeight = '1.0';
     amount.textContent = fmt(r.tip);
 
     const total = document.createElement('span');
