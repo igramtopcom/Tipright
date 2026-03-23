@@ -224,6 +224,21 @@
         <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter an amount above to calculate</div>
       </div>
 
+            <!-- Custom tip % -->
+      <div class="mt-4 flex items-center gap-3">
+        <span class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</span>
+        <div class="relative flex-1 max-w-[140px]">
+          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
+            autocomplete="off" style="font-size:16px"
+            class="w-full h-10 pl-3 pr-8 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium pointer-events-none">%</span>
+        </div>
+        <div id="custom-result" class="hidden flex-col items-start">
+          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
+          <span id="custom-total-amount" class="text-xs text-gray-400"></span>
+        </div>
+      </div>
+
       <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end">
         <button id="share-btn" class="text-sm text-gray-400 hover:text-brand transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
@@ -439,6 +454,45 @@
       div.appendChild(details); container.appendChild(div);
     });
   })();
+
+  // Custom % handler
+  var customPctInput = document.getElementById('custom-pct');
+  var customResult   = document.getElementById('custom-result');
+  var customTipAmt   = document.getElementById('custom-tip-amount');
+  var customTotalAmt = document.getElementById('custom-total-amount');
+
+  if (customPctInput) {
+    customPctInput.addEventListener('input', function() {
+      var pct  = parseFloat(this.value);
+      var cost = TR.parseCost(costInput.value);
+      var taxEl = document.getElementById('tax');
+      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
+      var sp = parseInt(splitInput && splitInput.value) || 1;
+
+      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
+        var tip        = TR.round2(cost * pct / 100);
+        var grandTotal = TR.round2(cost + tax + tip);
+        var ceiled     = Math.ceil(tip);
+
+        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
+        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal)
+          + (sp > 1 ? ' · ' + TR.fmt(TR.round2(grandTotal / sp)) + '/person' : '');
+
+        customResult.classList.remove('hidden');
+        customResult.classList.add('flex');
+      } else {
+        customResult.classList.add('hidden');
+        customResult.classList.remove('flex');
+      }
+    });
+
+    costInput.addEventListener('input', function() {
+      if (customPctInput.value) {
+        customPctInput.dispatchEvent(new Event('input'));
+      }
+    });
+  }
+
 })();
 </script>
 </body>

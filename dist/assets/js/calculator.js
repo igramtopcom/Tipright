@@ -5,11 +5,11 @@
 
 // ─── Config ────────────────────────────────────────────────
 const TIERS = [
-  { pct: 10, label: "Minimum",   note: "Basic service" },
-  { pct: 15, label: "Decent",    note: "Good service"  },
-  { pct: 20, label: "Standard",  note: "Most common", highlight: true },
-  { pct: 22, label: "Good",      note: "Above average" },
-  { pct: 25, label: "Excellent", note: "Outstanding"  },
+  { pct: 10, label: "Low",       note: "Basic service"  },
+  { pct: 15, label: "Okay",      note: "Decent service" },
+  { pct: 18, label: "Good",      note: "Good service"   },
+  { pct: 20, label: "Standard",  note: "Most common",   highlight: true },
+  { pct: 25, label: "Excellent", note: "Outstanding"    },
 ];
 
 // ─── Parse ─────────────────────────────────────────────────
@@ -228,7 +228,7 @@ function renderResults(results, split, container) {
 
 // ─── Export ────────────────────────────────────────────────
 window.TR = {
-  parseCost, calcTips, fmt, readURL, writeURL, shareResult, renderResults,
+  parseCost, calcTips, fmt, round2, readURL, writeURL, shareResult, renderResults,
   parseTax: function(v) {
     const n = parseFloat(String(v).replace(/[$,\s]/g, ''));
     return isNaN(n) || n < 0 ? 0 : n;
