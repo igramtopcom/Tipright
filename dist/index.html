@@ -44,6 +44,11 @@
       .bg-gray-100 { background-color: #2A2F2D !important; }
       #search-input { background-color: #222922 !important; border-color: #2E3532 !important; color: #F0F0EE !important; }
       .bg-brand-pale { background-color: #0D2820 !important; }
+      /* Hero section dark mode */
+      header { background: #0D2820 !important; border-color: #1D4A35 !important; }
+      header h1 { color: #22B884 !important; }
+      header p  { color: #1D9E75 !important; }
+      header .bg-white { background: #1A201D !important; border-color: #2A4A38 !important; }
     }
   </style>
 
@@ -125,18 +130,18 @@
 </nav>
 
 <!-- HERO -->
-<header class="bg-white border-b border-gray-100">
+<header style="background:#F0FAF6; border-bottom:1px solid #C5E8DA;">
   <div class="max-w-[672px] mx-auto px-4 pt-8 pb-6">
 
-    <h1 class="text-[28px] sm:text-[32px] font-bold text-gray-900 tracking-tight leading-tight">
+    <h1 class="text-[28px] sm:text-[32px] font-bold tracking-tight leading-tight" style="color:#0F6E56;">
       How much should you tip?
     </h1>
-    <p class="text-gray-500 text-sm mt-1 mb-5">
+    <p class="text-sm mt-1 mb-5" style="color:#1D9E75;">
       Enter your total — see the answer now.
     </p>
 
     <!-- MINI CALCULATOR -->
-    <div class="bg-gray-50 rounded-xl border border-gray-200 p-4">
+    <div class="bg-white rounded-xl p-4" style="border:1px solid #C5E8DA;">
 
       <!-- Service selector + amount input side by side -->
       <div class="flex gap-2 mb-3">
@@ -205,7 +210,7 @@
 
     </div>
 
-    <p class="text-xs text-gray-400 mt-3 text-center">Or browse all 18 calculators ↓</p>
+    <p class="text-xs mt-3 text-center" style="color:#1D9E75;">Or browse all 18 calculators ↓</p>
 
     <!-- Search filter -->
     <div class="relative mt-4">
