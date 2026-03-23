@@ -147,18 +147,81 @@ function renderResults(results, split, container) {
     card.appendChild(amount);
     card.appendChild(total);
 
+    let totalPPEl = null;
+    let tipPPEl = null;
+
     if (showSplit) {
-      const totalPP = document.createElement('span');
-      totalPP.className = 'text-sm font-bold mt-2 ' + (r.highlight ? 'text-brand-dark' : 'text-gray-700');
-      totalPP.style.fontSize = '16px';
-      totalPP.textContent = fmt(r.totalPerPerson) + ' / person';
+      totalPPEl = document.createElement('span');
+      totalPPEl.className = 'text-sm font-bold mt-2 ' + (r.highlight ? 'text-brand-dark' : 'text-gray-700');
+      totalPPEl.style.fontSize = '16px';
+      totalPPEl.textContent = fmt(r.totalPerPerson) + ' / person';
 
-      const tipPP = document.createElement('span');
-      tipPP.className = 'text-xs mt-0.5 ' + (r.highlight ? 'text-brand opacity-80' : 'text-gray-400');
-      tipPP.textContent = fmt(r.tipPerPerson) + ' tip each';
+      tipPPEl = document.createElement('span');
+      tipPPEl.className = 'text-xs mt-0.5 ' + (r.highlight ? 'text-brand opacity-80' : 'text-gray-400');
+      tipPPEl.textContent = fmt(r.tipPerPerson) + ' tip each';
 
-      card.appendChild(totalPP);
-      card.appendChild(tipPP);
+      card.appendChild(totalPPEl);
+      card.appendChild(tipPPEl);
+    }
+
+    // Round-up button
+    const tipCeiled = Math.ceil(r.tip);
+    const hasDecimals = r.tip !== tipCeiled;
+
+    if (hasDecimals) {
+      const roundUpBtn = document.createElement('button');
+      roundUpBtn.className = [
+        'mt-2 px-2.5 py-1 rounded-full text-xs font-semibold transition-all',
+        r.highlight
+          ? 'bg-brand text-white hover:bg-brand-dark'
+          : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+      ].join(' ');
+      roundUpBtn.style.cssText = 'font-size:11px;line-height:1.4;';
+      roundUpBtn.textContent = '\u2191 ' + fmt(tipCeiled);
+      roundUpBtn.title = 'Round up to ' + fmt(tipCeiled);
+
+      let isRounded = false;
+      const originalTip = r.tip;
+      const originalTotal = r.grandTotal !== r.total ? r.grandTotal : r.total;
+
+      roundUpBtn.addEventListener('click', function() {
+        isRounded = !isRounded;
+
+        if (isRounded) {
+          const diff = tipCeiled - originalTip;
+          const roundedTotal = round2(originalTotal + diff);
+          amount.textContent = fmt(tipCeiled);
+          total.textContent = 'Total: ' + fmt(roundedTotal);
+          roundUpBtn.textContent = '\u2190 ' + fmt(originalTip);
+          roundUpBtn.title = 'Revert to exact amount';
+
+          if (showSplit) {
+            const n = Math.max(1, split);
+            if (totalPPEl && r.totalPerPerson) {
+              totalPPEl.textContent = fmt(round2(r.totalPerPerson + diff / n)) + ' / person';
+            }
+            if (tipPPEl) {
+              tipPPEl.textContent = fmt(round2(tipCeiled / n)) + ' tip each';
+            }
+          }
+        } else {
+          amount.textContent = fmt(originalTip);
+          total.textContent = 'Total: ' + fmt(originalTotal);
+          roundUpBtn.textContent = '\u2191 ' + fmt(tipCeiled);
+          roundUpBtn.title = 'Round up to ' + fmt(tipCeiled);
+
+          if (showSplit) {
+            if (totalPPEl && r.totalPerPerson) {
+              totalPPEl.textContent = fmt(r.totalPerPerson) + ' / person';
+            }
+            if (tipPPEl) {
+              tipPPEl.textContent = fmt(r.tipPerPerson) + ' tip each';
+            }
+          }
+        }
+      });
+
+      card.appendChild(roundUpBtn);
     }
 
     container.appendChild(card);
