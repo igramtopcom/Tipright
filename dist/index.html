@@ -58,6 +58,12 @@
       header p  { color: #1D9E75 !important; }
       header .bg-white { background: #1A201D !important; border-color: #2A4A38 !important; }
     }
+    /* Card height consistency */
+    .service-card { height: 100%; align-items: center; }
+    /* Orphan card: span full width on mobile 2-col */
+    @media (max-width: 479px) {
+      .service-grid > a:last-child:nth-child(odd) { grid-column: span 2; }
+    }
   </style>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -171,7 +177,7 @@
         <select id="hero-service" aria-label="Select service type"
           class="h-12 px-3 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 focus:border-brand outline-none transition-colors flex-shrink-0"
           style="min-width:140px">
-          <option value="restaurant">🍽️ Restaurant</option>
+          <option value="restaurant">🍴 Restaurant</option>
           <option value="tattoo">🎨 Tattoo</option>
           <option value="nail-salon">💅 Nail Salon</option>
           <option value="hair-salon">💇 Hair Salon</option>
@@ -260,23 +266,23 @@
       Start here
     </h2>
     <!-- Top 6 Featured — larger, branded -->
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3" id="grid-popular">
+    <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3" id="grid-popular">
 
       <a href="/tip/tattoo" data-name="tattoo artist"
          class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🎨</span>
         <div class="min-w-0">
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Artist tipping guide</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Artist tipping</p>
         </div>
       </a>
 
       <a href="/tip/restaurant" data-name="restaurant dining server waiter"
          class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
-        <span class="text-2xl flex-shrink-0">🍽️</span>
+        <span class="text-2xl flex-shrink-0">🍴</span>
         <div class="min-w-0">
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Restaurant</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Server tipping guide</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Server tipping</p>
         </div>
       </a>
 
@@ -333,7 +339,7 @@
     <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
       Beauty &amp; Wellness
     </h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-beauty">
+    <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-beauty">
 
       <a href="/tip/spa" data-name="spa day spa"
          class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
@@ -349,7 +355,7 @@
         <span class="text-2xl flex-shrink-0">🌸</span>
         <div class="min-w-0">
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Waxing</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Brazilian & leg waxing</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Waxing guide</p>
         </div>
       </a>
 
@@ -367,7 +373,7 @@
         <span class="text-2xl flex-shrink-0">🏋️</span>
         <div class="min-w-0">
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Personal Trainer</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Gym & personal training</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Trainer tipping</p>
         </div>
       </a>
 
@@ -397,7 +403,7 @@
     <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
       Home &amp; Travel
     </h2>
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-home">
+    <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-home">
 
       <a href="/tip/dog-groomer" data-name="dog groomer pet grooming"
          class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
@@ -413,7 +419,7 @@
         <span class="text-2xl flex-shrink-0">🏨</span>
         <div class="min-w-0">
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hotel Housekeeping</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Per night or checkout?</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Housekeeping tips</p>
         </div>
       </a>
 
@@ -422,7 +428,7 @@
         <span class="text-2xl flex-shrink-0">📦</span>
         <div class="min-w-0">
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Movers</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Local & long-distance</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Moving day tips</p>
         </div>
       </a>
 
@@ -431,7 +437,7 @@
         <span class="text-2xl flex-shrink-0">🚗</span>
         <div class="min-w-0">
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Valet Parking</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Drop-off & pick-up</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Valet tip guide</p>
         </div>
       </a>
 
@@ -440,7 +446,7 @@
         <span class="text-2xl flex-shrink-0">✈️</span>
         <div class="min-w-0">
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Airport Shuttle</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Shared & private shuttles</p>
+          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Shuttle tipping</p>
         </div>
       </a>
 
