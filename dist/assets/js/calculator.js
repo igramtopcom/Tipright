@@ -115,10 +115,10 @@ function renderResults(results, split, container) {
   results.forEach(r => {
     const card = document.createElement('div');
     card.className = [
-      'flex flex-col items-center justify-center rounded-xl transition-all',
+      'flex flex-col items-center justify-center rounded-xl transition-all overflow-hidden min-w-0',
       r.highlight
-        ? 'border-2 border-brand bg-brand-light ring-1 ring-brand p-5 scale-[1.03]'
-        : 'border border-gray-200 bg-white hover:border-brand/40 p-4',
+        ? 'border-2 border-brand bg-brand-light ring-1 ring-brand p-4 scale-[1.03]'
+        : 'border border-gray-200 bg-white hover:border-brand/40 p-3',
     ].join(' ');
 
     const label = document.createElement('span');
@@ -131,10 +131,13 @@ function renderResults(results, split, container) {
     }
 
     const amount = document.createElement('span');
-    amount.className = r.highlight ? 'font-bold text-brand-dark' : 'font-bold text-gray-800';
-    amount.style.fontSize = r.highlight ? '40px' : '32px';
-    amount.style.lineHeight = '1.0';
-    amount.textContent = fmt(r.tip);
+    amount.className = (r.highlight ? 'font-bold text-brand-dark' : 'font-bold text-gray-800') + ' whitespace-nowrap';
+    const tipStr = fmt(r.tip);
+    const baseSize = r.highlight ? 36 : 28;
+    const fontSize = tipStr.length > 5 ? Math.max(baseSize - (tipStr.length - 5) * 3, 18) : baseSize;
+    amount.style.fontSize = fontSize + 'px';
+    amount.style.lineHeight = '1.1';
+    amount.textContent = tipStr;
 
     const total = document.createElement('span');
     total.className = 'text-xs mt-1 ' + (r.highlight ? 'text-brand-dark opacity-70' : 'text-gray-400');
