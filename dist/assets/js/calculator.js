@@ -138,7 +138,7 @@ function renderResults(results, split, container) {
 
     const total = document.createElement('span');
     total.className = 'text-xs mt-1 ' + (r.highlight ? 'text-brand-dark opacity-70' : 'text-gray-400');
-    total.textContent = 'Total: ' + fmt(showSplit && r.grandTotal ? r.grandTotal : r.total);
+    total.textContent = 'Total: ' + fmt(r.grandTotal !== r.total ? r.grandTotal : r.total);
 
     card.appendChild(label);
     card.appendChild(amount);
