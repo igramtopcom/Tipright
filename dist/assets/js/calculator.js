@@ -123,7 +123,7 @@ function renderResults(results, split, container) {
 
     const label = document.createElement('span');
     if (r.highlight) {
-      label.textContent = '\u2605 Standard';
+      label.textContent = '\u2605 ' + r.pct + '% \u2014 Standard';
       label.className = 'text-xs font-bold text-brand uppercase tracking-wide mb-1';
     } else {
       label.textContent = r.pct + '%';

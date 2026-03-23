@@ -171,6 +171,7 @@
         <div id="custom-result" class="hidden flex-col items-start">
           <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
           <span id="custom-total-amount" class="text-xs text-gray-400"></span>
+          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
         </div>
       </div>
 
@@ -339,10 +340,11 @@
   var customResult   = document.getElementById('custom-result');
   var customTipAmt   = document.getElementById('custom-tip-amount');
   var customTotalAmt = document.getElementById('custom-total-amount');
+  var customPerPerson = document.getElementById('custom-per-person');
 
   if (customPctInput) {
-    customPctInput.addEventListener('input', function() {
-      var pct  = parseFloat(this.value);
+    function updateCustom() {
+      var pct  = parseFloat(customPctInput.value);
       var cost = TR.parseCost(costInput.value);
       var taxEl = document.getElementById('tax');
       var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
@@ -354,22 +356,29 @@
         var ceiled     = Math.ceil(tip);
 
         customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
-        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal)
-          + (sp > 1 ? ' · ' + TR.fmt(TR.round2(grandTotal / sp)) + '/person' : '');
+        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
+
+        if (sp > 1 && customPerPerson) {
+          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
+          customPerPerson.classList.remove('hidden');
+        } else if (customPerPerson) {
+          customPerPerson.classList.add('hidden');
+        }
 
         customResult.classList.remove('hidden');
         customResult.classList.add('flex');
       } else {
         customResult.classList.add('hidden');
         customResult.classList.remove('flex');
+        if (customPerPerson) customPerPerson.classList.add('hidden');
       }
-    });
+    }
 
-    costInput.addEventListener('input', function() {
-      if (customPctInput.value) {
-        customPctInput.dispatchEvent(new Event('input'));
-      }
-    });
+    customPctInput.addEventListener('input', updateCustom);
+    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+    var taxInput = document.getElementById('tax');
+    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
   }
 
 })();
