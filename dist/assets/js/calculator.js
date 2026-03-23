@@ -123,25 +123,33 @@ function renderResults(results, split, container) {
 
     const label = document.createElement('span');
     if (r.highlight) {
-      label.textContent = '★ Standard';
+      label.textContent = '\u2605 Standard';
       label.className = 'text-xs font-bold text-brand uppercase tracking-wide mb-1';
     } else {
       label.textContent = r.pct + '%';
       label.className = 'text-xs font-medium text-gray-400 mb-1';
     }
 
+    // Default: show rounded-up tip (ceil). If already whole, same value.
+    const tipCeiled = Math.ceil(r.tip);
+    const hasDecimals = r.tip !== tipCeiled;
+    const displayTip = tipCeiled;
+    const exactTotal = r.grandTotal !== r.total ? r.grandTotal : r.total;
+    const diff = tipCeiled - r.tip;
+    const displayTotal = hasDecimals ? round2(exactTotal + diff) : exactTotal;
+
     const amount = document.createElement('span');
     amount.className = (r.highlight ? 'font-bold text-brand-dark' : 'font-bold text-gray-800') + ' whitespace-nowrap';
-    const tipStr = fmt(r.tip);
-    const baseSize = r.highlight ? 36 : 28;
-    const fontSize = tipStr.length > 5 ? Math.max(baseSize - (tipStr.length - 5) * 3, 18) : baseSize;
+    const tipStr = fmt(displayTip);
+    const baseSize = r.highlight ? 32 : 26;
+    const fontSize = tipStr.length > 4 ? Math.max(baseSize - (tipStr.length - 4) * 3, 16) : baseSize;
     amount.style.fontSize = fontSize + 'px';
     amount.style.lineHeight = '1.1';
     amount.textContent = tipStr;
 
     const total = document.createElement('span');
     total.className = 'text-xs mt-1 ' + (r.highlight ? 'text-brand-dark opacity-70' : 'text-gray-400');
-    total.textContent = 'Total: ' + fmt(r.grandTotal !== r.total ? r.grandTotal : r.total);
+    total.textContent = 'Total: ' + fmt(displayTotal);
 
     card.appendChild(label);
     card.appendChild(amount);
@@ -151,77 +159,67 @@ function renderResults(results, split, container) {
     let tipPPEl = null;
 
     if (showSplit) {
+      const n = Math.max(1, split);
+      const ppTotal = hasDecimals ? round2(r.totalPerPerson + diff / n) : r.totalPerPerson;
+      const ppTip = round2(tipCeiled / n);
+
       totalPPEl = document.createElement('span');
       totalPPEl.className = 'text-sm font-bold mt-2 ' + (r.highlight ? 'text-brand-dark' : 'text-gray-700');
       totalPPEl.style.fontSize = '16px';
-      totalPPEl.textContent = fmt(r.totalPerPerson) + ' / person';
+      totalPPEl.textContent = fmt(ppTotal) + ' / person';
 
       tipPPEl = document.createElement('span');
       tipPPEl.className = 'text-xs mt-0.5 ' + (r.highlight ? 'text-brand opacity-80' : 'text-gray-400');
-      tipPPEl.textContent = fmt(r.tipPerPerson) + ' tip each';
+      tipPPEl.textContent = fmt(ppTip) + ' tip each';
 
       card.appendChild(totalPPEl);
       card.appendChild(tipPPEl);
     }
 
-    // Round-up button
-    const tipCeiled = Math.ceil(r.tip);
-    const hasDecimals = r.tip !== tipCeiled;
-
+    // "See exact" toggle button — only when tip was rounded
     if (hasDecimals) {
-      const roundUpBtn = document.createElement('button');
-      roundUpBtn.className = [
+      const exactBtn = document.createElement('button');
+      exactBtn.className = [
         'mt-2 px-2.5 py-1 rounded-full text-xs font-semibold transition-all',
         r.highlight
-          ? 'bg-brand text-white hover:bg-brand-dark'
-          : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
+          ? 'bg-brand/20 text-brand-dark hover:bg-brand/30'
+          : 'bg-gray-100 text-gray-500 hover:bg-gray-200',
       ].join(' ');
-      roundUpBtn.style.cssText = 'font-size:11px;line-height:1.4;';
-      roundUpBtn.textContent = '\u2191 ' + fmt(tipCeiled);
-      roundUpBtn.title = 'Round up to ' + fmt(tipCeiled);
+      exactBtn.style.cssText = 'font-size:11px;line-height:1.4;';
+      exactBtn.textContent = 'Exact: ' + fmt(r.tip);
+      exactBtn.title = 'See exact tip amount';
 
-      let isRounded = false;
-      const originalTip = r.tip;
-      const originalTotal = r.grandTotal !== r.total ? r.grandTotal : r.total;
+      let showingExact = false;
 
-      roundUpBtn.addEventListener('click', function() {
-        isRounded = !isRounded;
+      exactBtn.addEventListener('click', function() {
+        showingExact = !showingExact;
 
-        if (isRounded) {
-          const diff = tipCeiled - originalTip;
-          const roundedTotal = round2(originalTotal + diff);
-          amount.textContent = fmt(tipCeiled);
-          total.textContent = 'Total: ' + fmt(roundedTotal);
-          roundUpBtn.textContent = '\u2190 ' + fmt(originalTip);
-          roundUpBtn.title = 'Revert to exact amount';
+        if (showingExact) {
+          amount.textContent = fmt(r.tip);
+          total.textContent = 'Total: ' + fmt(exactTotal);
+          exactBtn.textContent = '\u2191 ' + fmt(tipCeiled);
+          exactBtn.title = 'Round up to ' + fmt(tipCeiled);
 
           if (showSplit) {
             const n = Math.max(1, split);
-            if (totalPPEl && r.totalPerPerson) {
-              totalPPEl.textContent = fmt(round2(r.totalPerPerson + diff / n)) + ' / person';
-            }
-            if (tipPPEl) {
-              tipPPEl.textContent = fmt(round2(tipCeiled / n)) + ' tip each';
-            }
+            if (totalPPEl) totalPPEl.textContent = fmt(r.totalPerPerson) + ' / person';
+            if (tipPPEl) tipPPEl.textContent = fmt(r.tipPerPerson) + ' tip each';
           }
         } else {
-          amount.textContent = fmt(originalTip);
-          total.textContent = 'Total: ' + fmt(originalTotal);
-          roundUpBtn.textContent = '\u2191 ' + fmt(tipCeiled);
-          roundUpBtn.title = 'Round up to ' + fmt(tipCeiled);
+          amount.textContent = fmt(tipCeiled);
+          total.textContent = 'Total: ' + fmt(displayTotal);
+          exactBtn.textContent = 'Exact: ' + fmt(r.tip);
+          exactBtn.title = 'See exact tip amount';
 
           if (showSplit) {
-            if (totalPPEl && r.totalPerPerson) {
-              totalPPEl.textContent = fmt(r.totalPerPerson) + ' / person';
-            }
-            if (tipPPEl) {
-              tipPPEl.textContent = fmt(r.tipPerPerson) + ' tip each';
-            }
+            const n = Math.max(1, split);
+            if (totalPPEl) totalPPEl.textContent = fmt(round2(r.totalPerPerson + diff / n)) + ' / person';
+            if (tipPPEl) tipPPEl.textContent = fmt(round2(tipCeiled / n)) + ' tip each';
           }
         }
       });
 
-      card.appendChild(roundUpBtn);
+      card.appendChild(exactBtn);
     }
 
     container.appendChild(card);

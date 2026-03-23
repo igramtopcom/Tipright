@@ -587,9 +587,9 @@
       return;
     }
 
-    heroT15.textContent = FMT.format(Math.round(cost * 0.15 * 100) / 100);
-    heroT20.textContent = FMT.format(Math.round(cost * 0.20 * 100) / 100);
-    heroT25.textContent = FMT.format(Math.round(cost * 0.25 * 100) / 100);
+    heroT15.textContent = FMT.format(Math.ceil(cost * 0.15));
+    heroT20.textContent = FMT.format(Math.ceil(cost * 0.20));
+    heroT25.textContent = FMT.format(Math.ceil(cost * 0.25));
 
     heroResults.classList.remove('hidden');
     heroEmpty.classList.add('hidden');
