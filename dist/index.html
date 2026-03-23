@@ -112,6 +112,21 @@
     ]
   }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How much should you tip in the US?", "acceptedAnswer": { "@type": "Answer", "text": "The standard tip across most US services is 15\u201320% of the pre-tax total. For restaurants, salons, tattoos, and massage, 20% is the common benchmark. For flat-rate services like hotel housekeeping and valet parking, tip $2\u20135 per interaction rather than a percentage." } },
+      { "@type": "Question", "name": "Is tipping mandatory in the United States?", "acceptedAnswer": { "@type": "Answer", "text": "Tipping is not legally required in the US, but it is strongly expected for most personal services. Many tipped workers earn as little as $2.13 per hour federally, making tips a core part of their income rather than a bonus. Not tipping for satisfactory service at a restaurant or salon is considered rude." } },
+      { "@type": "Question", "name": "What is the standard tip percentage?", "acceptedAnswer": { "@type": "Answer", "text": "20% is the widely accepted standard for most personal services in the US. 15% is the floor for acceptable service. 25% or more is appropriate for exceptional service or for specialized work like custom tattoos or complex color treatments." } },
+      { "@type": "Question", "name": "Should you tip on the pre-tax or post-tax amount?", "acceptedAnswer": { "@type": "Answer", "text": "Tip on the pre-tax subtotal. Tax is paid to the government, not the service provider. On a $90 bill with $10 tax, tip 20% on $90, that is $18, not $20. Pre-tax tipping is the standard convention in the US." } },
+      { "@type": "Question", "name": "How do you split a tip with friends?", "acceptedAnswer": { "@type": "Answer", "text": "Calculate the full tip on the total bill, then divide by the number of people. For example, a $200 bill with a 20% tip is $40 total, or $10 per person for a group of 4. All tip calculators on tipright.app include a built-in split feature." } },
+      { "@type": "Question", "name": "Do you tip for every service?", "acceptedAnswer": { "@type": "Answer", "text": "Not every service, but most face-to-face personal services expect a tip. Always tip at restaurants, salons, barbershops, tattoo studios, massage studios, and similar services. Tipping is optional at fast casual counters and generally not expected for medical professionals or retail staff." } }
+    ]
+  }
+  </script>
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
@@ -453,6 +468,12 @@
     No calculators found for "<span id="search-term"></span>"
   </div>
 
+  <!-- HOMEPAGE FAQ -->
+  <section>
+    <h2 class="text-xl font-bold text-gray-900 mb-5">Frequently asked questions about tipping in the US</h2>
+    <div class="space-y-2" id="homepage-faq"></div>
+  </section>
+
 </main>
 
 <!-- FOOTER -->
@@ -564,6 +585,64 @@
 
   heroCost.addEventListener('input', updateHero);
   heroService.addEventListener('change', updateHero);
+})();
+
+// Homepage FAQ
+(function() {
+  const FAQ = [
+    { q: "How much should you tip in the US?", a: "The standard tip across most US services is 15\u201320% of the pre-tax total. For restaurants, salons, tattoos, and massage, 20% is the common benchmark. For flat-rate services like hotel housekeeping and valet, tip $2\u20135 per interaction." },
+    { q: "Is tipping mandatory in the United States?", a: "Not legally, but it\u2019s strongly expected for most personal services. Many tipped workers earn as little as $2.13/hour federally. Tips are core income, not a bonus. Not tipping for satisfactory service at a restaurant or salon is considered rude." },
+    { q: "What is the standard tip percentage?", a: "20% is the widely accepted standard for most personal services in the US. 15% is the floor for acceptable service. 25%+ is right for exceptional work or specialized services like custom tattoos or complex color treatments." },
+    { q: "Should you tip on the pre-tax or post-tax amount?", a: "Tip on the pre-tax subtotal. Tax goes to the government, not the service provider. On a $90 bill with $10 tax, tip on $90, that\u2019s $18, not $20. Pre-tax tipping is the standard convention." },
+    { q: "How do you split a tip with friends?", a: "Calculate the full tip on the total bill, then divide by the number of people. A $200 bill with a 20% tip is $40 total, or $10 per person for 4 people. Every calculator on tipright.app has a built-in split feature." },
+    { q: "Do you have to tip for every service?", a: "Most face-to-face personal services expect a tip: restaurants, salons, tattoo studios, massage, barbers, and similar. Tipping is optional at fast casual counters and not expected for medical professionals or retail staff." }
+  ];
+
+  var container = document.getElementById('homepage-faq');
+  if (!container) return;
+
+  FAQ.forEach(function(item) {
+    var div = document.createElement('div');
+    div.setAttribute('itemscope', '');
+    div.setAttribute('itemprop', 'mainEntity');
+    div.setAttribute('itemtype', 'https://schema.org/Question');
+    div.className = 'border border-gray-200 rounded-xl overflow-hidden';
+
+    var details = document.createElement('details');
+    details.className = 'group';
+
+    var summary = document.createElement('summary');
+    summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
+
+    var qText = document.createElement('span');
+    qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug';
+    qText.setAttribute('itemprop', 'name');
+    qText.textContent = item.q;
+
+    var chevron = document.createElement('div');
+    chevron.setAttribute('class', 'flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
+    chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;background:#F4F4F2;display:flex;align-items:center;justify-content:center;';
+    chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
+
+    summary.appendChild(qText);
+    summary.appendChild(chevron);
+
+    var answerDiv = document.createElement('div');
+    answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed border-t border-gray-100';
+    answerDiv.setAttribute('itemprop', 'acceptedAnswer');
+    answerDiv.setAttribute('itemscope', '');
+    answerDiv.setAttribute('itemtype', 'https://schema.org/Answer');
+
+    var answerText = document.createElement('div');
+    answerText.setAttribute('itemprop', 'text');
+    answerText.textContent = item.a;
+    answerDiv.appendChild(answerText);
+
+    details.appendChild(summary);
+    details.appendChild(answerDiv);
+    div.appendChild(details);
+    container.appendChild(div);
+  });
 })();
 </script>
 
