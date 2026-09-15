@@ -118,16 +118,16 @@ function renderResults(results, split, container) {
       'flex flex-col items-center justify-center rounded-xl transition-all overflow-hidden min-w-0',
       r.highlight
         ? 'border-2 border-brand bg-brand-light ring-1 ring-brand p-4 scale-[1.03]'
-        : 'border border-gray-200 bg-white hover:border-brand/40 p-3',
+        : 'border border-line bg-white hover:border-brand p-3',
     ].join(' ');
 
     const label = document.createElement('span');
     if (r.highlight) {
       label.textContent = '\u2605 ' + r.pct + '% \u2014 Standard';
-      label.className = 'text-xs font-bold text-brand uppercase tracking-wide mb-1';
+      label.className = 'text-xs font-bold text-brand-dark uppercase tracking-wide mb-1';
     } else {
       label.textContent = r.pct + '%';
-      label.className = 'text-xs font-medium text-gray-400 mb-1';
+      label.className = 'text-xs font-medium text-gray-500 mb-1';
     }
 
     // Default: show rounded-up tip (ceil). If already whole, same value.
@@ -148,7 +148,7 @@ function renderResults(results, split, container) {
     amount.textContent = tipStr;
 
     const total = document.createElement('span');
-    total.className = 'text-xs mt-1 ' + (r.highlight ? 'text-brand-dark opacity-70' : 'text-gray-400');
+    total.className = 'text-xs mt-1 ' + (r.highlight ? 'text-brand-dark' : 'text-gray-500');
     total.textContent = 'Total: ' + fmt(displayTotal);
 
     card.appendChild(label);
@@ -169,7 +169,7 @@ function renderResults(results, split, container) {
       totalPPEl.textContent = fmt(ppTotal) + ' / person';
 
       tipPPEl = document.createElement('span');
-      tipPPEl.className = 'text-xs mt-0.5 ' + (r.highlight ? 'text-brand opacity-80' : 'text-gray-400');
+      tipPPEl.className = 'text-xs mt-0.5 ' + (r.highlight ? 'text-brand-dark' : 'text-gray-500');
       tipPPEl.textContent = fmt(ppTip) + ' tip each';
 
       card.appendChild(totalPPEl);
@@ -182,8 +182,8 @@ function renderResults(results, split, container) {
       exactBtn.className = [
         'mt-2 px-2.5 py-1 rounded-full text-xs font-semibold transition-all',
         r.highlight
-          ? 'bg-brand/20 text-brand-dark hover:bg-brand/30'
-          : 'bg-gray-100 text-gray-500 hover:bg-gray-200',
+          ? 'bg-brand/20 text-brand-darker hover:bg-brand/30'
+          : 'bg-gray-100 text-gray-600 hover:bg-gray-200',
       ].join(' ');
       exactBtn.style.cssText = 'font-size:11px;line-height:1.4;';
       exactBtn.textContent = 'Exact: ' + fmt(r.tip);

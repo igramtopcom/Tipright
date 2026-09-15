@@ -43,14 +43,30 @@
       .text-gray-800 { color: #E0E0DE !important; }
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
-      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
+         The hover variants are separate selectors and need naming too. */
+      .text-brand-dark,
+      .hover\:text-brand-dark:hover,
+      .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
+      .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .border-line { border-color: #687570 !important; }
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
+         above landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
+      .bg-brand-light { background-color: #143A2E !important; }
+      .bg-brand-light\/40 { background-color: #12332A !important; }
+      .bg-brand-light\/30 { background-color: #112E26 !important; }
+      .bg-brand\/20 { background-color: #14402F !important; }
+      .bg-brand\/30 { background-color: #1A4E3A !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
     }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } } }
+    tailwind.config = { theme: { extend: { colors: { line: '#848B93',
+            brand: { DEFAULT: '#1D9E75', darker: '#0A5543', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } } }
   </script>
   <script type="application/ld+json">
   {
@@ -81,7 +97,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </a>
-    <a href="/" class="text-sm text-gray-500 hover:text-brand transition-colors">All calculators →</a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">All calculators →</a>
   </div>
 </nav>
 <header class="bg-white border-b border-gray-100">
@@ -92,38 +108,38 @@
 </header>
 <main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
   <section id="calculator" aria-label="Airport shuttle tip calculator">
-    <div class="bg-white rounded-xl border border-gray-200 p-5 sm:p-7">
-      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">Shuttle fare <span class="text-gray-400 font-normal">(or enter flat tip amount)</span></label>
+    <div class="bg-white rounded-xl border border-line p-5 sm:p-7">
+      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">Shuttle fare <span class="text-gray-500 font-normal">(or enter flat tip amount)</span></label>
       <div class="relative mb-4">
-        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xl font-medium pointer-events-none select-none">$</span>
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
         <input id="cost" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
-          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-gray-200 bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
+          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
       </div>
-      <p class="text-xs text-gray-400 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
+      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
       <div class="flex flex-wrap gap-2 mb-5">
-        <span class="text-xs text-gray-400 self-center">Quick:</span>
+        <span class="text-xs text-gray-500 self-center">Quick:</span>
         <button data-preset="15" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$15</button>
         <button data-preset="25" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$25</button>
         <button data-preset="40" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$40</button>
         <button data-preset="60" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$60</button>
       </div>
       <!-- Per-person callout -->
-      <div class="mb-5 flex items-start gap-2.5 bg-brand-pale border border-brand/20 rounded-lg px-4 py-3">
-        <svg class="w-4 h-4 text-brand flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+      <div class="mb-5 flex items-start gap-2.5 bg-brand-pale border border-brand rounded-lg px-4 py-3">
+        <svg class="w-4 h-4 text-brand-dark flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
         <p class="text-xs text-brand-dark leading-relaxed"><strong>Shared shuttle:</strong> $2–5 per person + $1–2 per bag. Use the split field for per-person tips. <strong>Private shuttle:</strong> 15–20% of fare.</p>
       </div>
       <details class="mb-5 group">
-        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand transition-colors list-none flex items-center gap-1">
+        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
           <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
           Split tip across passengers
         </summary>
         <div class="mt-3 flex items-center gap-3 pl-1">
           <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of passengers:</label>
-          <input id="split" type="number" value="1" min="1" max="20" class="w-20 h-10 rounded-lg border border-gray-200 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+          <input id="split" type="number" value="1" min="1" max="20" class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors">
         </div>
       </details>
       <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
-        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter your shuttle fare above</div>
+        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your shuttle fare above</div>
       </div>
             <!-- Custom tip % -->
       <div class="mt-4 flex items-center gap-3">
@@ -131,18 +147,18 @@
         <div class="relative flex-1 max-w-[140px]">
           <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
             autocomplete="off" style="font-size:16px"
-            class="w-full h-10 pl-3 pr-8 rounded-xl border border-gray-200 bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-medium pointer-events-none">%</span>
+            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
         </div>
         <div id="custom-result" class="hidden flex-col items-start">
           <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
-          <span id="custom-total-amount" class="text-xs text-gray-400"></span>
+          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
           <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
         </div>
       </div>
 
       <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end">
-        <button id="share-btn" class="text-sm text-gray-400 hover:text-brand transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
+        <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
           Share this calculation
         </button>
@@ -153,10 +169,10 @@
   <!-- Custom ref table: shuttle type guide -->
   <section>
     <h2 class="text-lg font-semibold text-gray-800 mb-3">Tip guide by shuttle type</h2>
-    <div class="overflow-x-auto rounded-xl border border-gray-200">
+    <div class="overflow-x-auto rounded-xl border border-line">
       <table class="w-full text-sm">
         <thead>
-          <tr class="bg-brand text-white">
+          <tr class="bg-brand-dark text-white">
             <th class="px-4 py-3 text-left font-medium text-[13px]">Shuttle type</th>
             <th class="px-4 py-3 text-right font-medium text-[13px]">Min</th>
             <th class="px-4 py-3 text-right font-medium text-[13px] bg-brand-dark">Standard ★</th>
@@ -200,24 +216,24 @@
   <section>
     <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Related tip calculators</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🚗</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Valet Parking</p><p class="text-xs text-gray-400 mt-0.5">Drop-off & pick-up</p></div></a>
-      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hotel Housekeeping</p><p class="text-xs text-gray-400 mt-0.5">Per-night tips</p></div></a>
-      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📦</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Movers Tip</p><p class="text-xs text-gray-400 mt-0.5">Per-mover guide</p></div></a>
-      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🛵</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Food Delivery</p><p class="text-xs text-gray-400 mt-0.5">Delivery driver tips</p></div></a>
-      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💆</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Massage Tip</p><p class="text-xs text-gray-400 mt-0.5">Therapist tipping</p></div></a>
-      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🧮</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">All Calculators</p><p class="text-xs text-gray-400 mt-0.5">18 tip calculators</p></div></a>
+      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🚗</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Valet Parking</p><p class="text-xs text-gray-500 mt-0.5">Drop-off & pick-up</p></div></a>
+      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hotel Housekeeping</p><p class="text-xs text-gray-500 mt-0.5">Per-night tips</p></div></a>
+      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📦</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Movers Tip</p><p class="text-xs text-gray-500 mt-0.5">Per-mover guide</p></div></a>
+      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🛵</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Food Delivery</p><p class="text-xs text-gray-500 mt-0.5">Delivery driver tips</p></div></a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💆</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage Tip</p><p class="text-xs text-gray-500 mt-0.5">Therapist tipping</p></div></a>
+      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🧮</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">All Calculators</p><p class="text-xs text-gray-500 mt-0.5">18 tip calculators</p></div></a>
     </div>
   </section>
 </main>
-<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-400">
+<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
   <p>© 2026 tipright.app — Free tip calculators for every service</p>
-  <p class="mt-1"><a href="/about" class="hover:text-brand transition-colors">About</a> · <a href="/" class="hover:text-brand transition-colors">All calculators</a>
+  <p class="mt-1"><a href="/about" class="hover:text-brand-dark transition-colors">About</a> · <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
      &middot; 
-    <a href="/privacy" class="hover:text-brand transition-colors">Privacy</a>
+    <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
      ·
-    <a href="/terms" class="hover:text-brand transition-colors">Terms</a>
+    <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
      ·
-    <a href="/contact" class="hover:text-brand transition-colors">Contact</a></p>
+    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a></p>
 </footer>
 <script src="/assets/js/calculator.js"></script>
 <script>
@@ -229,7 +245,7 @@
   function update() {
     const cost  = TR.parseCost(costInput.value);
     const split = parseInt(splitInput?.value) || 1;
-    if (cost === 0) { resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-400 text-sm py-8">Enter your shuttle fare above</div>'; TR.writeURL({ cost: costInput.value, split }); return; }
+    if (cost === 0) { resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your shuttle fare above</div>'; TR.writeURL({ cost: costInput.value, split }); return; }
     TR.renderResults(TR.calcTips(cost, split, 0), split, resultsEl);
     TR.writeURL({ cost: costInput.value, split });
   }
@@ -253,7 +269,7 @@
     ];
     rows.forEach((r, i) => {
       const tr = document.createElement('tr'); tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-      [{ val: r.type, cls: 'font-medium text-gray-700' }, { val: r.min, cls: 'text-right text-gray-600' }, { val: r.std, cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' }, { val: r.bag, cls: 'text-right text-gray-600' }, { val: r.note, cls: 'text-right text-gray-400 text-xs' }].forEach(c => { const td = document.createElement('td'); td.className = 'px-4 py-2.5 text-sm ' + c.cls; td.textContent = c.val; tr.appendChild(td); });
+      [{ val: r.type, cls: 'font-medium text-gray-700' }, { val: r.min, cls: 'text-right text-gray-600' }, { val: r.std, cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' }, { val: r.bag, cls: 'text-right text-gray-600' }, { val: r.note, cls: 'text-right text-gray-500 text-xs' }].forEach(c => { const td = document.createElement('td'); td.className = 'px-4 py-2.5 text-sm ' + c.cls; td.textContent = c.val; tr.appendChild(td); });
       tbody.appendChild(tr);
     });
   })();
@@ -275,7 +291,7 @@
     const container = document.getElementById('faq-container');
     if (!container) return;
     FAQ_DATA.forEach(item => {
-      const div = document.createElement('div'); div.className = 'border border-gray-200 rounded-xl overflow-hidden';
+      const div = document.createElement('div'); div.className = 'border border-line rounded-xl overflow-hidden';
       const details = document.createElement('details'); details.className = 'group';
       const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
       const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;

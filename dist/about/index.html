@@ -37,13 +37,30 @@
       .text-gray-800 { color: #E0E0DE !important; }
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
-      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
+      .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
+         The hover variants are separate selectors and need naming too. */
+      .text-brand-dark,
+      .hover\:text-brand-dark:hover,
+      .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
+      .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .border-line { border-color: #687570 !important; }
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
+         above landed on a near-white panel. Darken the surfaces too. */
+      .bg-brand-pale { background-color: #0D2820 !important; }
+      .bg-brand-light { background-color: #143A2E !important; }
+      .bg-brand-light\/40 { background-color: #12332A !important; }
+      .bg-brand-light\/30 { background-color: #112E26 !important; }
+      .bg-brand\/20 { background-color: #14402F !important; }
+      .bg-brand\/30 { background-color: #1A4E3A !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
     }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } }
+      theme: { extend: { colors: { line: '#848B93',
+            brand: { DEFAULT: '#1D9E75', darker: '#0A5543', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } }
     }
   </script>
 </head>
@@ -55,7 +72,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </a>
-    <a href="/" class="text-sm text-gray-500 hover:text-brand transition-colors">All calculators →</a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">All calculators →</a>
   </div>
 </nav>
 
@@ -68,7 +85,7 @@
 
 <main class="max-w-[672px] mx-auto px-4 py-8 space-y-8">
 
-  <section class="bg-white rounded-xl border border-gray-200 p-6 space-y-4 text-gray-700 leading-relaxed">
+  <section class="bg-white rounded-xl border border-line p-6 space-y-4 text-gray-700 leading-relaxed">
     <div>
       <h2 class="text-lg font-semibold text-gray-900 mb-2">What is tipright.app?</h2>
       <p>tipright.app is a collection of free tip calculators for 18 personal services, from tattoo artists and nail salons to hotel housekeeping and movers. Enter your service total and see tip amounts at every level instantly, with no button to press and no page to reload.</p>
@@ -96,39 +113,39 @@
   <section>
     <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">All 18 calculators</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-      <a href="/tip/tattoo" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🎨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo</p></div></a>
-      <a href="/tip/nail-salon" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💅</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Nail Salon</p></div></a>
-      <a href="/tip/hair-salon" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💇</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hair Salon</p></div></a>
-      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💆</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Massage</p></div></a>
-      <a href="/tip/barber" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">✂️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Barber</p></div></a>
-      <a href="/tip/dog-groomer" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🐕</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Dog Groomer</p></div></a>
-      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hotel Hskpg</p></div></a>
-      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📦</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Movers</p></div></a>
-      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🚗</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Valet</p></div></a>
-      <a href="/tip/piercing" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💎</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Piercing</p></div></a>
-      <a href="/tip/spa" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🧖</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Day Spa</p></div></a>
-      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🛵</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Food Delivery</p></div></a>
-      <a href="/tip/personal-trainer" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏋️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Personal Trainer</p></div></a>
-      <a href="/tip/airport-shuttle" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">✈️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Airport Shuttle</p></div></a>
-      <a href="/tip/waxing" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🌸</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Waxing</p></div></a>
-      <a href="/tip/tattoo-removal" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">⚡</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo Removal</p></div></a>
-      <a href="/tip/laser-hair-removal" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💡</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Laser Hair Removal</p></div></a>
-      <a href="/guide/no-tax-on-tips" class="flex items-center gap-2.5 p-3 bg-white border border-gray-200 rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📋</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">No Tax on Tips</p></div></a>
+      <a href="/tip/tattoo" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🎨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Tattoo</p></div></a>
+      <a href="/tip/nail-salon" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💅</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Nail Salon</p></div></a>
+      <a href="/tip/hair-salon" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💇</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hair Salon</p></div></a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💆</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage</p></div></a>
+      <a href="/tip/barber" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">✂️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Barber</p></div></a>
+      <a href="/tip/dog-groomer" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🐕</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Dog Groomer</p></div></a>
+      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hotel Hskpg</p></div></a>
+      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📦</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Movers</p></div></a>
+      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🚗</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Valet</p></div></a>
+      <a href="/tip/piercing" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💎</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Piercing</p></div></a>
+      <a href="/tip/spa" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🧖</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Day Spa</p></div></a>
+      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🛵</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Food Delivery</p></div></a>
+      <a href="/tip/personal-trainer" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏋️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Personal Trainer</p></div></a>
+      <a href="/tip/airport-shuttle" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">✈️</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Airport Shuttle</p></div></a>
+      <a href="/tip/waxing" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🌸</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Waxing</p></div></a>
+      <a href="/tip/tattoo-removal" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">⚡</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Tattoo Removal</p></div></a>
+      <a href="/tip/laser-hair-removal" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💡</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Laser Hair Removal</p></div></a>
+      <a href="/guide/no-tax-on-tips" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📋</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">No Tax on Tips</p></div></a>
     </div>
   </section>
 
 </main>
 
-<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-400">
+<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
   <p>© 2026 tipright.app — Free tip calculators for every service</p>
   <p class="mt-1">
-    <a href="/" class="hover:text-brand transition-colors">All calculators</a>
+    <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
      · 
-    <a href="/privacy" class="hover:text-brand transition-colors">Privacy</a>
+    <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
      ·
-    <a href="/terms" class="hover:text-brand transition-colors">Terms</a>
+    <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
      ·
-    <a href="/contact" class="hover:text-brand transition-colors">Contact</a>
+    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
 

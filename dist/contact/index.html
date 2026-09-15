@@ -32,13 +32,30 @@
       .text-gray-800 { color: #E0E0DE !important; }
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
-      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
+      .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
+         The hover variants are separate selectors and need naming too. */
+      .text-brand-dark,
+      .hover\:text-brand-dark:hover,
+      .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
+      .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .border-line { border-color: #687570 !important; }
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
+         above landed on a near-white panel. Darken the surfaces too. */
+      .bg-brand-pale { background-color: #0D2820 !important; }
+      .bg-brand-light { background-color: #143A2E !important; }
+      .bg-brand-light\/40 { background-color: #12332A !important; }
+      .bg-brand-light\/30 { background-color: #112E26 !important; }
+      .bg-brand\/20 { background-color: #14402F !important; }
+      .bg-brand\/30 { background-color: #1A4E3A !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
     }
   </style>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } }
+      theme: { extend: { colors: { line: '#848B93',
+            brand: { DEFAULT: '#1D9E75', darker: '#0A5543', dark: '#0F6E56', light: '#E1F5EE' } }, fontFamily: { sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif'] } } }
     }
   </script>
 </head>
@@ -50,7 +67,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </a>
-    <a href="/" class="text-sm text-gray-500 hover:text-brand transition-colors">All calculators →</a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">All calculators →</a>
   </div>
 </nav>
 
@@ -63,35 +80,35 @@
 
 <main class="max-w-[672px] mx-auto px-4 py-8 space-y-6">
 
-  <div class="bg-white rounded-xl border border-gray-200 p-6 text-center">
+  <div class="bg-white rounded-xl border border-line p-6 text-center">
     <div class="text-4xl mb-4">✉️</div>
     <h2 class="text-lg font-semibold text-gray-900 mb-2">Email us</h2>
     <p class="text-gray-600 text-sm mb-5">For questions, feedback, bug reports, or partnership inquiries:</p>
     <a href="mailto:hello@tipright.app"
-       class="inline-flex items-center gap-2 px-6 py-3 bg-brand text-white font-semibold rounded-xl text-sm hover:bg-brand-dark transition-colors">
+       class="inline-flex items-center gap-2 px-6 py-3 bg-brand-dark text-white font-semibold rounded-xl text-sm hover:bg-brand-darker transition-colors">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       hello@tipright.app
     </a>
-    <p class="text-xs text-gray-400 mt-4">We typically respond within 2–3 business days.</p>
+    <p class="text-xs text-gray-500 mt-4">We typically respond within 2–3 business days.</p>
   </div>
 
-  <div class="bg-white rounded-xl border border-gray-200 p-5">
+  <div class="bg-white rounded-xl border border-line p-5">
     <h3 class="text-sm font-semibold text-gray-800 mb-3">Common topics</h3>
     <ul class="space-y-2 text-sm text-gray-600">
       <li class="flex items-start gap-2">
-        <span class="text-brand mt-0.5">•</span>
+        <span class="text-brand-dark mt-0.5">•</span>
         <span><strong>Bug report:</strong> Include the page URL and what went wrong</span>
       </li>
       <li class="flex items-start gap-2">
-        <span class="text-brand mt-0.5">•</span>
+        <span class="text-brand-dark mt-0.5">•</span>
         <span><strong>Content correction:</strong> Let us know which page and what needs fixing</span>
       </li>
       <li class="flex items-start gap-2">
-        <span class="text-brand mt-0.5">•</span>
+        <span class="text-brand-dark mt-0.5">•</span>
         <span><strong>New calculator request:</strong> Tell us which service you'd like to see added</span>
       </li>
       <li class="flex items-start gap-2">
-        <span class="text-brand mt-0.5">•</span>
+        <span class="text-brand-dark mt-0.5">•</span>
         <span><strong>Partnership or advertising:</strong> Include your company name and proposal</span>
       </li>
     </ul>
@@ -99,18 +116,18 @@
 
 </main>
 
-<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-400">
+<footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
   <p>© 2026 tipright.app — Free tip calculators for every service</p>
   <p class="mt-1">
-    <a href="/about" class="hover:text-brand transition-colors">About</a>
+    <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
      ·
-    <a href="/" class="hover:text-brand transition-colors">All calculators</a>
+    <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
      ·
-    <a href="/privacy" class="hover:text-brand transition-colors">Privacy</a>
+    <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
      ·
-    <a href="/terms" class="hover:text-brand transition-colors">Terms</a>
+    <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
      ·
-    <a href="/contact" class="hover:text-brand transition-colors">Contact</a>
+    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
 

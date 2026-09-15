@@ -48,15 +48,33 @@
       .text-gray-800 { color: #E0E0DE !important; }
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
-      .text-gray-500, .text-gray-400 { color: #6E6E6C !important; }
+      .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
       .bg-gray-100 { background-color: #2A2F2D !important; }
-      #search-input { background-color: #222922 !important; border-color: #2E3532 !important; color: #F0F0EE !important; }
+      #search-input { background-color: #222922 !important; border-color: #687570 !important; color: #F0F0EE !important; }
+      /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
+         The hover variants are separate selectors and need naming too. */
+      .text-brand-dark,
+      .hover\:text-brand-dark:hover,
+      .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
+      .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .border-line { border-color: #687570 !important; }
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
+         above landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
+      .bg-brand-light { background-color: #143A2E !important; }
+      .bg-brand-light\/40 { background-color: #12332A !important; }
+      .bg-brand-light\/30 { background-color: #112E26 !important; }
+      .bg-brand\/20 { background-color: #14402F !important; }
+      .bg-brand\/30 { background-color: #1A4E3A !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       /* Hero section dark mode */
       header { background: #0D2820 !important; border-color: #1D4A35 !important; }
       header h1 { color: #22B884 !important; }
       header p  { color: #1D9E75 !important; }
       header .bg-white { background: #1A201D !important; border-color: #2A4A38 !important; }
+      /* the inputs inside the hero panel are .bg-white too - the panel's
+         decorative outline must not override their 3:1 field border */
+      header .bg-white.border-line { border-color: #687570 !important; }
     }
     /* Card height consistency */
     .service-card { height: 100%; align-items: center; }
@@ -72,7 +90,8 @@
       theme: {
         extend: {
           colors: {
-            brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', light: '#E1F5EE', pale: '#F0FAF6' }
+            line: '#848B93',
+            brand: { DEFAULT: '#1D9E75', dark: '#0F6E56', darker: '#0A5543', light: '#E1F5EE', pale: '#F0FAF6' }
           },
           fontFamily: {
             sans: ['system-ui','-apple-system','BlinkMacSystemFont','Segoe UI','sans-serif']
@@ -152,7 +171,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </span>
-    <a href="/guide/tipping-etiquette-us" class="text-sm text-gray-500 hover:text-brand transition-colors">
+    <a href="/guide/tipping-etiquette-us" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">
       Tipping guide →
     </a>
   </div>
@@ -165,7 +184,7 @@
     <h1 class="text-[28px] sm:text-[32px] font-bold tracking-tight leading-tight" style="color:#0F6E56;">
       How much should you tip?
     </h1>
-    <p class="text-sm mt-1 mb-5" style="color:#1D9E75;">
+    <p class="text-sm mt-1 mb-5" style="color:#0F6E56;">
       Enter your total, see the answer now.
     </p>
 
@@ -175,7 +194,7 @@
       <!-- Service selector + amount input side by side -->
       <div class="flex gap-2 mb-3">
         <select id="hero-service" aria-label="Select service type"
-          class="h-12 px-3 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 focus:border-brand outline-none transition-colors flex-shrink-0"
+          class="h-12 px-3 rounded-xl border border-line bg-white text-sm font-medium text-gray-700 focus:border-brand outline-none transition-colors flex-shrink-0"
           style="min-width:140px">
           <option value="restaurant">🍴 Restaurant</option>
           <option value="tattoo">🎨 Tattoo</option>
@@ -198,7 +217,7 @@
         </select>
 
         <div class="relative flex-1">
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium pointer-events-none">$</span>
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 font-medium pointer-events-none">$</span>
           <input
             id="hero-cost"
             type="text"
@@ -206,23 +225,23 @@
             placeholder="0"
             autocomplete="off"
             style="font-size:18px"
-            class="w-full h-12 pl-8 pr-3 font-semibold rounded-xl border border-gray-200 bg-white text-gray-900 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
+            class="w-full h-12 pl-8 pr-3 font-semibold rounded-xl border border-line bg-white text-gray-900 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
           >
         </div>
       </div>
 
       <!-- Mini results — 3 tiers only (15/20/25) -->
       <div id="hero-results" class="hidden grid grid-cols-3 gap-2 mb-3">
-        <div class="text-center p-2 rounded-lg border border-gray-200 bg-white">
-          <div class="text-xs text-gray-400 mb-0.5">15%</div>
+        <div class="text-center p-2 rounded-lg border border-line bg-white">
+          <div class="text-xs text-gray-500 mb-0.5">15%</div>
           <div id="hero-t15" class="text-lg font-bold text-gray-700">—</div>
         </div>
         <div class="text-center p-2 rounded-lg border-2 border-brand bg-brand-pale">
-          <div class="text-xs font-bold text-brand mb-0.5">★ 20%</div>
+          <div class="text-xs font-bold text-brand-dark mb-0.5">★ 20%</div>
           <div id="hero-t20" class="text-xl font-bold text-brand-dark">—</div>
         </div>
-        <div class="text-center p-2 rounded-lg border border-gray-200 bg-white">
-          <div class="text-xs text-gray-400 mb-0.5">25%</div>
+        <div class="text-center p-2 rounded-lg border border-line bg-white">
+          <div class="text-xs text-gray-500 mb-0.5">25%</div>
           <div id="hero-t25" class="text-lg font-bold text-gray-700">—</div>
         </div>
       </div>
@@ -231,22 +250,22 @@
       <div id="hero-pp" class="hidden col-span-3 text-center text-sm font-bold text-brand-dark mt-1"></div>
 
       <!-- Empty state -->
-      <div id="hero-empty" class="text-center py-2 text-xs text-gray-400">
+      <div id="hero-empty" class="text-center py-2 text-xs text-gray-500">
         Enter your total above to see tip amounts
       </div>
 
       <!-- CTA → full calculator -->
-      <a id="hero-cta" href="/" class="hidden mt-3 flex items-center justify-center gap-2 w-full h-10 bg-brand text-white text-sm font-semibold rounded-lg hover:bg-brand-dark transition-colors">
+      <a id="hero-cta" href="/" class="hidden mt-3 flex items-center justify-center gap-2 w-full h-10 bg-brand-dark text-white text-sm font-semibold rounded-lg hover:bg-brand-darker transition-colors">
         See full calculator →
       </a>
 
     </div>
 
-    <p class="text-xs mt-3 text-center" style="color:#1D9E75;">Or browse all 18 calculators ↓</p>
+    <p class="text-xs mt-3 text-center" style="color:#0F6E56;">Or browse all 18 calculators ↓</p>
 
     <!-- Search filter -->
     <div class="relative mt-4">
-      <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
       </svg>
       <input
@@ -254,7 +273,7 @@
         type="text"
         placeholder="Search calculators..."
         autocomplete="off"
-        class="w-full h-10 pl-9 pr-4 text-sm rounded-lg border border-gray-200 bg-gray-50 text-gray-800 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
+        class="w-full h-10 pl-9 pr-4 text-sm rounded-lg border border-line bg-gray-50 text-gray-800 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
       >
     </div>
   </div>
@@ -265,72 +284,72 @@
 
   <!-- ═══ POPULAR ═══ -->
   <section data-section="popular">
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+    <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
       Start here
     </h2>
     <!-- Top 6 Featured — larger, branded -->
     <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3" id="grid-popular">
 
       <a href="/tip/tattoo" data-name="tattoo artist"
-         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand rounded-xl hover:border-brand-dark hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🎨</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Artist tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Tattoo</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Artist tipping</p>
         </div>
       </a>
 
       <a href="/tip/restaurant" data-name="restaurant dining server waiter"
-         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand rounded-xl hover:border-brand-dark hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🍴</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Restaurant</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Server tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Restaurant</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Server tipping</p>
         </div>
       </a>
 
       <a href="/tip/nail-salon" data-name="nail salon manicure pedicure"
-         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand rounded-xl hover:border-brand-dark hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">💅</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Nail Salon</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Manicure & pedicure</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Nail Salon</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Manicure & pedicure</p>
         </div>
       </a>
 
       <a href="/tip/hair-salon" data-name="hair salon stylist colorist"
-         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand rounded-xl hover:border-brand-dark hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">💇</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hair Salon</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Stylist & colorist</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hair Salon</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Stylist & colorist</p>
         </div>
       </a>
 
       <a href="/tip/massage" data-name="massage therapist"
-         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand rounded-xl hover:border-brand-dark hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">💆</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Massage</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Massage tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Massage tipping</p>
         </div>
       </a>
 
       <a href="/tip/barber" data-name="barber haircut fade"
-         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand rounded-xl hover:border-brand-dark hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">✂️</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Barber</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Barber tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Barber</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Barber tipping</p>
         </div>
       </a>
 
       <a href="/tip/food-delivery" data-name="food delivery uber eats doordash"
-         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand/30 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-4 bg-brand-pale border-[1.5px] border-brand rounded-xl hover:border-brand-dark hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🛵</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Food Delivery</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Delivery tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Food Delivery</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Delivery tipping</p>
         </div>
       </a>
 
@@ -339,62 +358,62 @@
 
   <!-- ═══ BEAUTY & WELLNESS ═══ -->
   <section data-section="beauty">
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+    <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
       Beauty &amp; Wellness
     </h2>
     <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-beauty">
 
       <a href="/tip/spa" data-name="spa day spa"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🧖</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Day Spa</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Full spa services</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Day Spa</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Full spa services</p>
         </div>
       </a>
 
       <a href="/tip/waxing" data-name="waxing brazilian legs"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🌸</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Waxing</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Waxing guide</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Waxing</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Waxing guide</p>
         </div>
       </a>
 
       <a href="/tip/piercing" data-name="body piercing"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">💎</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Body Piercing</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Piercer tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Body Piercing</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Piercer tipping</p>
         </div>
       </a>
 
       <a href="/tip/personal-trainer" data-name="personal trainer gym"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🏋️</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Personal Trainer</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Trainer tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Personal Trainer</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Trainer tipping</p>
         </div>
       </a>
 
       <a href="/tip/laser-hair-removal" data-name="laser hair removal med spa"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">💡</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Laser Hair Removal</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Med spa tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Laser Hair Removal</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Med spa tipping</p>
         </div>
       </a>
 
       <a href="/tip/tattoo-removal" data-name="tattoo removal laser"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">⚡</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Tattoo Removal</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Laser removal</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Tattoo Removal</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Laser removal</p>
         </div>
       </a>
 
@@ -403,53 +422,53 @@
 
   <!-- ═══ HOME & TRAVEL ═══ -->
   <section data-section="home">
-    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">
+    <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
       Home &amp; Travel
     </h2>
     <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-home">
 
       <a href="/tip/dog-groomer" data-name="dog groomer pet grooming"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🐕</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Dog Groomer</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Pet grooming</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Dog Groomer</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Pet grooming</p>
         </div>
       </a>
 
       <a href="/tip/hotel-housekeeping" data-name="hotel housekeeping maid"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🏨</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Hotel Housekeeping</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Housekeeping tips</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hotel Housekeeping</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Housekeeping tips</p>
         </div>
       </a>
 
       <a href="/tip/movers" data-name="movers moving company"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">📦</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Movers</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Moving day tips</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Movers</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Moving day tips</p>
         </div>
       </a>
 
       <a href="/tip/valet" data-name="valet parking"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">🚗</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Valet Parking</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Valet tip guide</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Valet Parking</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Valet tip guide</p>
         </div>
       </a>
 
       <a href="/tip/airport-shuttle" data-name="airport shuttle driver"
-         class="service-card flex items-center gap-3 p-3.5 bg-white border border-gray-200 rounded-xl hover:border-brand hover:shadow-sm transition-all group">
+         class="service-card flex items-center gap-3 p-3.5 bg-white border border-line rounded-xl hover:border-brand hover:shadow-sm transition-all group">
         <span class="text-2xl flex-shrink-0">✈️</span>
         <div class="min-w-0">
-          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand transition-colors leading-tight">Airport Shuttle</p>
-          <p class="text-xs text-gray-400 mt-0.5 leading-tight">Shuttle tipping</p>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Airport Shuttle</p>
+          <p class="text-xs text-gray-500 mt-0.5 leading-tight">Shuttle tipping</p>
         </div>
       </a>
 
@@ -459,10 +478,10 @@
   <!-- ═══ NO TAX CALLOUT ═══ -->
   <section>
     <a href="/guide/no-tax-on-tips"
-       class="flex items-start gap-4 p-4 bg-brand-pale border border-brand/25 rounded-xl hover:border-brand transition-colors group">
+       class="flex items-start gap-4 p-4 bg-brand-pale border border-brand rounded-xl hover:border-brand-dark transition-colors group">
       <span class="text-2xl flex-shrink-0 mt-0.5">📋</span>
       <div>
-        <p class="text-sm font-semibold text-brand-dark group-hover:text-brand transition-colors leading-tight">
+        <p class="text-sm font-semibold text-brand-dark group-hover:text-brand-darker transition-colors leading-tight">
           No Tax on Tips Calculator
         </p>
         <p class="text-xs text-gray-600 mt-1 leading-relaxed">
@@ -481,7 +500,7 @@
   </section>
 
   <!-- No search results message (hidden by default) -->
-  <div id="no-results" class="hidden text-center py-12 text-gray-400 text-sm">
+  <div id="no-results" class="hidden text-center py-12 text-gray-500 text-sm">
     No calculators found for "<span id="search-term"></span>"
   </div>
 
@@ -494,16 +513,16 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="border-t border-gray-200 mt-8 py-8 text-center text-sm text-gray-400">
+<footer class="border-t border-gray-200 mt-8 py-8 text-center text-sm text-gray-500">
   <p>© 2026 tipright.app — Free tip calculators for every service</p>
   <p class="mt-1">
-    <a href="/about" class="hover:text-brand transition-colors">About</a>
+    <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
      &middot; 
-    <a href="/privacy" class="hover:text-brand transition-colors">Privacy</a>
+    <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
      ·
-    <a href="/terms" class="hover:text-brand transition-colors">Terms</a>
+    <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
      ·
-    <a href="/contact" class="hover:text-brand transition-colors">Contact</a>
+    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
 
@@ -620,7 +639,7 @@
 
   FAQ.forEach(function(item) {
     var div = document.createElement('div');
-    div.className = 'border border-gray-200 rounded-xl overflow-hidden';
+    div.className = 'border border-line rounded-xl overflow-hidden';
 
     var details = document.createElement('details');
     details.className = 'group';
