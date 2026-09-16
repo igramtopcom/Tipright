@@ -8,13 +8,15 @@ Static pages in `dist/`, served by a Cloudflare Worker (`wrangler.json`).
 
 ```bash
 npm install
-npm run deploy          # build:css, then wrangler deploy
+npm run deploy          # build, then wrangler deploy
 ```
 
-`npm run build:css` compiles `src/tailwind.css` into
-`dist/assets/css/app.<hash>.css` and repoints every page at the new filename.
+`npm run build` compiles `src/tailwind.css` and copies `src/calculator.js`
+into `dist/assets/` under content-hashed filenames, then repoints every page
+at the new names. The hash is what lets `/assets/css/*` and `/assets/js/*` be
+cached for a year.
 
-**Run it after any change to markup or to `dist/assets/js/`.** The stylesheet
+**Run it after any change to markup or to `src/calculator.js`.** The stylesheet
 holds only the utility classes found in those files, so a class added without a
 rebuild has no CSS behind it and silently does nothing. `npm run deploy` does
 the rebuild for you; a bare `wrangler deploy` does not.
