@@ -8,6 +8,8 @@ import { join, dirname } from 'node:path';
 import { buildPages } from './lib/pages.mjs';
 import { fileURLToPath } from 'node:url';
 
+const CRLF = String.fromCharCode(13, 10);
+const LF = String.fromCharCode(10);
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const tmp = join(root, '.cache', 'app.css');
@@ -29,7 +31,11 @@ const assets = [
 
 const emitted = [];
 for (const a of assets) {
-  const body = readFileSync(a.src);
+  // hash the content, not the checkout: a CRLF working tree must not produce a
+  // different filename for the same file
+  const body = a.ext === 'css'
+    ? readFileSync(a.src)
+    : Buffer.from(readFileSync(a.src, 'utf8').split(CRLF).join(LF), 'utf8');
   const hash = createHash('sha256').update(body).digest('hex').slice(0, 10);
   const name = `${a.base}.${hash}.${a.ext}`;
   const outDir = join(dist, a.dir);

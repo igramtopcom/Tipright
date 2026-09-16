@@ -1,0 +1,10 @@
+# One line ending everywhere. The build hashes file contents into asset
+# filenames, so a CRLF checkout would otherwise produce different names for
+# identical files.
+* text=auto eol=lf
+*.png binary
+*.ico binary
+*.jpg binary
+*.woff binary
+*.woff2 binary
+*.docx binary
