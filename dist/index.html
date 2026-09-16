@@ -97,20 +97,39 @@
     @media (max-width: 479px) {
       .service-grid > a:last-child:nth-child(odd) { grid-column: span 2; }
     }
+    /* The hero used to be a flat mint slab cut off by a hairline. A gradient
+       that lands exactly on the page colour ends it without a seam. */
+    header {
+      background: linear-gradient(180deg, #E3F4ED 0%, #F1FAF6 46%, #F9FAFB 100%);
+      border-bottom: 0;
+    }
+    /* Lifts the card off the tint without a heavy border */
+    .hero-card { box-shadow: 0 1px 2px rgba(15, 110, 86, .06), 0 8px 24px -12px rgba(15, 110, 86, .18); }
+    /* Cards answer the pointer instead of only changing their border */
+    .service-card, .hero-card { transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease; }
+    a.service-card:hover { transform: translateY(-1px); box-shadow: 0 6px 16px -10px rgba(15, 110, 86, .35); }
+    @media (prefers-reduced-motion: reduce) {
+      .service-card, .hero-card { transition: none; }
+      a.service-card:hover { transform: none; }
+    }
     @media (prefers-color-scheme: dark) {
       #search-input { color: #F0F0EE !important; }
-      /* Hero section dark mode */
-      header { background: #0D2820 !important; border-color: #1D4A35 !important; }
+      header {
+        background: linear-gradient(180deg, #0E2B22 0%, #0C1C17 52%, #0F1210 100%) !important;
+        border-color: transparent !important;
+      }
       header h1 { color: #22B884 !important; }
-      header p  { color: #1D9E75 !important; }
+      header p  { color: #6FD9B4 !important; }
       header .bg-white { background: #1A201D !important; border-color: #2A4A38 !important; }
       /* the inputs inside the hero panel are .bg-white too - the panel's
          decorative outline must not override their 3:1 field border */
       header .bg-white.border-line { border-color: #687570 !important; }
+      .hero-card { box-shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 10px 28px -14px rgba(0, 0, 0, .7); }
+      a.service-card:hover { box-shadow: 0 6px 16px -10px rgba(0, 0, 0, .8); }
     }
   </style>
 
-  <link rel="stylesheet" href="/assets/css/app.57800c2fd9.css">
+  <link rel="stylesheet" href="/assets/css/app.76a6299b71.css">
 
   <script type="application/ld+json">
   {
@@ -313,18 +332,18 @@
 </nav>
 
 <!-- HERO -->
-<header style="background:#F0FAF6; border-bottom:1px solid #C5E8DA;">
-  <div class="max-w-[672px] mx-auto px-4 pt-8 pb-6">
+<header>
+  <div class="max-w-[672px] mx-auto px-4 pt-10 pb-8 sm:pt-14 sm:pb-10">
 
-    <h1 class="text-[28px] sm:text-[32px] font-bold tracking-tight leading-tight" style="color:#0F6E56;">
+    <h1 class="text-[30px] sm:text-[40px] font-bold tracking-[-0.02em] leading-[1.1] text-balance" style="color:#0F6E56;">
       How much should you tip?
     </h1>
-    <p class="text-sm mt-1 mb-5" style="color:#0F6E56;">
+    <p class="text-[15px] mt-2 mb-6" style="color:#0F6E56;">
       Enter your total, see the answer now.
     </p>
 
     <!-- MINI CALCULATOR -->
-    <div class="bg-white rounded-xl p-4" style="border:1px solid #C5E8DA;">
+    <div class="hero-card bg-white rounded-2xl p-4 sm:p-5 border border-brand/25">
 
       <!-- Service selector + amount input side by side -->
       <div class="flex gap-2 mb-3">
@@ -360,14 +379,14 @@
             inputmode="decimal"
             placeholder="0"
             autocomplete="off"
-            style="font-size:18px"
+            style="font-size:20px"
             class="w-full h-12 pl-8 pr-3 font-semibold rounded-xl border border-line bg-white text-gray-900 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
           >
         </div>
       </div>
 
       <!-- Mini results — 3 tiers only (15/20/25) -->
-      <div id="hero-results" class="hidden grid grid-cols-3 gap-2 mb-3">
+      <div id="hero-results" class="grid grid-cols-3 gap-2">
         <div class="text-center p-2 rounded-lg border border-line bg-white">
           <div class="text-xs text-gray-500 mb-0.5">15%</div>
           <div id="hero-t15" class="text-lg font-bold text-gray-700">—</div>
@@ -382,14 +401,6 @@
         </div>
       </div>
 
-      <!-- Per person line -->
-      <div id="hero-pp" class="hidden col-span-3 text-center text-sm font-bold text-brand-dark mt-1"></div>
-
-      <!-- Empty state -->
-      <div id="hero-empty" class="text-center py-2 text-xs text-gray-500">
-        Enter your total above to see tip amounts
-      </div>
-
       <!-- CTA → full calculator -->
       <a id="hero-cta" href="/" class="hidden mt-3 flex items-center justify-center gap-2 w-full h-10 bg-brand-dark text-white text-sm font-semibold rounded-lg hover:bg-brand-darker transition-colors">
         See full calculator →
@@ -397,10 +408,8 @@
 
     </div>
 
-    <p class="text-xs mt-3 text-center" style="color:#0F6E56;">Or browse all 18 calculators ↓</p>
-
     <!-- Search filter -->
-    <div class="relative mt-4">
+    <div class="relative mt-5">
       <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
       </svg>
@@ -408,9 +417,9 @@
         id="search-input"
         aria-label="Search calculators"
         type="text"
-        placeholder="Search calculators..."
+        placeholder="Search 18 calculators…"
         autocomplete="off"
-        class="w-full h-10 pl-9 pr-4 text-sm rounded-lg border border-line bg-gray-50 text-gray-800 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
+        class="w-full h-11 pl-9 pr-4 text-sm rounded-xl border border-line bg-gray-50 text-gray-800 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all"
       >
     </div>
   </div>
@@ -421,9 +430,7 @@
 
   <!-- ═══ POPULAR ═══ -->
   <section data-section="popular">
-    <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-      Start here
-    </h2>
+    <h2 class="flex items-center gap-3 text-xs font-semibold text-gray-500 uppercase tracking-[0.12em] mb-3">Start here<span class="flex-1 border-t border-gray-200" aria-hidden="true"></span></h2>
     <!-- Top 6 Featured — larger, branded -->
     <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3" id="grid-popular">
 
@@ -495,9 +502,7 @@
 
   <!-- ═══ BEAUTY & WELLNESS ═══ -->
   <section data-section="beauty">
-    <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-      Beauty &amp; Wellness
-    </h2>
+    <h2 class="flex items-center gap-3 text-xs font-semibold text-gray-500 uppercase tracking-[0.12em] mb-3">Beauty &amp; Wellness<span class="flex-1 border-t border-gray-200" aria-hidden="true"></span></h2>
     <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-beauty">
 
       <a href="/tip/spa" data-name="spa day spa"
@@ -559,9 +564,7 @@
 
   <!-- ═══ HOME & TRAVEL ═══ -->
   <section data-section="home">
-    <h2 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
-      Home &amp; Travel
-    </h2>
+    <h2 class="flex items-center gap-3 text-xs font-semibold text-gray-500 uppercase tracking-[0.12em] mb-3">Home &amp; Travel<span class="flex-1 border-t border-gray-200" aria-hidden="true"></span></h2>
     <div class="service-grid grid grid-cols-2 sm:grid-cols-3 gap-2" id="grid-home">
 
       <a href="/tip/dog-groomer" data-name="dog groomer pet grooming"
@@ -715,8 +718,6 @@
 (function () {
   const heroService = document.getElementById('hero-service');
   const heroCost    = document.getElementById('hero-cost');
-  const heroResults = document.getElementById('hero-results');
-  const heroEmpty   = document.getElementById('hero-empty');
   const heroCTA     = document.getElementById('hero-cta');
   const heroT15     = document.getElementById('hero-t15');
   const heroT20     = document.getElementById('hero-t20');
@@ -737,8 +738,11 @@
     const service = heroService.value;
 
     if (cost === 0) {
-      heroResults.classList.add('hidden');
-      heroEmpty.classList.remove('hidden');
+      // the tiers stay on screen holding a dash, so the card reads as itself
+      // before anyone types and nothing shifts when they do
+      heroT15.textContent = '—';
+      heroT20.textContent = '—';
+      heroT25.textContent = '—';
       heroCTA.classList.add('hidden');
       return;
     }
@@ -747,8 +751,6 @@
     heroT20.textContent = FMT.format(Math.ceil(cost * 0.20));
     heroT25.textContent = FMT.format(Math.ceil(cost * 0.25));
 
-    heroResults.classList.remove('hidden');
-    heroEmpty.classList.add('hidden');
     heroCTA.classList.remove('hidden');
 
     // CTA link → full calculator with pre-filled amount
