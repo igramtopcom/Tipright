@@ -2,8 +2,11 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+const CRLF = String.fromCharCode(13, 10);
+const LF = String.fromCharCode(10);
 const root = join(import.meta.dirname, '..', '..');
-const read = (p) => readFileSync(join(root, 'src', 'partials', p), 'utf8');
+const read = (p) => readFileSync(join(root, 'src', 'partials', p), 'utf8')
+  .split(CRLF).join(LF);
 
 const LOGO = read('logo.svg').trim();
 const STYLES = read('styles.css').replace(/\n$/, '');
@@ -69,6 +72,7 @@ export function faqSchema(items) {
 }
 
 export function head(page, cssHref) {
+  const noindex = page.robots === 'noindex';
   const og = {
     title: page.ogTitle || page.title,
     description: page.ogDescription || page.description,
@@ -101,11 +105,11 @@ export function head(page, cssHref) {
   gtag('config', 'G-F3BH93XBSW');
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow'}">
 
   <title>${esc(page.title)}</title>
   <meta name="description" content="${esc(page.description)}">
-  <link rel="canonical" href="${esc(page.canonical)}">
+${noindex ? '' : `  <link rel="canonical" href="${esc(page.canonical)}">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="${esc(og.url)}">
@@ -119,7 +123,7 @@ export function head(page, cssHref) {
   <meta name="twitter:title" content="${esc(tw.title)}">
   <meta name="twitter:description" content="${esc(tw.description)}">
   <meta name="twitter:image" content="${esc(tw.image)}">
-
+`}
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">

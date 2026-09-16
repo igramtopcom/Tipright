@@ -4,6 +4,9 @@ import { readFileSync, writeFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { join, dirname, relative, sep } from 'node:path';
 import { head, nav, footer, faq } from './layout.mjs';
 
+const CRLF = String.fromCharCode(13, 10);
+const LF = String.fromCharCode(10);
+
 export function buildPages(root, dist, calculatorHref, cssHref) {
   const src = join(root, 'src', 'pages');
   const files = [];
@@ -16,7 +19,10 @@ export function buildPages(root, dist, calculatorHref, cssHref) {
 
   const written = [];
   for (const f of files) {
-    const raw = readFileSync(f, 'utf8');
+    // git hands out CRLF on checkout depending on core.autocrlf; normalise so a
+    // fresh clone builds the same bytes as a working tree that has never been
+    // checked out
+    const raw = readFileSync(f, 'utf8').split(CRLF).join(LF);
     const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
     if (!m) throw new Error('missing front-matter: ' + relative(root, f));
     const page = JSON.parse(m[1]);
@@ -31,9 +37,11 @@ export function buildPages(root, dist, calculatorHref, cssHref) {
     }
 
     const html = head(page, cssHref) + `\n<body class="${page.bodyClass}">\n` + body.trim() + '\n</body>\n</html>\n';
-    const out = page.route === '/'
-      ? join(dist, 'index.html')
-      : join(dist, ...page.route.slice(1).split('/'), 'index.html');
+    const out = page.output
+      ? join(dist, ...page.output.split('/'))
+      : page.route === '/'
+        ? join(dist, 'index.html')
+        : join(dist, ...page.route.slice(1).split('/'), 'index.html');
     mkdirSync(dirname(out), { recursive: true });
     writeFileSync(out, html);
     written.push({ route: page.route, bytes: html.length, faq: page.faq ? page.faq.length : 0 });

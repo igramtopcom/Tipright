@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 // Mirrors the inline `tailwind.config` the Play CDN used to read on every page.
 module.exports = {
-  content: ['./dist/**/*.html', './src/**/*.js'],
+  // the source, not dist: the stylesheet is compiled before the pages are
+  // rendered, so scanning dist would be scanning the previous build
+  content: ['./src/**/*.html', './src/**/*.js', './scripts/lib/layout.mjs'],
   theme: {
     extend: {
       colors: {
