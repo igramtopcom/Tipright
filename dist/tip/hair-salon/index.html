@@ -39,11 +39,26 @@
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -51,41 +66,34 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
+  </style>
 
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
 
   <script type="application/ld+json">
   {
@@ -99,14 +107,32 @@
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" }
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
-          { "@type": "ListItem", "position": 2, "name": "Hair Salon Tip Calculator", "item": "https://tipright.app/tip/hair-salon" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Hair Salon Tip Calculator",
+            "item": "https://tipright.app/tip/hair-salon"
+          }
         ]
       },
       {
@@ -115,52 +141,82 @@
           {
             "@type": "Question",
             "name": "How much should you tip a hair stylist?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The standard tip for a hair stylist is 20% of the total service cost. For a $100 haircut and blowout, tip $20. For a $200 color and cut, tip $40. Tip 15% for basic services, 22–25% for color work or exceptional results." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard tip for a hair stylist is 20% of the total service cost. For a $100 haircut and blowout, that's $20. Tip 15% for basic services, 22–25% for complex color work or when your stylist went above and beyond."
+            }
           },
           {
             "@type": "Question",
             "name": "Should you tip the salon owner?",
-            "acceptedAnswer": { "@type": "Answer", "text": "This is debated, but the modern consensus is yes — tip salon owners 15–20%. The old rule was that owners set their own prices and kept all revenue, so tips were unnecessary. Today, most clients tip owners as standard, and it is always appreciated." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — tip salon owners 15–20%, just like any other stylist. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip them as standard practice."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip the shampoo assistant at a hair salon?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tip the shampoo assistant $3–5 separately from your stylist tip. Assistants are often in training and earn very low wages. Hand the cash directly to them rather than including it in the overall salon tip." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Tip the shampoo assistant $3–5 separately from your stylist tip, in cash, handed directly to them. Assistants earn very low wages and depend on these small tips as a meaningful part of their income."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a $100 hair service?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip $15–20 on a $100 hair service. A $20 tip (20%) is standard for good work. Tip $22–25 for above-average results or if the service took significantly longer than expected." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $15–20 on a $100 hair service. A $20 tip (20%) is standard for good work. Tip $22–25 for above-average results or if your service ran significantly over time."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for hair color?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip 20% on hair color services, same as for cuts. Color work is technically demanding and time-intensive — a full balayage or color correction can run 3–5 hours. Tip 22–25% for complex color jobs or if your stylist went above and beyond." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 20% on hair color services, the same as for cuts. Color is technically demanding and time-intensive. For complex work like color correction or a full balayage, tipping 22–25% acknowledges the extra skill and hours involved."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip if a different person does your color and cut?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes — tip each person separately based on their portion of the service. If a colorist charges $150 and a stylist charges $80, calculate 20% on each amount individually and tip them each directly in cash." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — tip each person separately based on their portion of the service. Calculate 20% on the colorist's charge and 20% on the stylist's charge separately, and hand each their tip directly in cash."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a balayage?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip 20% on a balayage service. Balayage is a skilled, time-intensive technique — a full application takes 2–4 hours. For a $250 balayage, a $50 tip is standard. Tip 25% ($62.50) for an exceptional result." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 20% on a balayage. For a $250 balayage, that's $50. Balayage is a skilled, time-intensive technique taking 2–4 hours. Tip 25% ($62.50) for an exceptional, high-effort result."
+            }
           },
           {
             "@type": "Question",
             "name": "Is it rude not to tip your hairdresser?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. In the US, not tipping a hairdresser for satisfactory service is considered rude. Most stylists pay booth rental or work on commission, meaning tips directly supplement their take-home pay for every hour they work." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. In the US, not tipping a hairdresser for satisfactory service is considered rude. Most stylists pay booth rental or work on commission — tips directly supplement their take-home pay for every hour they spend on your hair."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a simple trim?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip 15–20% even for a simple trim. If the haircut is very low-cost ($20–30), apply a $5 minimum rather than a strict percentage. The minimum ensures your stylist receives a meaningful amount regardless of service price." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 15–20% even for a simple trim. If the haircut costs $20–30, use a $5 minimum rather than a strict percentage — percentage math produces amounts too small to be meaningful on cheap services."
+            }
           },
           {
             "@type": "Question",
             "name": "Should I tip more for a long appointment?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. A 4-hour color correction deserves a higher tip than a 30-minute trim, even if the percentage works out the same. If your service ran significantly over time or required exceptional skill, tipping 22–25% is appropriate." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. A 4-hour color correction deserves more acknowledgment than a 30-minute trim. If your appointment ran significantly over time or required exceptional skill and problem-solving, tipping 22–25% is appropriate and appreciated."
+            }
           }
         ]
       }
@@ -168,9 +224,7 @@
   }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <!-- NAV -->
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
@@ -178,9 +232,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </a>
-    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">
-      All calculators →
-    </a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">All calculators →</a>
   </div>
 </nav>
 
@@ -351,7 +403,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip a hair stylist?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The standard tip for a hair stylist is 20% of the total service cost. For a $100 haircut and blowout, that's $20. Tip 15% for basic services, 22–25% for complex color work or when your stylist went above and beyond.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip the salon owner?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip salon owners 15–20%, just like any other stylist. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip them as standard practice.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip the shampoo assistant at a hair salon?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Tip the shampoo assistant $3–5 separately from your stylist tip, in cash, handed directly to them. Assistants earn very low wages and depend on these small tips as a meaningful part of their income.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a $100 hair service?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $15–20 on a $100 hair service. A $20 tip (20%) is standard for good work. Tip $22–25 for above-average results or if your service ran significantly over time.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for hair color?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 20% on hair color services, the same as for cuts. Color is technically demanding and time-intensive. For complex work like color correction or a full balayage, tipping 22–25% acknowledges the extra skill and hours involved.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip if a different person does your color and cut?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip each person separately based on their portion of the service. Calculate 20% on the colorist's charge and 20% on the stylist's charge separately, and hand each their tip directly in cash.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a balayage?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 20% on a balayage. For a $250 balayage, that's $50. Balayage is a skilled, time-intensive technique taking 2–4 hours. Tip 25% ($62.50) for an exceptional, high-effort result.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip your hairdresser?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. In the US, not tipping a hairdresser for satisfactory service is considered rude. Most stylists pay booth rental or work on commission — tips directly supplement their take-home pay for every hour they spend on your hair.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a simple trim?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 15–20% even for a simple trim. If the haircut costs $20–30, use a $5 minimum rather than a strict percentage — percentage math produces amounts too small to be meaningful on cheap services.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should I tip more for a long appointment?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. A 4-hour color correction deserves more acknowledgment than a 30-minute trim. If your appointment ran significantly over time or required exceptional skill and problem-solving, tipping 22–25% is appropriate and appreciated.</div></div></details></div></div>
   </section>
 
   <!-- RELATED CALCULATORS -->
@@ -407,16 +459,16 @@
 
 <!-- FOOTER -->
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
   <p class="mt-1">
     <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
-     · 
+     &middot;
     <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
+     &middot;
     <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
@@ -496,44 +548,8 @@
   })();
 
   // FAQ
-  const FAQ_DATA = [
-    { q: "How much should you tip a hair stylist?", a: "The standard tip for a hair stylist is 20% of the total service cost. For a $100 haircut and blowout, that's $20. Tip 15% for basic services, 22–25% for complex color work or when your stylist went above and beyond." },
-    { q: "Should you tip the salon owner?", a: "Yes — tip salon owners 15–20%, just like any other stylist. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip them as standard practice." },
-    { q: "Do you tip the shampoo assistant at a hair salon?", a: "Yes. Tip the shampoo assistant $3–5 separately from your stylist tip, in cash, handed directly to them. Assistants earn very low wages and depend on these small tips as a meaningful part of their income." },
-    { q: "How much do you tip for a $100 hair service?", a: "Tip $15–20 on a $100 hair service. A $20 tip (20%) is standard for good work. Tip $22–25 for above-average results or if your service ran significantly over time." },
-    { q: "How much do you tip for hair color?", a: "Tip 20% on hair color services, the same as for cuts. Color is technically demanding and time-intensive. For complex work like color correction or a full balayage, tipping 22–25% acknowledges the extra skill and hours involved." },
-    { q: "Do you tip if a different person does your color and cut?", a: "Yes — tip each person separately based on their portion of the service. Calculate 20% on the colorist's charge and 20% on the stylist's charge separately, and hand each their tip directly in cash." },
-    { q: "How much do you tip for a balayage?", a: "Tip 20% on a balayage. For a $250 balayage, that's $50. Balayage is a skilled, time-intensive technique taking 2–4 hours. Tip 25% ($62.50) for an exceptional, high-effort result." },
-    { q: "Is it rude not to tip your hairdresser?", a: "Yes. In the US, not tipping a hairdresser for satisfactory service is considered rude. Most stylists pay booth rental or work on commission — tips directly supplement their take-home pay for every hour they spend on your hair." },
-    { q: "How much do you tip for a simple trim?", a: "Tip 15–20% even for a simple trim. If the haircut costs $20–30, use a $5 minimum rather than a strict percentage — percentage math produces amounts too small to be meaningful on cheap services." },
-    { q: "Should I tip more for a long appointment?", a: "Yes. A 4-hour color correction deserves more acknowledgment than a 30-minute trim. If your appointment ran significantly over time or required exceptional skill and problem-solving, tipping 22–25% is appropriate and appreciated." }
-  ];
-
-  (function buildFAQ() {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details');
-      details.className = 'group';
-      const summary = document.createElement('summary');
-      summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span');
-      qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div');
-      answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a;
-      answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv);
-      div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 
 
   // Custom % handler

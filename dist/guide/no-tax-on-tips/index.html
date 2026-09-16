@@ -12,27 +12,53 @@
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
+
   <title>No Tax on Tips Calculator — Federal Tax Savings on Tip Income</title>
   <meta name="description" content="No Tax on Tips calculator. Estimate your federal tax savings on tip income. Covers the $25,000 cap, $150K-$160K phase-out, and FICA taxes that still apply.">
   <link rel="canonical" href="https://tipright.app/guide/no-tax-on-tips">
+
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tipright.app/guide/no-tax-on-tips">
   <meta property="og:title" content="No Tax on Tips Calculator — Federal Tax Savings">
   <meta property="og:description" content="Calculate your federal tax savings under the No Tax on Tips Act. For service workers earning tip income.">
   <meta property="og:image" content="https://tipright.app/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="No Tax on Tips Calculator — Federal Tax Savings">
+  <meta name="twitter:description" content="Calculate your federal tax savings under the No Tax on Tips Act. For service workers earning tip income.">
+  <meta name="twitter:image" content="https://tipright.app/assets/img/og-default.png">
+
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -40,23 +66,24 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
+      /* notice callouts */
       .bg-blue-50 { background-color: #0D1A2E !important; }
       .border-blue-200 { border-color: #1E3A5F !important; }
       .text-blue-800 { color: #93C5FD !important; }
@@ -64,21 +91,10 @@
       .border-amber-200 { border-color: #4D3800 !important; }
       .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  </style>
+
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -90,36 +106,108 @@
         "url": "https://tipright.app/guide/no-tax-on-tips",
         "applicationCategory": "FinanceApplication",
         "operatingSystem": "Any",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" }
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
-          { "@type": "ListItem", "position": 2, "name": "No Tax on Tips Calculator", "item": "https://tipright.app/guide/no-tax-on-tips" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "No Tax on Tips Calculator",
+            "item": "https://tipright.app/guide/no-tax-on-tips"
+          }
         ]
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "What is the No Tax on Tips Act?", "acceptedAnswer": { "@type": "Answer", "text": "The No Tax on Tips Act, signed into law in July 2025, exempts tip income from federal income tax for eligible service workers. Workers earning under $160,000 in adjusted gross income can exclude up to $25,000 in tip income per year from federal taxation. The provision is effective for tax years 2025 through 2028." } },
-          { "@type": "Question", "name": "Who qualifies for no tax on tips?", "acceptedAnswer": { "@type": "Answer", "text": "Service workers in tipped occupations — including restaurant servers, bartenders, hair stylists, nail technicians, tattoo artists, hotel staff, massage therapists, and other personal service workers — qualify if their adjusted gross income (AGI) is under $160,000. The deduction phases out between $150,000 and $160,000 AGI." } },
-          { "@type": "Question", "name": "How much can I save with no tax on tips?", "acceptedAnswer": { "@type": "Answer", "text": "Savings depend on your total tip income and tax bracket. A worker in the 22% tax bracket who earns $20,000 in tips saves approximately $4,400 per year. Workers in higher brackets save proportionally more. The maximum excludable tip income is $25,000 per year." } },
-          { "@type": "Question", "name": "Do I still pay Social Security and Medicare taxes on tips?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The No Tax on Tips Act exempts tip income from federal income tax only. FICA taxes (Social Security at 6.2% and Medicare at 1.45%) still apply to all tip income. Your employer still withholds FICA on reported tips." } },
-          { "@type": "Question", "name": "Do I still need to report tips to my employer?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All tip reporting requirements remain in effect. You must still report cash tips of $20 or more per month to your employer. The exemption is applied when you file your federal tax return, not at the time of receipt." } },
-          { "@type": "Question", "name": "When does the No Tax on Tips provision expire?", "acceptedAnswer": { "@type": "Answer", "text": "The No Tax on Tips provision covers tax years 2025, 2026, 2027, and 2028. Without Congressional action, the exemption expires after the 2028 tax year. Watch for updates as the 2028 expiration approaches." } },
-          { "@type": "Question", "name": "Does no tax on tips apply to state taxes?", "acceptedAnswer": { "@type": "Answer", "text": "The No Tax on Tips Act is a federal law only. State income tax treatment of tip income varies by state — most states have not enacted conforming legislation. Check your state's tax authority for guidance on state-level tip income taxation." } },
-          { "@type": "Question", "name": "Are credit card tips treated the same as cash tips?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The federal tax exemption applies to all tip income regardless of payment method — cash, credit card, digital payment, or any other form. The source or payment method does not affect eligibility." } }
+          {
+            "@type": "Question",
+            "name": "What is the No Tax on Tips Act?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The No Tax on Tips Act, signed in July 2025, exempts tip income from federal income tax for eligible service workers. Workers earning under $160,000 AGI can exclude up to $25,000 in annual tip income from federal taxation. The provision covers tax years 2025–2028."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who qualifies for no tax on tips?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Service workers in tipped occupations — restaurant servers, bartenders, hair stylists, nail technicians, tattoo artists, hotel staff, massage therapists, delivery drivers, and others — qualify if their AGI is under $160,000. The deduction phases out between $150,000 and $160,000 AGI."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much can I save with no tax on tips?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Savings depend on your tip income and tax bracket. A worker in the 22% bracket earning $20,000 in tips saves approximately $4,400 per year. Workers in higher brackets save proportionally more, up to the $25,000 maximum exclusion."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I still pay Social Security and Medicare taxes on tips?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The No Tax on Tips Act exempts tip income from federal income tax only. FICA taxes (Social Security at 6.2% and Medicare at 1.45%) still apply to all tip income."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I still need to report tips to my employer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All tip reporting requirements remain in effect. You must still report cash tips of $20 or more per month to your employer. The exemption is applied when you file your federal tax return."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When does the No Tax on Tips provision expire?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The provision covers tax years 2025 through 2028. Without Congressional renewal, it expires after the 2028 tax year. Watch for legislative updates as the expiration approaches."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does no tax on tips apply to state taxes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No — this is a federal law only. Most states have not enacted conforming legislation. State income tax on tip income is unchanged. Check your state's tax authority for guidance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are credit card tips treated the same as cash tips?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The exemption applies to all tip income regardless of payment method — cash, credit card, digital payment, or any other form."
+            }
+          }
         ]
       }
     ]
   }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2" style="text-decoration:none">
@@ -251,7 +339,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">What is the No Tax on Tips Act?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The No Tax on Tips Act, signed in July 2025, exempts tip income from federal income tax for eligible service workers. Workers earning under $160,000 AGI can exclude up to $25,000 in annual tip income from federal taxation. The provision covers tax years 2025–2028.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Who qualifies for no tax on tips?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Service workers in tipped occupations — restaurant servers, bartenders, hair stylists, nail technicians, tattoo artists, hotel staff, massage therapists, delivery drivers, and others — qualify if their AGI is under $160,000. The deduction phases out between $150,000 and $160,000 AGI.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much can I save with no tax on tips?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Savings depend on your tip income and tax bracket. A worker in the 22% bracket earning $20,000 in tips saves approximately $4,400 per year. Workers in higher brackets save proportionally more, up to the $25,000 maximum exclusion.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do I still pay Social Security and Medicare taxes on tips?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. The No Tax on Tips Act exempts tip income from federal income tax only. FICA taxes (Social Security at 6.2% and Medicare at 1.45%) still apply to all tip income.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do I still need to report tips to my employer?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. All tip reporting requirements remain in effect. You must still report cash tips of $20 or more per month to your employer. The exemption is applied when you file your federal tax return.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">When does the No Tax on Tips provision expire?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The provision covers tax years 2025 through 2028. Without Congressional renewal, it expires after the 2028 tax year. Watch for legislative updates as the expiration approaches.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Does no tax on tips apply to state taxes?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>No — this is a federal law only. Most states have not enacted conforming legislation. State income tax on tip income is unchanged. Check your state's tax authority for guidance.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Are credit card tips treated the same as cash tips?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. The exemption applies to all tip income regardless of payment method — cash, credit card, digital payment, or any other form.</div></div></details></div></div>
   </section>
 
   <!-- Related calculators -->
@@ -270,16 +358,16 @@
 </main>
 
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
   <p class="mt-1">
     <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
-     · 
+     &middot;
     <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     · 
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
+     &middot;
     <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
@@ -353,35 +441,8 @@
   agiInput.addEventListener('input', calculate);
 
   // FAQ
-  const FAQ_DATA = [
-    { q: "What is the No Tax on Tips Act?", a: "The No Tax on Tips Act, signed in July 2025, exempts tip income from federal income tax for eligible service workers. Workers earning under $160,000 AGI can exclude up to $25,000 in annual tip income from federal taxation. The provision covers tax years 2025–2028." },
-    { q: "Who qualifies for no tax on tips?", a: "Service workers in tipped occupations — restaurant servers, bartenders, hair stylists, nail technicians, tattoo artists, hotel staff, massage therapists, delivery drivers, and others — qualify if their AGI is under $160,000. The deduction phases out between $150,000 and $160,000 AGI." },
-    { q: "How much can I save with no tax on tips?", a: "Savings depend on your tip income and tax bracket. A worker in the 22% bracket earning $20,000 in tips saves approximately $4,400 per year. Workers in higher brackets save proportionally more, up to the $25,000 maximum exclusion." },
-    { q: "Do I still pay Social Security and Medicare taxes on tips?", a: "Yes. The No Tax on Tips Act exempts tip income from federal income tax only. FICA taxes (Social Security at 6.2% and Medicare at 1.45%) still apply to all tip income." },
-    { q: "Do I still need to report tips to my employer?", a: "Yes. All tip reporting requirements remain in effect. You must still report cash tips of $20 or more per month to your employer. The exemption is applied when you file your federal tax return." },
-    { q: "When does the No Tax on Tips provision expire?", a: "The provision covers tax years 2025 through 2028. Without Congressional renewal, it expires after the 2028 tax year. Watch for legislative updates as the expiration approaches." },
-    { q: "Does no tax on tips apply to state taxes?", a: "No — this is a federal law only. Most states have not enacted conforming legislation. State income tax on tip income is unchanged. Check your state's tax authority for guidance." },
-    { q: "Are credit card tips treated the same as cash tips?", a: "Yes. The exemption applies to all tip income regardless of payment method — cash, credit card, digital payment, or any other form." }
-  ];
-
-  (function () {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div'); div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details'); details.className = 'group';
-      const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a; answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv); div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 })();
 </script>
 </body>

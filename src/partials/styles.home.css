@@ -1,0 +1,17 @@
+    /* Card height consistency */
+    .service-card { height: 100%; align-items: center; }
+    /* Orphan card: span full width on mobile 2-col */
+    @media (max-width: 479px) {
+      .service-grid > a:last-child:nth-child(odd) { grid-column: span 2; }
+    }
+    @media (prefers-color-scheme: dark) {
+      #search-input { color: #F0F0EE !important; }
+      /* Hero section dark mode */
+      header { background: #0D2820 !important; border-color: #1D4A35 !important; }
+      header h1 { color: #22B884 !important; }
+      header p  { color: #1D9E75 !important; }
+      header .bg-white { background: #1A201D !important; border-color: #2A4A38 !important; }
+      /* the inputs inside the hero panel are .bg-white too - the panel's
+         decorative outline must not override their 3:1 field border */
+      header .bg-white.border-line { border-color: #687570 !important; }
+    }

@@ -2,7 +2,38 @@
 
 Website: [tipright.app](https://tipright.app)
 
-Static pages in `dist/`, served by a Cloudflare Worker (`wrangler.json`).
+A Cloudflare Worker serving static pages (`wrangler.json`). `dist/` is build
+output — **edit `src/`, not `dist/`.**
+
+## Layout
+
+```
+src/
+  pages/<route>.html   front-matter (JSON) + that page's body, verbatim
+  partials/
+    styles.css         the one inline <style> every page carries
+    styles.home.css    extra rules only the homepage needs
+    logo.svg           the wordmark's mark
+  calculator.js        the shared calculator
+  tailwind.css         Tailwind entry point
+scripts/
+  build.mjs            assets + pages
+  lib/layout.mjs       head, nav, footer, FAQ, FAQPage schema
+  lib/pages.mjs        assembles src/pages + partials into dist
+```
+
+A page file is its own body with four markers the build fills:
+`<!--@nav-->`, `<!--@footer-->`, `<!--@calculator-->`, `<!--@faq-->`. Everything
+else in that file is the page's own content and is copied through untouched.
+
+The head, the nav, the footer and the dark-mode CSS are generated. They used to
+be pasted into all 25 pages, which is how the same stylesheet ended up in nine
+versions, how three footers grew a link to the page you were already on, and how
+eight pages ended up showing one FAQ while telling Google a different one.
+
+The FAQ is rendered at build time from the `faq` array in the page's
+front-matter, and the FAQPage structured data is generated from that same array,
+so the two cannot disagree.
 
 ## Build & deploy
 
@@ -11,16 +42,8 @@ npm install
 npm run deploy          # build, then wrangler deploy
 ```
 
-`npm run build` compiles `src/tailwind.css` and copies `src/calculator.js`
-into `dist/assets/` under content-hashed filenames, then repoints every page
-at the new names. The hash is what lets `/assets/css/*` and `/assets/js/*` be
-cached for a year.
+`npm run build` compiles the stylesheet, copies `src/calculator.js`, writes both
+into `dist/assets/` under content-hashed filenames, renders every page, and
+writes the matching Cache-Control rules into `dist/_headers`.
 
-**Run it after any change to markup or to `src/calculator.js`.** The stylesheet
-holds only the utility classes found in those files, so a class added without a
-rebuild has no CSS behind it and silently does nothing. `npm run deploy` does
-the rebuild for you; a bare `wrangler deploy` does not.
-
-The pages used to pull `cdn.tailwindcss.com` and compile in the visitor's
-browser instead — 407 KB of render-blocking JavaScript per page view, against
-an 18 KB stylesheet now (4 KB gzipped).
+**A bare `wrangler deploy` does not build.** `npm run deploy` does.

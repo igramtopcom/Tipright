@@ -1,0 +1,342 @@
+---
+{
+  "route": "/tip/airport-shuttle",
+  "title": "Airport Shuttle Tip Calculator — How Much to Tip?",
+  "description": "Airport shuttle tip calculator. Shared shuttles: $2-5 per person. Private: 15-20%. Enter your fare for instant tip amounts plus luggage handling guidance.",
+  "canonical": "https://tipright.app/tip/airport-shuttle",
+  "ogTitle": "Airport Shuttle Tip Calculator — How Much to Tip?",
+  "ogDescription": "Free airport shuttle tip calculator for shared, private, and hotel shuttles.",
+  "ogImage": "https://tipright.app/assets/img/og-airport-shuttle.png",
+  "twitterTitle": "Airport Shuttle Tip Calculator — How Much to Tip?",
+  "twitterDescription": "Free airport shuttle tip calculator for shared, private, and hotel shuttles.",
+  "twitterImage": "https://tipright.app/assets/img/og-airport-shuttle.png",
+  "bodyClass": "bg-gray-50 text-gray-800 font-sans min-h-screen",
+  "navRight": {
+    "href": "/",
+    "label": "All calculators →"
+  },
+  "footerClass": "border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500",
+  "footerLinks": [
+    {
+      "href": "/about",
+      "label": "About"
+    },
+    {
+      "href": "/",
+      "label": "All calculators"
+    },
+    {
+      "href": "/privacy",
+      "label": "Privacy"
+    },
+    {
+      "href": "/terms",
+      "label": "Terms"
+    },
+    {
+      "href": "/contact",
+      "label": "Contact"
+    }
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Airport Shuttle Tip Calculator",
+          "url": "https://tipright.app/tip/airport-shuttle",
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "tipright.app",
+            "url": "https://tipright.app"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://tipright.app"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Airport Shuttle Tip Calculator",
+              "item": "https://tipright.app/tip/airport-shuttle"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much should you tip an airport shuttle driver?",
+      "a": "Tip $2–5 per person for shared shuttles, or 15–20% of fare for private shuttles. Add $1–2 per bag for luggage handling. For 2 people with 4 bags on a shared shuttle, budget $10–14 total."
+    },
+    {
+      "q": "How much do you tip a shared airport shuttle driver?",
+      "a": "Tip $2–5 per passenger for shared shuttles. Add $1–2 per bag the driver handled. Tip toward the higher end for longer routes, extra waiting, or early/late timing."
+    },
+    {
+      "q": "How much do you tip a private airport shuttle driver?",
+      "a": "Tip 15–20% of the fare for private shuttles. For a $50 transfer, tip $8–10. Add more for luggage handling, traffic navigation, or wait time due to flight delays."
+    },
+    {
+      "q": "Do you tip a hotel shuttle driver?",
+      "a": "Yes — tip $2–5 per person or $5–10 total each way. Hotel shuttles are often free, but drivers still earn modest wages. Tip at the end of each ride, both to and from the airport."
+    },
+    {
+      "q": "Should you tip per person or total for airport shuttles?",
+      "a": "For shared shuttles, tip per person ($2–5 each) plus extra per bag. For private shuttles, tip on the total fare (15–20%). Both approaches produce similar totals for most trips."
+    },
+    {
+      "q": "How much extra do you tip for luggage handling?",
+      "a": "Add $1–2 per bag for each suitcase or large bag the driver loaded and unloaded. For 4 bags, that's $4–8 extra on top of your base tip."
+    },
+    {
+      "q": "Do you tip if the shuttle is included in a hotel package?",
+      "a": "Yes. 'Included shuttle' means the transport is free, not the driver. Tip $2–5 per person or $5–10 total for any complimentary hotel shuttle."
+    },
+    {
+      "q": "Is it rude not to tip an airport shuttle driver?",
+      "a": "Yes. Shuttle drivers earn near minimum wage and depend on tips. Not tipping after a good ride — especially with luggage handling — is considered rude."
+    },
+    {
+      "q": "Should you tip more for early morning or late night pickups?",
+      "a": "Yes. Tip toward the higher end for pickups before 6am or after 11pm. These drivers work inconvenient hours specifically for your travel schedule."
+    },
+    {
+      "q": "How do you tip for a long-distance airport transfer?",
+      "a": "Tip 15–20% of the fare for transfers over an hour, regardless of shared or private format. Long transfers involve significantly more of the driver's time and fuel."
+    }
+  ]
+}
+---
+<!--@nav-->
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-[672px] mx-auto px-4 py-6">
+    <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">Airport Shuttle Tip Calculator</h1>
+    <p class="text-gray-500 text-sm mt-1">How much should you tip your airport shuttle driver?</p>
+  </div>
+</header>
+<main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
+  <section id="calculator" aria-label="Airport shuttle tip calculator">
+    <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
+      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">Shuttle fare <span class="text-gray-500 font-normal">(or enter flat tip amount)</span></label>
+      <div class="relative mb-4">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
+        <input id="cost" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
+          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
+      </div>
+      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs text-gray-500 self-center">Quick:</span>
+        <button data-preset="15" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$15</button>
+        <button data-preset="25" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$25</button>
+        <button data-preset="40" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$40</button>
+        <button data-preset="60" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$60</button>
+      </div>
+      <!-- Per-person callout -->
+      <div class="calc-note mb-5 flex items-start gap-2.5 bg-brand-pale border border-brand rounded-lg px-4 py-3">
+        <svg class="w-4 h-4 text-brand-dark flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <p class="text-xs text-brand-dark leading-relaxed"><strong>Shared shuttle:</strong> $2–5 per person + $1–2 per bag. Use the split field for per-person tips. <strong>Private shuttle:</strong> 15–20% of fare.</p>
+      </div>
+      <details class="mb-5 group">
+        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
+          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          Split tip across passengers
+        </summary>
+        <div class="mt-3 flex items-center gap-3 pl-1">
+          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of passengers:</label>
+          <input id="split" type="number" value="1" min="1" max="20" class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors">
+        </div>
+      </details>
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
+        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your shuttle fare above</div>
+      </div>
+            <!-- Custom tip % -->
+      <div class="calc-after mt-4 flex items-center gap-3">
+        <label for="custom-pct" class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</label>
+        <div class="relative flex-1 max-w-[140px]">
+          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
+            autocomplete="off" style="font-size:16px"
+            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
+        </div>
+        <div id="custom-result" class="hidden flex-col items-start">
+          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
+          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
+          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
+        </div>
+      </div>
+
+      <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
+        <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          Share this calculation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom ref table: shuttle type guide -->
+  <section>
+    <h2 class="text-lg font-semibold text-gray-800 mb-3">Tip guide by shuttle type</h2>
+    <div class="overflow-x-auto rounded-xl border border-line">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-brand-dark text-white">
+            <th class="px-4 py-3 text-left font-medium text-[13px]">Shuttle type</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">Min</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px] bg-brand-dark">Standard ★</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">+ Luggage</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">Notes</th>
+          </tr>
+        </thead>
+        <tbody id="ref-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="space-y-7 text-gray-700 leading-relaxed" style="max-width:65ch">
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">How much should you tip an airport shuttle driver?</h2>
+      <p>Tip airport shuttle drivers <strong>$2–5 per person</strong> for shared shuttles, or <strong>15–20% of the fare</strong> for private shuttles. Add <strong>$1–2 per bag</strong> if the driver loaded and unloaded your luggage. For a party of 2 with 4 bags on a shared shuttle, budget $10–14 total.</p>
+      <p class="mt-3">Hotel shuttles are often free, but the same tipping rules apply, $2–5 per person each way. "Complimentary shuttle" means the ride is included in your hotel stay, not that the driver works for free. Tip at the end of each leg of the trip.</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <ul class="space-y-2 text-gray-600 list-disc pl-5">
+        <li><strong>Shared vs private:</strong> Shared shuttles use the per-person flat model ($2–5/person). Private car services use the percentage model (15–20% of fare). The math comes out similar for most trips.</li>
+        <li><strong>Luggage handling:</strong> Add $1–2 per bag for every suitcase or large bag the driver loaded into the vehicle and unloaded at drop-off. This is standard and widely expected.</li>
+        <li><strong>Trip length:</strong> Standard airport routes (15–30 min) warrant the base tip. Transfers over an hour merit 15–20% regardless of shared or private format.</li>
+        <li><strong>Timing:</strong> Early morning (before 6am) and late night (after 11pm) pickups warrant tipping at the higher end. These drivers work inconvenient hours for your schedule.</li>
+        <li>If the driver waited extra time due to a flight delay or slow baggage claim, acknowledge it with a stronger tip.</li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Airport shuttle tipping etiquette</h2>
+      <p>Have cash ready before the shuttle arrives. Fumbling for bills while other passengers wait is awkward. Have small bills ($1s and $5s) on hand for shared shuttles. For pre-booked private services, you can add the tip when paying by card at booking or at drop-off.</p>
+      <p class="mt-3">For <strong>multi-stop shared shuttles</strong> where you're not the first drop-off, the driver may have carried your bags longer than expected. Acknowledge that with the standard tip or slightly above when you exit.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
+    <div class="space-y-2" id="faq-container"><!--@faq--></div>
+  </section>
+
+  <section>
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Related tip calculators</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h-.8A1.2 1.2 0 0 1 3 15.8v-2.3c0-.3.1-.6.2-.8L5.4 8a2 2 0 0 1 1.8-1.1h9.6A2 2 0 0 1 18.6 8l2.2 4.7c.1.2.2.5.2.8v2.3A1.2 1.2 0 0 1 19.8 17H19"/><path d="M3.4 12.8h17.2"/><circle cx="7.2" cy="17" r="1.9"/><circle cx="16.8" cy="17" r="1.9"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Valet Parking</p><p class="text-xs text-gray-500 mt-0.5">Drop-off & pick-up</p></div></a>
+      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6v14.5"/><path d="M3 13.5h15a3 3 0 0 1 3 3v2H3z"/><path d="M6.5 13.5v-2h4.5v2"/><path d="M21 18.5v2"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hotel Housekeeping</p><p class="text-xs text-gray-500 mt-0.5">Per-night tips</p></div></a>
+      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.5h17V20.5h-17z"/><path d="M3.5 7.5 5.5 3.5h13l2 4"/><path d="M12 7.5v13"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Movers Tip</p><p class="text-xs text-gray-500 mt-0.5">Per-mover guide</p></div></a>
+      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.8 8h12.4l-1.1 12.3a1.2 1.2 0 0 1-1.2 1.1H8.1a1.2 1.2 0 0 1-1.2-1.1z"/><path d="M9 8V6.4a3 3 0 0 1 6 0V8"/><path d="M9 11.5h6"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Food Delivery</p><p class="text-xs text-gray-500 mt-0.5">Delivery driver tips</p></div></a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 13.2V9.5a1.5 1.5 0 0 1 3 0v2.3"/><path d="M11.5 11.8V6.8a1.5 1.5 0 0 1 3 0v5"/><path d="M14.5 11.8V8.8a1.5 1.5 0 0 1 3 0v6.4a6 6 0 0 1-6 6h-.8a5.2 5.2 0 0 1-5.2-5.2v-3.6a1.5 1.5 0 0 1 3 0v1.6"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage Tip</p><p class="text-xs text-gray-500 mt-0.5">Therapist tipping</p></div></a>
+      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5v-15A1.5 1.5 0 0 1 6 3z"/><path d="M7.5 6.5h9V10h-9z"/><path d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17.5h.01M12 17.5h.01M16 17.5h.01"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">All Calculators</p><p class="text-xs text-gray-500 mt-0.5">18 tip calculators</p></div></a>
+    </div>
+  </section>
+</main>
+<!--@footer-->
+<!--@calculator-->
+<script>
+(function () {
+  const costInput = document.getElementById('cost');
+  const splitInput = document.getElementById('split');
+  const resultsEl  = document.getElementById('results');
+  const shareBtn   = document.getElementById('share-btn');
+  function update() {
+    const cost  = TR.parseCost(costInput.value);
+    const split = parseInt(splitInput?.value) || 1;
+    if (cost === 0) { resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your shuttle fare above</div>'; TR.writeURL({ cost: costInput.value, split }); return; }
+    TR.renderResults(TR.calcTips(cost, split, 0), split, resultsEl);
+    TR.writeURL({ cost: costInput.value, split });
+  }
+  const state = TR.readURL();
+  if (state.cost) { costInput.value = state.cost; if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; } update(); }
+  costInput.addEventListener('input', update);
+  splitInput.addEventListener('input', update);
+  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
+  document.querySelectorAll('[data-preset]').forEach(btn => { btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); }); });
+
+  // Custom ref table: by shuttle type
+  (function () {
+    const tbody = document.getElementById('ref-tbody');
+    if (!tbody) return;
+    const rows = [
+      { type: 'Shared shuttle',      min: '$2/person', std: '$4/person',  bag: '+$1–2/bag', note: 'Use split field' },
+      { type: 'Hotel shuttle (free)',min: '$2/person', std: '$4/person',  bag: '+$1–2/bag', note: 'Each way' },
+      { type: 'Private transfer',    min: '$8 (15%)',  std: '$10 (20%)', bag: '+$2/bag',   note: 'On fare total' },
+      { type: 'Long-distance (1hr+)',min: '15%',       std: '20%',       bag: '+$2/bag',   note: 'Any type' },
+      { type: 'Early/late pickup',   min: '$4/person', std: '$6/person', bag: '+$2/bag',   note: 'Before 6am / after 11pm' },
+    ];
+    rows.forEach((r, i) => {
+      const tr = document.createElement('tr'); tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+      [{ val: r.type, cls: 'font-medium text-gray-700' }, { val: r.min, cls: 'text-right text-gray-600' }, { val: r.std, cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' }, { val: r.bag, cls: 'text-right text-gray-600' }, { val: r.note, cls: 'text-right text-gray-500 text-xs' }].forEach(c => { const td = document.createElement('td'); td.className = 'px-4 py-2.5 text-sm ' + c.cls; td.textContent = c.val; tr.appendChild(td); });
+      tbody.appendChild(tr);
+    });
+  })();
+
+  
+  
+
+  // Custom % handler
+  var customPctInput = document.getElementById('custom-pct');
+  var customResult   = document.getElementById('custom-result');
+  var customTipAmt   = document.getElementById('custom-tip-amount');
+  var customTotalAmt = document.getElementById('custom-total-amount');
+  var customPerPerson = document.getElementById('custom-per-person');
+
+  if (customPctInput) {
+    function updateCustom() {
+      var pct  = parseFloat(customPctInput.value);
+      var cost = TR.parseCost(costInput.value);
+      var taxEl = document.getElementById('tax');
+      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
+      var sp = parseInt(splitInput && splitInput.value) || 1;
+
+      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
+        var tip        = TR.round2(cost * pct / 100);
+        var grandTotal = TR.round2(cost + tax + tip);
+        var ceiled     = Math.ceil(tip);
+
+        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
+        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
+
+        if (sp > 1 && customPerPerson) {
+          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
+          customPerPerson.classList.remove('hidden');
+        } else if (customPerPerson) {
+          customPerPerson.classList.add('hidden');
+        }
+
+        customResult.classList.remove('hidden');
+        customResult.classList.add('flex');
+      } else {
+        customResult.classList.add('hidden');
+        customResult.classList.remove('flex');
+        if (customPerPerson) customPerPerson.classList.add('hidden');
+      }
+    }
+
+    customPctInput.addEventListener('input', updateCustom);
+    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+    var taxInput = document.getElementById('tax');
+    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+  }
+
+})();
+</script>

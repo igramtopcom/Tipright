@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, readdirSync, unlinkSync, mkdirSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
+import { buildPages } from './lib/pages.mjs';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -43,6 +44,11 @@ for (const a of assets) {
     ref: new RegExp(`/${a.dir}/${a.base}(?:[.][0-9a-f]{10})?[.]${a.ext}`, 'g') });
 }
 rmSync(join(root, '.cache'), { recursive: true, force: true });
+
+// pages first: they reference the hashed asset names
+const cssAsset = emitted.find((a) => a.ext === 'css');
+const jsAsset = emitted.find((a) => a.ext === 'js');
+const built = buildPages(root, dist, `/${jsAsset.dir}/${jsAsset.name}`, `/${cssAsset.dir}/${cssAsset.name}`);
 
 const pages = [];
 (function walk(dir) {
@@ -87,6 +93,7 @@ const updated = start === -1
 if (updated !== headers) writeFileSync(headersPath, updated);
 
 console.log('');
+console.log(`${built.length} pages rendered, ${built.reduce((n, p) => n + p.faq, 0)} FAQ entries inlined`);
 for (const a of emitted) {
   console.log(`${a.name.padEnd(28)} ${(a.bytes / 1024).toFixed(1).padStart(6)} KB   ${patched.get(a.name)} page(s)`);
 }

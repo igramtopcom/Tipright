@@ -12,27 +12,53 @@
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
+
   <title>US Tipping Etiquette Guide — How Much to Tip for Every Service</title>
   <meta name="description" content="Complete US tipping guide for 19 services. How much to tip, when to use cash, and the Groupon rule explained. Free calculators included for every service.">
   <link rel="canonical" href="https://tipright.app/guide/tipping-etiquette-us">
-  <meta property="og:type" content="article">
+
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://tipright.app/guide/tipping-etiquette-us">
   <meta property="og:title" content="US Tipping Etiquette Guide — How Much to Tip for Every Service">
   <meta property="og:description" content="The complete US tipping guide for 18 services with free calculators.">
   <meta property="og:image" content="https://tipright.app/assets/img/og-default.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="US Tipping Etiquette Guide — How Much to Tip for Every Service">
+  <meta name="twitter:description" content="The complete US tipping guide for 18 services with free calculators.">
+  <meta name="twitter:image" content="https://tipright.app/assets/img/og-default.png">
+
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
       .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -40,26 +66,35 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
     }
   </style>
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,36 +104,104 @@
         "headline": "US Tipping Etiquette Guide — How Much to Tip for Every Service",
         "description": "The complete guide to tipping etiquette in the United States for 18 personal services.",
         "url": "https://tipright.app/guide/tipping-etiquette-us",
-        "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        },
         "dateModified": "2026-03-01"
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
-          { "@type": "ListItem", "position": 2, "name": "US Tipping Etiquette Guide", "item": "https://tipright.app/guide/tipping-etiquette-us" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "US Tipping Etiquette Guide",
+            "item": "https://tipright.app/guide/tipping-etiquette-us"
+          }
         ]
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "Is tipping mandatory in the US?", "acceptedAnswer": { "@type": "Answer", "text": "Tipping is not legally required in the US, but it is strongly expected for most personal services. For restaurant servers, hair stylists, and similar service workers, not tipping for satisfactory service is considered rude. In many industries, tipped workers earn a sub-minimum hourly wage with tips making up the difference." } },
-          { "@type": "Question", "name": "How much should you tip in general?", "acceptedAnswer": { "@type": "Answer", "text": "The standard tip across most US services is 15–20% of the pre-tax total. For services with flat-rate norms like valet parking and hotel housekeeping, tip $2–5 per interaction rather than a percentage." } },
-          { "@type": "Question", "name": "Should you tip on the pre-tax or post-tax amount?", "acceptedAnswer": { "@type": "Answer", "text": "Tip on the pre-tax subtotal. Pre-tax tipping is the standard convention in the US. The practical difference is small for most transactions." } },
-          { "@type": "Question", "name": "Is it okay to tip less for bad service?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — tip based on quality. For poor service, 10–15% is acceptable. For satisfactory service, 18–20% is standard. Consider whether the issue was the server's fault before reducing a tip significantly." } },
-          { "@type": "Question", "name": "Should you tip if a service charge is already added?", "acceptedAnswer": { "@type": "Answer", "text": "Check your bill. If gratuity is already included, you don't need to tip again. Some service fees don't go to staff — ask if unclear." } },
-          { "@type": "Question", "name": "Should you tip on a Groupon or discounted price?", "acceptedAnswer": { "@type": "Answer", "text": "Always tip based on the full price of the service, not the discounted amount you paid. A $90 massage covered by a $40 Groupon warrants an $18 tip (20% of $90). The worker performed the full service regardless of the discount." } },
-          { "@type": "Question", "name": "How much do you tip for delivery services?", "acceptedAnswer": { "@type": "Answer", "text": "Tip 15–20% for food delivery, with a $3–5 minimum regardless of order size. For grocery delivery, 10–15% with a $5 minimum. The delivery fee goes to the platform, not the driver." } },
-          { "@type": "Question", "name": "When did tipping culture start in the US?", "acceptedAnswer": { "@type": "Answer", "text": "Tipping became widespread in the US in the early 20th century, partly enabled by laws allowing employers to pay tipped workers below minimum wage. The federal tipped minimum wage of $2.13/hour has been unchanged since 1991, making tips essential income rather than a bonus for most service workers." } }
+          {
+            "@type": "Question",
+            "name": "Is tipping mandatory in the US?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tipping is not legally required, but strongly expected for most personal services. For restaurant servers, hair stylists, and similar workers, not tipping for satisfactory service is considered rude. In many industries, tipped workers earn a sub-minimum wage with tips making up the difference."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much should you tip in general?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard tip across most US services is 15–20% of the pre-tax total. For flat-rate services like valet and hotel housekeeping, tip $2–5 per interaction rather than a percentage."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should you tip on the pre-tax or post-tax amount?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip on the pre-tax subtotal — this is the standard convention. The practical difference is small for most transactions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it okay to tip less for bad service?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. For poor service, 10–15% is acceptable. For satisfactory service, 18–20% is standard. Consider whether the issue was within the server's control before reducing a tip significantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should you tip if a service charge is already added?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Check your bill. If gratuity is already included, you don't need to tip again. Some service fees don't go to staff — ask if unclear."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should you tip on a Groupon or discounted price?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Always tip on the full price of the service, not the discounted amount you paid. A $90 massage covered by a $40 Groupon still warrants an $18 tip (20% of $90). The worker performed the full service regardless of the discount."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip for delivery services?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 15–20% for food delivery with a $3–5 minimum. For grocery delivery, 10–15% with a $5 minimum. The delivery fee goes to the platform, not the driver — always tip separately."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When did tipping culture start in the US?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tipping became widespread in the early 20th century, enabled partly by laws allowing employers to pay tipped workers below minimum wage. The federal tipped minimum wage of $2.13/hour has been unchanged since 1991, making tips essential income rather than a bonus for most service workers."
+            }
+          }
         ]
       }
     ]
   }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2" style="text-decoration:none">
@@ -324,7 +427,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is tipping mandatory in the US?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping is not legally required, but strongly expected for most personal services. For restaurant servers, hair stylists, and similar workers, not tipping for satisfactory service is considered rude. In many industries, tipped workers earn a sub-minimum wage with tips making up the difference.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip in general?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The standard tip across most US services is 15–20% of the pre-tax total. For flat-rate services like valet and hotel housekeeping, tip $2–5 per interaction rather than a percentage.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip on the pre-tax or post-tax amount?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip on the pre-tax subtotal — this is the standard convention. The practical difference is small for most transactions.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it okay to tip less for bad service?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. For poor service, 10–15% is acceptable. For satisfactory service, 18–20% is standard. Consider whether the issue was within the server's control before reducing a tip significantly.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip if a service charge is already added?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Check your bill. If gratuity is already included, you don't need to tip again. Some service fees don't go to staff — ask if unclear.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip on a Groupon or discounted price?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Always tip on the full price of the service, not the discounted amount you paid. A $90 massage covered by a $40 Groupon still warrants an $18 tip (20% of $90). The worker performed the full service regardless of the discount.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for delivery services?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 15–20% for food delivery with a $3–5 minimum. For grocery delivery, 10–15% with a $5 minimum. The delivery fee goes to the platform, not the driver — always tip separately.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">When did tipping culture start in the US?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping became widespread in the early 20th century, enabled partly by laws allowing employers to pay tipped workers below minimum wage. The federal tipped minimum wage of $2.13/hour has been unchanged since 1991, making tips essential income rather than a bonus for most service workers.</div></div></details></div></div>
   </section>
 
   <!-- CTA -->
@@ -337,16 +440,16 @@
 </main>
 
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
   <p class="mt-1">
     <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
-     · 
+     &middot;
     <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     · 
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
+     &middot;
     <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
@@ -394,35 +497,8 @@
   })();
 
   // FAQ
-  const FAQ_DATA = [
-    { q: "Is tipping mandatory in the US?", a: "Tipping is not legally required, but strongly expected for most personal services. For restaurant servers, hair stylists, and similar workers, not tipping for satisfactory service is considered rude. In many industries, tipped workers earn a sub-minimum wage with tips making up the difference." },
-    { q: "How much should you tip in general?", a: "The standard tip across most US services is 15–20% of the pre-tax total. For flat-rate services like valet and hotel housekeeping, tip $2–5 per interaction rather than a percentage." },
-    { q: "Should you tip on the pre-tax or post-tax amount?", a: "Tip on the pre-tax subtotal — this is the standard convention. The practical difference is small for most transactions." },
-    { q: "Is it okay to tip less for bad service?", a: "Yes. For poor service, 10–15% is acceptable. For satisfactory service, 18–20% is standard. Consider whether the issue was within the server's control before reducing a tip significantly." },
-    { q: "Should you tip if a service charge is already added?", a: "Check your bill. If gratuity is already included, you don't need to tip again. Some service fees don't go to staff — ask if unclear." },
-    { q: "Should you tip on a Groupon or discounted price?", a: "Always tip on the full price of the service, not the discounted amount you paid. A $90 massage covered by a $40 Groupon still warrants an $18 tip (20% of $90). The worker performed the full service regardless of the discount." },
-    { q: "How much do you tip for delivery services?", a: "Tip 15–20% for food delivery with a $3–5 minimum. For grocery delivery, 10–15% with a $5 minimum. The delivery fee goes to the platform, not the driver — always tip separately." },
-    { q: "When did tipping culture start in the US?", a: "Tipping became widespread in the early 20th century, enabled partly by laws allowing employers to pay tipped workers below minimum wage. The federal tipped minimum wage of $2.13/hour has been unchanged since 1991, making tips essential income rather than a bonus for most service workers." }
-  ];
-
-  (function () {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div'); div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details'); details.className = 'group';
-      const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a; answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv); div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 })();
 </script>
 </body>

@@ -1,0 +1,54 @@
+    /* FAQ disclosure control - the circle is a class so dark mode can reach it */
+    .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #0F1210; color: #F0F0EE; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      .bg-white { background-color: #1A201D !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
+      .border-gray-200 { border-color: #2E3532 !important; }
+      .border-gray-100 { border-color: #2E3532 !important; }
+      .text-gray-900 { color: #F0F0EE !important; }
+      .text-gray-800 { color: #E0E0DE !important; }
+      .text-gray-700 { color: #C0C0BE !important; }
+      .text-gray-600 { color: #A0A09E !important; }
+      .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
+      /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
+         The hover variants are separate selectors and need naming too. */
+      .text-brand-dark,
+      .hover\:text-brand-dark:hover,
+      .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
+      .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
+      .border-line { border-color: #687570 !important; }
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
+      .bg-brand-pale { background-color: #0D2820 !important; }
+      .bg-brand-light { background-color: #143A2E !important; }
+      .bg-brand-light\/40 { background-color: #12332A !important; }
+      .bg-brand-light\/30 { background-color: #112E26 !important; }
+      .bg-brand\/20 { background-color: #14402F !important; }
+      .bg-brand\/30 { background-color: #1A4E3A !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
+    }

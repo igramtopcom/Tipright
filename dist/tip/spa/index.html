@@ -24,6 +24,7 @@
   <meta property="og:image" content="https://tipright.app/assets/img/og-spa.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Day Spa Tip Calculator — How Much to Tip at a Spa?">
   <meta name="twitter:description" content="Free day spa tip calculator for facials, body treatments, and full spa day packages.">
@@ -38,11 +39,26 @@
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -50,70 +66,164 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
       .bg-amber-50 { background-color: #1A1200 !important; }
       .border-amber-200 { border-color: #4D3800 !important; }
       .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
+  </style>
 
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebApplication", "name": "Day Spa Tip Calculator", "description": "Free day spa tip calculator for any service total.", "url": "https://tipright.app/tip/spa", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" } },
-      { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" }, { "@type": "ListItem", "position": 2, "name": "Day Spa Tip Calculator", "item": "https://tipright.app/tip/spa" } ] },
-      { "@type": "FAQPage", "mainEntity": [
-        { "@type": "Question", "name": "How much should you tip at a day spa?", "acceptedAnswer": { "@type": "Answer", "text": "Tip 20% of the total service cost at a day spa. For a $150 facial and massage, tip $30. Check your bill first — many spas add an 18–20% gratuity automatically to packages. If gratuity is included, no additional tip is required unless you want to add more." } },
-        { "@type": "Question", "name": "Is gratuity included at a spa?", "acceptedAnswer": { "@type": "Answer", "text": "Many day spas and resort spas add 18–20% gratuity automatically to the bill, especially for packages or multi-service appointments. Always check your receipt before tipping — look for 'gratuity,' 'service charge,' or 'spa fee' line items. If it's already included, you don't need to tip again." } },
-        { "@type": "Question", "name": "How much do you tip for a facial at a spa?", "acceptedAnswer": { "@type": "Answer", "text": "Tip 20% for a facial. For a $100 facial, that's $20. Tip 22–25% for a longer treatment, advanced techniques like microdermabrasion or chemical peels, or when your esthetician provided personalized skin analysis and product recommendations." } },
-        { "@type": "Question", "name": "Do you tip separately for each service at a spa?", "acceptedAnswer": { "@type": "Answer", "text": "When multiple therapists or estheticians work on you in one visit, tip each person separately based on their service. For a spa package with a massage therapist and a facial esthetician, calculate 20% on each service individually and tip each directly." } },
-        { "@type": "Question", "name": "How much do you tip for a spa package?", "acceptedAnswer": { "@type": "Answer", "text": "Tip 20% on the total package price if gratuity is not already included. For a $300 full-day spa package, tip $60 total. Distribute it among the staff who performed your services if you can identify each person." } },
-        { "@type": "Question", "name": "Do you tip at a medical spa?", "acceptedAnswer": { "@type": "Answer", "text": "Medical spas (medspa) occupy a gray area — services like Botox, fillers, and laser treatments performed by licensed medical professionals don't carry the same tip expectation as traditional spa services. However, for esthetician services at a medspa (facials, peels, waxing), 15–20% is appropriate." } },
-        { "@type": "Question", "name": "How much do you tip for a body wrap or scrub?", "acceptedAnswer": { "@type": "Answer", "text": "Tip 20% for body wraps, scrubs, and similar body treatments. These services take 60–90 minutes and require significant hands-on attention from the therapist. A $120 body treatment warrants a $24 tip." } },
-        { "@type": "Question", "name": "Is it rude not to tip at a spa?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, if gratuity isn't already included. Spa therapists and estheticians depend on tips as a major part of their income. Not tipping for satisfactory service is considered rude." } },
-        { "@type": "Question", "name": "Do you tip at hotel resort spas?", "acceptedAnswer": { "@type": "Answer", "text": "Check your bill first — most resort spas include 18–20% gratuity automatically. If it's not included, tip 20% as you would at any other spa. Resort spa staff provide the same level of service regardless of whether gratuity is built in." } },
-        { "@type": "Question", "name": "How much do you tip for a couples spa treatment?", "acceptedAnswer": { "@type": "Answer", "text": "Tip each therapist separately — 20% of each person's service cost. For a $250 couples massage ($125 per person), each therapist receives a $25 tip. Hand tips directly to each therapist rather than leaving one combined amount." } }
-      ]}
+      {
+        "@type": "WebApplication",
+        "name": "Day Spa Tip Calculator",
+        "description": "Free day spa tip calculator for any service total.",
+        "url": "https://tipright.app/tip/spa",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Day Spa Tip Calculator",
+            "item": "https://tipright.app/tip/spa"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much should you tip at a day spa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 20% of the service total if gratuity is not already included. For a $150 facial and massage, tip $30. Always check your bill first — many spas add 18–20% gratuity automatically to packages."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is gratuity included at a spa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Many spas add 18–20% gratuity automatically — check your receipt for 'gratuity,' 'service charge,' or 'spa fee' line items. If it's already included, no additional tip is needed unless you want to add more."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip for a facial at a spa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 20% for a facial. For a $100 facial, that's $20. Tip 22–25% for advanced treatments like microdermabrasion or chemical peels, or when your esthetician provided extensive personalized consultation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip separately for each service at a spa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — when multiple therapists work on you, tip each person separately based on their individual service. Calculate 20% on each service and tip each directly rather than leaving one combined amount."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip for a spa package?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 20% on the total package price if gratuity is not included. For a $300 full-day spa package, tip $60 total. Distribute it among the staff who performed your services."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip at a medical spa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Botox, fillers, and laser treatments by medical professionals don't typically require tips. For esthetician services at a medspa (facials, peels, waxing), 15–20% is appropriate — same as any day spa."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip for a body wrap or scrub?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 20% for body wraps, scrubs, and similar treatments. These take 60–90 minutes of hands-on attention. A $120 body treatment warrants a $24 tip."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it rude not to tip at a spa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, if gratuity isn't already included. Spa therapists and estheticians depend on tips as a major part of their income. Not tipping for satisfactory service is considered rude in the spa industry."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip at hotel resort spas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Check your bill first — most resort spas include gratuity automatically. If it's not included, tip 20% as normal. The tip field on the room charge receipt routes directly to the service staff."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip for a couples spa treatment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip each therapist separately — 20% of each person's service cost. For a $250 couples massage ($125 per person), each therapist receives a $25 tip. Hand tips to each therapist directly."
+            }
+          }
+        ]
+      }
     ]
   }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2" style="text-decoration:none">
@@ -256,7 +366,7 @@
 
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip at a day spa?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 20% of the service total if gratuity is not already included. For a $150 facial and massage, tip $30. Always check your bill first — many spas add 18–20% gratuity automatically to packages.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is gratuity included at a spa?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Many spas add 18–20% gratuity automatically — check your receipt for 'gratuity,' 'service charge,' or 'spa fee' line items. If it's already included, no additional tip is needed unless you want to add more.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a facial at a spa?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 20% for a facial. For a $100 facial, that's $20. Tip 22–25% for advanced treatments like microdermabrasion or chemical peels, or when your esthetician provided extensive personalized consultation.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip separately for each service at a spa?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — when multiple therapists work on you, tip each person separately based on their individual service. Calculate 20% on each service and tip each directly rather than leaving one combined amount.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a spa package?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 20% on the total package price if gratuity is not included. For a $300 full-day spa package, tip $60 total. Distribute it among the staff who performed your services.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip at a medical spa?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Botox, fillers, and laser treatments by medical professionals don't typically require tips. For esthetician services at a medspa (facials, peels, waxing), 15–20% is appropriate — same as any day spa.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a body wrap or scrub?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 20% for body wraps, scrubs, and similar treatments. These take 60–90 minutes of hands-on attention. A $120 body treatment warrants a $24 tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip at a spa?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes, if gratuity isn't already included. Spa therapists and estheticians depend on tips as a major part of their income. Not tipping for satisfactory service is considered rude in the spa industry.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip at hotel resort spas?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Check your bill first — most resort spas include gratuity automatically. If it's not included, tip 20% as normal. The tip field on the room charge receipt routes directly to the service staff.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a couples spa treatment?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip each therapist separately — 20% of each person's service cost. For a $250 couples massage ($125 per person), each therapist receives a $25 tip. Hand tips to each therapist directly.</div></div></details></div></div>
   </section>
 
   <section>
@@ -274,14 +384,18 @@
 </main>
 
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
-  <p class="mt-1"><a href="/about" class="hover:text-brand-dark transition-colors">About</a> · <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
+  <p class="mt-1">
+    <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
+     &middot;
+    <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
-    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a></p>
+     &middot;
+    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
+  </p>
 </footer>
 
 <script src="/assets/js/calculator.dbcdb7b093.js"></script>
@@ -332,37 +446,8 @@
     });
   })();
 
-  const FAQ_DATA = [
-    { q: "How much should you tip at a day spa?", a: "Tip 20% of the service total if gratuity is not already included. For a $150 facial and massage, tip $30. Always check your bill first — many spas add 18–20% gratuity automatically to packages." },
-    { q: "Is gratuity included at a spa?", a: "Many spas add 18–20% gratuity automatically — check your receipt for 'gratuity,' 'service charge,' or 'spa fee' line items. If it's already included, no additional tip is needed unless you want to add more." },
-    { q: "How much do you tip for a facial at a spa?", a: "Tip 20% for a facial. For a $100 facial, that's $20. Tip 22–25% for advanced treatments like microdermabrasion or chemical peels, or when your esthetician provided extensive personalized consultation." },
-    { q: "Do you tip separately for each service at a spa?", a: "Yes — when multiple therapists work on you, tip each person separately based on their individual service. Calculate 20% on each service and tip each directly rather than leaving one combined amount." },
-    { q: "How much do you tip for a spa package?", a: "Tip 20% on the total package price if gratuity is not included. For a $300 full-day spa package, tip $60 total. Distribute it among the staff who performed your services." },
-    { q: "Do you tip at a medical spa?", a: "Botox, fillers, and laser treatments by medical professionals don't typically require tips. For esthetician services at a medspa (facials, peels, waxing), 15–20% is appropriate — same as any day spa." },
-    { q: "How much do you tip for a body wrap or scrub?", a: "Tip 20% for body wraps, scrubs, and similar treatments. These take 60–90 minutes of hands-on attention. A $120 body treatment warrants a $24 tip." },
-    { q: "Is it rude not to tip at a spa?", a: "Yes, if gratuity isn't already included. Spa therapists and estheticians depend on tips as a major part of their income. Not tipping for satisfactory service is considered rude in the spa industry." },
-    { q: "Do you tip at hotel resort spas?", a: "Check your bill first — most resort spas include gratuity automatically. If it's not included, tip 20% as normal. The tip field on the room charge receipt routes directly to the service staff." },
-    { q: "How much do you tip for a couples spa treatment?", a: "Tip each therapist separately — 20% of each person's service cost. For a $250 couples massage ($125 per person), each therapist receives a $25 tip. Hand tips to each therapist directly." }
-  ];
-
-  (function () {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div'); div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details'); details.className = 'group';
-      const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a; answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv); div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 
   // Custom % handler
   var customPctInput = document.getElementById('custom-pct');

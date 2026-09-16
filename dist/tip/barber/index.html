@@ -39,11 +39,26 @@
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -51,41 +66,34 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
+  </style>
 
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
 
   <script type="application/ld+json">
   {
@@ -99,14 +107,32 @@
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" }
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
-          { "@type": "ListItem", "position": 2, "name": "Barber Tip Calculator", "item": "https://tipright.app/tip/barber" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Barber Tip Calculator",
+            "item": "https://tipright.app/tip/barber"
+          }
         ]
       },
       {
@@ -115,52 +141,82 @@
           {
             "@type": "Question",
             "name": "How much should you tip your barber?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The standard tip for a barber is 15–20% of the haircut cost, with a $5 minimum regardless of service price. For a $30 haircut, tip $5–6. For a $50 fade and beard trim, tip $8–10. Tip 20–25% for complex fades, design cuts, or exceptional work." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard tip is 15–20% with a $5 minimum regardless of haircut price. For a $30 cut, tip $5–6. For a $50 fade and beard trim, tip $8–10. Tip 20–25% for complex fades, design cuts, or exceptional precision work."
+            }
           },
           {
             "@type": "Question",
             "name": "What is the minimum tip for a barber?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The minimum tip for a barber is $5, regardless of haircut price. A percentage-only approach produces amounts too small on cheap haircuts — 15% of a $20 cut is only $3, which isn't meaningful. Always tip at least $5 for any barber service." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The minimum tip for any barber service is $5. A percentage-only approach produces amounts too small on cheap haircuts — 15% of a $20 cut is only $3. Always tip at least $5, even for a quick trim."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a $30 haircut?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip $5–6 for a $30 haircut. A $5 tip (17%) meets the minimum standard. Tip $7–8 (22–25%) if you received a particularly clean fade, your barber took extra care, or you're a regular building a relationship." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $5–6 for a $30 haircut. A $5 tip meets the minimum standard. Tip $7–8 (22–25%) if you got a particularly clean fade, your barber took extra care, or you're a regular building a long-term relationship."
+            }
           },
           {
             "@type": "Question",
             "name": "Should you tip your barber if they own the shop?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, tipping a barber shop owner is appropriate and appreciated. While owners set their own prices and keep all revenue, tipping is still the norm. Tip 15–20% as you would any other barber." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Tipping shop owners is appropriate and expected. While owners set their own prices and keep all revenue, tipping is still the norm. Tip 15–20% as you would any other barber."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a fade?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip 20% for a standard fade. For a complex skin fade, taper fade, or design cut that required significant skill and precision, tip 22–25%. The quality of a fade is visible for 2–3 weeks — it's worth acknowledging with a stronger tip." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 20% for a standard fade. For a complex skin fade, taper fade with hard part, or design cut requiring significant skill and precision, tip 22–25%. The quality of a good fade is visible for 2–3 weeks."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip for a beard trim at a barbershop?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, tip 15–20% on a beard trim, or add $3–5 to your haircut tip if you got both services. A combined haircut and beard trim deserves a tip on the total cost, not just the haircut portion." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, tip 15–20% on a beard trim, or add $3–5 to your haircut tip if you got both. Tip on the combined total — if your haircut was $30 and beard trim $15, tip 20% on $45 ($9), not just the haircut price."
+            }
           },
           {
             "@type": "Question",
-            "name": "Should I tip more for a regular barber?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Consistent tipping at every visit is more valuable to a regular barber than occasional larger tips. If your barber always fits you in, keeps notes on your preferences, or gives you special attention, a 20–25% tip at every visit reinforces that relationship." }
+            "name": "Should I tip more for my regular barber?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip consistently at 20% on every visit. Being a reliable good tipper matters more to your barber than occasional large tips. Regular tippers get priority booking, the best attention, and a barber who genuinely cares about their look."
+            }
           },
           {
             "@type": "Question",
             "name": "Is it rude not to tip your barber?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, in the US, not tipping your barber for good service is considered rude. Many barbers rent their chairs and depend on tips as a significant portion of take-home pay after chair rental and supply costs." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. In the US, not tipping your barber for good service is considered rude. Many barbers are booth renters paying $200–500/week for their chair. Tips are a significant portion of their actual take-home pay after overhead."
+            }
           },
           {
             "@type": "Question",
-            "name": "How much do you tip a barber for a shape-up or line-up?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip $3–5 for a standalone shape-up or line-up, or add it to your haircut tip. Even short services deserve a meaningful tip. If the shape-up was part of a full haircut, tip on the combined total." }
+            "name": "How much do you tip for a shape-up or line-up?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $3–5 for a standalone shape-up or line-up. If it's part of a full haircut, tip on the combined total. Even short 10-minute services deserve a meaningful cash tip."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip differently at a budget chain vs a premium barbershop?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The percentage is the same — 15–20% — regardless of shop tier. At a $20 budget chain, the $5 minimum applies. At a $60 premium barbershop, 20% ($12) is standard. The quality of your barber's work, not the price point, is what you're tipping for." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The percentage is the same — 15–20% — regardless of shop tier. Apply the $5 minimum at budget shops where cuts cost $18–25. At premium barbershops charging $50–75, 20% is the standard expectation."
+            }
           }
         ]
       }
@@ -168,9 +224,7 @@
   }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <!-- NAV -->
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
@@ -178,9 +232,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </a>
-    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">
-      All calculators →
-    </a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">All calculators →</a>
   </div>
 </nav>
 
@@ -351,7 +403,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip your barber?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The standard tip is 15–20% with a $5 minimum regardless of haircut price. For a $30 cut, tip $5–6. For a $50 fade and beard trim, tip $8–10. Tip 20–25% for complex fades, design cuts, or exceptional precision work.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">What is the minimum tip for a barber?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The minimum tip for any barber service is $5. A percentage-only approach produces amounts too small on cheap haircuts — 15% of a $20 cut is only $3. Always tip at least $5, even for a quick trim.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a $30 haircut?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $5–6 for a $30 haircut. A $5 tip meets the minimum standard. Tip $7–8 (22–25%) if you got a particularly clean fade, your barber took extra care, or you're a regular building a long-term relationship.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip your barber if they own the shop?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Tipping shop owners is appropriate and expected. While owners set their own prices and keep all revenue, tipping is still the norm. Tip 15–20% as you would any other barber.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a fade?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 20% for a standard fade. For a complex skin fade, taper fade with hard part, or design cut requiring significant skill and precision, tip 22–25%. The quality of a good fade is visible for 2–3 weeks.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for a beard trim at a barbershop?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes, tip 15–20% on a beard trim, or add $3–5 to your haircut tip if you got both. Tip on the combined total — if your haircut was $30 and beard trim $15, tip 20% on $45 ($9), not just the haircut price.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should I tip more for my regular barber?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip consistently at 20% on every visit. Being a reliable good tipper matters more to your barber than occasional large tips. Regular tippers get priority booking, the best attention, and a barber who genuinely cares about their look.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip your barber?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. In the US, not tipping your barber for good service is considered rude. Many barbers are booth renters paying $200–500/week for their chair. Tips are a significant portion of their actual take-home pay after overhead.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a shape-up or line-up?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $3–5 for a standalone shape-up or line-up. If it's part of a full haircut, tip on the combined total. Even short 10-minute services deserve a meaningful cash tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip differently at a budget chain vs a premium barbershop?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The percentage is the same — 15–20% — regardless of shop tier. Apply the $5 minimum at budget shops where cuts cost $18–25. At premium barbershops charging $50–75, 20% is the standard expectation.</div></div></details></div></div>
   </section>
 
   <!-- RELATED CALCULATORS -->
@@ -407,16 +459,16 @@
 
 <!-- FOOTER -->
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
   <p class="mt-1">
     <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
-     · 
+     &middot;
     <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
+     &middot;
     <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
@@ -496,44 +548,8 @@
   })();
 
   // FAQ
-  const FAQ_DATA = [
-    { q: "How much should you tip your barber?", a: "The standard tip is 15–20% with a $5 minimum regardless of haircut price. For a $30 cut, tip $5–6. For a $50 fade and beard trim, tip $8–10. Tip 20–25% for complex fades, design cuts, or exceptional precision work." },
-    { q: "What is the minimum tip for a barber?", a: "The minimum tip for any barber service is $5. A percentage-only approach produces amounts too small on cheap haircuts — 15% of a $20 cut is only $3. Always tip at least $5, even for a quick trim." },
-    { q: "How much do you tip for a $30 haircut?", a: "Tip $5–6 for a $30 haircut. A $5 tip meets the minimum standard. Tip $7–8 (22–25%) if you got a particularly clean fade, your barber took extra care, or you're a regular building a long-term relationship." },
-    { q: "Should you tip your barber if they own the shop?", a: "Yes. Tipping shop owners is appropriate and expected. While owners set their own prices and keep all revenue, tipping is still the norm. Tip 15–20% as you would any other barber." },
-    { q: "How much do you tip for a fade?", a: "Tip 20% for a standard fade. For a complex skin fade, taper fade with hard part, or design cut requiring significant skill and precision, tip 22–25%. The quality of a good fade is visible for 2–3 weeks." },
-    { q: "Do you tip for a beard trim at a barbershop?", a: "Yes, tip 15–20% on a beard trim, or add $3–5 to your haircut tip if you got both. Tip on the combined total — if your haircut was $30 and beard trim $15, tip 20% on $45 ($9), not just the haircut price." },
-    { q: "Should I tip more for my regular barber?", a: "Tip consistently at 20% on every visit. Being a reliable good tipper matters more to your barber than occasional large tips. Regular tippers get priority booking, the best attention, and a barber who genuinely cares about their look." },
-    { q: "Is it rude not to tip your barber?", a: "Yes. In the US, not tipping your barber for good service is considered rude. Many barbers are booth renters paying $200–500/week for their chair. Tips are a significant portion of their actual take-home pay after overhead." },
-    { q: "How much do you tip for a shape-up or line-up?", a: "Tip $3–5 for a standalone shape-up or line-up. If it's part of a full haircut, tip on the combined total. Even short 10-minute services deserve a meaningful cash tip." },
-    { q: "Do you tip differently at a budget chain vs a premium barbershop?", a: "The percentage is the same — 15–20% — regardless of shop tier. Apply the $5 minimum at budget shops where cuts cost $18–25. At premium barbershops charging $50–75, 20% is the standard expectation." }
-  ];
-
-  (function buildFAQ() {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details');
-      details.className = 'group';
-      const summary = document.createElement('summary');
-      summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span');
-      qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div');
-      answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a;
-      answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv);
-      div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 
 
   // Custom % handler

@@ -12,9 +12,11 @@
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
+
   <title>Airport Shuttle Tip Calculator — How Much to Tip?</title>
   <meta name="description" content="Airport shuttle tip calculator. Shared shuttles: $2-5 per person. Private: 15-20%. Enter your fare for instant tip amounts plus luggage handling guidance.">
   <link rel="canonical" href="https://tipright.app/tip/airport-shuttle">
+
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tipright.app/tip/airport-shuttle">
   <meta property="og:title" content="Airport Shuttle Tip Calculator — How Much to Tip?">
@@ -22,23 +24,41 @@
   <meta property="og:image" content="https://tipright.app/assets/img/og-airport-shuttle.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Airport Shuttle Tip Calculator — How Much to Tip?">
   <meta name="twitter:description" content="Free airport shuttle tip calculator for shared, private, and hotel shuttles.">
   <meta name="twitter:image" content="https://tipright.app/assets/img/og-airport-shuttle.png">
+
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -46,58 +66,158 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  </style>
+
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebApplication", "name": "Airport Shuttle Tip Calculator", "url": "https://tipright.app/tip/airport-shuttle", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" } },
-      { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" }, { "@type": "ListItem", "position": 2, "name": "Airport Shuttle Tip Calculator", "item": "https://tipright.app/tip/airport-shuttle" } ] },
-      { "@type": "FAQPage", "mainEntity": [
-        { "@type": "Question", "name": "How much should you tip an airport shuttle driver?", "acceptedAnswer": { "@type": "Answer", "text": "Tip airport shuttle drivers $2–5 per person for a shared shuttle, or 15–20% of the fare for a private shuttle. Add $1–2 per bag if the driver loaded and unloaded your luggage. For a shared shuttle with 2 people and 4 bags, tip $10–14 total." } },
-        { "@type": "Question", "name": "How much do you tip a shared airport shuttle driver?", "acceptedAnswer": { "@type": "Answer", "text": "Tip $2–5 per passenger for a shared shuttle service. For a party of 2, that's $4–10. Add $1–2 per large bag the driver handled. If the driver waited extra time for late pickups or made multiple stops, tip toward the higher end." } },
-        { "@type": "Question", "name": "How much do you tip a private airport shuttle driver?", "acceptedAnswer": { "@type": "Answer", "text": "Tip 15–20% of the fare for a private airport shuttle or car service. For a $50 private transfer, tip $8–10. If the driver helped with heavy luggage, waited past pickup time, or navigated difficult traffic, tip 20–25%." } },
-        { "@type": "Question", "name": "Do you tip a hotel shuttle driver?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — tip hotel shuttle drivers $2–5 per person or $5–10 total for the party, each way. Hotel shuttles are often free, but the driver still provides a service and typically earns a modest wage. Tip at the end of each ride." } },
-        { "@type": "Question", "name": "Should you tip per person or total for airport shuttles?", "acceptedAnswer": { "@type": "Answer", "text": "For shared shuttles, tipping per person ($2–5/person) is the standard convention. For private shuttles, tip on the total fare (15–20%). Either way, add extra for each bag the driver handled." } },
-        { "@type": "Question", "name": "How much extra do you tip for luggage handling?", "acceptedAnswer": { "@type": "Answer", "text": "Add $1–2 per bag for each bag the driver loaded into and out of the vehicle. For a party of 2 with 4 large suitcases, add $4–8 on top of your base tip." } },
-        { "@type": "Question", "name": "Do you tip if the shuttle is included in a hotel package?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. 'Included shuttle' means the transport is free — not that no tip is expected. Tip $2–5 per person or $5–10 total for a complimentary hotel shuttle. The driver's compensation doesn't change because the service is bundled." } },
-        { "@type": "Question", "name": "Is it rude not to tip an airport shuttle driver?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Airport shuttle drivers often earn near minimum wage and depend on tips. Not tipping after a good ride — especially if the driver helped with luggage — is considered rude." } },
-        { "@type": "Question", "name": "Should you tip more for early morning or late night pickups?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tip toward the higher end ($5/person for shared, 20% for private) for very early morning or late night pickups. Drivers working these shifts face unusual hours and deserve acknowledgment for the inconvenience." } },
-        { "@type": "Question", "name": "How do you tip for a long-distance airport transfer?", "acceptedAnswer": { "@type": "Answer", "text": "For transfers over an hour, tip 15–20% of the fare regardless of whether it's shared or private. Long transfers involve significantly more of the driver's time and fuel costs." } }
-      ]}
+      {
+        "@type": "WebApplication",
+        "name": "Airport Shuttle Tip Calculator",
+        "url": "https://tipright.app/tip/airport-shuttle",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Airport Shuttle Tip Calculator",
+            "item": "https://tipright.app/tip/airport-shuttle"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much should you tip an airport shuttle driver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $2–5 per person for shared shuttles, or 15–20% of fare for private shuttles. Add $1–2 per bag for luggage handling. For 2 people with 4 bags on a shared shuttle, budget $10–14 total."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip a shared airport shuttle driver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $2–5 per passenger for shared shuttles. Add $1–2 per bag the driver handled. Tip toward the higher end for longer routes, extra waiting, or early/late timing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip a private airport shuttle driver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 15–20% of the fare for private shuttles. For a $50 transfer, tip $8–10. Add more for luggage handling, traffic navigation, or wait time due to flight delays."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip a hotel shuttle driver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — tip $2–5 per person or $5–10 total each way. Hotel shuttles are often free, but drivers still earn modest wages. Tip at the end of each ride, both to and from the airport."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should you tip per person or total for airport shuttles?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For shared shuttles, tip per person ($2–5 each) plus extra per bag. For private shuttles, tip on the total fare (15–20%). Both approaches produce similar totals for most trips."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much extra do you tip for luggage handling?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Add $1–2 per bag for each suitcase or large bag the driver loaded and unloaded. For 4 bags, that's $4–8 extra on top of your base tip."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip if the shuttle is included in a hotel package?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. 'Included shuttle' means the transport is free, not the driver. Tip $2–5 per person or $5–10 total for any complimentary hotel shuttle."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it rude not to tip an airport shuttle driver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shuttle drivers earn near minimum wage and depend on tips. Not tipping after a good ride — especially with luggage handling — is considered rude."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should you tip more for early morning or late night pickups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Tip toward the higher end for pickups before 6am or after 11pm. These drivers work inconvenient hours specifically for your travel schedule."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you tip for a long-distance airport transfer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 15–20% of the fare for transfers over an hour, regardless of shared or private format. Long transfers involve significantly more of the driver's time and fuel."
+            }
+          }
+        ]
+      }
     ]
   }
   </script>
@@ -222,7 +342,7 @@
 
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip an airport shuttle driver?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $2–5 per person for shared shuttles, or 15–20% of fare for private shuttles. Add $1–2 per bag for luggage handling. For 2 people with 4 bags on a shared shuttle, budget $10–14 total.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip a shared airport shuttle driver?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $2–5 per passenger for shared shuttles. Add $1–2 per bag the driver handled. Tip toward the higher end for longer routes, extra waiting, or early/late timing.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip a private airport shuttle driver?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 15–20% of the fare for private shuttles. For a $50 transfer, tip $8–10. Add more for luggage handling, traffic navigation, or wait time due to flight delays.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip a hotel shuttle driver?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip $2–5 per person or $5–10 total each way. Hotel shuttles are often free, but drivers still earn modest wages. Tip at the end of each ride, both to and from the airport.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip per person or total for airport shuttles?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>For shared shuttles, tip per person ($2–5 each) plus extra per bag. For private shuttles, tip on the total fare (15–20%). Both approaches produce similar totals for most trips.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much extra do you tip for luggage handling?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Add $1–2 per bag for each suitcase or large bag the driver loaded and unloaded. For 4 bags, that's $4–8 extra on top of your base tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip if the shuttle is included in a hotel package?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. 'Included shuttle' means the transport is free, not the driver. Tip $2–5 per person or $5–10 total for any complimentary hotel shuttle.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip an airport shuttle driver?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Shuttle drivers earn near minimum wage and depend on tips. Not tipping after a good ride — especially with luggage handling — is considered rude.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip more for early morning or late night pickups?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Tip toward the higher end for pickups before 6am or after 11pm. These drivers work inconvenient hours specifically for your travel schedule.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How do you tip for a long-distance airport transfer?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 15–20% of the fare for transfers over an hour, regardless of shared or private format. Long transfers involve significantly more of the driver's time and fuel.</div></div></details></div></div>
   </section>
 
   <section>
@@ -238,14 +358,18 @@
   </section>
 </main>
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
-  <p class="mt-1"><a href="/about" class="hover:text-brand-dark transition-colors">About</a> · <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
+  <p class="mt-1">
+    <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
+     &middot;
+    <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
-    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a></p>
+     &middot;
+    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
+  </p>
 </footer>
 <script src="/assets/js/calculator.dbcdb7b093.js"></script>
 <script>
@@ -286,37 +410,8 @@
     });
   })();
 
-  const FAQ_DATA = [
-    { q: "How much should you tip an airport shuttle driver?", a: "Tip $2–5 per person for shared shuttles, or 15–20% of fare for private shuttles. Add $1–2 per bag for luggage handling. For 2 people with 4 bags on a shared shuttle, budget $10–14 total." },
-    { q: "How much do you tip a shared airport shuttle driver?", a: "Tip $2–5 per passenger for shared shuttles. Add $1–2 per bag the driver handled. Tip toward the higher end for longer routes, extra waiting, or early/late timing." },
-    { q: "How much do you tip a private airport shuttle driver?", a: "Tip 15–20% of the fare for private shuttles. For a $50 transfer, tip $8–10. Add more for luggage handling, traffic navigation, or wait time due to flight delays." },
-    { q: "Do you tip a hotel shuttle driver?", a: "Yes — tip $2–5 per person or $5–10 total each way. Hotel shuttles are often free, but drivers still earn modest wages. Tip at the end of each ride, both to and from the airport." },
-    { q: "Should you tip per person or total for airport shuttles?", a: "For shared shuttles, tip per person ($2–5 each) plus extra per bag. For private shuttles, tip on the total fare (15–20%). Both approaches produce similar totals for most trips." },
-    { q: "How much extra do you tip for luggage handling?", a: "Add $1–2 per bag for each suitcase or large bag the driver loaded and unloaded. For 4 bags, that's $4–8 extra on top of your base tip." },
-    { q: "Do you tip if the shuttle is included in a hotel package?", a: "Yes. 'Included shuttle' means the transport is free, not the driver. Tip $2–5 per person or $5–10 total for any complimentary hotel shuttle." },
-    { q: "Is it rude not to tip an airport shuttle driver?", a: "Yes. Shuttle drivers earn near minimum wage and depend on tips. Not tipping after a good ride — especially with luggage handling — is considered rude." },
-    { q: "Should you tip more for early morning or late night pickups?", a: "Yes. Tip toward the higher end for pickups before 6am or after 11pm. These drivers work inconvenient hours specifically for your travel schedule." },
-    { q: "How do you tip for a long-distance airport transfer?", a: "Tip 15–20% of the fare for transfers over an hour, regardless of shared or private format. Long transfers involve significantly more of the driver's time and fuel." }
-  ];
-
-  (function () {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div'); div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details'); details.className = 'group';
-      const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a; answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv); div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 
   // Custom % handler
   var customPctInput = document.getElementById('custom-pct');

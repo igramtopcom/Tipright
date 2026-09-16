@@ -13,12 +13,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
 
-  <!-- Primary SEO -->
   <title>Tattoo Tip Calculator — How Much to Tip Your Artist?</title>
   <meta name="description" content="How much to tip a tattoo artist? Enter your session cost and see tip amounts instantly. Covers the shop split, apprentice tipping, and cash vs card.">
   <link rel="canonical" href="https://tipright.app/tip/tattoo">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tipright.app/tip/tattoo">
   <meta property="og:title" content="Tattoo Tip Calculator — How Much to Tip Your Artist?">
@@ -27,28 +25,40 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tattoo Tip Calculator — How Much to Tip Your Artist?">
   <meta name="twitter:description" content="Find the right tip for your tattoo artist in seconds. Free calculator with instant results.">
   <meta name="twitter:image" content="https://tipright.app/assets/img/og-tattoo.png">
 
-  <!-- Favicon & PWA -->
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
 
-  <!-- Dark mode override (BEFORE Tailwind) -->
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -56,45 +66,35 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
-      #results .border-gray-200 { border-color: #2E3532 !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
+  </style>
 
-  <!-- Tailwind CSS CDN -->
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
 
-  <!-- JSON-LD Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -121,8 +121,18 @@
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
-          { "@type": "ListItem", "position": 2, "name": "Tattoo Tip Calculator", "item": "https://tipright.app/tip/tattoo" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tattoo Tip Calculator",
+            "item": "https://tipright.app/tip/tattoo"
+          }
         ]
       },
       {
@@ -131,52 +141,82 @@
           {
             "@type": "Question",
             "name": "How much should you tip a tattoo artist?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The standard tip for a tattoo artist is 20% of the total cost. For a $200 tattoo, that's $40. Tip 15% for basic work, 25%+ for custom or complex pieces. Most artists consider 20% the baseline for satisfactory work." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard tip is 20% of the total cost. For a $200 tattoo, that’s $40. Tip 15% for basic line work, 22–25% for custom or complex pieces, and 25–30% for apprentice artists."
+            }
           },
           {
             "@type": "Question",
             "name": "Is it rude not to tip your tattoo artist?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Not tipping is considered rude in the US tattoo community. Most artists earn a 50-60% commission split with the shop, so tips are a meaningful part of their income. Not tipping for satisfactory work may affect your ability to book future appointments with that artist." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, in the US tattoo community, not tipping for satisfactory work is considered rude. Most artists keep only 50–60% of their hourly rate after the shop’s commission split. Tips are a significant part of their actual income."
+            }
           },
           {
             "@type": "Question",
             "name": "Should I tip my tattoo artist in cash or card?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Cash is strongly preferred. Many studios charge a 2-3% processing fee on card payments, which comes out of the artist's tip. Cash tips go 100% to your artist with no deductions." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cash is strongly preferred. Many studios charge a 2–3% processing fee on card tips, which reduces what the artist actually receives. Cash tips go 100% to your artist with no deductions."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a $200 tattoo?",
-            "acceptedAnswer": { "@type": "Answer", "text": "For a $200 tattoo, a standard 20% tip is $40. Tip $30 (15%) for basic work, $44 (22%) for above-average results, or $50 (25%) for exceptional custom work." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A standard 20% tip on a $200 tattoo is $40. Tip $30 (15%) for simple flash work, $44 (22%) for above-average results, or $50 (25%) for outstanding custom artwork."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip a tattoo artist on every session?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, tip at the end of each session, not just the final one. Each session is a separate service. If you prefer, you can tip slightly more on the last session to cover the full project, but per-session tipping is the standard expectation." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — tip at the end of each individual session, not just the final one. Each session is a complete service. If you prefer, tip slightly more on the last session to account for the whole project."
+            }
           },
           {
             "@type": "Question",
             "name": "How much should you tip a tattoo apprentice?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip tattoo apprentices 25-30%, or more. Apprentices charge significantly less than experienced artists (often $100-150/hr vs $200+), but the tip is still a major part of their income while they build their clientele." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip tattoo apprentices 25–30%, or more if you’re happy with the work. Apprentices charge much less than senior artists — often $100–150/hr vs $200+ — but tips remain a major part of their income while they build their client base."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip a tattoo artist who owns the shop?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, tipping a shop owner is still appreciated and expected. Shop owners keep 100% of their earnings (no commission split), but tipping remains the norm. A tip of 15-20% is appropriate even for shop owners." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Shop owners don’t have a commission split, so they keep more of their hourly rate — but tipping is still the standard expectation. A 15–20% tip is appropriate for shop owners."
+            }
           },
           {
             "@type": "Question",
             "name": "How much to tip for a multi-session tattoo?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip after each session based on that session's cost. For a $1,200 sleeve done in 4 sessions of $300 each, tip $60 per session (20%). Alternatively, tip generously on the final session to cover the whole project." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip after each session based on that session’s cost. For a $1,200 sleeve done across 4 sessions at $300 each, tip $60 per session (20%). Alternatively, tip generously on the final session to acknowledge the full project."
+            }
           },
           {
             "@type": "Question",
             "name": "What if I am unhappy with my tattoo?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Talk to the artist about your concerns before leaving. If they fix the issue, tip normally. If a genuine quality problem wasn't addressed, a reduced tip (10-15%) is acceptable. Never skip the tip entirely unless service was truly unprofessional." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Discuss your concerns with the artist before leaving. If they address the issue, tip normally. For a genuine quality problem that wasn’t resolved, 10–15% is acceptable. Never skip entirely unless the experience was truly unprofessional."
+            }
           },
           {
             "@type": "Question",
             "name": "Should I tip on the tattoo deposit?",
-            "acceptedAnswer": { "@type": "Answer", "text": "No. Tip on the final cost of the service only, not on the deposit. Deposits are booking security, not payment for work. Your tip should be calculated on the total session price at checkout." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Tip only on the actual session cost at checkout, not on the deposit. Deposits are booking security, not payment for the tattoo itself."
+            }
           }
         ]
       }
@@ -185,7 +225,6 @@
   </script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <!-- NAV -->
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
@@ -193,9 +232,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </a>
-    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">
-      All calculators →
-    </a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">All calculators →</a>
   </div>
 </nav>
 
@@ -359,7 +396,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip a tattoo artist?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The standard tip is 20% of the total cost. For a $200 tattoo, that’s $40. Tip 15% for basic line work, 22–25% for custom or complex pieces, and 25–30% for apprentice artists.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip your tattoo artist?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes, in the US tattoo community, not tipping for satisfactory work is considered rude. Most artists keep only 50–60% of their hourly rate after the shop’s commission split. Tips are a significant part of their actual income.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should I tip my tattoo artist in cash or card?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Cash is strongly preferred. Many studios charge a 2–3% processing fee on card tips, which reduces what the artist actually receives. Cash tips go 100% to your artist with no deductions.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a $200 tattoo?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>A standard 20% tip on a $200 tattoo is $40. Tip $30 (15%) for simple flash work, $44 (22%) for above-average results, or $50 (25%) for outstanding custom artwork.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip a tattoo artist on every session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip at the end of each individual session, not just the final one. Each session is a complete service. If you prefer, tip slightly more on the last session to account for the whole project.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip a tattoo apprentice?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip tattoo apprentices 25–30%, or more if you’re happy with the work. Apprentices charge much less than senior artists — often $100–150/hr vs $200+ — but tips remain a major part of their income while they build their client base.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip a tattoo artist who owns the shop?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Shop owners don’t have a commission split, so they keep more of their hourly rate — but tipping is still the standard expectation. A 15–20% tip is appropriate for shop owners.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much to tip for a multi-session tattoo?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip after each session based on that session’s cost. For a $1,200 sleeve done across 4 sessions at $300 each, tip $60 per session (20%). Alternatively, tip generously on the final session to acknowledge the full project.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">What if I am unhappy with my tattoo?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Discuss your concerns with the artist before leaving. If they address the issue, tip normally. For a genuine quality problem that wasn’t resolved, 10–15% is acceptable. Never skip entirely unless the experience was truly unprofessional.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should I tip on the tattoo deposit?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>No. Tip only on the actual session cost at checkout, not on the deposit. Deposits are booking security, not payment for the tattoo itself.</div></div></details></div></div>
   </section>
 
   <!-- RELATED CALCULATORS -->
@@ -415,16 +452,16 @@
 
 <!-- FOOTER -->
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
   <p class="mt-1">
     <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
-     ·
+     &middot;
     <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
+     &middot;
     <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
@@ -513,57 +550,8 @@
   })();
 
   // FAQ
-  var FAQ_DATA = [
-    { q: "How much should you tip a tattoo artist?", a: "The standard tip is 20% of the total cost. For a $200 tattoo, that\u2019s $40. Tip 15% for basic line work, 22\u201325% for custom or complex pieces, and 25\u201330% for apprentice artists." },
-    { q: "Is it rude not to tip your tattoo artist?", a: "Yes, in the US tattoo community, not tipping for satisfactory work is considered rude. Most artists keep only 50\u201360% of their hourly rate after the shop\u2019s commission split. Tips are a significant part of their actual income." },
-    { q: "Should I tip my tattoo artist in cash or card?", a: "Cash is strongly preferred. Many studios charge a 2\u20133% processing fee on card tips, which reduces what the artist actually receives. Cash tips go 100% to your artist with no deductions." },
-    { q: "How much do you tip for a $200 tattoo?", a: "A standard 20% tip on a $200 tattoo is $40. Tip $30 (15%) for simple flash work, $44 (22%) for above-average results, or $50 (25%) for outstanding custom artwork." },
-    { q: "Do you tip a tattoo artist on every session?", a: "Yes \u2014 tip at the end of each individual session, not just the final one. Each session is a complete service. If you prefer, tip slightly more on the last session to account for the whole project." },
-    { q: "How much should you tip a tattoo apprentice?", a: "Tip tattoo apprentices 25\u201330%, or more if you\u2019re happy with the work. Apprentices charge much less than senior artists \u2014 often $100\u2013150/hr vs $200+ \u2014 but tips remain a major part of their income while they build their client base." },
-    { q: "Do you tip a tattoo artist who owns the shop?", a: "Yes. Shop owners don\u2019t have a commission split, so they keep more of their hourly rate \u2014 but tipping is still the standard expectation. A 15\u201320% tip is appropriate for shop owners." },
-    { q: "How much to tip for a multi-session tattoo?", a: "Tip after each session based on that session\u2019s cost. For a $1,200 sleeve done across 4 sessions at $300 each, tip $60 per session (20%). Alternatively, tip generously on the final session to acknowledge the full project." },
-    { q: "What if I am unhappy with my tattoo?", a: "Discuss your concerns with the artist before leaving. If they address the issue, tip normally. For a genuine quality problem that wasn\u2019t resolved, 10\u201315% is acceptable. Never skip entirely unless the experience was truly unprofessional." },
-    { q: "Should I tip on the tattoo deposit?", a: "No. Tip only on the actual session cost at checkout, not on the deposit. Deposits are booking security, not payment for the tattoo itself." }
-  ];
-
-  (function buildFAQ() {
-    var container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(function(item) {
-      var div = document.createElement('div');
-      div.className = 'border border-line rounded-xl overflow-hidden';
-
-      var details = document.createElement('details');
-      details.className = 'group';
-
-      var summary = document.createElement('summary');
-      summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-
-      var qText = document.createElement('span');
-      qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug';
-      qText.textContent = item.q;
-
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-
-      summary.appendChild(qText);
-      summary.appendChild(chevron);
-
-      var answerDiv = document.createElement('div');
-      answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-
-      var answerText = document.createElement('div');
-      answerText.textContent = item.a;
-      answerDiv.appendChild(answerText);
-
-      details.appendChild(summary);
-      details.appendChild(answerDiv);
-      div.appendChild(details);
-      container.appendChild(div);
-    });
-  })();
+  
+  
 
 
   // Custom % handler

@@ -39,11 +39,26 @@
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -51,41 +66,34 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
+  </style>
 
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
 
   <script type="application/ld+json">
   {
@@ -99,14 +107,32 @@
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" }
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
-          { "@type": "ListItem", "position": 2, "name": "Nail Salon Tip Calculator", "item": "https://tipright.app/tip/nail-salon" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Nail Salon Tip Calculator",
+            "item": "https://tipright.app/tip/nail-salon"
+          }
         ]
       },
       {
@@ -115,52 +141,82 @@
           {
             "@type": "Question",
             "name": "How much should you tip at a nail salon?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The standard tip at a nail salon is 18–20% of the total service cost. For a $50 manicure and pedicure, that's $9–10. Always tip at least $3–5 even for low-cost services — a $15 basic manicure still deserves a meaningful tip." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard tip is 18–20% of your service total. For a $50 mani-pedi, tip $9–10. Always tip a minimum of $3–5 regardless of service cost — percentage math produces amounts too small for low-cost services."
+            }
           },
           {
             "@type": "Question",
             "name": "Is it rude not to tip at a nail salon?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Nail technicians rely heavily on tips. Many work on commission or booth rental and pay for their own supplies. Not tipping for satisfactory service is considered very rude in the nail salon industry." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Nail technicians depend heavily on tips to supplement their wages. Many earn minimum wage plus commission, or pay booth rental out of pocket. Not tipping for satisfactory work is considered very rude in the nail salon industry."
+            }
           },
           {
             "@type": "Question",
             "name": "Should I tip in cash at a nail salon?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Cash is strongly preferred at nail salons. Many nail technicians share card tips with the salon owner or pay processing fees on card transactions. A cash tip handed directly to your technician ensures they receive the full amount." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cash is strongly preferred. Card tips may be pooled, delayed, or reduced by processing fees. A cash tip handed directly to your technician ensures they receive the full amount immediately."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a $50 nail service?",
-            "acceptedAnswer": { "@type": "Answer", "text": "For a $50 nail service, tip $8–10 (15–20%). A $10 tip (20%) is the standard for good service. Tip $12–13 (25%) for exceptional work or a particularly complex design." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $8–10 for a $50 nail service. A $10 tip (20%) is standard for good work. Bump to $12–13 (25%) for exceptional quality or a complex design."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip extra for nail art or complex designs?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Nail art, 3D designs, ombre, or intricate patterns take significantly more skill and time. Add an extra $5–10 on top of your standard tip, or bump up to 22–25% for complex custom designs." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Nail art, 3D designs, ombre, and intricate patterns require significantly more skill and time. Add $5–10 on top of your standard percentage tip, or increase to 22–25% for elaborate custom work."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip the nail salon owner?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Traditionally, tipping the salon owner was considered unnecessary since they set their own prices and keep all revenue. However, norms have shifted — most clients now tip owners 15–20% as well, and it is always appreciated." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — tip the owner 15–20%, just like any other technician. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip owners as a standard practice."
+            }
           },
           {
             "@type": "Question",
             "name": "Should I tip separately if two technicians worked on me?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, when two technicians work on you — for example, one doing your manicure and another your pedicure — tip each one separately based on their portion of the service. Don't leave one tip expecting the salon to split it." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. When different technicians handle different services — one for manicure, one for pedicure — tip each separately based on their portion. Don't leave a single tip expecting the salon to split it correctly."
+            }
           },
           {
             "@type": "Question",
             "name": "Why do nail salons prefer cash tips?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Cash tips go directly to the technician with no processing fees, no delay, and no share with the salon. Card tips sometimes get pooled, deducted for fees, or processed on a different pay cycle. Cash is immediate and 100% theirs." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cash tips go directly to the technician with no fees, no pooling, and no delay. Card tips may be subject to processing charges or get distributed differently. Cash is always immediate and 100% for your technician."
+            }
           },
           {
             "@type": "Question",
             "name": "How much should I tip for a gel manicure?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip 18–20% on a gel manicure, the same as a standard service. If the gel set is especially complex — nail art, extensions, or a full soak-off and redo — consider 20–25% for the extra time and skill involved." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 18–20% on a gel manicure. For a $40 gel service, that's $7–8. If the set includes intricate nail art or extensions, bump up to 22–25% to account for the extra time and skill."
+            }
           },
           {
             "@type": "Question",
             "name": "What is the minimum tip at a nail salon?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The minimum tip at a nail salon is $3–5 regardless of service cost. Even for a $12–15 basic manicure, leave at least $3. A percentage-only approach produces tips that are too small to be meaningful for low-cost services." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The minimum tip is $3–5, regardless of how low the service cost is. Even for a $12–15 basic manicure, leave at least $3. Percentage-only tipping on cheap services produces tips too small to be meaningful."
+            }
           }
         ]
       }
@@ -168,9 +224,7 @@
   }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <!-- NAV -->
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
@@ -178,9 +232,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </a>
-    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">
-      All calculators →
-    </a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">All calculators →</a>
   </div>
 </nav>
 
@@ -348,7 +400,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip at a nail salon?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The standard tip is 18–20% of your service total. For a $50 mani-pedi, tip $9–10. Always tip a minimum of $3–5 regardless of service cost — percentage math produces amounts too small for low-cost services.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip at a nail salon?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Nail technicians depend heavily on tips to supplement their wages. Many earn minimum wage plus commission, or pay booth rental out of pocket. Not tipping for satisfactory work is considered very rude in the nail salon industry.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should I tip in cash at a nail salon?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Cash is strongly preferred. Card tips may be pooled, delayed, or reduced by processing fees. A cash tip handed directly to your technician ensures they receive the full amount immediately.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a $50 nail service?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $8–10 for a $50 nail service. A $10 tip (20%) is standard for good work. Bump to $12–13 (25%) for exceptional quality or a complex design.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip extra for nail art or complex designs?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Nail art, 3D designs, ombre, and intricate patterns require significantly more skill and time. Add $5–10 on top of your standard percentage tip, or increase to 22–25% for elaborate custom work.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip the nail salon owner?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip the owner 15–20%, just like any other technician. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip owners as a standard practice.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should I tip separately if two technicians worked on me?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. When different technicians handle different services — one for manicure, one for pedicure — tip each separately based on their portion. Don't leave a single tip expecting the salon to split it correctly.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Why do nail salons prefer cash tips?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Cash tips go directly to the technician with no fees, no pooling, and no delay. Card tips may be subject to processing charges or get distributed differently. Cash is always immediate and 100% for your technician.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should I tip for a gel manicure?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 18–20% on a gel manicure. For a $40 gel service, that's $7–8. If the set includes intricate nail art or extensions, bump up to 22–25% to account for the extra time and skill.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">What is the minimum tip at a nail salon?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The minimum tip is $3–5, regardless of how low the service cost is. Even for a $12–15 basic manicure, leave at least $3. Percentage-only tipping on cheap services produces tips too small to be meaningful.</div></div></details></div></div>
   </section>
 
   <!-- RELATED CALCULATORS -->
@@ -404,16 +456,16 @@
 
 <!-- FOOTER -->
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
   <p class="mt-1">
     <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
-     · 
+     &middot;
     <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
+     &middot;
     <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
@@ -493,44 +545,8 @@
   })();
 
   // FAQ
-  const FAQ_DATA = [
-    { q: "How much should you tip at a nail salon?", a: "The standard tip is 18–20% of your service total. For a $50 mani-pedi, tip $9–10. Always tip a minimum of $3–5 regardless of service cost — percentage math produces amounts too small for low-cost services." },
-    { q: "Is it rude not to tip at a nail salon?", a: "Yes. Nail technicians depend heavily on tips to supplement their wages. Many earn minimum wage plus commission, or pay booth rental out of pocket. Not tipping for satisfactory work is considered very rude in the nail salon industry." },
-    { q: "Should I tip in cash at a nail salon?", a: "Cash is strongly preferred. Card tips may be pooled, delayed, or reduced by processing fees. A cash tip handed directly to your technician ensures they receive the full amount immediately." },
-    { q: "How much do you tip for a $50 nail service?", a: "Tip $8–10 for a $50 nail service. A $10 tip (20%) is standard for good work. Bump to $12–13 (25%) for exceptional quality or a complex design." },
-    { q: "Do you tip extra for nail art or complex designs?", a: "Yes. Nail art, 3D designs, ombre, and intricate patterns require significantly more skill and time. Add $5–10 on top of your standard percentage tip, or increase to 22–25% for elaborate custom work." },
-    { q: "Do you tip the nail salon owner?", a: "Yes — tip the owner 15–20%, just like any other technician. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip owners as a standard practice." },
-    { q: "Should I tip separately if two technicians worked on me?", a: "Yes. When different technicians handle different services — one for manicure, one for pedicure — tip each separately based on their portion. Don't leave a single tip expecting the salon to split it correctly." },
-    { q: "Why do nail salons prefer cash tips?", a: "Cash tips go directly to the technician with no fees, no pooling, and no delay. Card tips may be subject to processing charges or get distributed differently. Cash is always immediate and 100% for your technician." },
-    { q: "How much should I tip for a gel manicure?", a: "Tip 18–20% on a gel manicure. For a $40 gel service, that's $7–8. If the set includes intricate nail art or extensions, bump up to 22–25% to account for the extra time and skill." },
-    { q: "What is the minimum tip at a nail salon?", a: "The minimum tip is $3–5, regardless of how low the service cost is. Even for a $12–15 basic manicure, leave at least $3. Percentage-only tipping on cheap services produces tips too small to be meaningful." }
-  ];
-
-  (function buildFAQ() {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details');
-      details.className = 'group';
-      const summary = document.createElement('summary');
-      summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span');
-      qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div');
-      answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a;
-      answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv);
-      div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 
 
   // Custom % handler

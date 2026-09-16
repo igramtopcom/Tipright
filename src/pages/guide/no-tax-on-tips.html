@@ -1,0 +1,334 @@
+---
+{
+  "route": "/guide/no-tax-on-tips",
+  "title": "No Tax on Tips Calculator — Federal Tax Savings on Tip Income",
+  "description": "No Tax on Tips calculator. Estimate your federal tax savings on tip income. Covers the $25,000 cap, $150K-$160K phase-out, and FICA taxes that still apply.",
+  "canonical": "https://tipright.app/guide/no-tax-on-tips",
+  "ogTitle": "No Tax on Tips Calculator — Federal Tax Savings",
+  "ogDescription": "Calculate your federal tax savings under the No Tax on Tips Act. For service workers earning tip income.",
+  "ogImage": "https://tipright.app/assets/img/og-default.png",
+  "twitterTitle": null,
+  "twitterDescription": null,
+  "twitterImage": null,
+  "bodyClass": "bg-gray-50 text-gray-800 font-sans min-h-screen",
+  "navRight": {
+    "href": "/",
+    "label": "All calculators →"
+  },
+  "footerClass": "border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500",
+  "footerLinks": [
+    {
+      "href": "/about",
+      "label": "About"
+    },
+    {
+      "href": "/",
+      "label": "All calculators"
+    },
+    {
+      "href": "/privacy",
+      "label": "Privacy"
+    },
+    {
+      "href": "/terms",
+      "label": "Terms"
+    },
+    {
+      "href": "/contact",
+      "label": "Contact"
+    }
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "No Tax on Tips Calculator",
+          "description": "Calculate your federal tax savings on tip income under the No Tax on Tips Act.",
+          "url": "https://tipright.app/guide/no-tax-on-tips",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Any",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "tipright.app",
+            "url": "https://tipright.app"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://tipright.app"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "No Tax on Tips Calculator",
+              "item": "https://tipright.app/guide/no-tax-on-tips"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "What is the No Tax on Tips Act?",
+      "a": "The No Tax on Tips Act, signed in July 2025, exempts tip income from federal income tax for eligible service workers. Workers earning under $160,000 AGI can exclude up to $25,000 in annual tip income from federal taxation. The provision covers tax years 2025–2028."
+    },
+    {
+      "q": "Who qualifies for no tax on tips?",
+      "a": "Service workers in tipped occupations — restaurant servers, bartenders, hair stylists, nail technicians, tattoo artists, hotel staff, massage therapists, delivery drivers, and others — qualify if their AGI is under $160,000. The deduction phases out between $150,000 and $160,000 AGI."
+    },
+    {
+      "q": "How much can I save with no tax on tips?",
+      "a": "Savings depend on your tip income and tax bracket. A worker in the 22% bracket earning $20,000 in tips saves approximately $4,400 per year. Workers in higher brackets save proportionally more, up to the $25,000 maximum exclusion."
+    },
+    {
+      "q": "Do I still pay Social Security and Medicare taxes on tips?",
+      "a": "Yes. The No Tax on Tips Act exempts tip income from federal income tax only. FICA taxes (Social Security at 6.2% and Medicare at 1.45%) still apply to all tip income."
+    },
+    {
+      "q": "Do I still need to report tips to my employer?",
+      "a": "Yes. All tip reporting requirements remain in effect. You must still report cash tips of $20 or more per month to your employer. The exemption is applied when you file your federal tax return."
+    },
+    {
+      "q": "When does the No Tax on Tips provision expire?",
+      "a": "The provision covers tax years 2025 through 2028. Without Congressional renewal, it expires after the 2028 tax year. Watch for legislative updates as the expiration approaches."
+    },
+    {
+      "q": "Does no tax on tips apply to state taxes?",
+      "a": "No — this is a federal law only. Most states have not enacted conforming legislation. State income tax on tip income is unchanged. Check your state's tax authority for guidance."
+    },
+    {
+      "q": "Are credit card tips treated the same as cash tips?",
+      "a": "Yes. The exemption applies to all tip income regardless of payment method — cash, credit card, digital payment, or any other form."
+    }
+  ]
+}
+---
+<!--@nav-->
+
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-[672px] mx-auto px-4 py-6">
+    <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">No Tax on Tips Calculator</h1>
+    <p class="text-gray-500 text-sm mt-1">Calculate your federal tax savings on tip income, effective 2025–2028</p>
+  </div>
+</header>
+
+<main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
+
+  <!-- CALCULATOR -->
+  <section id="calculator" aria-label="No tax on tips savings calculator">
+    <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
+
+      <!-- Disclaimer -->
+      <div class="calc-note mb-5 flex items-start gap-2.5 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+        <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+        <p class="text-xs text-amber-800 leading-relaxed"><strong>Estimate only.</strong> This calculator provides a simplified estimate. Consult a tax professional for advice specific to your situation. FICA taxes (Social Security + Medicare) still apply to tips.</p>
+      </div>
+
+      <div class="space-y-4">
+
+        <!-- Annual tip income -->
+        <div>
+          <label for="tip-income" class="block text-sm font-medium text-gray-700 mb-2">Annual tip income</label>
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
+            <input id="tip-income" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
+              class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
+          </div>
+        </div>
+
+        <!-- Federal tax bracket -->
+        <div>
+          <label for="tax-bracket" class="block text-sm font-medium text-gray-700 mb-2">Federal income tax bracket</label>
+          <select id="tax-bracket" class="w-full h-12 px-4 rounded-xl border border-line bg-gray-50 text-gray-900 text-base font-medium focus:border-brand outline-none transition-colors">
+            <option value="0.10">10%, Single &lt;$11,600 / MFJ &lt;$23,200</option>
+            <option value="0.12">12%, Single $11,601–$47,150 / MFJ $23,201–$94,300</option>
+            <option value="0.22" selected>22%, Single $47,151–$100,525 / MFJ $94,301–$201,050</option>
+            <option value="0.24">24%, Single $100,526–$191,950 / MFJ $201,051–$383,900</option>
+            <option value="0.32">32%, Single $191,951–$243,725 / MFJ $383,901–$487,450</option>
+          </select>
+        </div>
+
+        <!-- AGI check -->
+        <div>
+          <label for="agi" class="block text-sm font-medium text-gray-700 mb-2">Adjusted Gross Income (AGI), to check eligibility</label>
+          <div class="relative">
+            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
+            <input id="agi" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:18px"
+              class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Must be under $160,000 to qualify. Phase-out begins at $150,000.</p>
+        </div>
+
+      </div>
+
+      <!-- Results -->
+      <div id="results" class="mt-6 hidden">
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div class="bg-brand-pale rounded-xl p-4 border-2 border-brand">
+            <p class="text-xs font-medium text-brand-dark mb-1">Tax-exempt tips</p>
+            <p id="res-exempt" class="text-2xl font-bold text-brand-dark">$0</p>
+            <p class="text-xs text-brand-dark mt-1">of $25,000 max</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-line">
+            <p class="text-xs font-medium text-gray-500 mb-1">Federal tax saved</p>
+            <p id="res-saved" class="text-2xl font-bold text-gray-800">$0</p>
+            <p id="res-bracket-label" class="text-xs text-gray-500 mt-1">at 22% bracket</p>
+          </div>
+          <div class="bg-white rounded-xl p-4 border border-line col-span-2 sm:col-span-1">
+            <p class="text-xs font-medium text-gray-500 mb-1">Effective take-home</p>
+            <p id="res-takehome" class="text-2xl font-bold text-gray-800">$0</p>
+            <p class="text-xs text-gray-500 mt-1">after income tax</p>
+          </div>
+        </div>
+        <div id="phase-out-warning" class="hidden mt-3 flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+          <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          <p id="phase-out-text" class="text-xs text-amber-800 leading-relaxed"></p>
+        </div>
+        <div id="ineligible-warning" class="hidden mt-3 flex items-start gap-2 bg-red-50 border border-red-200 rounded-lg px-4 py-3">
+          <svg class="w-4 h-4 text-red-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          <p class="text-xs text-red-700 leading-relaxed">AGI over $160,000, you do not qualify for the No Tax on Tips exemption at this income level.</p>
+        </div>
+      </div>
+
+      <div id="empty-state" class="mt-6 text-center py-6 text-gray-500 text-sm">Enter your annual tip income above to calculate your savings</div>
+
+    </div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="space-y-7 text-gray-700 leading-relaxed" style="max-width:65ch">
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">What is the No Tax on Tips Act?</h2>
+      <p>The No Tax on Tips Act, signed into law in July 2025, exempts tip income from federal income tax for eligible service workers. For tax years <strong>2025 through 2028</strong>, workers in tipped occupations can exclude up to <strong>$25,000 in tip income per year</strong> from their federal taxable income.</p>
+      <p class="mt-3">The provision applies to workers with an adjusted gross income (AGI) under <strong>$160,000</strong>. A phase-out applies between $150,000 and $160,000 AGI, reducing the exclusion proportionally for higher earners in that range.</p>
+      <p class="mt-3">Important: this exemption covers <strong>federal income tax only</strong>. FICA taxes (Social Security 6.2% + Medicare 1.45%) still apply to all tip income. State income tax treatment varies by state. Most states have not enacted conforming legislation.</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Who qualifies?</h2>
+      <ul class="space-y-2 list-disc pl-5 text-gray-600">
+        <li>Restaurant servers, bartenders, and food service workers</li>
+        <li>Hair stylists, nail technicians, barbers, and salon workers</li>
+        <li>Tattoo artists, piercers, and body art professionals</li>
+        <li>Massage therapists, spa workers, and estheticians</li>
+        <li>Hotel staff (housekeeping, bellhop, concierge, valet)</li>
+        <li>Delivery drivers and gig workers who receive tips</li>
+        <li>Any worker in a "tipped occupation" as defined by the IRS</li>
+      </ul>
+      <p class="mt-3">The key eligibility requirement is AGI under $160,000. Workers who receive tips as a standard part of their occupation qualify regardless of employer size.</p>
+    </div>
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">How to claim the deduction</h2>
+      <p>The tip income exclusion is claimed on your federal tax return, you don't need to do anything different during the year. Continue reporting tips to your employer as required (cash tips of $20+ per month). FICA withholding continues normally.</p>
+      <p class="mt-3">On your tax return, your tip income up to $25,000 will be excluded from federal taxable income. Your tax preparer or tax software will guide you through this. Look for updated IRS guidance and forms for the 2025 tax year filing season (early 2026).</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
+    <div class="space-y-2" id="faq-container"><!--@faq--></div>
+  </section>
+
+  <!-- Related calculators -->
+  <section>
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Tip calculators for your clients</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <a href="/tip/tattoo" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 1 9-9c0 2.2-1.8 4-4 4h-1.6a1.6 1.6 0 0 0-1.2 2.7c.3.35.5.8.5 1.3 0 .6-.5 1-1.7 1z"/><circle cx="7.9" cy="12.4" r=".9"/><circle cx="9.9" cy="8.5" r=".9"/><circle cx="14.1" cy="7.9" r=".9"/><circle cx="16.9" cy="10.9" r=".9"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Tattoo</p><p class="text-xs text-gray-500 mt-0.5">Client tip guide</p></div></a>
+      <a href="/tip/nail-salon" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5h4V6h-4z"/><path d="M8.8 6h6.4a1.2 1.2 0 0 1 1.2 1.2v11.6a2.2 2.2 0 0 1-2.2 2.2H9.8a2.2 2.2 0 0 1-2.2-2.2V7.2A1.2 1.2 0 0 1 8.8 6z"/><path d="M10.3 10v3.5"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Nail Salon</p><p class="text-xs text-gray-500 mt-0.5">Client tip guide</p></div></a>
+      <a href="/tip/hair-salon" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5h8.5a4 4 0 0 1 0 8H3.5z"/><path d="M6 16.5v4h3.5v-4"/><path d="M17.5 10h3"/><path d="M17.5 12.5h3.5"/><path d="M17.5 15h3"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hair Salon</p><p class="text-xs text-gray-500 mt-0.5">Client tip guide</p></div></a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 13.2V9.5a1.5 1.5 0 0 1 3 0v2.3"/><path d="M11.5 11.8V6.8a1.5 1.5 0 0 1 3 0v5"/><path d="M14.5 11.8V8.8a1.5 1.5 0 0 1 3 0v6.4a6 6 0 0 1-6 6h-.8a5.2 5.2 0 0 1-5.2-5.2v-3.6a1.5 1.5 0 0 1 3 0v1.6"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage</p><p class="text-xs text-gray-500 mt-0.5">Client tip guide</p></div></a>
+      <a href="/tip/barber" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6.5" cy="7" r="2.5"/><circle cx="6.5" cy="17" r="2.5"/><path d="M8.7 8.2 20 19.5"/><path d="M20 4.5 8.7 15.8"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Barber</p><p class="text-xs text-gray-500 mt-0.5">Client tip guide</p></div></a>
+      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5v-15A1.5 1.5 0 0 1 6 3z"/><path d="M7.5 6.5h9V10h-9z"/><path d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17.5h.01M12 17.5h.01M16 17.5h.01"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">All 18 calculators</p><p class="text-xs text-gray-500 mt-0.5">Full hub</p></div></a>
+    </div>
+  </section>
+
+</main>
+
+<!--@footer-->
+
+<!--@calculator-->
+<script>
+(function () {
+  const tipInput    = document.getElementById('tip-income');
+  const bracketSel  = document.getElementById('tax-bracket');
+  const agiInput    = document.getElementById('agi');
+  const resultsEl   = document.getElementById('results');
+  const emptyEl     = document.getElementById('empty-state');
+  const phaseWarn   = document.getElementById('phase-out-warning');
+  const phaseText   = document.getElementById('phase-out-text');
+  const ineligEl    = document.getElementById('ineligible-warning');
+
+  function fmt(n) {
+    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(n);
+  }
+
+  function parseDollar(val) {
+    const n = parseFloat(String(val).replace(/[$,\s]/g, ''));
+    return isNaN(n) || n < 0 ? 0 : n;
+  }
+
+  function calculate() {
+    const tips    = parseDollar(tipInput.value);
+    const bracket = parseFloat(bracketSel.value);
+    const agi     = parseDollar(agiInput.value);
+
+    if (tips === 0) {
+      resultsEl.classList.add('hidden');
+      emptyEl.classList.remove('hidden');
+      return;
+    }
+
+    emptyEl.classList.add('hidden');
+    resultsEl.classList.remove('hidden');
+    phaseWarn.classList.add('hidden');
+    ineligEl.classList.add('hidden');
+
+    const MAX_EXEMPT = 25000;
+    const PHASE_START = 150000;
+    const PHASE_END   = 160000;
+
+    let eligibleExempt = Math.min(tips, MAX_EXEMPT);
+
+    if (agi > 0) {
+      if (agi >= PHASE_END) {
+        ineligEl.classList.remove('hidden');
+        eligibleExempt = 0;
+      } else if (agi > PHASE_START) {
+        const phaseRatio = (PHASE_END - agi) / (PHASE_END - PHASE_START);
+        eligibleExempt = Math.round(eligibleExempt * phaseRatio);
+        phaseWarn.classList.remove('hidden');
+        phaseText.textContent = `Your AGI of ${fmt(agi)} is in the phase-out range ($150K–$160K). Your exemption is reduced to ${fmt(eligibleExempt)}.`;
+      }
+    }
+
+    const taxSaved   = Math.round(eligibleExempt * bracket);
+    const takeHome   = tips - Math.round((tips - eligibleExempt) * bracket);
+
+    document.getElementById('res-exempt').textContent      = fmt(eligibleExempt);
+    document.getElementById('res-saved').textContent       = fmt(taxSaved);
+    document.getElementById('res-takehome').textContent    = fmt(takeHome);
+    document.getElementById('res-bracket-label').textContent = `at ${Math.round(bracket * 100)}% bracket`;
+  }
+
+  tipInput.addEventListener('input', calculate);
+  bracketSel.addEventListener('change', calculate);
+  agiInput.addEventListener('input', calculate);
+
+  // FAQ
+  
+  
+})();
+</script>

@@ -39,11 +39,26 @@
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -51,41 +66,34 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
+  </style>
 
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
 
   <script type="application/ld+json">
   {
@@ -99,14 +107,32 @@
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" }
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
-          { "@type": "ListItem", "position": 2, "name": "Movers Tip Calculator", "item": "https://tipright.app/tip/movers" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Movers Tip Calculator",
+            "item": "https://tipright.app/tip/movers"
+          }
         ]
       },
       {
@@ -115,52 +141,82 @@
           {
             "@type": "Question",
             "name": "How much should you tip movers?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip movers $20–50 per mover for a local move, or 5–10% of the total move cost for a larger job. For a crew of 3 on a standard local move, budget $60–150 total. Tip each mover individually in cash at the end of the job." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $20–50 per mover for a local move, or 5–10% of the total move cost for larger jobs. For a 3-person crew on a full-day local move, budget $120–150 total. Give each mover their tip in cash individually."
+            }
           },
           {
             "@type": "Question",
             "name": "Should you tip movers per person or total?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip per person — give each mover their own tip in cash directly. Don't hand a lump sum to the crew leader and assume it gets divided. $20–50 per mover for a local move, $50–100 per mover for a full-day or long-distance move." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip per person — hand each mover their own cash tip directly. Don't give a lump sum to the crew leader expecting it to be divided. $20–50 per mover for local, $50–100 per mover for long-distance or full-day moves."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip movers for a local move?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip $20–30 per mover for a half-day local move (under 4 hours), and $40–50 per mover for a full-day local move (6+ hours). For a 3-person crew on a full day, budget $120–150 total." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $20–30 per mover for a half-day local move (under 4 hours), and $40–50 per mover for a full-day move (6+ hours). For a 3-person crew on a full day, budget $120–150 total."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip movers for a long-distance move?",
-            "acceptedAnswer": { "@type": "Answer", "text": "For long-distance moves, tip 5–10% of the total moving cost, or $50–100 per mover. A $3,000 long-distance move warrants $150–300 total tip ($50–100 per mover for a 3-person crew)." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 5–10% of the total moving cost, or $50–100 per mover. A $3,000 long-distance move warrants $150–300 total ($50–100 per mover for a 3-person crew)."
+            }
           },
           {
             "@type": "Question",
             "name": "Is it rude not to tip movers?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Moving is one of the most physically demanding jobs there is — movers carry heavy furniture in heat, rain, and up stairs all day. Not tipping a crew that performed well is considered rude. If service was poor, a reduced tip (not zero) is appropriate." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Moving is physically grueling work — movers carry heavy furniture in all weather conditions all day. Not tipping a crew that performed well is considered rude. A reduced tip for poor service is better than nothing."
+            }
           },
           {
             "@type": "Question",
             "name": "Should you tip more for a difficult move?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tip toward the higher end ($50+ per mover) for moves involving stairs, elevators, tight hallways, extreme weather, heavy or fragile items, or longer-than-expected days. Extra difficulty deserves extra acknowledgment." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Tip toward the higher end ($50+ per mover) for moves with stairs, tight hallways, extreme weather, fragile or specialty items, or days that ran significantly longer than expected."
+            }
           },
           {
             "@type": "Question",
-            "name": "When should you tip movers — before or after the move?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Always tip after the move is complete, not before. Tip at the end of the job once everything is unloaded and placed. This allows you to assess the quality of care taken with your belongings before deciding the tip amount." }
+            "name": "When should you tip movers — before or after?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Always tip after the move is complete. Wait until everything is unloaded and placed so you can assess the quality of work before deciding the final amount. Tipping before gives movers no incentive to take extra care."
+            }
           },
           {
             "@type": "Question",
             "name": "Should you tip the moving truck driver separately?",
-            "acceptedAnswer": { "@type": "Answer", "text": "If the driver is part of the moving crew, include them in the per-person tip. If the driver only drove and didn't help load or unload, $20–30 is appropriate. For long-distance moves where the driver does most of the work alone, $50–100 is standard." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If the driver is part of the crew, include them in the per-person tip. If the driver only drove and didn't load or unload, $20–30 is appropriate. Long-distance drivers who work alone warrant $50–100."
+            }
           },
           {
             "@type": "Question",
-            "name": "Do you tip movers from a large company like U-Haul or PODS?",
-            "acceptedAnswer": { "@type": "Answer", "text": "If you hire labor-only movers through a service like HireAHelper or TaskRabbit, tip them the same as any crew — $20–50 per person. PODS and U-Haul drivers who only drop and pick up equipment don't typically receive tips, but $10–20 is a nice gesture for good service." }
+            "name": "Do you tip movers from large companies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If you hire labor through HireAHelper, TaskRabbit, or similar services, tip $20–50 per person as normal. PODS or U-Haul equipment drop-off drivers don't typically receive tips, but $10–20 is a nice gesture for great service."
+            }
           },
           {
             "@type": "Question",
             "name": "Besides tipping, how else can you show appreciation to movers?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Provide water, sports drinks, and snacks throughout the day — especially in summer. A pizza or lunch for a full-day crew is a thoughtful gesture on top of the cash tip. These extras are appreciated alongside, not instead of, a tip." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Provide water, sports drinks, and snacks throughout the day. A pizza or lunch for a full-day crew is a thoughtful gesture. These extras should supplement, not replace, a cash tip."
+            }
           }
         ]
       }
@@ -168,9 +224,7 @@
   }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
     <a href="/" class="flex items-center gap-2" style="text-decoration:none">
@@ -316,7 +370,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip movers?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $20–50 per mover for a local move, or 5–10% of the total move cost for larger jobs. For a 3-person crew on a full-day local move, budget $120–150 total. Give each mover their tip in cash individually.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip movers per person or total?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip per person — hand each mover their own cash tip directly. Don't give a lump sum to the crew leader expecting it to be divided. $20–50 per mover for local, $50–100 per mover for long-distance or full-day moves.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip movers for a local move?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $20–30 per mover for a half-day local move (under 4 hours), and $40–50 per mover for a full-day move (6+ hours). For a 3-person crew on a full day, budget $120–150 total.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip movers for a long-distance move?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 5–10% of the total moving cost, or $50–100 per mover. A $3,000 long-distance move warrants $150–300 total ($50–100 per mover for a 3-person crew).</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip movers?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Moving is physically grueling work — movers carry heavy furniture in all weather conditions all day. Not tipping a crew that performed well is considered rude. A reduced tip for poor service is better than nothing.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip more for a difficult move?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Tip toward the higher end ($50+ per mover) for moves with stairs, tight hallways, extreme weather, fragile or specialty items, or days that ran significantly longer than expected.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">When should you tip movers — before or after?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Always tip after the move is complete. Wait until everything is unloaded and placed so you can assess the quality of work before deciding the final amount. Tipping before gives movers no incentive to take extra care.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip the moving truck driver separately?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>If the driver is part of the crew, include them in the per-person tip. If the driver only drove and didn't load or unload, $20–30 is appropriate. Long-distance drivers who work alone warrant $50–100.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip movers from large companies?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>If you hire labor through HireAHelper, TaskRabbit, or similar services, tip $20–50 per person as normal. PODS or U-Haul equipment drop-off drivers don't typically receive tips, but $10–20 is a nice gesture for great service.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Besides tipping, how else can you show appreciation to movers?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Provide water, sports drinks, and snacks throughout the day. A pizza or lunch for a full-day crew is a thoughtful gesture. These extras should supplement, not replace, a cash tip.</div></div></details></div></div>
   </section>
 
   <!-- RELATED -->
@@ -353,14 +407,18 @@
 </main>
 
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
-  <p class="mt-1"><a href="/about" class="hover:text-brand-dark transition-colors">About</a> · <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
+  <p class="mt-1">
+    <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
+     &middot;
+    <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
-    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a></p>
+     &middot;
+    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
+  </p>
 </footer>
 
 <script src="/assets/js/calculator.dbcdb7b093.js"></script>
@@ -429,44 +487,8 @@
   })();
 
   // FAQ
-  const FAQ_DATA = [
-    { q: "How much should you tip movers?", a: "Tip $20–50 per mover for a local move, or 5–10% of the total move cost for larger jobs. For a 3-person crew on a full-day local move, budget $120–150 total. Give each mover their tip in cash individually." },
-    { q: "Should you tip movers per person or total?", a: "Tip per person — hand each mover their own cash tip directly. Don't give a lump sum to the crew leader expecting it to be divided. $20–50 per mover for local, $50–100 per mover for long-distance or full-day moves." },
-    { q: "How much do you tip movers for a local move?", a: "Tip $20–30 per mover for a half-day local move (under 4 hours), and $40–50 per mover for a full-day move (6+ hours). For a 3-person crew on a full day, budget $120–150 total." },
-    { q: "How much do you tip movers for a long-distance move?", a: "Tip 5–10% of the total moving cost, or $50–100 per mover. A $3,000 long-distance move warrants $150–300 total ($50–100 per mover for a 3-person crew)." },
-    { q: "Is it rude not to tip movers?", a: "Yes. Moving is physically grueling work — movers carry heavy furniture in all weather conditions all day. Not tipping a crew that performed well is considered rude. A reduced tip for poor service is better than nothing." },
-    { q: "Should you tip more for a difficult move?", a: "Yes. Tip toward the higher end ($50+ per mover) for moves with stairs, tight hallways, extreme weather, fragile or specialty items, or days that ran significantly longer than expected." },
-    { q: "When should you tip movers — before or after?", a: "Always tip after the move is complete. Wait until everything is unloaded and placed so you can assess the quality of work before deciding the final amount. Tipping before gives movers no incentive to take extra care." },
-    { q: "Should you tip the moving truck driver separately?", a: "If the driver is part of the crew, include them in the per-person tip. If the driver only drove and didn't load or unload, $20–30 is appropriate. Long-distance drivers who work alone warrant $50–100." },
-    { q: "Do you tip movers from large companies?", a: "If you hire labor through HireAHelper, TaskRabbit, or similar services, tip $20–50 per person as normal. PODS or U-Haul equipment drop-off drivers don't typically receive tips, but $10–20 is a nice gesture for great service." },
-    { q: "Besides tipping, how else can you show appreciation to movers?", a: "Provide water, sports drinks, and snacks throughout the day. A pizza or lunch for a full-day crew is a thoughtful gesture. These extras should supplement, not replace, a cash tip." }
-  ];
-
-  (function () {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details');
-      details.className = 'group';
-      const summary = document.createElement('summary');
-      summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span');
-      qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div');
-      answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a;
-      answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv);
-      div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 
   // Custom % handler
   var customPctInput = document.getElementById('custom-pct');

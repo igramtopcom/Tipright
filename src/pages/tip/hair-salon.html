@@ -1,0 +1,481 @@
+---
+{
+  "route": "/tip/hair-salon",
+  "title": "Hair Salon Tip Calculator — How Much to Tip Your Stylist?",
+  "description": "How much to tip your hair stylist? Enter your service total for instant tip amounts. Covers colorists, shampoo assistants, and the salon owner debate.",
+  "canonical": "https://tipright.app/tip/hair-salon",
+  "ogTitle": "Hair Salon Tip Calculator — How Much to Tip Your Stylist?",
+  "ogDescription": "Find the right tip for your hair stylist, colorist, and assistant. Instant results for any service total.",
+  "ogImage": "https://tipright.app/assets/img/og-hair-salon.png",
+  "twitterTitle": "Hair Salon Tip Calculator — How Much to Tip Your Stylist?",
+  "twitterDescription": "Find the right tip for your hair stylist, colorist, and assistant. Instant results for any service total.",
+  "twitterImage": "https://tipright.app/assets/img/og-hair-salon.png",
+  "bodyClass": "bg-gray-50 text-gray-800 font-sans min-h-screen",
+  "navRight": {
+    "href": "/",
+    "label": "All calculators →"
+  },
+  "footerClass": "border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500",
+  "footerLinks": [
+    {
+      "href": "/about",
+      "label": "About"
+    },
+    {
+      "href": "/",
+      "label": "All calculators"
+    },
+    {
+      "href": "/privacy",
+      "label": "Privacy"
+    },
+    {
+      "href": "/terms",
+      "label": "Terms"
+    },
+    {
+      "href": "/contact",
+      "label": "Contact"
+    }
+  ],
+  "jsonld": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "name": "Hair Salon Tip Calculator",
+          "description": "Free hair salon tip calculator. Enter your service total to see tip amounts for haircuts, color, and styling instantly.",
+          "url": "https://tipright.app/tip/hair-salon",
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "tipright.app",
+            "url": "https://tipright.app"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://tipright.app"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Hair Salon Tip Calculator",
+              "item": "https://tipright.app/tip/hair-salon"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "q": "How much should you tip a hair stylist?",
+      "a": "The standard tip for a hair stylist is 20% of the total service cost. For a $100 haircut and blowout, that's $20. Tip 15% for basic services, 22–25% for complex color work or when your stylist went above and beyond."
+    },
+    {
+      "q": "Should you tip the salon owner?",
+      "a": "Yes — tip salon owners 15–20%, just like any other stylist. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip them as standard practice."
+    },
+    {
+      "q": "Do you tip the shampoo assistant at a hair salon?",
+      "a": "Yes. Tip the shampoo assistant $3–5 separately from your stylist tip, in cash, handed directly to them. Assistants earn very low wages and depend on these small tips as a meaningful part of their income."
+    },
+    {
+      "q": "How much do you tip for a $100 hair service?",
+      "a": "Tip $15–20 on a $100 hair service. A $20 tip (20%) is standard for good work. Tip $22–25 for above-average results or if your service ran significantly over time."
+    },
+    {
+      "q": "How much do you tip for hair color?",
+      "a": "Tip 20% on hair color services, the same as for cuts. Color is technically demanding and time-intensive. For complex work like color correction or a full balayage, tipping 22–25% acknowledges the extra skill and hours involved."
+    },
+    {
+      "q": "Do you tip if a different person does your color and cut?",
+      "a": "Yes — tip each person separately based on their portion of the service. Calculate 20% on the colorist's charge and 20% on the stylist's charge separately, and hand each their tip directly in cash."
+    },
+    {
+      "q": "How much do you tip for a balayage?",
+      "a": "Tip 20% on a balayage. For a $250 balayage, that's $50. Balayage is a skilled, time-intensive technique taking 2–4 hours. Tip 25% ($62.50) for an exceptional, high-effort result."
+    },
+    {
+      "q": "Is it rude not to tip your hairdresser?",
+      "a": "Yes. In the US, not tipping a hairdresser for satisfactory service is considered rude. Most stylists pay booth rental or work on commission — tips directly supplement their take-home pay for every hour they spend on your hair."
+    },
+    {
+      "q": "How much do you tip for a simple trim?",
+      "a": "Tip 15–20% even for a simple trim. If the haircut costs $20–30, use a $5 minimum rather than a strict percentage — percentage math produces amounts too small to be meaningful on cheap services."
+    },
+    {
+      "q": "Should I tip more for a long appointment?",
+      "a": "Yes. A 4-hour color correction deserves more acknowledgment than a 30-minute trim. If your appointment ran significantly over time or required exceptional skill and problem-solving, tipping 22–25% is appropriate and appreciated."
+    }
+  ]
+}
+---
+<!-- NAV -->
+<!--@nav-->
+
+<!-- HEADER -->
+<header class="bg-white border-b border-gray-100">
+  <div class="max-w-[672px] mx-auto px-4 py-6">
+    <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">
+      Hair Salon Tip Calculator
+    </h1>
+    <p class="text-gray-500 text-sm mt-1">How much should you tip your hair stylist or colorist?</p>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
+
+  <!-- CALCULATOR CARD -->
+  <section id="calculator" aria-label="Hair salon tip calculator">
+    <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
+
+      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
+        Service total (before tax)
+      </label>
+
+      <div class="relative mb-4">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
+        <input
+          id="cost"
+          type="text"
+          inputmode="decimal"
+          placeholder="0"
+          autocomplete="off"
+          style="font-size:20px"
+          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20"
+        >
+      </div>
+
+      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
+      <!-- Preset buttons — giá hair salon phổ biến -->
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs text-gray-500 self-center">Quick:</span>
+        <button data-preset="50" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$50</button>
+        <button data-preset="80" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$80</button>
+        <button data-preset="120" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$120</button>
+        <button data-preset="180" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$180</button>
+      </div>
+
+      <!-- Assistant tip callout — unique to hair salon -->
+      <div class="calc-note mb-5 flex items-start gap-2.5 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+        <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-xs text-amber-800 leading-relaxed">
+          <strong>Don't forget the shampoo assistant.</strong> Tip them $3–5 separately in cash. This calculator covers your stylist's tip only.
+        </p>
+      </div>
+
+      <!-- Split toggle -->
+      <details class="mb-5 group">
+        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
+          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+          Split tip with others
+        </summary>
+        <div class="mt-3 flex items-center gap-3 pl-1">
+          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of people:</label>
+          <input
+            id="split"
+            type="number"
+            value="1"
+            min="1"
+            max="20"
+            class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors"
+          >
+        </div>
+              <div id="tax-row" class="mt-3 flex items-center gap-3" style="display:none">
+          <label for="tax" class="text-sm text-gray-600 whitespace-nowrap">Tax on receipt:</label>
+          <div class="relative">
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">$</span>
+            <input id="tax" type="text" inputmode="decimal" value="" placeholder="0.00" autocomplete="off" style="font-size:16px" class="w-28 h-10 pl-7 rounded-lg border border-gray-300 text-center text-base font-medium focus:border-brand outline-none transition-colors bg-gray-50">
+          </div>
+          <span class="text-xs text-gray-500">optional</span>
+        </div>
+      </details>
+
+      <!-- Results grid -->
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
+        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">
+          Enter your service total above
+        </div>
+      </div>
+
+      <!-- Custom tip % -->
+      <div class="calc-after mt-4 flex items-center gap-3">
+        <label for="custom-pct" class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</label>
+        <div class="relative flex-1 max-w-[140px]">
+          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
+            autocomplete="off" style="font-size:16px"
+            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
+        </div>
+        <div id="custom-result" class="hidden flex-col items-start">
+          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
+          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
+          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
+        </div>
+      </div>
+
+      <!-- Share button -->
+      <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
+        <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+          </svg>
+          Share this calculation
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- QUICK REFERENCE TABLE -->
+  <section>
+    <h2 class="text-lg font-semibold text-gray-800 mb-3">Quick reference, common hair service totals</h2>
+    <div class="overflow-x-auto rounded-xl border border-line">
+      <table id="ref-table" class="w-full text-sm">
+        <thead>
+          <tr class="bg-brand-dark text-white">
+            <th class="px-4 py-3 text-left font-medium text-[13px]">Service total</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">15% tip</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px] bg-brand-dark">20% tip ★</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">25% tip</th>
+            <th class="px-4 py-3 text-right font-medium text-[13px]">Total (20%)</th>
+          </tr>
+        </thead>
+        <tbody id="ref-tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CONTENT SECTIONS -->
+  <section class="space-y-7 text-gray-700 leading-relaxed" style="max-width:65ch">
+
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">How much should you tip a hair stylist?</h2>
+      <p>Tip your stylist <strong>20%</strong>. A $100 haircut and blowout is $20. A $200 color and cut is $40. Budget salon or high-end, same percentage.</p>
+      <p class="mt-3">Stylists either rent their chair (often $400–800 a week out of pocket) or split their earnings with the salon. Tips are a big part of what they actually take home.</p>
+      <p class="mt-3">For cheap services, set a <strong>$5 floor</strong>. If 20% of a $25 trim comes out to $5, that's still the right number.</p>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <ul class="space-y-2 text-gray-600 list-disc pl-5">
+        <li><strong>Color vs cut:</strong> Color work is significantly more technical and time-intensive than a trim. A full balayage or color correction can take 3–5 hours. Tip 20% minimum on color; consider 22–25% for complex or time-heavy services.</li>
+        <li><strong>Multiple people:</strong> If a colorist applied your color and a different stylist did the cut and blowout, tip each person separately based on their service portion, not one combined tip split by the salon.</li>
+        <li><strong>Shampoo assistant:</strong> Always tip the assistant who shampoos and conditions your hair $3–5 in cash, separately from your stylist tip. They earn very low wages and tips are essential.</li>
+        <li><strong>Salon owner:</strong> Tipping the owner is now standard practice. Tip 15–20%, same as any other stylist. The old convention of not tipping owners has largely disappeared.</li>
+        <li><strong>Service duration:</strong> A 30-minute trim and a 4-hour color correction both deserve 20%, but the longer session also involved more physical effort, creative problem-solving, and scheduling commitment from your stylist.</li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Hair salon tipping etiquette</h2>
+      <p>When multiple people work on your hair, <strong>tip each person individually</strong>. Tip your colorist and stylist separately based on each person's service cost. Hand the cash to each of them directly. Leaving one tip at the front desk and hoping it gets split right is risky.</p>
+      <p class="mt-3">If you're a regular, tip every visit rather than saving it for a big holiday tip. Stylists remember consistent clients. That usually means better scheduling and more care when you actually need a last-minute appointment.</p>
+      <p class="mt-3">If something's wrong with your hair, say something before you leave. Most stylists will fix it for free. If they do, still tip: 10–15% if the fix was partial, your normal amount if they made it right. Walking out without tipping after they helped you isn't fair.</p>
+    </div>
+
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
+    <div class="space-y-2" id="faq-container"><!--@faq--></div>
+  </section>
+
+  <!-- RELATED CALCULATORS -->
+  <section>
+    <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Related tip calculators</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <a href="/tip/nail-salon" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5h4V6h-4z"/><path d="M8.8 6h6.4a1.2 1.2 0 0 1 1.2 1.2v11.6a2.2 2.2 0 0 1-2.2 2.2H9.8a2.2 2.2 0 0 1-2.2-2.2V7.2A1.2 1.2 0 0 1 8.8 6z"/><path d="M10.3 10v3.5"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Nail Salon Tip</p>
+          <p class="text-xs text-gray-500 mt-0.5">Manicure & pedicure</p>
+        </div>
+      </a>
+      <a href="/tip/barber" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6.5" cy="7" r="2.5"/><circle cx="6.5" cy="17" r="2.5"/><path d="M8.7 8.2 20 19.5"/><path d="M20 4.5 8.7 15.8"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Barber Tip</p>
+          <p class="text-xs text-gray-500 mt-0.5">Haircut & beard trim</p>
+        </div>
+      </a>
+      <a href="/tip/spa" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5c-2.2-2-3.4-4.4-3.4-6.8 0-2.2 1.1-4.3 3.4-6.2 2.3 1.9 3.4 4 3.4 6.2 0 2.4-1.2 4.8-3.4 6.8z"/><path d="M12 20.5c-3.4 0-6.3-1.9-7.7-4.8 1.8-1.5 4-1.8 5.9-1"/><path d="M12 20.5c3.4 0 6.3-1.9 7.7-4.8-1.8-1.5-4-1.8-5.9-1"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Day Spa Tip</p>
+          <p class="text-xs text-gray-500 mt-0.5">Full spa services</p>
+        </div>
+      </a>
+      <a href="/tip/waxing" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2s5.8 6.1 5.8 10.1a5.8 5.8 0 0 1-11.6 0C6.2 9.3 12 3.2 12 3.2z"/><path d="M9.4 14.6a2.6 2.6 0 0 0 2.6 2.6"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Waxing Tip</p>
+          <p class="text-xs text-gray-500 mt-0.5">Wax service tipping</p>
+        </div>
+      </a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 13.2V9.5a1.5 1.5 0 0 1 3 0v2.3"/><path d="M11.5 11.8V6.8a1.5 1.5 0 0 1 3 0v5"/><path d="M14.5 11.8V8.8a1.5 1.5 0 0 1 3 0v6.4a6 6 0 0 1-6 6h-.8a5.2 5.2 0 0 1-5.2-5.2v-3.6a1.5 1.5 0 0 1 3 0v1.6"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage Tip</p>
+          <p class="text-xs text-gray-500 mt-0.5">Therapist tipping</p>
+        </div>
+      </a>
+      <a href="/tip/tattoo" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 1 9-9c0 2.2-1.8 4-4 4h-1.6a1.6 1.6 0 0 0-1.2 2.7c.3.35.5.8.5 1.3 0 .6-.5 1-1.7 1z"/><circle cx="7.9" cy="12.4" r=".9"/><circle cx="9.9" cy="8.5" r=".9"/><circle cx="14.1" cy="7.9" r=".9"/><circle cx="16.9" cy="10.9" r=".9"/></svg>
+        <div>
+          <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Tattoo Tip</p>
+          <p class="text-xs text-gray-500 mt-0.5">Artist tipping</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<!--@footer-->
+
+<!--@calculator-->
+<script>
+(function () {
+  const costInput = document.getElementById('cost');
+  const splitInput = document.getElementById('split');
+  var taxInput   = document.getElementById('tax');
+  var taxRow     = document.getElementById('tax-row');
+  const resultsEl  = document.getElementById('results');
+  const shareBtn   = document.getElementById('share-btn');
+
+    var detailsEl = document.querySelector('details');
+  if (detailsEl && taxRow) {
+    detailsEl.addEventListener('toggle', function() {
+      taxRow.style.display = detailsEl.open ? 'flex' : 'none';
+      if (!detailsEl.open && taxInput) taxInput.value = '';
+      update();
+    });
+  }
+
+  function update() {
+    const cost  = TR.parseCost(costInput.value);
+    const split = parseInt(splitInput?.value) || 1;
+    if (cost === 0) {
+      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your service total above</div>';
+      TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
+      return;
+    }
+    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0);
+    TR.renderResults(tiers, split, resultsEl);
+    TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
+  }
+
+  const state = TR.readURL();
+  if (state.cost) {
+    costInput.value = state.cost;
+    if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; }
+    if (state.tax && taxInput) { taxInput.value = state.tax; document.querySelector('details').open = true; if (taxRow) taxRow.style.display = 'flex'; }
+    update();
+  }
+
+  costInput.addEventListener('input', update);
+  splitInput.addEventListener('input', update);
+  if (taxInput) taxInput.addEventListener('input', update);
+  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
+
+  document.querySelectorAll('[data-preset]').forEach(btn => {
+    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
+  });
+
+  // Quick Reference Table — hair salon amounts ($50–$350)
+  (function buildRefTable() {
+    const AMOUNTS = [50, 75, 100, 125, 150, 200, 250, 300, 350];
+    const tbody = document.getElementById('ref-tbody');
+    if (!tbody) return;
+    AMOUNTS.forEach((amt, i) => {
+      const tr = document.createElement('tr');
+      tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
+      const cells = [
+        { val: TR.fmt(amt),        cls: 'font-medium text-gray-700' },
+        { val: TR.fmt(amt * 0.15), cls: 'text-right text-gray-600' },
+        { val: TR.fmt(amt * 0.20), cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
+        { val: TR.fmt(amt * 0.25), cls: 'text-right text-gray-600' },
+        { val: TR.fmt(amt * 1.20), cls: 'text-right text-gray-500' },
+      ];
+      cells.forEach(c => {
+        const td = document.createElement('td');
+        td.className = 'px-4 py-2.5 text-sm ' + c.cls;
+        td.textContent = c.val;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+  })();
+
+  // FAQ
+  
+  
+
+
+  // Custom % handler
+  var customPctInput = document.getElementById('custom-pct');
+  var customResult   = document.getElementById('custom-result');
+  var customTipAmt   = document.getElementById('custom-tip-amount');
+  var customTotalAmt = document.getElementById('custom-total-amount');
+  var customPerPerson = document.getElementById('custom-per-person');
+
+  if (customPctInput) {
+    function updateCustom() {
+      var pct  = parseFloat(customPctInput.value);
+      var cost = TR.parseCost(costInput.value);
+      var taxEl = document.getElementById('tax');
+      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
+      var sp = parseInt(splitInput && splitInput.value) || 1;
+
+      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
+        var tip        = TR.round2(cost * pct / 100);
+        var grandTotal = TR.round2(cost + tax + tip);
+        var ceiled     = Math.ceil(tip);
+
+        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
+        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
+
+        if (sp > 1 && customPerPerson) {
+          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
+          customPerPerson.classList.remove('hidden');
+        } else if (customPerPerson) {
+          customPerPerson.classList.add('hidden');
+        }
+
+        customResult.classList.remove('hidden');
+        customResult.classList.add('flex');
+      } else {
+        customResult.classList.add('hidden');
+        customResult.classList.remove('flex');
+        if (customPerPerson) customPerPerson.classList.add('hidden');
+      }
+    }
+
+    customPctInput.addEventListener('input', updateCustom);
+    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+    var taxInput = document.getElementById('tax');
+    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+  }
+
+})();
+</script>

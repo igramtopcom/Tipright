@@ -12,9 +12,11 @@
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
+
   <title>Personal Trainer Tip Calculator — How Much to Tip?</title>
   <meta name="description" content="Personal trainer tip calculator. Trainers are tipped annually, not per session. Enter your session rate to calculate the standard holiday tip amount.">
   <link rel="canonical" href="https://tipright.app/tip/personal-trainer">
+
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://tipright.app/tip/personal-trainer">
   <meta property="og:title" content="Personal Trainer Tip Calculator — How Much to Tip?">
@@ -22,23 +24,41 @@
   <meta property="og:image" content="https://tipright.app/assets/img/og-personal-trainer.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Personal Trainer Tip Calculator — How Much to Tip?">
   <meta name="twitter:description" content="Free personal trainer tip calculator for gym, studio, and in-home sessions.">
   <meta name="twitter:image" content="https://tipright.app/assets/img/og-personal-trainer.png">
+
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
+
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -46,61 +66,158 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      /* notice callouts */
+      .bg-blue-50 { background-color: #0D1A2E !important; }
+      .border-blue-200 { border-color: #1E3A5F !important; }
+      .text-blue-800 { color: #93C5FD !important; }
       .bg-amber-50 { background-color: #1A1200 !important; }
       .border-amber-200 { border-color: #4D3800 !important; }
       .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  </style>
+
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
-      { "@type": "WebApplication", "name": "Personal Trainer Tip Calculator", "url": "https://tipright.app/tip/personal-trainer", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }, "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" } },
-      { "@type": "BreadcrumbList", "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" }, { "@type": "ListItem", "position": 2, "name": "Personal Trainer Tip Calculator", "item": "https://tipright.app/tip/personal-trainer" } ] },
-      { "@type": "FAQPage", "mainEntity": [
-        { "@type": "Question", "name": "How much should you tip a personal trainer?", "acceptedAnswer": { "@type": "Answer", "text": "Tipping personal trainers is less common than other services, but appreciated. For a gym-employed trainer, tip $20–50 at the holidays. For independent trainers, a holiday tip equal to one session's cost is generous. Per-session tipping of 15–20% is uncommon but appropriate for exceptional work." } },
-        { "@type": "Question", "name": "Do you tip a personal trainer at the gym?", "acceptedAnswer": { "@type": "Answer", "text": "Tipping gym-employed trainers is not standard practice for individual sessions, but a holiday gift of $20–50 is common among regular clients. Independent trainers and in-home trainers are more frequently tipped — one session's cost at the holidays is the norm." } },
-        { "@type": "Question", "name": "How much do you tip a personal trainer for the holidays?", "acceptedAnswer": { "@type": "Answer", "text": "For a trainer you see regularly, a holiday tip equal to the cost of one session is standard — typically $60–150 depending on your session rate. This is given once per year in November or December." } },
-        { "@type": "Question", "name": "Should you tip an independent personal trainer?", "acceptedAnswer": { "@type": "Answer", "text": "Independent trainers set their own rates and have overhead costs (insurance, equipment, travel). A holiday tip of one session's cost is appreciated. Some clients tip 10–15% per session for trainers who provide exceptional programming, accountability, and results." } },
-        { "@type": "Question", "name": "Do you tip a personal trainer for a single session?", "acceptedAnswer": { "@type": "Answer", "text": "Tipping for a single one-off session is not standard. If you were exceptionally happy with the experience, a $10–20 cash tip is a nice gesture. For ongoing training relationships, the holiday tip approach is more common." } },
-        { "@type": "Question", "name": "How much do you tip a personal trainer for a $80 session?", "acceptedAnswer": { "@type": "Answer", "text": "For a $80 session, a per-session tip isn't the norm — most clients instead give a holiday tip of $80–160 (1–2 sessions' cost) once a year. If you want to tip per session, $10–15 is appropriate for exceptional work." } },
-        { "@type": "Question", "name": "Do you tip a group fitness instructor?", "acceptedAnswer": { "@type": "Answer", "text": "Group fitness instructors are not commonly tipped per class. A holiday gift or card with $20–30 is appreciated for instructors you attend regularly. Boutique studio instructors (spin, barre, yoga) follow similar norms." } },
-        { "@type": "Question", "name": "Should you give a personal trainer a gift instead of a tip?", "acceptedAnswer": { "@type": "Answer", "text": "Cash or a gift card is preferred over physical gifts — trainers can use the money however they like. A gift card to a fitness retailer, supplement store, or Amazon is a thoughtful alternative to cash for clients who prefer not to give money directly." } },
-        { "@type": "Question", "name": "Is it rude not to tip a personal trainer?", "acceptedAnswer": { "@type": "Answer", "text": "Unlike restaurant or salon services, not tipping a personal trainer is not considered rude. Tipping trainers is a nice gesture, not a social obligation. A warm thank-you, a positive review, and consistent bookings are equally meaningful to most trainers." } },
-        { "@type": "Question", "name": "How do you tip an in-home personal trainer?", "acceptedAnswer": { "@type": "Answer", "text": "In-home trainers travel to you and often have higher overhead than gym-based trainers. A holiday tip of one session's cost is standard. Some clients tip 10–15% per session when the trainer provides personalized programming and nutrition guidance alongside training." } }
-      ]}
+      {
+        "@type": "WebApplication",
+        "name": "Personal Trainer Tip Calculator",
+        "url": "https://tipright.app/tip/personal-trainer",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Personal Trainer Tip Calculator",
+            "item": "https://tipright.app/tip/personal-trainer"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much should you tip a personal trainer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tipping trainers per session is uncommon. The standard is a holiday tip equal to one session's cost — given once a year. For a $100/session trainer, a $100 holiday tip is appropriate. Independent and in-home trainers may be tipped 10–15% per session by some clients."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip a personal trainer at the gym?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not typically per session. A holiday gift of $20–50 cash or a gift card is the norm for gym-employed trainers. Independent trainers benefit more from per-session tips or a more generous holiday tip."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip a personal trainer for the holidays?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard holiday tip for a regular trainer is one session's cost — typically $60–150. Give it in November or December. Clients who train frequently or have achieved significant results sometimes give 2 sessions' cost."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should you tip an independent personal trainer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — independent trainers have overhead costs like insurance, equipment, and travel. A holiday tip of one session's cost is standard. Some clients tip 10–15% per session for trainers providing exceptional programming and accountability."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip a personal trainer for a single session?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tipping for a single session is not standard. If you were very happy, a $10–20 cash tip is a nice gesture. For ongoing training relationships, the annual holiday tip approach is more meaningful."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much do you tip a personal trainer for a $100 session?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Per-session tipping isn't the norm — most clients give a $100 holiday tip (1 session's cost) once a year. If you want to tip per session, $15 (15%) is appropriate for exceptional work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you tip a group fitness instructor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Group fitness instructors are rarely tipped per class. A holiday card with $20–30 is appropriate for instructors you attend regularly. Boutique studio instructors at spin, barre, or yoga studios follow similar norms."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should you give a personal trainer a gift instead of a tip?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Cash or a gift card is preferred over physical gifts. A Nike, Lululemon, or Amazon gift card gives trainers flexibility. If giving cash directly feels awkward, a holiday card with the cash enclosed works perfectly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is it rude not to tip a personal trainer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No — unlike restaurant or salon services, not tipping a trainer is not considered rude. A positive review, consistent bookings, and referrals are equally meaningful to most trainers. The holiday tip is a gesture, not an obligation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do you tip an in-home personal trainer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In-home trainers travel to you and carry equipment. A holiday tip of one session's cost is standard. Some clients tip 10–15% per session for the added convenience and personalization of in-home training."
+            }
+          }
+        ]
+      }
     ]
   }
   </script>
@@ -227,7 +344,7 @@
 
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip a personal trainer?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping trainers per session is uncommon. The standard is a holiday tip equal to one session's cost — given once a year. For a $100/session trainer, a $100 holiday tip is appropriate. Independent and in-home trainers may be tipped 10–15% per session by some clients.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip a personal trainer at the gym?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Not typically per session. A holiday gift of $20–50 cash or a gift card is the norm for gym-employed trainers. Independent trainers benefit more from per-session tips or a more generous holiday tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip a personal trainer for the holidays?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The standard holiday tip for a regular trainer is one session's cost — typically $60–150. Give it in November or December. Clients who train frequently or have achieved significant results sometimes give 2 sessions' cost.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip an independent personal trainer?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — independent trainers have overhead costs like insurance, equipment, and travel. A holiday tip of one session's cost is standard. Some clients tip 10–15% per session for trainers providing exceptional programming and accountability.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip a personal trainer for a single session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping for a single session is not standard. If you were very happy, a $10–20 cash tip is a nice gesture. For ongoing training relationships, the annual holiday tip approach is more meaningful.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip a personal trainer for a $100 session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Per-session tipping isn't the norm — most clients give a $100 holiday tip (1 session's cost) once a year. If you want to tip per session, $15 (15%) is appropriate for exceptional work.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip a group fitness instructor?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Group fitness instructors are rarely tipped per class. A holiday card with $20–30 is appropriate for instructors you attend regularly. Boutique studio instructors at spin, barre, or yoga studios follow similar norms.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you give a personal trainer a gift instead of a tip?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Cash or a gift card is preferred over physical gifts. A Nike, Lululemon, or Amazon gift card gives trainers flexibility. If giving cash directly feels awkward, a holiday card with the cash enclosed works perfectly.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip a personal trainer?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>No — unlike restaurant or salon services, not tipping a trainer is not considered rude. A positive review, consistent bookings, and referrals are equally meaningful to most trainers. The holiday tip is a gesture, not an obligation.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How do you tip an in-home personal trainer?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>In-home trainers travel to you and carry equipment. A holiday tip of one session's cost is standard. Some clients tip 10–15% per session for the added convenience and personalization of in-home training.</div></div></details></div></div>
   </section>
 
   <section>
@@ -243,14 +360,18 @@
   </section>
 </main>
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
-  <p class="mt-1"><a href="/about" class="hover:text-brand-dark transition-colors">About</a> · <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
+  <p class="mt-1">
+    <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
+     &middot;
+    <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
-    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a></p>
+     &middot;
+    <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
+  </p>
 </footer>
 <script src="/assets/js/calculator.dbcdb7b093.js"></script>
 <script>
@@ -291,37 +412,8 @@
     });
   })();
 
-  const FAQ_DATA = [
-    { q: "How much should you tip a personal trainer?", a: "Tipping trainers per session is uncommon. The standard is a holiday tip equal to one session's cost — given once a year. For a $100/session trainer, a $100 holiday tip is appropriate. Independent and in-home trainers may be tipped 10–15% per session by some clients." },
-    { q: "Do you tip a personal trainer at the gym?", a: "Not typically per session. A holiday gift of $20–50 cash or a gift card is the norm for gym-employed trainers. Independent trainers benefit more from per-session tips or a more generous holiday tip." },
-    { q: "How much do you tip a personal trainer for the holidays?", a: "The standard holiday tip for a regular trainer is one session's cost — typically $60–150. Give it in November or December. Clients who train frequently or have achieved significant results sometimes give 2 sessions' cost." },
-    { q: "Should you tip an independent personal trainer?", a: "Yes — independent trainers have overhead costs like insurance, equipment, and travel. A holiday tip of one session's cost is standard. Some clients tip 10–15% per session for trainers providing exceptional programming and accountability." },
-    { q: "Do you tip a personal trainer for a single session?", a: "Tipping for a single session is not standard. If you were very happy, a $10–20 cash tip is a nice gesture. For ongoing training relationships, the annual holiday tip approach is more meaningful." },
-    { q: "How much do you tip a personal trainer for a $100 session?", a: "Per-session tipping isn't the norm — most clients give a $100 holiday tip (1 session's cost) once a year. If you want to tip per session, $15 (15%) is appropriate for exceptional work." },
-    { q: "Do you tip a group fitness instructor?", a: "Group fitness instructors are rarely tipped per class. A holiday card with $20–30 is appropriate for instructors you attend regularly. Boutique studio instructors at spin, barre, or yoga studios follow similar norms." },
-    { q: "Should you give a personal trainer a gift instead of a tip?", a: "Cash or a gift card is preferred over physical gifts. A Nike, Lululemon, or Amazon gift card gives trainers flexibility. If giving cash directly feels awkward, a holiday card with the cash enclosed works perfectly." },
-    { q: "Is it rude not to tip a personal trainer?", a: "No — unlike restaurant or salon services, not tipping a trainer is not considered rude. A positive review, consistent bookings, and referrals are equally meaningful to most trainers. The holiday tip is a gesture, not an obligation." },
-    { q: "How do you tip an in-home personal trainer?", a: "In-home trainers travel to you and carry equipment. A holiday tip of one session's cost is standard. Some clients tip 10–15% per session for the added convenience and personalization of in-home training." }
-  ];
-
-  (function () {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div'); div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details'); details.className = 'group';
-      const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a; answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv); div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 
   // Custom % handler
   var customPctInput = document.getElementById('custom-pct');

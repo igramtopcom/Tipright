@@ -39,11 +39,26 @@
   <style>
     /* FAQ disclosure control - the circle is a class so dark mode can reach it */
     .faq-chevron { background: #F4F4F2; }
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the advice
+       note sits between the field and the answer - together that put the number
+       below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would then
+         generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
-      nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
+      nav { background-color: #1A201D !important; border-color: #2E3532 !important; }
       .bg-white { background-color: #1A201D !important; }
-      .bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-50 { background-color: #0F1210 !important; }
+      /* the same class paints the page and the input wells; fields keep the
+         lighter surface the homepage already gave #search-input by hand */
+      input.bg-gray-50, select.bg-gray-50, textarea.bg-gray-50 { background-color: #222922 !important; }
+      .bg-gray-100 { background-color: #2A2F2D !important; }
       .border-gray-200 { border-color: #2E3532 !important; }
       .border-gray-100 { border-color: #2E3532 !important; }
       .text-gray-900 { color: #F0F0EE !important; }
@@ -51,44 +66,34 @@
       .text-gray-700 { color: #C0C0BE !important; }
       .text-gray-600 { color: #A0A09E !important; }
       .text-gray-500, .text-gray-400 { color: #8F8F8D !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* brand-dark is a light-mode ink; on a dark surface it drops to 2.5:1.
          The hover variants are separate selectors and need naming too. */
       .text-brand-dark,
       .hover\:text-brand-dark:hover,
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
+      .text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
-      .faq-chevron { background: #2A2F2D !important; }
-      /* Brand-tinted surfaces stayed light in dark mode, so the green ink
-         above landed on a near-white panel. Darken the surfaces too. */
+      /* Brand-tinted surfaces stayed light in dark mode, so the green ink above
+         landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
       .bg-brand-light { background-color: #143A2E !important; }
       .bg-brand-light\/40 { background-color: #12332A !important; }
       .bg-brand-light\/30 { background-color: #112E26 !important; }
       .bg-brand\/20 { background-color: #14402F !important; }
       .bg-brand\/30 { background-color: #1A4E3A !important; }
-      .text-brand-darker { color: #4BD7A6 !important; }
-      .bg-gray-100 { background-color: #2A2F2D !important; }
+      /* notice callouts */
       .bg-blue-50 { background-color: #0D1A2E !important; }
       .border-blue-200 { border-color: #1E3A5F !important; }
       .text-blue-800 { color: #93C5FD !important; }
+      .bg-amber-50 { background-color: #1A1200 !important; }
+      .border-amber-200 { border-color: #4D3800 !important; }
+      .text-amber-800 { color: #FCD34D !important; }
     }
-      /* The recommended tip is 4th of 5 in the 2-column phone grid, which
-       lands it below the fold. Lift it to the top, full width. */
-    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
-       advice note sits between the field and the answer - together that put
-       the number below the fold. Answer first, note after it. */
-    @media (max-width: 639px) {
-      .calc-body { display: flex; flex-direction: column; }
-      .calc-body > .calc-note  { order: 1; }
-      .calc-body > .calc-after { order: 2; }
-      /* neutralise scale-[1.03] without naming a utility the scanner would
-         then generate a dead rule for */
-      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
-    }
-</style>
+  </style>
 
-  <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
+  <link rel="stylesheet" href="/assets/css/app.37e3eb1332.css">
 
   <script type="application/ld+json">
   {
@@ -102,14 +107,32 @@
         "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any",
         "browserRequirements": "Requires JavaScript",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "publisher": { "@type": "Organization", "name": "tipright.app", "url": "https://tipright.app" }
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "tipright.app",
+          "url": "https://tipright.app"
+        }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://tipright.app" },
-          { "@type": "ListItem", "position": 2, "name": "Massage Tip Calculator", "item": "https://tipright.app/tip/massage" }
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://tipright.app"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Massage Tip Calculator",
+            "item": "https://tipright.app/tip/massage"
+          }
         ]
       },
       {
@@ -118,52 +141,82 @@
           {
             "@type": "Question",
             "name": "How much should you tip a massage therapist?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The standard tip for a massage therapist is 20% of the total service cost. For a $90 massage, that's $18. Tip 15% for a basic relaxation session, 20% for standard therapeutic work, and 25% for deep tissue, prenatal, or specialized therapy." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard tip is 20% of the total service cost. For a $90 massage, that's $18. Tip 15% for basic relaxation, 20% for standard therapeutic work, and 25% for deep tissue, hot stone, or specialized therapy."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip at a massage chain like Massage Envy?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, always tip at massage chains like Massage Envy, Hand and Stone, or Elements. Therapists at these chains often earn lower base pay than independent therapists. Tip 20% of the full price, not the discounted membership rate — your therapist's compensation is based on the full service value." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, always tip at massage chains. Therapists at chains often earn lower base pay than independent therapists. Tip 20% of the full price, not the discounted membership rate — the therapist performed the full service regardless."
+            }
           },
           {
             "@type": "Question",
-            "name": "Should you tip a massage therapist if you have a gift card or Groupon?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Tip based on the full price of the service, not the discounted amount you paid. If a $90 massage is covered by a $40 Groupon, your tip should still be $18 (20% of $90). The therapist performed the full service regardless of the voucher discount." }
+            "name": "Should you tip if you have a gift card or Groupon?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Tip based on the full price of the service, not the discounted amount you paid. A therapist doing a $90 massage covered by a $40 Groupon still performed the full service and deserves an $18 tip (20% of $90)."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a $90 massage?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip $13–18 on a $90 massage. A $18 tip (20%) is standard. Tip $22–23 (25%) for deep tissue, hot stone, or specialized work that required extra skill and physical effort from your therapist." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip $13–18 on a $90 massage. A $18 tip (20%) is standard for good service. Tip $22–23 (25%) for deep tissue, hot stone, or specialized work that required extra skill and physical effort."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip for a medical or insurance-covered massage?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tipping is not expected for medically prescribed massage covered by insurance or billed as clinical treatment. However, if your therapist went beyond the clinical scope and provided exceptional care, a $10–20 tip is a thoughtful gesture." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tipping is not expected for medically prescribed massage billed as clinical treatment. However, if your therapist provided exceptional care, a $10–20 tip is appreciated. When unsure, check the facility's policy."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a deep tissue massage?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip 20–25% for deep tissue massage. Deep tissue work is physically demanding for the therapist and requires more specialized training than Swedish massage. A $100 deep tissue session warrants a $20–25 tip." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip 20–25% for deep tissue massage. Deep tissue work is physically demanding and requires specialized training. A $100 deep tissue session warrants a $20–25 tip."
+            }
           },
           {
             "@type": "Question",
             "name": "Should you tip more for a longer massage?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The percentage tip already scales with session length — a 90-minute massage costs more than a 60-minute session, so 20% produces a higher dollar amount. You don't need to increase the percentage for longer sessions; the math handles it automatically." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The percentage tip automatically scales with session length — a 90-minute massage costs more than a 60-minute session, so 20% already produces a higher dollar amount. You don't need to increase the percentage for longer sessions."
+            }
           },
           {
             "@type": "Question",
             "name": "Do you tip a massage therapist who owns their practice?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tipping an independent practice owner is appreciated but not strictly required. Many clients choose to tip 15–20% anyway, recognizing that overhead costs (rent, supplies, insurance) are significant. When in doubt, tip — it's always welcome." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tipping an independent practice owner is appreciated but less strictly expected. Many clients tip 15–20% anyway, recognizing that overhead costs are significant. When in doubt, tip — it's always welcome."
+            }
           },
           {
             "@type": "Question",
             "name": "Is it rude not to tip your massage therapist?",
-            "acceptedAnswer": { "@type": "Answer", "text": "At a spa or massage chain, not tipping is considered rude. These therapists rely on tips to supplement wages that are often set below independent rates. At a solo practice, not tipping is more accepted but still appreciated." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "At a spa or massage chain, yes — not tipping is considered rude. These therapists rely on tips to supplement wages that are often set below independent rates. At a solo practice, not tipping is more accepted but still appreciated."
+            }
           },
           {
             "@type": "Question",
             "name": "How much do you tip for a couples massage?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Tip each therapist separately — 20% of each person's service cost. For a $180 couples massage ($90 per person), each therapist should receive an $18 tip. Hand each therapist their tip directly rather than leaving one combined amount." }
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tip each therapist separately — 20% of each person's service cost. For a $180 couples massage ($90 per person), each therapist receives an $18 tip. Hand each therapist their tip directly rather than leaving one combined amount."
+            }
           }
         ]
       }
@@ -171,9 +224,7 @@
   }
   </script>
 </head>
-
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen">
-
 <!-- NAV -->
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
   <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
@@ -181,9 +232,7 @@
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true" style="flex-shrink:0"><rect width="32" height="32" rx="7" fill="#1D9E75"/><text x="16" y="15" text-anchor="middle" dominant-baseline="central" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="16" fill="white">T</text><polyline points="8,23 12,27 24,18" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.92"/></svg>
       <span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>
     </a>
-    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">
-      All calculators →
-    </a>
+    <a href="/" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">All calculators →</a>
   </div>
 </nav>
 
@@ -354,7 +403,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip a massage therapist?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The standard tip is 20% of the total service cost. For a $90 massage, that's $18. Tip 15% for basic relaxation, 20% for standard therapeutic work, and 25% for deep tissue, hot stone, or specialized therapy.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip at a massage chain like Massage Envy?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes, always tip at massage chains. Therapists at chains often earn lower base pay than independent therapists. Tip 20% of the full price, not the discounted membership rate — the therapist performed the full service regardless.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip if you have a gift card or Groupon?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Tip based on the full price of the service, not the discounted amount you paid. A therapist doing a $90 massage covered by a $40 Groupon still performed the full service and deserves an $18 tip (20% of $90).</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a $90 massage?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $13–18 on a $90 massage. A $18 tip (20%) is standard for good service. Tip $22–23 (25%) for deep tissue, hot stone, or specialized work that required extra skill and physical effort.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for a medical or insurance-covered massage?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping is not expected for medically prescribed massage billed as clinical treatment. However, if your therapist provided exceptional care, a $10–20 tip is appreciated. When unsure, check the facility's policy.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a deep tissue massage?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip 20–25% for deep tissue massage. Deep tissue work is physically demanding and requires specialized training. A $100 deep tissue session warrants a $20–25 tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip more for a longer massage?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>The percentage tip automatically scales with session length — a 90-minute massage costs more than a 60-minute session, so 20% already produces a higher dollar amount. You don't need to increase the percentage for longer sessions.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip a massage therapist who owns their practice?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping an independent practice owner is appreciated but less strictly expected. Many clients tip 15–20% anyway, recognizing that overhead costs are significant. When in doubt, tip — it's always welcome.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip your massage therapist?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>At a spa or massage chain, yes — not tipping is considered rude. These therapists rely on tips to supplement wages that are often set below independent rates. At a solo practice, not tipping is more accepted but still appreciated.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a couples massage?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip each therapist separately — 20% of each person's service cost. For a $180 couples massage ($90 per person), each therapist receives an $18 tip. Hand each therapist their tip directly rather than leaving one combined amount.</div></div></details></div></div>
   </section>
 
   <!-- RELATED CALCULATORS -->
@@ -410,16 +459,16 @@
 
 <!-- FOOTER -->
 <footer class="border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500">
-  <p>© 2026 tipright.app — Free tip calculators for every service</p>
+  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
   <p class="mt-1">
     <a href="/about" class="hover:text-brand-dark transition-colors">About</a>
-     · 
+     &middot;
     <a href="/" class="hover:text-brand-dark transition-colors">All calculators</a>
-     &middot; 
+     &middot;
     <a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a>
-     ·
+     &middot;
     <a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a>
-     ·
+     &middot;
     <a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a>
   </p>
 </footer>
@@ -499,44 +548,8 @@
   })();
 
   // FAQ
-  const FAQ_DATA = [
-    { q: "How much should you tip a massage therapist?", a: "The standard tip is 20% of the total service cost. For a $90 massage, that's $18. Tip 15% for basic relaxation, 20% for standard therapeutic work, and 25% for deep tissue, hot stone, or specialized therapy." },
-    { q: "Do you tip at a massage chain like Massage Envy?", a: "Yes, always tip at massage chains. Therapists at chains often earn lower base pay than independent therapists. Tip 20% of the full price, not the discounted membership rate — the therapist performed the full service regardless." },
-    { q: "Should you tip if you have a gift card or Groupon?", a: "Yes. Tip based on the full price of the service, not the discounted amount you paid. A therapist doing a $90 massage covered by a $40 Groupon still performed the full service and deserves an $18 tip (20% of $90)." },
-    { q: "How much do you tip for a $90 massage?", a: "Tip $13–18 on a $90 massage. A $18 tip (20%) is standard for good service. Tip $22–23 (25%) for deep tissue, hot stone, or specialized work that required extra skill and physical effort." },
-    { q: "Do you tip for a medical or insurance-covered massage?", a: "Tipping is not expected for medically prescribed massage billed as clinical treatment. However, if your therapist provided exceptional care, a $10–20 tip is appreciated. When unsure, check the facility's policy." },
-    { q: "How much do you tip for a deep tissue massage?", a: "Tip 20–25% for deep tissue massage. Deep tissue work is physically demanding and requires specialized training. A $100 deep tissue session warrants a $20–25 tip." },
-    { q: "Should you tip more for a longer massage?", a: "The percentage tip automatically scales with session length — a 90-minute massage costs more than a 60-minute session, so 20% already produces a higher dollar amount. You don't need to increase the percentage for longer sessions." },
-    { q: "Do you tip a massage therapist who owns their practice?", a: "Tipping an independent practice owner is appreciated but less strictly expected. Many clients tip 15–20% anyway, recognizing that overhead costs are significant. When in doubt, tip — it's always welcome." },
-    { q: "Is it rude not to tip your massage therapist?", a: "At a spa or massage chain, yes — not tipping is considered rude. These therapists rely on tips to supplement wages that are often set below independent rates. At a solo practice, not tipping is more accepted but still appreciated." },
-    { q: "How much do you tip for a couples massage?", a: "Tip each therapist separately — 20% of each person's service cost. For a $180 couples massage ($90 per person), each therapist receives an $18 tip. Hand each therapist their tip directly rather than leaving one combined amount." }
-  ];
-
-  (function buildFAQ() {
-    const container = document.getElementById('faq-container');
-    if (!container) return;
-    FAQ_DATA.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'border border-line rounded-xl overflow-hidden';
-      const details = document.createElement('details');
-      details.className = 'group';
-      const summary = document.createElement('summary');
-      summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
-      const qText = document.createElement('span');
-      qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
-      var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
-      chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
-      summary.appendChild(qText); summary.appendChild(chevron);
-      const answerDiv = document.createElement('div');
-      answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
-      const answerText = document.createElement('div'); answerText.textContent = item.a;
-      answerDiv.appendChild(answerText);
-      details.appendChild(summary); details.appendChild(answerDiv);
-      div.appendChild(details); container.appendChild(div);
-    });
-  })();
+  
+  
 
 
   // Custom % handler
