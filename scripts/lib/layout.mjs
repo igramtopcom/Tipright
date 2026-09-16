@@ -120,6 +120,7 @@ ${noindex ? '' : `  <link rel="canonical" href="${esc(page.canonical)}">
   <meta property="og:image" content="${esc(og.image)}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="tipright.app - free tip calculators for 18 services">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(tw.title)}">
