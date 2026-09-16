@@ -37,6 +37,8 @@
   <meta name="theme-color" content="#1D9E75">
 
   <style>
+    /* FAQ disclosure control - the circle is a class so dark mode can reach it */
+    .faq-chevron { background: #F4F4F2; }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
       nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
@@ -56,6 +58,7 @@
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* Brand-tinted surfaces stayed light in dark mode, so the green ink
          above landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
@@ -364,42 +367,42 @@
     <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Related tip calculators</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
       <a href="/tip/tattoo-removal" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
-        <span class="text-xl flex-shrink-0">🔫</span>
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.8 3.5 11.5 8.1l4.6 1.7-4.6 1.7-1.7 4.6-1.7-4.6L3.5 9.8l4.6-1.7z"/><path d="M17.8 14.6l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z"/></svg>
         <div>
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Tattoo Removal</p>
           <p class="text-xs text-gray-500 mt-0.5">Laser removal</p>
         </div>
       </a>
       <a href="/tip/waxing" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
-        <span class="text-xl flex-shrink-0">🌸</span>
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2s5.8 6.1 5.8 10.1a5.8 5.8 0 0 1-11.6 0C6.2 9.3 12 3.2 12 3.2z"/><path d="M9.4 14.6a2.6 2.6 0 0 0 2.6 2.6"/></svg>
         <div>
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Waxing Tip</p>
           <p class="text-xs text-gray-500 mt-0.5">Wax service tipping</p>
         </div>
       </a>
       <a href="/tip/spa" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
-        <span class="text-xl flex-shrink-0">🧖</span>
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5c-2.2-2-3.4-4.4-3.4-6.8 0-2.2 1.1-4.3 3.4-6.2 2.3 1.9 3.4 4 3.4 6.2 0 2.4-1.2 4.8-3.4 6.8z"/><path d="M12 20.5c-3.4 0-6.3-1.9-7.7-4.8 1.8-1.5 4-1.8 5.9-1"/><path d="M12 20.5c3.4 0 6.3-1.9 7.7-4.8-1.8-1.5-4-1.8-5.9-1"/></svg>
         <div>
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Day Spa Tip</p>
           <p class="text-xs text-gray-500 mt-0.5">Full spa services</p>
         </div>
       </a>
       <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
-        <span class="text-xl flex-shrink-0">💆</span>
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 13.2V9.5a1.5 1.5 0 0 1 3 0v2.3"/><path d="M11.5 11.8V6.8a1.5 1.5 0 0 1 3 0v5"/><path d="M14.5 11.8V8.8a1.5 1.5 0 0 1 3 0v6.4a6 6 0 0 1-6 6h-.8a5.2 5.2 0 0 1-5.2-5.2v-3.6a1.5 1.5 0 0 1 3 0v1.6"/></svg>
         <div>
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage Tip</p>
           <p class="text-xs text-gray-500 mt-0.5">Therapist tipping</p>
         </div>
       </a>
       <a href="/tip/nail-salon" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
-        <span class="text-xl flex-shrink-0">💅</span>
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5h4V6h-4z"/><path d="M8.8 6h6.4a1.2 1.2 0 0 1 1.2 1.2v11.6a2.2 2.2 0 0 1-2.2 2.2H9.8a2.2 2.2 0 0 1-2.2-2.2V7.2A1.2 1.2 0 0 1 8.8 6z"/><path d="M10.3 10v3.5"/></svg>
         <div>
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Nail Salon Tip</p>
           <p class="text-xs text-gray-500 mt-0.5">Manicure & pedicure</p>
         </div>
       </a>
       <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group">
-        <span class="text-xl flex-shrink-0">🧮</span>
+        <svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5v-15A1.5 1.5 0 0 1 6 3z"/><path d="M7.5 6.5h9V10h-9z"/><path d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17.5h.01M12 17.5h.01M16 17.5h.01"/></svg>
         <div>
           <p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">All Calculators</p>
           <p class="text-xs text-gray-500 mt-0.5">18 tip calculators</p>
@@ -527,8 +530,8 @@
       const qText = document.createElement('span');
       qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
       var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;background:#F4F4F2;display:flex;align-items:center;justify-content:center;';
+      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
+      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
       chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
       summary.appendChild(qText); summary.appendChild(chevron);
       const answerDiv = document.createElement('div');

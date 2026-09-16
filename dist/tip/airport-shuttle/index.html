@@ -32,6 +32,8 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
   <style>
+    /* FAQ disclosure control - the circle is a class so dark mode can reach it */
+    .faq-chevron { background: #F4F4F2; }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
       nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
@@ -51,6 +53,7 @@
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* Brand-tinted surfaces stayed light in dark mode, so the green ink
          above landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
@@ -216,12 +219,12 @@
   <section>
     <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Related tip calculators</h2>
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🚗</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Valet Parking</p><p class="text-xs text-gray-500 mt-0.5">Drop-off & pick-up</p></div></a>
-      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🏨</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hotel Housekeeping</p><p class="text-xs text-gray-500 mt-0.5">Per-night tips</p></div></a>
-      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">📦</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Movers Tip</p><p class="text-xs text-gray-500 mt-0.5">Per-mover guide</p></div></a>
-      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🛵</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Food Delivery</p><p class="text-xs text-gray-500 mt-0.5">Delivery driver tips</p></div></a>
-      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">💆</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage Tip</p><p class="text-xs text-gray-500 mt-0.5">Therapist tipping</p></div></a>
-      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><span class="text-xl flex-shrink-0">🧮</span><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">All Calculators</p><p class="text-xs text-gray-500 mt-0.5">18 tip calculators</p></div></a>
+      <a href="/tip/valet" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h-.8A1.2 1.2 0 0 1 3 15.8v-2.3c0-.3.1-.6.2-.8L5.4 8a2 2 0 0 1 1.8-1.1h9.6A2 2 0 0 1 18.6 8l2.2 4.7c.1.2.2.5.2.8v2.3A1.2 1.2 0 0 1 19.8 17H19"/><path d="M3.4 12.8h17.2"/><circle cx="7.2" cy="17" r="1.9"/><circle cx="16.8" cy="17" r="1.9"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Valet Parking</p><p class="text-xs text-gray-500 mt-0.5">Drop-off & pick-up</p></div></a>
+      <a href="/tip/hotel-housekeeping" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6v14.5"/><path d="M3 13.5h15a3 3 0 0 1 3 3v2H3z"/><path d="M6.5 13.5v-2h4.5v2"/><path d="M21 18.5v2"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Hotel Housekeeping</p><p class="text-xs text-gray-500 mt-0.5">Per-night tips</p></div></a>
+      <a href="/tip/movers" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.5h17V20.5h-17z"/><path d="M3.5 7.5 5.5 3.5h13l2 4"/><path d="M12 7.5v13"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Movers Tip</p><p class="text-xs text-gray-500 mt-0.5">Per-mover guide</p></div></a>
+      <a href="/tip/food-delivery" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.8 8h12.4l-1.1 12.3a1.2 1.2 0 0 1-1.2 1.1H8.1a1.2 1.2 0 0 1-1.2-1.1z"/><path d="M9 8V6.4a3 3 0 0 1 6 0V8"/><path d="M9 11.5h6"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Food Delivery</p><p class="text-xs text-gray-500 mt-0.5">Delivery driver tips</p></div></a>
+      <a href="/tip/massage" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 13.2V9.5a1.5 1.5 0 0 1 3 0v2.3"/><path d="M11.5 11.8V6.8a1.5 1.5 0 0 1 3 0v5"/><path d="M14.5 11.8V8.8a1.5 1.5 0 0 1 3 0v6.4a6 6 0 0 1-6 6h-.8a5.2 5.2 0 0 1-5.2-5.2v-3.6a1.5 1.5 0 0 1 3 0v1.6"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">Massage Tip</p><p class="text-xs text-gray-500 mt-0.5">Therapist tipping</p></div></a>
+      <a href="/" class="flex items-center gap-2.5 p-3 bg-white border border-line rounded-xl hover:border-brand transition-colors group"><svg class="w-5 h-5 flex-shrink-0 text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12a1.5 1.5 0 0 1 1.5 1.5v15A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5v-15A1.5 1.5 0 0 1 6 3z"/><path d="M7.5 6.5h9V10h-9z"/><path d="M8 13.5h.01M12 13.5h.01M16 13.5h.01M8 17.5h.01M12 17.5h.01M16 17.5h.01"/></svg><div><p class="text-sm font-semibold text-gray-800 group-hover:text-brand-dark transition-colors leading-tight">All Calculators</p><p class="text-xs text-gray-500 mt-0.5">18 tip calculators</p></div></a>
     </div>
   </section>
 </main>
@@ -296,8 +299,8 @@
       const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
       const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
       var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;background:#F4F4F2;display:flex;align-items:center;justify-content:center;';
+      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
+      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
       chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
       summary.appendChild(qText); summary.appendChild(chevron);
       const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';

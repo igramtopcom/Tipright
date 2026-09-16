@@ -26,6 +26,8 @@
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#1D9E75">
   <style>
+    /* FAQ disclosure control - the circle is a class so dark mode can reach it */
+    .faq-chevron { background: #F4F4F2; }
     @media (prefers-color-scheme: dark) {
       body { background-color: #0F1210; color: #F0F0EE; }
       nav, header { background-color: #1A201D !important; border-color: #2E3532 !important; }
@@ -45,6 +47,7 @@
       .group:hover .group-hover\:text-brand-dark { color: #22B884 !important; }
       .group:hover .group-hover\:text-brand-darker { color: #4BD7A6 !important; }
       .border-line { border-color: #687570 !important; }
+      .faq-chevron { background: #2A2F2D !important; }
       /* Brand-tinted surfaces stayed light in dark mode, so the green ink
          above landed on a near-white panel. Darken the surfaces too. */
       .bg-brand-pale { background-color: #0D2820 !important; }
@@ -154,28 +157,28 @@
       <div class="space-y-3">
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">💇 Hair salon, <a href="/tip/hair-salon" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5h8.5a4 4 0 0 1 0 8H3.5z"/><path d="M6 16.5v4h3.5v-4"/><path d="M17.5 10h3"/><path d="M17.5 12.5h3.5"/><path d="M17.5 15h3"/></svg>Hair salon, <a href="/tip/hair-salon" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">20%</span>
           </div>
           <p class="text-xs text-gray-500">Tip stylist and colorist separately. Always tip the shampoo assistant $3–5 in cash. Tipping the owner is now standard practice.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">✂️ Barber, <a href="/tip/barber" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6.5" cy="7" r="2.5"/><circle cx="6.5" cy="17" r="2.5"/><path d="M8.7 8.2 20 19.5"/><path d="M20 4.5 8.7 15.8"/></svg>Barber, <a href="/tip/barber" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">15–20%, $5 min</span>
           </div>
           <p class="text-xs text-gray-500">$5 minimum regardless of haircut price. 20% for fades and complex cuts. Cash preferred at most barbershops.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">💅 Nail salon, <a href="/tip/nail-salon" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2.5h4V6h-4z"/><path d="M8.8 6h6.4a1.2 1.2 0 0 1 1.2 1.2v11.6a2.2 2.2 0 0 1-2.2 2.2H9.8a2.2 2.2 0 0 1-2.2-2.2V7.2A1.2 1.2 0 0 1 8.8 6z"/><path d="M10.3 10v3.5"/></svg>Nail salon, <a href="/tip/nail-salon" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">18–20%, $3 min</span>
           </div>
           <p class="text-xs text-gray-500">$3–5 minimum even for cheap services. Tip each technician separately. Cash strongly preferred, card tips often get pooled or deducted.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">🌸 Waxing, <a href="/tip/waxing" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2s5.8 6.1 5.8 10.1a5.8 5.8 0 0 1-11.6 0C6.2 9.3 12 3.2 12 3.2z"/><path d="M9.4 14.6a2.6 2.6 0 0 0 2.6 2.6"/></svg>Waxing, <a href="/tip/waxing" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">15–20%</span>
           </div>
           <p class="text-xs text-gray-500">Tip on service cost only, not on aftercare products. Cash preferred.</p>
@@ -189,21 +192,21 @@
       <div class="space-y-3">
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">🎨 Tattoo artist, <a href="/tip/tattoo" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a9 9 0 1 1 9-9c0 2.2-1.8 4-4 4h-1.6a1.6 1.6 0 0 0-1.2 2.7c.3.35.5.8.5 1.3 0 .6-.5 1-1.7 1z"/><circle cx="7.9" cy="12.4" r=".9"/><circle cx="9.9" cy="8.5" r=".9"/><circle cx="14.1" cy="7.9" r=".9"/><circle cx="16.9" cy="10.9" r=".9"/></svg>Tattoo artist, <a href="/tip/tattoo" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">20%</span>
           </div>
           <p class="text-xs text-gray-500">Tip each session. Artists keep 50–60% after shop commission split, your tip goes 100% to the artist. Tip 25–30% for apprentices.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">💎 Body piercer, <a href="/tip/piercing" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 3.5h11.6l3.2 5.8-9 11.2-9-11.2z"/><path d="M3 9.3h18"/><path d="M9.6 3.5 8 9.3l4 11.2"/><path d="M14.4 3.5 16 9.3l-4 11.2"/></svg>Body piercer, <a href="/tip/piercing" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">20%</span>
           </div>
           <p class="text-xs text-gray-500">Tip on piercing fee plus jewelry cost combined. 25–30% for apprentice piercers.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">⚡ Tattoo removal, <a href="/tip/tattoo-removal" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.8 3.5 11.5 8.1l4.6 1.7-4.6 1.7-1.7 4.6-1.7-4.6L3.5 9.8l4.6-1.7z"/><path d="M17.8 14.6l.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9z"/></svg>Tattoo removal, <a href="/tip/tattoo-removal" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">15–20% (studios)</span>
           </div>
           <p class="text-xs text-gray-500">Expected at dedicated studios, optional at medical facilities. Tip per session.</p>
@@ -217,35 +220,35 @@
       <div class="space-y-3">
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">💆 Massage therapist, <a href="/tip/massage" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 13.2V9.5a1.5 1.5 0 0 1 3 0v2.3"/><path d="M11.5 11.8V6.8a1.5 1.5 0 0 1 3 0v5"/><path d="M14.5 11.8V8.8a1.5 1.5 0 0 1 3 0v6.4a6 6 0 0 1-6 6h-.8a5.2 5.2 0 0 1-5.2-5.2v-3.6a1.5 1.5 0 0 1 3 0v1.6"/></svg>Massage therapist, <a href="/tip/massage" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">20%</span>
           </div>
           <p class="text-xs text-gray-500">Tip on full price, not Groupon or membership rate. 20–25% for deep tissue or specialized techniques.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">🧖 Day spa, <a href="/tip/spa" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5c-2.2-2-3.4-4.4-3.4-6.8 0-2.2 1.1-4.3 3.4-6.2 2.3 1.9 3.4 4 3.4 6.2 0 2.4-1.2 4.8-3.4 6.8z"/><path d="M12 20.5c-3.4 0-6.3-1.9-7.7-4.8 1.8-1.5 4-1.8 5.9-1"/><path d="M12 20.5c3.4 0 6.3-1.9 7.7-4.8-1.8-1.5-4-1.8-5.9-1"/></svg>Day spa, <a href="/tip/spa" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">20% (if not included)</span>
           </div>
           <p class="text-xs text-gray-500">Check your bill first, many spas add 18–20% gratuity automatically to packages. If included, no additional tip needed.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">💡 Laser hair removal, <a href="/tip/laser-hair-removal" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.4"/><path d="M12 3v2.4M12 18.6V21M4.4 12H2M22 12h-2.4M6.3 6.3 4.6 4.6M19.4 19.4l-1.7-1.7M17.7 6.3l1.7-1.7M4.6 19.4l1.7-1.7"/></svg>Laser hair removal, <a href="/tip/laser-hair-removal" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">15–20% (studios)</span>
           </div>
           <p class="text-xs text-gray-500">Expected at esthetic studios. Optional at medical spas where licensed medical staff perform the procedure.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">🐕 Dog groomer, <a href="/tip/dog-groomer" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="6.6" cy="10.4" rx="1.8" ry="2.4"/><ellipse cx="10.4" cy="7.6" rx="1.8" ry="2.5"/><ellipse cx="14.6" cy="7.6" rx="1.8" ry="2.5"/><ellipse cx="18.4" cy="10.4" rx="1.8" ry="2.4"/><path d="M12 14.2c2.9 0 5.3 2.1 5.3 4.6 0 1.8-1.5 2.9-3.2 2.9-1 0-1.4-.4-2.1-.4s-1.1.4-2.1.4c-1.7 0-3.2-1.1-3.2-2.9 0-2.5 2.4-4.6 5.3-4.6z"/></svg>Dog groomer, <a href="/tip/dog-groomer" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">15–20%</span>
           </div>
           <p class="text-xs text-gray-500">Holiday tip equals one full session's cost. Tip more for large breeds, anxious dogs, or mobile groomers.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">🏋️ Personal trainer, <a href="/tip/personal-trainer" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5"/><path d="M7 7v10"/><path d="M17 7v10"/><path d="M20 9.5v5"/><path d="M7 12h10"/></svg>Personal trainer, <a href="/tip/personal-trainer" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">Holiday: 1 session</span>
           </div>
           <p class="text-xs text-gray-500">Per-session tipping uncommon. Annual holiday tip equal to one session's cost is the standard gesture for regular clients.</p>
@@ -259,35 +262,35 @@
       <div class="space-y-3">
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">📦 Movers, <a href="/tip/movers" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.5h17V20.5h-17z"/><path d="M3.5 7.5 5.5 3.5h13l2 4"/><path d="M12 7.5v13"/></svg>Movers, <a href="/tip/movers" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">$20–50 / mover</span>
           </div>
           <p class="text-xs text-gray-500">Tip per mover individually in cash after the move is complete. More for stairs, heat, heavy items, or days that ran long.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">🏨 Hotel housekeeping, <a href="/tip/hotel-housekeeping" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6v14.5"/><path d="M3 13.5h15a3 3 0 0 1 3 3v2H3z"/><path d="M6.5 13.5v-2h4.5v2"/><path d="M21 18.5v2"/></svg>Hotel housekeeping, <a href="/tip/hotel-housekeeping" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">$3–5 / night</span>
           </div>
           <p class="text-xs text-gray-500">Tip daily, not at checkout. Housekeeping staff rotate so daily cash tips ensure each cleaner is compensated.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">🚗 Valet parking, <a href="/tip/valet" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h-.8A1.2 1.2 0 0 1 3 15.8v-2.3c0-.3.1-.6.2-.8L5.4 8a2 2 0 0 1 1.8-1.1h9.6A2 2 0 0 1 18.6 8l2.2 4.7c.1.2.2.5.2.8v2.3A1.2 1.2 0 0 1 19.8 17H19"/><path d="M3.4 12.8h17.2"/><circle cx="7.2" cy="17" r="1.9"/><circle cx="16.8" cy="17" r="1.9"/></svg>Valet parking, <a href="/tip/valet" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">$2–5 at pick-up</span>
           </div>
           <p class="text-xs text-gray-500">Tip at pick-up only, not drop-off. "Free valet" means no parking fee, tip is still expected.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">✈️ Airport shuttle, <a href="/tip/airport-shuttle" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2c.75 0 1.15.65 1.15 1.5v4.05l7.65 4.2v1.85l-7.65-2.1v4.2l2.35 1.65v1.55L12 19.3l-3.5.8v-1.55l2.35-1.65v-4.2l-7.65 2.1v-1.85l7.65-4.2V4.7c0-.85.4-1.5 1.15-1.5z"/></svg>Airport shuttle, <a href="/tip/airport-shuttle" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">$2–5 / person</span>
           </div>
           <p class="text-xs text-gray-500">Plus $1–2 per bag for luggage handling. Private shuttles and car services: 15–20% of fare.</p>
         </div>
         <div class="p-4 bg-white rounded-xl border border-line hover:border-brand transition-colors">
           <div class="flex items-center justify-between mb-1">
-            <h3 class="text-sm font-semibold text-gray-900">🛵 Food delivery, <a href="/tip/food-delivery" class="text-brand-dark hover:underline">calculator</a></h3>
+            <h3 class="text-sm font-semibold text-gray-900"><svg class="inline-block w-4 h-4 mr-1.5 align-[-3px] text-brand-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.8 8h12.4l-1.1 12.3a1.2 1.2 0 0 1-1.2 1.1H8.1a1.2 1.2 0 0 1-1.2-1.1z"/><path d="M9 8V6.4a3 3 0 0 1 6 0V8"/><path d="M9 11.5h6"/></svg>Food delivery, <a href="/tip/food-delivery" class="text-brand-dark hover:underline">calculator</a></h3>
             <span class="text-xs font-medium text-brand-dark bg-brand-pale px-2 py-0.5 rounded-full">15–20%, $3 min</span>
           </div>
           <p class="text-xs text-gray-500">The delivery fee goes to the platform, not the driver. Always tip separately. Tip more in bad weather or for long distances.</p>
@@ -417,8 +420,8 @@
       const summary = document.createElement('summary'); summary.className = 'flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]';
       const qText = document.createElement('span'); qText.className = 'font-semibold text-gray-800 text-[15px] leading-snug'; qText.textContent = item.q;
       var chevron = document.createElement('div');
-      chevron.setAttribute('class', 'flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
-      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;background:#F4F4F2;display:flex;align-items:center;justify-content:center;';
+      chevron.setAttribute('class', 'faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180');
+      chevron.style.cssText = 'width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
       chevron.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>';
       summary.appendChild(qText); summary.appendChild(chevron);
       const answerDiv = document.createElement('div'); answerDiv.className = 'px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed';
