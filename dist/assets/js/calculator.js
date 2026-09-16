@@ -116,6 +116,7 @@ function renderResults(results, split, container) {
     const card = document.createElement('div');
     card.className = [
       'flex flex-col items-center justify-center rounded-xl transition-all overflow-hidden min-w-0',
+      r.highlight ? 'standard-card' : '',
       r.highlight
         ? 'border-2 border-brand bg-brand-light ring-1 ring-brand p-4 scale-[1.03]'
         : 'border border-line bg-white hover:border-brand p-3',

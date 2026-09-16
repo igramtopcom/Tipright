@@ -72,6 +72,17 @@
     }
       /* The recommended tip is 4th of 5 in the 2-column phone grid, which
        lands it below the fold. Lift it to the top, full width. */
+    /* Phone: the recommended tip is 4th of 5 in the 2-column grid and the
+       advice note sits between the field and the answer - together that put
+       the number below the fold. Answer first, note after it. */
+    @media (max-width: 639px) {
+      .calc-body { display: flex; flex-direction: column; }
+      .calc-body > .calc-note  { order: 1; }
+      .calc-body > .calc-after { order: 2; }
+      /* neutralise scale-[1.03] without naming a utility the scanner would
+         then generate a dead rule for */
+      #results > .standard-card { order: -1; grid-column: 1 / -1; --tw-scale-x: 1; --tw-scale-y: 1; }
+    }
 </style>
 
   <link rel="stylesheet" href="/assets/css/app.3105e0a4b0.css">
@@ -188,7 +199,7 @@
 
   <!-- CALCULATOR CARD -->
   <section id="calculator" aria-label="Barber tip calculator">
-    <div class="bg-white rounded-xl border border-line p-5 sm:p-7">
+    <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
 
       <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
         Haircut cost (before tax)
@@ -218,7 +229,7 @@
       </div>
 
       <!-- $5 minimum callout — unique to barber -->
-      <div class="mb-5 flex items-start gap-2.5 bg-brand-pale border border-brand rounded-lg px-4 py-3">
+      <div class="calc-note mb-5 flex items-start gap-2.5 bg-brand-pale border border-brand rounded-lg px-4 py-3">
         <svg class="w-4 h-4 text-brand-dark flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         <p class="text-xs text-brand-dark leading-relaxed">
           <strong>$5 minimum rule:</strong> Always tip at least $5 for any barber service, even if 15–20% works out to less.
@@ -260,7 +271,7 @@
       </div>
 
       <!-- Custom tip % -->
-      <div class="mt-4 flex items-center gap-3">
+      <div class="calc-after mt-4 flex items-center gap-3">
         <span class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</span>
         <div class="relative flex-1 max-w-[140px]">
           <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
@@ -276,7 +287,7 @@
       </div>
 
       <!-- Share button -->
-      <div class="mt-4 pt-4 border-t border-gray-100 flex justify-end">
+      <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
         <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
