@@ -24,7 +24,9 @@ const FOOTER_LINKS = [
 ];
 
 export function nav(page) {
-  const wordmark = `<span class="font-bold text-brand tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand-dark">.app</span></span>`;
+    // the name carries the weight; .app steps back. Swapping the two brand
+  // tokens also lifts the name from 3.39:1 to 6.20:1 on white.
+  const wordmark = `<span class="font-bold text-brand-dark tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand">.app</span></span>`;
   // on the page it points at, the logo is not a link
   const logo = page.route === '/'
     ? `<span class="flex items-center gap-2">\n      ${LOGO}\n      ${wordmark}\n    </span>`

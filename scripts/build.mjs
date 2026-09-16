@@ -51,6 +51,17 @@ for (const a of assets) {
 }
 rmSync(join(root, '.cache'), { recursive: true, force: true });
 
+// The favicon is the nav mark. Deriving one from the other means they cannot
+// end up as two different logos, which is how the site got here in the first
+// place.
+{
+  const mark = readFileSync(join(root, 'src', 'partials', 'logo.svg'), 'utf8').trim();
+  const inner = mark.replace(/^<svg[^>]*>/, '').replace(/<[/]svg>$/, '');
+  const favicon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">' + inner + '</svg>' + LF;
+  const out = join(dist, 'assets', 'img', 'favicon.svg');
+  if (readFileSync(out, 'utf8') !== favicon) writeFileSync(out, favicon);
+}
+
 // pages first: they reference the hashed asset names
 const cssAsset = emitted.find((a) => a.ext === 'css');
 const jsAsset = emitted.find((a) => a.ext === 'js');
