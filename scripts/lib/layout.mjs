@@ -24,31 +24,40 @@ const FOOTER_LINKS = [
 ];
 
 export function nav(page) {
-    // the name carries the weight; .app steps back. Swapping the two brand
-  // tokens also lifts the name from 3.39:1 to 6.20:1 on white.
   const wordmark = `<span class="font-bold text-brand-dark tracking-tight" style="font-size:16px;line-height:1">tipright<span class="text-brand">.app</span></span>`;
   // on the page it points at, the logo is not a link
   const logo = page.route === '/'
     ? `<span class="flex items-center gap-2">\n      ${LOGO}\n      ${wordmark}\n    </span>`
     : `<a href="/" class="flex items-center gap-2" style="text-decoration:none">\n      ${LOGO}\n      ${wordmark}\n    </a>`;
   const r = page.navRight;
+  // the right-hand item was 14px of grey text: a weak affordance, and a target
+  // barely taller than the text on a phone. It is a control now.
   return `<nav class="bg-white border-b border-gray-200 sticky top-0 z-10">
-  <div class="max-w-[672px] mx-auto px-4 py-3 flex items-center justify-between">
+  <div class="max-w-[672px] mx-auto px-4 py-2.5 sm:py-3 flex items-center justify-between gap-3">
     ${logo}
-    <a href="${r.href}" class="text-sm text-gray-500 hover:text-brand-dark transition-colors">${r.label}</a>
+    <a href="${r.href}" class="inline-flex items-center h-9 px-3.5 rounded-full border border-line text-sm font-medium text-gray-600 hover:text-brand-dark hover:border-brand hover:bg-brand-pale transition-colors whitespace-nowrap">${r.label}</a>
   </div>
 </nav>`;
 }
 
 export function footer(page) {
+  // was two lines of identical grey text with no mark at all. Hierarchy has to
+  // come from size and spacing, not colour: grey-500 is already the lightest
+  // ink that clears 4.5:1 on this background.
+  // a separator still has to be visible to separate anything: at /60 it
+  // measured 2.27:1. It inherits the footer ink instead.
+  const dot = '<span aria-hidden="true">&middot;</span>';
   const links = FOOTER_LINKS.filter((l) => l.href !== page.route)
     .map((l) => `<a href="${l.href}" class="hover:text-brand-dark transition-colors">${l.label}</a>`)
-    .join('\n     &middot;\n    ');
+    .join(dot);
   return `<footer class="${page.footerClass}">
-  <p>&copy; 2026 tipright.app &mdash; Free tip calculators for every service</p>
-  <p class="mt-1">
-    ${links}
-  </p>
+  <a href="/" class="inline-flex items-center gap-2" style="text-decoration:none">
+    ${LOGO.replace('width="26" height="26"', 'width="22" height="22"')}
+    <span class="font-bold text-brand-dark tracking-tight" style="font-size:15px;line-height:1">tipright<span class="text-brand">.app</span></span>
+  </a>
+  <p class="mt-2 text-[13px]">Free tip calculators for every service</p>
+  <nav class="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2" aria-label="Footer">${links}</nav>
+  <p class="mt-5 text-[13px]">&copy; 2026 tipright.app</p>
 </footer>`;
 }
 
