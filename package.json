@@ -1,0 +1,13 @@
+{
+  "name": "tipright",
+  "private": true,
+  "version": "1.0.0",
+  "description": "tipright.app - static tip calculators on Cloudflare Workers",
+  "scripts": {
+    "build:css": "node scripts/build-css.mjs",
+    "deploy": "npm run build:css && wrangler deploy"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}
