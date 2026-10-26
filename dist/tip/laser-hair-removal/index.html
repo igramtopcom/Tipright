@@ -94,7 +94,7 @@
     }
   </style>
 
-  <link rel="stylesheet" href="/assets/css/app.804bab148c.css">
+  <link rel="stylesheet" href="/assets/css/app.3bdcdc0371.css">
 
   <script type="application/ld+json">
   {
@@ -161,22 +161,6 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes — tip at each session. Most laser hair removal treatments require 6–8 sessions for full results. Each session is a complete service and the technician deserves recognition at every visit."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much do you tip for a $200 laser hair removal session?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Tip $30–40 (15–20%) at a dedicated esthetic studio. At a medical spa, $20–30 (10–15%) is appropriate if you choose to tip."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is tipping required for laser hair removal?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Not strictly required, but expected at esthetic studios. At dermatologist offices or medical clinics, tipping is not expected. At med spas and esthetic centers, 15–20% is the norm."
             }
           },
           {
@@ -254,104 +238,54 @@
   <section id="calculator" aria-label="Laser hair removal tip calculator">
     <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
 
-      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
-        Session cost (before tax)
-      </label>
-
-      <div class="relative mb-4">
-        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
-        <input
-          id="cost"
-          type="text"
-          inputmode="decimal"
-          placeholder="0"
-          autocomplete="off"
-          style="font-size:20px"
-          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20"
-        >
+      <p class="block text-sm font-medium text-gray-700 mb-2" id="place-label">Where are you treated?</p>
+      <div id="place" role="group" aria-labelledby="place-label" class="flex flex-wrap gap-2 mb-4">
+        <button type="button" data-value="studio" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Esthetic studio</button>
+        <button type="button" data-value="medspa" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Med spa</button>
+        <button type="button" data-value="clinic" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Dermatologist / clinic</button>
       </div>
 
-      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
-      <!-- Preset buttons — laser hair removal price range -->
-      <div class="flex flex-wrap gap-2 mb-5">
-        <span class="text-xs text-gray-500 self-center">Quick:</span>
-        <button data-preset="100" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$100</button>
-        <button data-preset="150" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$150</button>
-        <button data-preset="250" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$250</button>
-        <button data-preset="400" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$400</button>
+      <p class="block text-sm font-medium text-gray-700 mb-2" id="pay-label">How do you pay?</p>
+      <div id="pay" role="group" aria-labelledby="pay-label" class="flex flex-wrap gap-2 mb-4">
+        <button type="button" data-value="session" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Per session</button>
+        <button type="button" data-value="package" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Prepaid package</button>
       </div>
 
-      <!-- Studio vs medical setting callout -->
-      <div class="calc-note bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700 mb-5">
-        <p class="font-medium text-blue-800 mb-1">ℹ️ Studio vs medical setting</p>
-        <p>Tipping is less expected when procedures are performed by licensed medical staff. For esthetician-run studios, 15–20% is standard.</p>
-      </div>
-
-      <!-- Split toggle -->
-      <details class="mb-5 group">
-        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
-          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-          Split between multiple technicians
-        </summary>
-        <div class="mt-3 flex items-center gap-3 pl-1">
-          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of technicians:</label>
-          <input
-            id="split"
-            type="number"
-            value="1"
-            min="1"
-            max="20"
-            class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors"
-          >
-        </div>
-              <div id="tax-row" class="mt-3 flex items-center gap-3" style="display:none">
-          <label for="tax" class="text-sm text-gray-600 whitespace-nowrap">Tax on receipt:</label>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mb-4">
+        <div class="flex items-center gap-3">
+          <label for="cost" id="cost-label" class="text-sm text-gray-700">Price per session</label>
           <div class="relative">
             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">$</span>
-            <input id="tax" type="text" inputmode="decimal" value="" placeholder="0.00" autocomplete="off" style="font-size:16px" class="w-28 h-10 pl-7 rounded-lg border border-gray-300 text-center text-base font-medium focus:border-brand outline-none transition-colors bg-gray-50">
+            <input id="cost" type="text" inputmode="decimal" placeholder="200" autocomplete="off" style="font-size:16px"
+              class="w-28 h-10 pl-7 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
           </div>
-          <span class="text-xs text-gray-500">optional</span>
         </div>
-      </details>
+        <div id="sessions-row" class="flex items-center gap-3 hidden">
+          <label for="sessions" class="text-sm text-gray-700">Sessions in it</label>
+          <input id="sessions" type="number" inputmode="numeric" value="6" min="1" max="20" style="font-size:16px"
+            class="w-20 h-10 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+        </div>
+      </div>
+
+      <label class="flex items-start gap-2.5 mb-5 text-sm text-gray-700 cursor-pointer">
+        <input id="large" type="checkbox" class="mt-0.5 w-5 h-5 flex-shrink-0 accent-[#0F6E56]">
+        <span>A large area: full legs, full back or chest <span class="text-gray-500">(not underarms or lip)</span></span>
+      </label>
 
       <div class="calc-note mb-5 flex items-start gap-2.5 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
         <svg class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <p class="text-xs text-blue-800 leading-relaxed"><strong>Studio vs medical spa:</strong> Tipping is less expected when procedures are performed by licensed medical staff. For esthetician-run studios, 15–20% is standard.</p>
+        <p class="text-xs text-blue-800 leading-relaxed"><strong>Who holds the laser decides the tip.</strong> An esthetician at a studio is tipped like any beauty service. A nurse or doctor in a clinic usually is not. With a package, tip at each visit on what one session works out to.</p>
       </div>
 
-      <!-- Results grid -->
-      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
-        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">
-          Enter your session cost above
-        </div>
-      </div>
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-3 gap-2 min-h-[100px]" aria-live="polite"></div>
+      <p id="breakdown" class="calc-after mt-3 text-sm text-gray-600"></p>
 
-      <!-- Custom tip % -->
-      <div class="calc-after mt-4 flex items-center gap-3">
-        <label for="custom-pct" class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</label>
-        <div class="relative flex-1 max-w-[140px]">
-          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
-            autocomplete="off" style="font-size:16px"
-            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
-        </div>
-        <div id="custom-result" class="hidden flex-col items-start">
-          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
-          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
-          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
-        </div>
-      </div>
-
-      <!-- Share button -->
       <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
         <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
-          </svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
           Share this calculation
         </button>
       </div>
-
     </div>
   </section>
 
@@ -393,7 +327,7 @@
     </div>
 
     <div>
-      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Studio, med spa or clinic, and the size of the area</h2>
       <ul class="space-y-2 text-gray-600 list-disc pl-5">
         <li><strong>Setting type:</strong> Esthetic studios expect 15–20%. Med spas 10–15% optional. Dermatology offices and clinics typically don't expect tips.</li>
         <li>Full legs or full back treatments take a lot more time than smaller areas like underarms or upper lip. Tip toward the higher end (20%) for large-area treatments.</li>
@@ -415,7 +349,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip for laser hair removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>At esthetic studios, tip 15–20% of the session cost. For a $200 session, tip $30–40. At medical spas where licensed medical professionals perform the procedure, tipping is appreciated but less strictly expected — 10–15% is a thoughtful gesture.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for laser hair removal at a med spa?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping is less strictly expected at medical spas than at esthetic studios. A 10–15% tip is appreciated but not obligatory when the procedure is performed by medical staff in a clinical setting.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip for every laser hair removal session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip at each session. Most laser hair removal treatments require 6–8 sessions for full results. Each session is a complete service and the technician deserves recognition at every visit.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a $200 laser hair removal session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $30–40 (15–20%) at a dedicated esthetic studio. At a medical spa, $20–30 (10–15%) is appropriate if you choose to tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is tipping required for laser hair removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Not strictly required, but expected at esthetic studios. At dermatologist offices or medical clinics, tipping is not expected. At med spas and esthetic centers, 15–20% is the norm.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip more for larger treatment areas?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — full legs or full back treatments take significantly more time than smaller areas like underarms or upper lip. Tip toward the higher end (20%) for large-area treatments.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for a consultation before laser hair removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>No — consultations are typically free or low-cost. Tip from your first paid treatment session onward.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How do you tip for a laser hair removal package?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip per session based on the package session rate, not a percentage of the full package price. If your package works out to $150/session, tip 15–20% on $150 at each appointment.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is tipping for laser hair removal different from waxing?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Waxing always expects a 15–20% tip — it's unambiguously a personal service. Laser hair removal has more clinical associations, especially at medical spas. Studios expect tips; dermatology offices and medical clinics typically don't.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">What if you experience side effects or discomfort during laser hair removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Mild discomfort is normal and expected — don't reduce your tip for normal treatment sensations. If the technician was careless, failed to adjust settings for your skin type, or caused unexpected adverse effects, discuss it with the manager rather than expressing it through the tip.</div></div></details></div></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip for laser hair removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>At esthetic studios, tip 15–20% of the session cost. For a $200 session, tip $30–40. At medical spas where licensed medical professionals perform the procedure, tipping is appreciated but less strictly expected — 10–15% is a thoughtful gesture.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for laser hair removal at a med spa?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping is less strictly expected at medical spas than at esthetic studios. A 10–15% tip is appreciated but not obligatory when the procedure is performed by medical staff in a clinical setting.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip for every laser hair removal session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip at each session. Most laser hair removal treatments require 6–8 sessions for full results. Each session is a complete service and the technician deserves recognition at every visit.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip more for larger treatment areas?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — full legs or full back treatments take significantly more time than smaller areas like underarms or upper lip. Tip toward the higher end (20%) for large-area treatments.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for a consultation before laser hair removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>No — consultations are typically free or low-cost. Tip from your first paid treatment session onward.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How do you tip for a laser hair removal package?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip per session based on the package session rate, not a percentage of the full package price. If your package works out to $150/session, tip 15–20% on $150 at each appointment.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is tipping for laser hair removal different from waxing?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Waxing always expects a 15–20% tip — it's unambiguously a personal service. Laser hair removal has more clinical associations, especially at medical spas. Studios expect tips; dermatology offices and medical clinics typically don't.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">What if you experience side effects or discomfort during laser hair removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Mild discomfort is normal and expected — don't reduce your tip for normal treatment sensations. If the technician was careless, failed to adjust settings for your skin type, or caused unexpected adverse effects, discuss it with the manager rather than expressing it through the tip.</div></div></details></div></div>
   </section>
 
   <!-- RELATED CALCULATORS -->
@@ -483,104 +417,56 @@
 <script src="/assets/js/calculator.fff2b11d30.js"></script>
 <script>
 (function () {
-  const costInput = document.getElementById('cost');
-  const splitInput = document.getElementById('split');
-  var taxInput   = document.getElementById('tax');
-  var taxRow     = document.getElementById('tax-row');
-  const resultsEl  = document.getElementById('results');
-  const shareBtn   = document.getElementById('share-btn');
+  // studio 15-20%, med spa 10-15% and optional, clinic: not expected
+  var PCT = { studio: [15, 18, 20], medspa: [10, 12, 15] };
+  var DEFAULTS = { w: 'studio', p: 'session', c: '', n: 6, l: 0 };
+  var q = TR.readQuery();
+  var costEl = document.getElementById('cost');
+  var costLabel = document.getElementById('cost-label');
+  var sessionsEl = document.getElementById('sessions');
+  var sessionsRow = document.getElementById('sessions-row');
+  var largeEl = document.getElementById('large');
+  var resultsEl = document.getElementById('results');
+  var breakdownEl = document.getElementById('breakdown');
+  var place = TR.bindChips(document.getElementById('place'), q.get('w') || DEFAULTS.w, function (v) { place = v; update(true); });
+  var pay = TR.bindChips(document.getElementById('pay'), q.get('p') || DEFAULTS.p, function (v) { pay = v; update(true); });
+  if (q.get('c')) costEl.value = q.get('c');
+  sessionsEl.value = TR.clampInt(q.get('n'), 1, 20, DEFAULTS.n);
+  largeEl.checked = q.get('l') === '1';
 
-    var detailsEl = document.querySelector('details');
-  if (detailsEl && taxRow) {
-    detailsEl.addEventListener('toggle', function() {
-      taxRow.style.display = detailsEl.open ? 'flex' : 'none';
-      if (!detailsEl.open && taxInput) taxInput.value = '';
-      update();
-    });
-  }
-
-  function update() {
-    const cost  = TR.parseCost(costInput.value);
-    const split = parseInt(splitInput?.value) || 1;
-    if (cost === 0) {
-      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your session cost above</div>';
-      TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
+  function update(counted) {
+    var pkg = pay === 'package';
+    sessionsRow.classList.toggle('hidden', !pkg);
+    costLabel.textContent = pkg ? 'Package price' : 'Price per session';
+    var price = TR.parseCost(costEl.value), n = TR.clampInt(sessionsEl.value, 1, 20, 1);
+    TR.writeQuery({ w: place, p: pay, c: costEl.value.replace(/[^0-9.]/g, ''), n: pkg ? n : '', l: largeEl.checked ? 1 : 0 }, DEFAULTS);
+    if (place === 'clinic') {
+      TR.renderFlat([{ label: 'Not expected', amount: 0, sub: 'medical staff, clinical setting', highlight: true }], resultsEl, counted);
+      breakdownEl.textContent = 'At a dermatologist’s office or medical clinic, laser treatments are not tipped. A thank-you note to a technician who made you comfortable is always welcome.';
       return;
     }
-    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0);
-    TR.renderResults(tiers, split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
-  }
-
-  const state = TR.readURL();
-  if (state.cost) {
-    costInput.value = state.cost;
-    if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; }
-    if (state.tax && taxInput) { taxInput.value = state.tax; document.querySelector('details').open = true; if (taxRow) taxRow.style.display = 'flex'; }
-    update();
-  }
-
-  costInput.addEventListener('input', update);
-  splitInput.addEventListener('input', update);
-  if (taxInput) taxInput.addEventListener('input', update);
-  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
-
-  document.querySelectorAll('[data-preset]').forEach(btn => {
-    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
-  });
-
-
-  // FAQ
-  
-  
-
-
-  // Custom % handler
-  var customPctInput = document.getElementById('custom-pct');
-  var customResult   = document.getElementById('custom-result');
-  var customTipAmt   = document.getElementById('custom-tip-amount');
-  var customTotalAmt = document.getElementById('custom-total-amount');
-  var customPerPerson = document.getElementById('custom-per-person');
-
-  if (customPctInput) {
-    function updateCustom() {
-      var pct  = parseFloat(customPctInput.value);
-      var cost = TR.parseCost(costInput.value);
-      var taxEl = document.getElementById('tax');
-      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
-      var sp = parseInt(splitInput && splitInput.value) || 1;
-
-      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
-        var tip        = TR.round2(cost * pct / 100);
-        var grandTotal = TR.round2(cost + tax + tip);
-        var ceiled     = Math.ceil(tip);
-
-        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
-        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
-
-        if (sp > 1 && customPerPerson) {
-          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
-          customPerPerson.classList.remove('hidden');
-        } else if (customPerPerson) {
-          customPerPerson.classList.add('hidden');
-        }
-
-        customResult.classList.remove('hidden');
-        customResult.classList.add('flex');
-      } else {
-        customResult.classList.add('hidden');
-        customResult.classList.remove('flex');
-        if (customPerPerson) customPerPerson.classList.add('hidden');
-      }
+    if (!price) {
+      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-3 flex items-center justify-center text-gray-500 text-sm py-8">Enter the ' + (pkg ? 'package' : 'session') + ' price above</div>';
+      breakdownEl.textContent = '';
+      return;
     }
-
-    customPctInput.addEventListener('input', updateCustom);
-    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    var taxInput = document.getElementById('tax');
-    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+    var perSession = pkg ? price / n : price;
+    var p = PCT[place], pick = largeEl.checked ? 2 : 1;
+    var labels = place === 'medspa' ? ['Optional', 'Appreciated', 'Generous'] : ['Minimum', 'Standard', largeEl.checked ? 'Large area' : 'Generous'];
+    var cards = p.map(function (x, i) {
+      return { label: labels[i], amount: Math.ceil(perSession * x / 100), sub: x + '% of ' + TR.fmt(Math.round(perSession)) + ' a session', highlight: i === pick };
+    });
+    TR.renderFlat(cards, resultsEl, counted);
+    var tip = cards[pick].amount;
+    breakdownEl.textContent = (pkg ? 'Your package works out to ' + TR.fmt(Math.round(perSession)) + ' a session. ' : '') +
+      'Tip ' + TR.fmt(tip) + ' at each visit' + (pkg ? ', not a percentage of the whole package up front.' : '.') +
+      (place === 'medspa' ? ' At a med spa this is a kindness, not an obligation.' : '');
   }
 
+  [costEl, sessionsEl].forEach(function (el) { el.addEventListener('input', function () { update(true); }); });
+  largeEl.addEventListener('change', function () { update(true); });
+  document.getElementById('share-btn').addEventListener('click', function () { TR.shareResult(this); });
+  update(false);
 })();
 </script>
 </body>

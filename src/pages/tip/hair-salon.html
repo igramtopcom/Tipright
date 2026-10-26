@@ -1,17 +1,17 @@
 ---
 {
   "route": "/tip/hair-salon",
-  "title": "Hair Salon Tip Calculator \u2014 How Much to Tip Your Stylist?",
+  "title": "Hair Salon Tip Calculator — How Much to Tip Your Stylist?",
   "description": "How much to tip your hair stylist? Enter your service total for instant tip amounts. Covers colorists, shampoo assistants, and the salon owner debate.",
   "canonical": "https://tipright.app/tip/hair-salon",
-  "ogTitle": "Hair Salon Tip Calculator \u2014 How Much to Tip Your Stylist?",
+  "ogTitle": "Hair Salon Tip Calculator — How Much to Tip Your Stylist?",
   "ogDescription": "Find the right tip for your hair stylist, colorist, and assistant. Instant results for any service total.",
-  "twitterTitle": "Hair Salon Tip Calculator \u2014 How Much to Tip Your Stylist?",
+  "twitterTitle": "Hair Salon Tip Calculator — How Much to Tip Your Stylist?",
   "twitterDescription": "Find the right tip for your hair stylist, colorist, and assistant. Instant results for any service total.",
   "bodyClass": "bg-gray-50 text-gray-800 font-sans min-h-screen",
   "navRight": {
     "href": "/",
-    "label": "All calculators \u2192"
+    "label": "All calculators →"
   },
   "footerClass": "border-t border-gray-200 mt-12 py-8 text-center text-sm text-gray-500",
   "footerLinks": [
@@ -82,43 +82,31 @@
   "faq": [
     {
       "q": "How much should you tip a hair stylist?",
-      "a": "The standard tip for a hair stylist is 20% of the total service cost. For a $100 haircut and blowout, that's $20. Tip 15% for basic services, 22\u201325% for complex color work or when your stylist went above and beyond."
-    },
-    {
-      "q": "Should you tip the salon owner?",
-      "a": "Yes \u2014 tip salon owners 15\u201320%, just like any other stylist. The old rule of not tipping owners has largely faded. Owners still appreciate tips, and most clients now tip them as standard practice."
+      "a": "The standard tip for a hair stylist is 20% of the total service cost. For a $100 haircut and blowout, that's $20. Tip 15% for basic services, 22–25% for complex color work or when your stylist went above and beyond."
     },
     {
       "q": "Do you tip the shampoo assistant at a hair salon?",
-      "a": "Yes. Tip the shampoo assistant $3\u20135 separately from your stylist tip, in cash, handed directly to them. Assistants earn very low wages and depend on these small tips as a meaningful part of their income."
-    },
-    {
-      "q": "How much do you tip for a $100 hair service?",
-      "a": "Tip $15\u201320 on a $100 hair service. A $20 tip (20%) is standard for good work. Tip $22\u201325 for above-average results or if your service ran significantly over time."
+      "a": "Yes. Tip the shampoo assistant $3–5 separately from your stylist tip, in cash, handed directly to them. Assistants earn very low wages and depend on these small tips as a meaningful part of their income."
     },
     {
       "q": "How much do you tip for hair color?",
-      "a": "Tip 20% on hair color services, the same as for cuts. Color is technically demanding and time-intensive. For complex work like color correction or a full balayage, tipping 22\u201325% acknowledges the extra skill and hours involved."
+      "a": "Tip 20% on hair color services, the same as for cuts. Color is technically demanding and time-intensive. For complex work like color correction or a full balayage, tipping 22–25% acknowledges the extra skill and hours involved."
     },
     {
       "q": "Do you tip if a different person does your color and cut?",
-      "a": "Yes \u2014 tip each person separately based on their portion of the service. Calculate 20% on the colorist's charge and 20% on the stylist's charge separately, and hand each their tip directly in cash."
+      "a": "Yes — tip each person separately based on their portion of the service. Calculate 20% on the colorist's charge and 20% on the stylist's charge separately, and hand each their tip directly in cash."
     },
     {
       "q": "How much do you tip for a balayage?",
-      "a": "Tip 20% on a balayage. For a $250 balayage, that's $50. Balayage is a skilled, time-intensive technique taking 2\u20134 hours. Tip 25% ($62.50) for an exceptional, high-effort result."
-    },
-    {
-      "q": "Is it rude not to tip your hairdresser?",
-      "a": "Yes. In the US, not tipping a hairdresser for satisfactory service is considered rude. Most stylists pay booth rental or work on commission \u2014 tips directly supplement their take-home pay for every hour they spend on your hair."
+      "a": "Tip 20% on a balayage. For a $250 balayage, that's $50. Balayage is a skilled, time-intensive technique taking 2–4 hours. Tip 25% ($62.50) for an exceptional, high-effort result."
     },
     {
       "q": "How much do you tip for a simple trim?",
-      "a": "Tip 15\u201320% even for a simple trim. If the haircut costs $20\u201330, use a $5 minimum rather than a strict percentage \u2014 percentage math produces amounts too small to be meaningful on cheap services."
+      "a": "Tip 15–20% even for a simple trim. If the haircut costs $20–30, use a $5 minimum rather than a strict percentage — percentage math produces amounts too small to be meaningful on cheap services."
     },
     {
       "q": "Should I tip more for a long appointment?",
-      "a": "Yes. A 4-hour color correction deserves more acknowledgment than a 30-minute trim. If your appointment ran significantly over time or required exceptional skill and problem-solving, tipping 22\u201325% is appropriate and appreciated."
+      "a": "Yes. A 4-hour color correction deserves more acknowledgment than a 30-minute trim. If your appointment ran significantly over time or required exceptional skill and problem-solving, tipping 22–25% is appropriate and appreciated."
     }
   ]
 }
@@ -143,26 +131,13 @@
   <section id="calculator" aria-label="Hair salon tip calculator">
     <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
 
-      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
-        Service total (before tax)
-      </label>
-
-      <div class="relative mb-4">
+      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">Cut, style or blowout (before tax)</label>
+      <div class="relative mb-3">
         <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
-        <input
-          id="cost"
-          type="text"
-          inputmode="decimal"
-          placeholder="0"
-          autocomplete="off"
-          style="font-size:20px"
-          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20"
-        >
+        <input id="cost" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
+          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
       </div>
-
-      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
-      <!-- Preset buttons — giá hair salon phổ biến -->
-      <div class="flex flex-wrap gap-2 mb-5">
+      <div class="flex flex-wrap gap-2 mb-4">
         <span class="text-xs text-gray-500 self-center">Quick:</span>
         <button data-preset="50" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$50</button>
         <button data-preset="80" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$80</button>
@@ -170,74 +145,44 @@
         <button data-preset="180" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$180</button>
       </div>
 
-      <!-- Assistant tip callout — unique to hair salon -->
+      <div class="flex items-center gap-3 mb-4">
+        <label for="color" class="text-sm text-gray-700">Color by a different colorist <span class="text-gray-500">(optional)</span></label>
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">$</span>
+          <input id="color" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:16px"
+            class="w-28 h-10 pl-7 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+        </div>
+      </div>
+
+      <label class="flex items-start gap-2.5 mb-4 text-sm text-gray-700 cursor-pointer">
+        <input id="assistant" type="checkbox" checked class="mt-0.5 w-5 h-5 flex-shrink-0 accent-[#0F6E56]">
+        <span>An assistant shampooed my hair <span class="text-gray-500">($4, in cash)</span></span>
+      </label>
+
+      <p class="block text-sm font-medium text-gray-700 mb-2" id="pct-label">How did it go?</p>
+      <div id="pct" role="group" aria-labelledby="pct-label" class="flex flex-wrap gap-2 mb-5">
+        <button type="button" data-value="18" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Fine, 18%</button>
+        <button type="button" data-value="20" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Good, 20%</button>
+        <button type="button" data-value="22" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Complex color, 22%</button>
+        <button type="button" data-value="25" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Exceptional, 25%</button>
+      </div>
+
       <div class="calc-note mb-5 flex items-start gap-2.5 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
-        <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <p class="text-xs text-amber-800 leading-relaxed">
-          <strong>Don't forget the shampoo assistant.</strong> Tip them $3–5 separately in cash. This calculator covers your stylist's tip only.
-        </p>
+        <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        <p class="text-xs text-amber-800 leading-relaxed"><strong>Everyone who worked on your hair gets their own tip.</strong> The stylist and the colorist each get a percentage of their own part of the bill; the shampoo assistant gets a few dollars in cash, handed to them directly.</p>
       </div>
 
-      <!-- Split toggle -->
-      <details class="mb-5 group">
-        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
-          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-          Split tip with others
-        </summary>
-        <div class="mt-3 flex items-center gap-3 pl-1">
-          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of people:</label>
-          <input
-            id="split"
-            type="number"
-            value="1"
-            min="1"
-            max="20"
-            class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors"
-          >
-        </div>
-              <div id="tax-row" class="mt-3 flex items-center gap-3" style="display:none">
-          <label for="tax" class="text-sm text-gray-600 whitespace-nowrap">Tax on receipt:</label>
-          <div class="relative">
-            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">$</span>
-            <input id="tax" type="text" inputmode="decimal" value="" placeholder="0.00" autocomplete="off" style="font-size:16px" class="w-28 h-10 pl-7 rounded-lg border border-gray-300 text-center text-base font-medium focus:border-brand outline-none transition-colors bg-gray-50">
-          </div>
-          <span class="text-xs text-gray-500">optional</span>
-        </div>
-      </details>
-
-      <!-- Results grid -->
-      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
-        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">
-          Enter your service total above
-        </div>
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-3 gap-2 min-h-[100px]" aria-live="polite">
+        <div class="col-span-2 sm:col-span-3 flex items-center justify-center text-gray-500 text-sm py-8">Enter your service cost above</div>
       </div>
+      <p id="breakdown" class="calc-after mt-3 text-sm text-gray-600"></p>
 
-      <!-- Custom tip % -->
-      <div class="calc-after mt-4 flex items-center gap-3">
-        <label for="custom-pct" class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</label>
-        <div class="relative flex-1 max-w-[140px]">
-          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
-            autocomplete="off" style="font-size:16px"
-            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
-        </div>
-        <div id="custom-result" class="hidden flex-col items-start">
-          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
-          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
-          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
-        </div>
-      </div>
-
-      <!-- Share button -->
       <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
         <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
-          </svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
           Share this calculation
         </button>
       </div>
-
     </div>
   </section>
 
@@ -281,7 +226,7 @@
     </div>
 
     <div>
-      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Color, cut or both: who gets what</h2>
       <ul class="space-y-2 text-gray-600 list-disc pl-5">
         <li><strong>Color vs cut:</strong> Color work is significantly more technical and time-intensive than a trim. A full balayage or color correction can take 3–5 hours. Tip 20% minimum on color; consider 22–25% for complex or time-heavy services.</li>
         <li><strong>Multiple people:</strong> If a colorist applied your color and a different stylist did the cut and blowout, tip each person separately based on their service portion, not one combined tip split by the salon.</li>
@@ -363,103 +308,44 @@
 <!--@calculator-->
 <script>
 (function () {
-  const costInput = document.getElementById('cost');
-  const splitInput = document.getElementById('split');
-  var taxInput   = document.getElementById('tax');
-  var taxRow     = document.getElementById('tax-row');
-  const resultsEl  = document.getElementById('results');
-  const shareBtn   = document.getElementById('share-btn');
+  var ASSISTANT = 4;
+  var DEFAULTS = { c: '', k: '', a: 1, p: '20' };
+  var q = TR.readQuery();
+  var costEl = document.getElementById('cost');
+  var colorEl = document.getElementById('color');
+  var asstEl = document.getElementById('assistant');
+  var resultsEl = document.getElementById('results');
+  var breakdownEl = document.getElementById('breakdown');
+  var pct = TR.bindChips(document.getElementById('pct'), q.get('p') || q.get('pct') || DEFAULTS.p, function (v) { pct = v; update(true); });
+  // old share links carried ?c=
+  if (q.get('c')) costEl.value = q.get('c');
+  if (q.get('k')) colorEl.value = q.get('k');
+  if (q.get('a') === '0') asstEl.checked = false;
 
-    var detailsEl = document.querySelector('details');
-  if (detailsEl && taxRow) {
-    detailsEl.addEventListener('toggle', function() {
-      taxRow.style.display = detailsEl.open ? 'flex' : 'none';
-      if (!detailsEl.open && taxInput) taxInput.value = '';
-      update();
-    });
-  }
-
-  function update() {
-    const cost  = TR.parseCost(costInput.value);
-    const split = parseInt(splitInput?.value) || 1;
-    if (cost === 0) {
-      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your service total above</div>';
-      TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
+  function update(counted) {
+    var cut = TR.parseCost(costEl.value), color = TR.parseCost(colorEl.value), p = parseInt(pct, 10);
+    TR.writeQuery({ c: costEl.value.replace(/[^0-9.]/g, ''), k: colorEl.value.replace(/[^0-9.]/g, ''), a: asstEl.checked ? 1 : 0, p: pct }, DEFAULTS);
+    if (!cut && !color) {
+      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-3 flex items-center justify-center text-gray-500 text-sm py-8">Enter your service cost above</div>';
+      breakdownEl.textContent = '';
       return;
     }
-    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0);
-    TR.renderResults(tiers, split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
+    var cards = [], parts = [];
+    var stylist = Math.ceil(cut * p / 100), colorist = Math.ceil(color * p / 100);
+    var asst = asstEl.checked ? ASSISTANT : 0;
+    if (cut) { cards.push({ label: 'Stylist', amount: stylist, sub: p + '% of ' + TR.fmt(cut) }); parts.push(TR.fmt(stylist) + ' to your stylist'); }
+    if (color) { cards.push({ label: 'Colorist', amount: colorist, sub: p + '% of ' + TR.fmt(color) }); parts.push(TR.fmt(colorist) + ' to your colorist'); }
+    if (asst) { cards.push({ label: 'Shampoo assistant', amount: asst, sub: 'cash, $3–5' }); parts.push(TR.fmt(asst) + ' to the assistant'); }
+    var total = stylist + colorist + asst;
+    cards.unshift({ label: 'Total tips', amount: total, sub: 'on ' + TR.fmt(cut + color) + ' of services', highlight: true });
+    TR.renderFlat(cards, resultsEl, counted);
+    breakdownEl.textContent = parts.length > 1 ? 'Hand out ' + parts.join(', ') + '.' : '';
   }
 
-  const state = TR.readURL();
-  if (state.cost) {
-    costInput.value = state.cost;
-    if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; }
-    if (state.tax && taxInput) { taxInput.value = state.tax; document.querySelector('details').open = true; if (taxRow) taxRow.style.display = 'flex'; }
-    update();
-  }
-
-  costInput.addEventListener('input', update);
-  splitInput.addEventListener('input', update);
-  if (taxInput) taxInput.addEventListener('input', update);
-  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
-
-  document.querySelectorAll('[data-preset]').forEach(btn => {
-    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
-  });
-
-
-  // FAQ
-  
-  
-
-
-  // Custom % handler
-  var customPctInput = document.getElementById('custom-pct');
-  var customResult   = document.getElementById('custom-result');
-  var customTipAmt   = document.getElementById('custom-tip-amount');
-  var customTotalAmt = document.getElementById('custom-total-amount');
-  var customPerPerson = document.getElementById('custom-per-person');
-
-  if (customPctInput) {
-    function updateCustom() {
-      var pct  = parseFloat(customPctInput.value);
-      var cost = TR.parseCost(costInput.value);
-      var taxEl = document.getElementById('tax');
-      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
-      var sp = parseInt(splitInput && splitInput.value) || 1;
-
-      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
-        var tip        = TR.round2(cost * pct / 100);
-        var grandTotal = TR.round2(cost + tax + tip);
-        var ceiled     = Math.ceil(tip);
-
-        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
-        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
-
-        if (sp > 1 && customPerPerson) {
-          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
-          customPerPerson.classList.remove('hidden');
-        } else if (customPerPerson) {
-          customPerPerson.classList.add('hidden');
-        }
-
-        customResult.classList.remove('hidden');
-        customResult.classList.add('flex');
-      } else {
-        customResult.classList.add('hidden');
-        customResult.classList.remove('flex');
-        if (customPerPerson) customPerPerson.classList.add('hidden');
-      }
-    }
-
-    customPctInput.addEventListener('input', updateCustom);
-    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    var taxInput = document.getElementById('tax');
-    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-  }
-
+  [costEl, colorEl].forEach(function (el) { el.addEventListener('input', function () { update(true); }); });
+  asstEl.addEventListener('change', function () { update(true); });
+  document.querySelectorAll('[data-preset]').forEach(function (b) { b.addEventListener('click', function () { costEl.value = b.dataset.preset; update(true); }); });
+  document.getElementById('share-btn').addEventListener('click', function () { TR.shareResult(this); });
+  update(false);
 })();
 </script>

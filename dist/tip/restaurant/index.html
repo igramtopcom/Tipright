@@ -94,7 +94,7 @@
     }
   </style>
 
-  <link rel="stylesheet" href="/assets/css/app.804bab148c.css">
+  <link rel="stylesheet" href="/assets/css/app.3bdcdc0371.css">
 
   <script type="application/ld+json">
   {
@@ -149,26 +149,10 @@
           },
           {
             "@type": "Question",
-            "name": "Should you tip on the pre-tax or post-tax amount?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Tip on the pre-tax subtotal. Tax is paid to the government, not the restaurant. On a $90 bill with $10 tax, tip 20% on $90 ($18), not on $100 ($20). The difference is small but pre-tax is the standard convention."
-            }
-          },
-          {
-            "@type": "Question",
             "name": "How much do you tip for bad service?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "For poor service, 10% is acceptable. Before reducing your tip, consider whether the problem was the server's fault (attentiveness, attitude) or the kitchen's (food quality, timing). Servers don't control kitchen speed. For truly unacceptable service, speak to a manager."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much do you tip if the bill is split?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Tip based on the total bill amount, not your individual portion. If a $200 bill is split 4 ways, each person owes their $50 share plus $10 tip (20% of their portion), for $60 each. Don't tip only on what you paid."
             }
           },
           {
@@ -185,14 +169,6 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Most restaurants add an automatic 18–20% gratuity for parties of 6 or more. Check your bill — if gratuity is already included, no additional tip is required. If you want to tip more for exceptional service, add it manually."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is it rude not to tip at a restaurant?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. In the US, restaurant servers earn $2.13/hour federally — tips are not optional income. Not tipping for satisfactory service is considered very rude and effectively underpays your server for their labor. The only exception is genuine service failure."
             }
           },
           {
@@ -280,6 +256,28 @@
         <button data-preset="100" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$100</button>
         <button data-preset="150" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$150</button>
       </div>
+
+      <p class="block text-sm font-medium text-gray-700 mb-2" id="dining-label">Where did you eat?</p>
+      <div id="dining" role="group" aria-labelledby="dining-label" class="flex flex-wrap gap-2 mb-4">
+        <button type="button" data-value="casual" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Sit-down</button>
+        <button type="button" data-value="fine" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Fine dining</button>
+        <button type="button" data-value="counter" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Counter service</button>
+        <button type="button" data-value="takeout" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Takeout</button>
+      </div>
+
+      <label class="flex items-start gap-2.5 mb-2 text-sm text-gray-700 cursor-pointer">
+        <input id="autograt" type="checkbox" class="mt-0.5 w-5 h-5 flex-shrink-0 accent-[#0F6E56]">
+        <span>The bill already adds a gratuity <span class="text-gray-500">(common for parties of 6+)</span></span>
+      </label>
+      <div id="autograt-row" class="hidden flex items-center gap-3 mb-4 pl-7">
+        <label for="autograt-pct" class="text-sm text-gray-700">It is</label>
+        <div class="relative">
+          <input id="autograt-pct" type="text" inputmode="decimal" value="18" autocomplete="off" style="font-size:16px"
+            class="w-20 h-10 pr-7 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm pointer-events-none">%</span>
+        </div>
+      </div>
+      <p id="dining-note" class="text-xs text-gray-600 mb-5"></p>
 
       <!-- Split toggle -->
       <details class="mb-5 group">
@@ -389,7 +387,7 @@
     </div>
 
     <div>
-      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Dining type, large parties and coupons</h2>
       <ul class="space-y-2 text-gray-600 list-disc pl-5">
         <li><strong>Service quality:</strong> 15% for adequate service, 18–20% for good service, 22–25% for exceptional service. Consider whether issues were the server's fault or the kitchen's before reducing.</li>
         <li><strong>Dining type:</strong> Fine dining expects 20%+. Casual dining 18–20%. Fast casual/counter service 10–15% or nothing. Full table service always warrants a full tip.</li>
@@ -411,7 +409,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip at a restaurant?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Standard is 18–20% of the pre-tax bill. For casual dining, 15–18% is acceptable. For fine dining, 20%+ is expected. Never tip below 15% for satisfactory service.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip on the pre-tax or post-tax amount?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip on the pre-tax subtotal. Tax is paid to the government, not the restaurant. On a $90 bill with $10 tax, tip 20% on $90 ($18), not on $100 ($20). The difference is small but pre-tax is the standard convention.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for bad service?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>For poor service, 10% is acceptable. Before reducing your tip, consider whether the problem was the server's fault (attentiveness, attitude) or the kitchen's (food quality, timing). Servers don't control kitchen speed. For truly unacceptable service, speak to a manager.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip if the bill is split?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip based on the total bill amount, not your individual portion. If a $200 bill is split 4 ways, each person owes their $50 share plus $10 tip (20% of their portion), for $60 each. Don't tip only on what you paid.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip at fast casual or counter service restaurants?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Fast casual (Chipotle, Panera) has no tip expectation. Counter service with table delivery warrants 10–15%. Sit-down restaurants with full table service expect 18–20%. The line blurs with tablet tip prompts — 10% is a reasonable middle ground for counter service where staff bring your food.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a large party?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Most restaurants add an automatic 18–20% gratuity for parties of 6 or more. Check your bill — if gratuity is already included, no additional tip is required. If you want to tip more for exceptional service, add it manually.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is it rude not to tip at a restaurant?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. In the US, restaurant servers earn $2.13/hour federally — tips are not optional income. Not tipping for satisfactory service is considered very rude and effectively underpays your server for their labor. The only exception is genuine service failure.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for takeout?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Takeout tips are optional but appreciated — 10–15% is kind for complex orders or regular customers. For simple pickup orders, $1–2 is acceptable. No tip is socially acceptable for takeout, unlike table service.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip on the full bill if you used a coupon?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip on the pre-discount total. A coupon reduces your cost, not your server's service. If your $80 meal is discounted to $50, tip 20% on $80 ($16), not on $50 ($10). Your server provided the same service regardless of the coupon.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip a sommelier or wine steward?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip the sommelier $5–10 per bottle for guidance, or include an additional $20–30 in your server tip if the sommelier provided significant assistance. At fine dining establishments, tipping the sommelier separately is expected.</div></div></details></div></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip at a restaurant?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Standard is 18–20% of the pre-tax bill. For casual dining, 15–18% is acceptable. For fine dining, 20%+ is expected. Never tip below 15% for satisfactory service.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for bad service?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>For poor service, 10% is acceptable. Before reducing your tip, consider whether the problem was the server's fault (attentiveness, attitude) or the kitchen's (food quality, timing). Servers don't control kitchen speed. For truly unacceptable service, speak to a manager.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip at fast casual or counter service restaurants?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Fast casual (Chipotle, Panera) has no tip expectation. Counter service with table delivery warrants 10–15%. Sit-down restaurants with full table service expect 18–20%. The line blurs with tablet tip prompts — 10% is a reasonable middle ground for counter service where staff bring your food.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a large party?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Most restaurants add an automatic 18–20% gratuity for parties of 6 or more. Check your bill — if gratuity is already included, no additional tip is required. If you want to tip more for exceptional service, add it manually.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for takeout?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Takeout tips are optional but appreciated — 10–15% is kind for complex orders or regular customers. For simple pickup orders, $1–2 is acceptable. No tip is socially acceptable for takeout, unlike table service.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip on the full bill if you used a coupon?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip on the pre-discount total. A coupon reduces your cost, not your server's service. If your $80 meal is discounted to $50, tip 20% on $80 ($16), not on $50 ($10). Your server provided the same service regardless of the coupon.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip a sommelier or wine steward?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip the sommelier $5–10 per bottle for guidance, or include an additional $20–30 in your server tip if the sommelier provided significant assistance. At fine dining establishments, tipping the sommelier separately is expected.</div></div></details></div></div>
   </section>
 
   <!-- RELATED CALCULATORS -->
@@ -495,18 +493,53 @@
     });
   }
 
-  function update() {
+  // The percentage depends on the kind of service, not just its quality
+  const DINING = {
+    casual:  { note: 'Table service: 18–20% is standard, 15% the floor for adequate service.',
+               tiers: [{ pct: 10, label: 'Low', note: 'Poor service' }, { pct: 15, label: 'Okay', note: 'Adequate' }, { pct: 18, label: 'Good', note: 'Good service' }, { pct: 20, label: 'Standard', note: 'Most common', highlight: true }, { pct: 25, label: 'Excellent', note: 'Outstanding' }] },
+    fine:    { note: 'Fine dining expects 20% or more; 22–25% for a memorable evening.',
+               tiers: [{ pct: 15, label: 'Low', note: 'Poor service' }, { pct: 18, label: 'Okay', note: 'Adequate' }, { pct: 20, label: 'Standard', note: 'Expected', highlight: true }, { pct: 22, label: 'Great', note: 'Great service' }, { pct: 25, label: 'Excellent', note: 'Memorable' }] },
+    counter: { note: 'Order at the counter, food brought to you: about 10%. Pure fast casual with no table service: nothing is expected.',
+               tiers: [{ pct: 0, label: 'None', note: 'Fast casual' }, { pct: 10, label: 'Standard', note: 'Food brought out', highlight: true }, { pct: 15, label: 'Generous', note: 'Extra help' }] },
+    takeout: { note: 'Takeout tips are optional: 10–15% for a big or complicated order, $1–2 for a simple pickup, or nothing.',
+               tiers: [{ pct: 0, label: 'None', note: 'Simple pickup' }, { pct: 10, label: 'Standard', note: 'Big order', highlight: true }, { pct: 15, label: 'Generous', note: 'Regulars, complex' }] }
+  };
+  const autoEl = document.getElementById('autograt');
+  const autoRow = document.getElementById('autograt-row');
+  const autoPctEl = document.getElementById('autograt-pct');
+  const noteEl = document.getElementById('dining-note');
+  const q = TR.readQuery();
+  let dining = TR.bindChips(document.getElementById('dining'), q.get('d') || 'casual', function (v) { dining = v; update(true); });
+  if (q.get('g')) { autoEl.checked = true; autoPctEl.value = q.get('g'); }
+
+  function update(counted) {
     const cost  = TR.parseCost(costInput.value);
     const split = parseInt(splitInput?.value) || 1;
+    autoRow.classList.toggle('hidden', !autoEl.checked);
+    noteEl.textContent = autoEl.checked ? 'If gratuity is on the bill, it is the tip. Add more only for exceptional service.' : DINING[dining].note;
+    const extra = { d: dining === 'casual' ? '' : dining, g: autoEl.checked ? autoPctEl.value.replace(/[^0-9.]/g, '') || '0' : '' };
+    TR.writeQuery(Object.assign({ c: String(costInput.value).replace(/[^0-9.]/g, ''), s: split > 1 ? split : '', t: taxInput ? taxInput.value.replace(/[^0-9.]/g, '') : '' }, extra));
     if (cost === 0) {
       resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your bill total above</div>';
-      TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
       return;
     }
-    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0);
+    if (autoEl.checked) {
+      const inc = parseFloat(autoPctEl.value) || 0;
+      const topUp = inc < 22 ? Math.ceil(cost * (22 - inc) / 100) : 0;
+      TR.renderFlat([
+        { label: 'Extra tip needed', amount: 0, sub: TR.fmt(Math.round(cost * inc) / 100) + ' (' + inc + '%) is already on the bill', highlight: true },
+        { label: 'Great service', amount: topUp, sub: topUp ? 'brings it to 22%' : 'already above 22%' },
+        { label: 'Per person', amount: TR.round2((cost + (taxInput ? TR.parseTax(taxInput.value) : 0) + cost * inc / 100) / Math.max(1, split)), sub: 'bill with gratuity, split ' + Math.max(1, split) + ' ways' }
+      ], resultsEl, counted !== false);
+      return;
+    }
+    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0, DINING[dining].tiers);
+    resultsEl.classList.toggle('sm:grid-cols-5', tiers.length === 5);
+    resultsEl.classList.toggle('sm:grid-cols-3', tiers.length !== 5);
     TR.renderResults(tiers, split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
   }
+  autoEl.addEventListener('change', function () { update(true); });
+  autoPctEl.addEventListener('input', function () { update(true); });
 
   const state = TR.readURL();
   if (state.cost) {
@@ -514,6 +547,8 @@
     if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; }
     if (state.tax && taxInput) { taxInput.value = state.tax; document.querySelector('details').open = true; if (taxRow) taxRow.style.display = 'flex'; }
     update();
+  } else {
+    update(false);
   }
 
   costInput.addEventListener('input', update);

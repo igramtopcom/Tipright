@@ -94,7 +94,7 @@
     }
   </style>
 
-  <link rel="stylesheet" href="/assets/css/app.804bab148c.css">
+  <link rel="stylesheet" href="/assets/css/app.3bdcdc0371.css">
 
   <script type="application/ld+json">
   {
@@ -165,22 +165,6 @@
           },
           {
             "@type": "Question",
-            "name": "How much do you tip for a $200 tattoo removal session?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Tip $30–40 (15–20%) at a dedicated removal studio. At a medical spa, $20–30 (10–15%) is appropriate if you choose to tip."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is tipping expected at tattoo removal studios?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes — dedicated tattoo removal studios follow tipping norms similar to tattoo studios. Staff are skilled laser technicians who perform a service with real technique and aftercare guidance. 15–20% is standard."
-            }
-          },
-          {
-            "@type": "Question",
             "name": "Should you tip more for a large or complex tattoo removal?",
             "acceptedAnswer": {
               "@type": "Answer",
@@ -189,18 +173,10 @@
           },
           {
             "@type": "Question",
-            "name": "Do you tip for a free consultation before tattoo removal?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No — consultations are typically free and no tip is expected. Begin tipping from your first paid treatment session."
-            }
-          },
-          {
-            "@type": "Question",
             "name": "How much should you tip for a package of tattoo removal sessions?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "If you purchased a multi-session package, tip per session at each visit based on that session's retail price, not a prorated amount of the package. If the package rate is $150/session but retail is $200, tip based on $150."
+              "text": "Tip at each visit on what one session costs you inside the package: the package price divided by its sessions. A $1,200 package of 8 sessions is $150 a session, so 15–20% is $23–30 per visit. Don't tip a percentage of the whole package up front."
             }
           },
           {
@@ -254,104 +230,49 @@
   <section id="calculator" aria-label="Tattoo removal tip calculator">
     <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
 
-      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
-        Session cost (before tax)
-      </label>
-
-      <div class="relative mb-4">
-        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
-        <input
-          id="cost"
-          type="text"
-          inputmode="decimal"
-          placeholder="0"
-          autocomplete="off"
-          style="font-size:20px"
-          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20"
-        >
+      <p class="block text-sm font-medium text-gray-700 mb-2" id="place-label">Where is it being removed?</p>
+      <div id="place" role="group" aria-labelledby="place-label" class="flex flex-wrap gap-2 mb-4">
+        <button type="button" data-value="studio" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Removal studio</button>
+        <button type="button" data-value="medspa" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Med spa</button>
+        <button type="button" data-value="clinic" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Dermatologist / clinic</button>
       </div>
 
-      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
-      <!-- Preset buttons — tattoo removal price range -->
-      <div class="flex flex-wrap gap-2 mb-5">
-        <span class="text-xs text-gray-500 self-center">Quick:</span>
-        <button data-preset="100" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$100</button>
-        <button data-preset="150" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$150</button>
-        <button data-preset="200" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$200</button>
-        <button data-preset="300" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$300</button>
-      </div>
-
-      <!-- Medical vs cosmetic callout -->
-      <div class="calc-note bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-gray-700 mb-5">
-        <p class="font-medium text-blue-800 mb-1">ℹ️ Medical vs cosmetic</p>
-        <p>At medical spas with licensed medical staff, tipping is less expected. At dedicated tattoo removal studios, 15–20% is standard.</p>
-      </div>
-
-      <!-- Split toggle -->
-      <details class="mb-5 group">
-        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
-          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-          Split between multiple technicians
-        </summary>
-        <div class="mt-3 flex items-center gap-3 pl-1">
-          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of technicians:</label>
-          <input
-            id="split"
-            type="number"
-            value="1"
-            min="1"
-            max="20"
-            class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors"
-          >
-        </div>
-              <div id="tax-row" class="mt-3 flex items-center gap-3" style="display:none">
-          <label for="tax" class="text-sm text-gray-600 whitespace-nowrap">Tax on receipt:</label>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-3 mb-4">
+        <div class="flex items-center gap-3">
+          <label for="cost" class="text-sm text-gray-700">Price per session</label>
           <div class="relative">
             <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">$</span>
-            <input id="tax" type="text" inputmode="decimal" value="" placeholder="0.00" autocomplete="off" style="font-size:16px" class="w-28 h-10 pl-7 rounded-lg border border-gray-300 text-center text-base font-medium focus:border-brand outline-none transition-colors bg-gray-50">
+            <input id="cost" type="text" inputmode="decimal" placeholder="200" autocomplete="off" style="font-size:16px"
+              class="w-28 h-10 pl-7 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
           </div>
-          <span class="text-xs text-gray-500">optional</span>
         </div>
-      </details>
+        <div class="flex items-center gap-3">
+          <label for="sessions" class="text-sm text-gray-700">Sessions planned</label>
+          <input id="sessions" type="number" inputmode="numeric" value="8" min="1" max="20" style="font-size:16px"
+            class="w-20 h-10 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+        </div>
+      </div>
+      <p class="text-xs text-gray-500 mb-4">Most removals take 6–12 sessions, spaced 6–8 weeks apart. On a package, use the package price divided by its sessions.</p>
+
+      <label class="flex items-start gap-2.5 mb-5 text-sm text-gray-700 cursor-pointer">
+        <input id="hard" type="checkbox" class="mt-0.5 w-5 h-5 flex-shrink-0 accent-[#0F6E56]">
+        <span>A large, dense or multi-color tattoo <span class="text-gray-500">(more passes, more care)</span></span>
+      </label>
 
       <div class="calc-note mb-5 flex items-start gap-2.5 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
-        <svg class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <p class="text-xs text-blue-800 leading-relaxed"><strong>Studio vs medical spa:</strong> Tipping is expected at esthetic studios, optional at medical facilities with licensed staff.</p>
+        <svg class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <p class="text-xs text-blue-800 leading-relaxed"><strong>Removal is a course, not a visit.</strong> Tip a little at every session rather than one big amount at the end: you may not see the same technician for the last one, and fading speed depends on your ink and skin, not on them.</p>
       </div>
 
-      <!-- Results grid -->
-      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
-        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">
-          Enter your session cost above
-        </div>
-      </div>
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-3 gap-2 min-h-[100px]" aria-live="polite"></div>
+      <p id="breakdown" class="calc-after mt-3 text-sm text-gray-600"></p>
 
-      <!-- Custom tip % -->
-      <div class="calc-after mt-4 flex items-center gap-3">
-        <label for="custom-pct" class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</label>
-        <div class="relative flex-1 max-w-[140px]">
-          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
-            autocomplete="off" style="font-size:16px"
-            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
-        </div>
-        <div id="custom-result" class="hidden flex-col items-start">
-          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
-          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
-          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
-        </div>
-      </div>
-
-      <!-- Share button -->
       <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
         <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
-          </svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
           Share this calculation
         </button>
       </div>
-
     </div>
   </section>
 
@@ -387,27 +308,25 @@
 
     <div>
       <h2 class="text-xl font-semibold text-gray-900 mb-3">How much should you tip for tattoo removal?</h2>
-      <p>At dedicated tattoo removal studios, tip <strong>15–20% of the session cost</strong>. For a $200 session, that's $30–40. At medical spas with licensed medical staff, tipping is appreciated but less strictly expected, and 10–15% is a fair gesture if you want to tip.</p>
-      <p class="mt-3">The tipping norm depends largely on the setting. Dedicated removal studios follow tipping customs similar to tattoo shops. Medical spas and dermatology offices operate more like healthcare facilities where tipping is unusual.</p>
-      <p class="mt-3">Tattoo removal technicians are skilled laser operators who adjust settings for ink type, skin tone, and treatment area. Each session requires careful technique and aftercare guidance.</p>
+      <p>At a dedicated removal studio, <strong>15–20% of each session</strong>: $30–40 on a $200 session. At a med spa it is optional, around 10–15%. When a doctor or nurse does it in a clinic, no tip is expected.</p>
+      <p class="mt-3">What makes removal different from almost any other tipped service is that you are paying for a <strong>course, not a visit</strong>. Most tattoos need 6–12 sessions spaced six to eight weeks or more apart, so a removal can run a year or longer. A $200 session tipped at 17% over eight sessions is about $275 in tips, worth budgeting for alongside the treatment itself.</p>
     </div>
 
     <div>
-      <h2 class="text-xl font-semibold text-gray-900 mb-3">Factors that affect how much to tip</h2>
+      <h2 class="text-xl font-semibold text-gray-900 mb-3">Studio or clinic, and a course of 6–12 sessions</h2>
       <ul class="space-y-2 text-gray-600 list-disc pl-5">
-        <li><strong>Setting type:</strong> Dedicated studios expect 15–20%. Medical spas 10–15% optional. Dermatology offices and clinics typically don't expect tips at all.</li>
-        <li><strong>Session complexity:</strong> Large tattoos, stubborn inks, or heavily layered areas require more passes and more careful technique. Tip toward the 20% end for complex sessions.</li>
-        <li><strong>Multi-session commitment:</strong> Tattoo removal typically requires 6–12 sessions. Tip at each individual session, as each is a complete service.</li>
-        <li><strong>Aftercare guidance:</strong> Technicians who provide thorough aftercare instructions and check-ins between sessions deserve recognition at the higher end of the range.</li>
-        <li>If you purchased a package, tip per session based on the package session rate, not a prorated amount.</li>
+        <li><strong>Ink colors:</strong> black and dark blue usually respond fastest. Green, light blue, yellow and white often take extra sessions and more careful work. A multi-color piece is a reason to sit at the top of the range.</li>
+        <li><strong>Size and density:</strong> a large or heavily saturated tattoo means more passes per session and more cooling and comfort care from the technician.</li>
+        <li><strong>Fading for a cover-up:</strong> lightening a tattoo so an artist can cover it usually takes fewer sessions than full removal. Tip each of those sessions the same way.</li>
+        <li><strong>Between-session care:</strong> a technician who walks you through blistering, healing and sun protection, and checks how you healed before the next pass, is doing more than the minutes on the clock.</li>
       </ul>
     </div>
 
     <div>
       <h2 class="text-xl font-semibold text-gray-900 mb-3">Tattoo removal tipping etiquette</h2>
-      <p>Tip at each individual session, not just the first or last. Each visit is a complete service with real technique and aftercare guidance.</p>
-      <p class="mt-3">Don't reduce your tip for slow fading. Results depend heavily on ink type, skin, and immune response, factors outside the technician's control. Tip based on service quality, not outcome pace.</p>
-      <p class="mt-3">Cash is always appreciated but card tipping is more common at studios and med spas than at traditional tattoo shops. Either method is fine.</p>
+      <p>Tip something at every session rather than saving one large amount for the end. Over a year-long course you may not see the same technician for the final visit, and the person who did the hard early sessions should not miss out.</p>
+      <p class="mt-3">How fast a tattoo fades depends on the ink, your skin and your immune system, not on the technician. Judge the tip on how you were treated in the chair, not on how quickly the tattoo is disappearing.</p>
+      <p class="mt-3">Card tips are routine at removal studios and med spas, so cash or card are both fine.</p>
     </div>
 
   </section>
@@ -415,7 +334,7 @@
   <!-- FAQ -->
   <section>
     <h2 class="text-xl font-semibold text-gray-900 mb-4">Frequently asked questions</h2>
-    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip for tattoo removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>At dedicated tattoo removal studios, tip 15–20% of the session cost. For a $200 session, that's $30–40. At medical spas with licensed medical staff performing the procedure, tipping is appreciated but less strictly expected — 10–15% is appropriate if you want to tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip at a medical spa for tattoo removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping expectations are lower at medical spas than at tattoo studios. The procedure is performed by medical professionals in a clinical setting. A 10–15% tip is a thoughtful gesture, but not tipping is not considered rude in the way it would be at a salon.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for every tattoo removal session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip at each individual session. Tattoo removal typically requires 6–12 sessions. Each session is a complete service, and the technician deserves recognition at each visit regardless of the overall treatment length.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much do you tip for a $200 tattoo removal session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip $30–40 (15–20%) at a dedicated removal studio. At a medical spa, $20–30 (10–15%) is appropriate if you choose to tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is tipping expected at tattoo removal studios?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — dedicated tattoo removal studios follow tipping norms similar to tattoo studios. Staff are skilled laser technicians who perform a service with real technique and aftercare guidance. 15–20% is standard.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip more for a large or complex tattoo removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Large tattoos, stubborn inks, or heavily layered areas require more passes and more careful technique. Tip toward the 20% end for these sessions, especially when the technician adjusts their approach for your specific ink.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for a free consultation before tattoo removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>No — consultations are typically free and no tip is expected. Begin tipping from your first paid treatment session.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip for a package of tattoo removal sessions?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>If you purchased a multi-session package, tip per session at each visit based on that session's retail price, not a prorated amount of the package. If the package rate is $150/session but retail is $200, tip based on $150.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is tattoo removal tipping different from tattoo tipping?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Tattoo artists receive 20%+ tips routinely because tipping is deeply embedded in the tattoo industry. Tattoo removal technicians are tipped less consistently — 15–20% at studios, 10–15% at medical spas, and sometimes not at all at clinical settings.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">What if you're unhappy with your tattoo removal progress?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Results depend heavily on ink type, skin, and immune response — factors outside the technician's control. Don't reduce your tip for slow fading unless the technique or aftercare guidance was genuinely poor. Tip based on service quality, not outcome pace.</div></div></details></div></div>
+    <div class="space-y-2" id="faq-container"><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip for tattoo removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>At dedicated tattoo removal studios, tip 15–20% of the session cost. For a $200 session, that's $30–40. At medical spas with licensed medical staff performing the procedure, tipping is appreciated but less strictly expected — 10–15% is appropriate if you want to tip.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip at a medical spa for tattoo removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tipping expectations are lower at medical spas than at tattoo studios. The procedure is performed by medical professionals in a clinical setting. A 10–15% tip is a thoughtful gesture, but not tipping is not considered rude in the way it would be at a salon.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Do you tip for every tattoo removal session?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes — tip at each individual session. Tattoo removal typically requires 6–12 sessions. Each session is a complete service, and the technician deserves recognition at each visit regardless of the overall treatment length.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Should you tip more for a large or complex tattoo removal?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Large tattoos, stubborn inks, or heavily layered areas require more passes and more careful technique. Tip toward the 20% end for these sessions, especially when the technician adjusts their approach for your specific ink.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">How much should you tip for a package of tattoo removal sessions?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Tip at each visit on what one session costs you inside the package: the package price divided by its sessions. A $1,200 package of 8 sessions is $150 a session, so 15–20% is $23–30 per visit. Don't tip a percentage of the whole package up front.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">Is tattoo removal tipping different from tattoo tipping?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Yes. Tattoo artists receive 20%+ tips routinely because tipping is deeply embedded in the tattoo industry. Tattoo removal technicians are tipped less consistently — 15–20% at studios, 10–15% at medical spas, and sometimes not at all at clinical settings.</div></div></details></div><div class="border border-line rounded-xl overflow-hidden"><details class="group"><summary class="flex items-center justify-between px-5 py-4 cursor-pointer list-none hover:bg-gray-50 transition-colors gap-4 min-h-[56px]"><span class="font-semibold text-gray-800 text-[15px] leading-snug">What if you're unhappy with your tattoo removal progress?</span><div class="faq-chevron flex-shrink-0 transition-transform duration-200 group-open:rotate-180" style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"></path></svg></div></summary><div class="px-5 pb-4 pt-1 text-gray-600 text-[14px] leading-relaxed"><div>Results depend heavily on ink type, skin, and immune response — factors outside the technician's control. Don't reduce your tip for slow fading unless the technique or aftercare guidance was genuinely poor. Tip based on service quality, not outcome pace.</div></div></details></div></div>
   </section>
 
   <!-- RELATED CALCULATORS -->
@@ -483,104 +402,50 @@
 <script src="/assets/js/calculator.fff2b11d30.js"></script>
 <script>
 (function () {
-  const costInput = document.getElementById('cost');
-  const splitInput = document.getElementById('split');
-  var taxInput   = document.getElementById('tax');
-  var taxRow     = document.getElementById('tax-row');
-  const resultsEl  = document.getElementById('results');
-  const shareBtn   = document.getElementById('share-btn');
+  // studio 15-20%, med spa 10-15% and optional, clinic: not expected
+  var PCT = { studio: [15, 20], medspa: [10, 15] };
+  var DEFAULTS = { w: 'studio', c: '', n: 8, h: 0 };
+  var q = TR.readQuery();
+  var costEl = document.getElementById('cost');
+  var sessionsEl = document.getElementById('sessions');
+  var hardEl = document.getElementById('hard');
+  var resultsEl = document.getElementById('results');
+  var breakdownEl = document.getElementById('breakdown');
+  var place = TR.bindChips(document.getElementById('place'), q.get('w') || DEFAULTS.w, function (v) { place = v; update(true); });
+  if (q.get('c')) costEl.value = q.get('c');
+  sessionsEl.value = TR.clampInt(q.get('n'), 1, 20, DEFAULTS.n);
+  hardEl.checked = q.get('h') === '1';
 
-    var detailsEl = document.querySelector('details');
-  if (detailsEl && taxRow) {
-    detailsEl.addEventListener('toggle', function() {
-      taxRow.style.display = detailsEl.open ? 'flex' : 'none';
-      if (!detailsEl.open && taxInput) taxInput.value = '';
-      update();
-    });
-  }
-
-  function update() {
-    const cost  = TR.parseCost(costInput.value);
-    const split = parseInt(splitInput?.value) || 1;
-    if (cost === 0) {
-      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your session cost above</div>';
-      TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
+  function update(counted) {
+    var price = TR.parseCost(costEl.value), n = TR.clampInt(sessionsEl.value, 1, 20, 1);
+    TR.writeQuery({ w: place, c: costEl.value.replace(/[^0-9.]/g, ''), n: n, h: hardEl.checked ? 1 : 0 }, DEFAULTS);
+    if (place === 'clinic') {
+      TR.renderFlat([{ label: 'Not expected', amount: 0, sub: 'medical staff, clinical setting', highlight: true }], resultsEl, counted);
+      breakdownEl.textContent = 'Removal done by a doctor or nurse in a clinic is not tipped. A card at the last session is a nice way to say thanks.';
       return;
     }
-    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0);
-    TR.renderResults(tiers, split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
-  }
-
-  const state = TR.readURL();
-  if (state.cost) {
-    costInput.value = state.cost;
-    if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; }
-    if (state.tax && taxInput) { taxInput.value = state.tax; document.querySelector('details').open = true; if (taxRow) taxRow.style.display = 'flex'; }
-    update();
-  }
-
-  costInput.addEventListener('input', update);
-  splitInput.addEventListener('input', update);
-  if (taxInput) taxInput.addEventListener('input', update);
-  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
-
-  document.querySelectorAll('[data-preset]').forEach(btn => {
-    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
-  });
-
-
-  // FAQ
-  
-  
-
-
-  // Custom % handler
-  var customPctInput = document.getElementById('custom-pct');
-  var customResult   = document.getElementById('custom-result');
-  var customTipAmt   = document.getElementById('custom-tip-amount');
-  var customTotalAmt = document.getElementById('custom-total-amount');
-  var customPerPerson = document.getElementById('custom-per-person');
-
-  if (customPctInput) {
-    function updateCustom() {
-      var pct  = parseFloat(customPctInput.value);
-      var cost = TR.parseCost(costInput.value);
-      var taxEl = document.getElementById('tax');
-      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
-      var sp = parseInt(splitInput && splitInput.value) || 1;
-
-      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
-        var tip        = TR.round2(cost * pct / 100);
-        var grandTotal = TR.round2(cost + tax + tip);
-        var ceiled     = Math.ceil(tip);
-
-        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
-        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
-
-        if (sp > 1 && customPerPerson) {
-          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
-          customPerPerson.classList.remove('hidden');
-        } else if (customPerPerson) {
-          customPerPerson.classList.add('hidden');
-        }
-
-        customResult.classList.remove('hidden');
-        customResult.classList.add('flex');
-      } else {
-        customResult.classList.add('hidden');
-        customResult.classList.remove('flex');
-        if (customPerPerson) customPerPerson.classList.add('hidden');
-      }
+    if (!price) {
+      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-3 flex items-center justify-center text-gray-500 text-sm py-8">Enter the price of one session above</div>';
+      breakdownEl.textContent = '';
+      return;
     }
-
-    customPctInput.addEventListener('input', updateCustom);
-    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    var taxInput = document.getElementById('tax');
-    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
+    var p = PCT[place];
+    var pct = hardEl.checked ? p[1] : Math.floor((p[0] + p[1]) / 2);
+    var each = Math.ceil(price * pct / 100);
+    var lo = Math.ceil(price * p[0] / 100), hi = Math.ceil(price * p[1] / 100);
+    TR.renderFlat([
+      { label: 'Each session', amount: each, sub: Math.round(pct) + '% of ' + TR.fmt(price), highlight: true },
+      { label: 'Whole course', amount: each * n, sub: n + ' sessions' },
+      { label: hardEl.checked ? 'Lowest per session' : 'Highest per session', amount: hardEl.checked ? lo : hi, sub: 'range ' + TR.fmt(lo) + '–' + TR.fmt(hi) + ' (' + p[0] + '–' + p[1] + '%)' }
+    ], resultsEl, counted);
+    breakdownEl.textContent = 'Budget ' + TR.fmt(each * n) + ' in tips over ' + n + ' sessions, on top of ' + TR.fmt(price * n) + ' for the treatment.' +
+      (place === 'medspa' ? ' At a med spa, tipping is a kindness rather than an expectation.' : '');
   }
 
+  [costEl, sessionsEl].forEach(function (el) { el.addEventListener('input', function () { update(true); }); });
+  hardEl.addEventListener('change', function () { update(true); });
+  document.getElementById('share-btn').addEventListener('click', function () { TR.shareResult(this); });
+  update(false);
 })();
 </script>
 </body>
