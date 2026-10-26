@@ -390,7 +390,7 @@
       TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
       return;
     }
-    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0);
+    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0, undefined, 3);
     TR.renderResults(tiers, split, resultsEl);
     TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
   }

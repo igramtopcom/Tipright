@@ -94,7 +94,7 @@
     }
   </style>
 
-  <link rel="stylesheet" href="/assets/css/app.b835a48b15.css">
+  <link rel="stylesheet" href="/assets/css/app.804bab148c.css">
 
   <script type="application/ld+json">
   {
@@ -476,7 +476,7 @@
   <p class="mt-5 text-[13px]">&copy; 2026 tipright.app</p>
 </footer>
 
-<script src="/assets/js/calculator.76e67f41cb.js"></script>
+<script src="/assets/js/calculator.fff2b11d30.js"></script>
 <script>
 (function () {
   const costInput = document.getElementById('cost');
@@ -503,7 +503,7 @@
       TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
       return;
     }
-    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0);
+    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0, undefined, 3);
     TR.renderResults(tiers, split, resultsEl);
     TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
   }

@@ -94,7 +94,7 @@
     }
   </style>
 
-  <link rel="stylesheet" href="/assets/css/app.b835a48b15.css">
+  <link rel="stylesheet" href="/assets/css/app.804bab148c.css">
 
   <script type="application/ld+json">
   {
@@ -248,65 +248,32 @@
   <section id="calculator" aria-label="Hotel housekeeping tip calculator">
     <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
 
-      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
-        Enter nightly rate <span class="text-gray-500 font-normal">(or total stay cost)</span>
+      <p class="block text-sm font-medium text-gray-700 mb-2" id="hotel-label">What kind of hotel?</p>
+      <div id="hotel" role="group" aria-labelledby="hotel-label" class="flex flex-wrap gap-2 mb-5">
+        <button type="button" data-value="budget" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Budget / motel</button>
+        <button type="button" data-value="standard" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Standard</button>
+        <button type="button" data-value="upscale" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Upscale</button>
+        <button type="button" data-value="luxury" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Luxury / resort</button>
+      </div>
+
+      <div class="flex items-center gap-3 mb-4">
+        <label for="nights" class="text-sm text-gray-700">Nights</label>
+        <input id="nights" type="number" inputmode="numeric" value="3" min="1" max="60" style="font-size:16px"
+          class="w-20 h-10 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+      </div>
+
+      <label class="flex items-start gap-2.5 mb-5 text-sm text-gray-700 cursor-pointer">
+        <input id="extra" type="checkbox" class="mt-0.5 w-5 h-5 flex-shrink-0 accent-[#0F6E56]">
+        <span>Extra work: kids, pets, room-service dishes or lots of towels <span class="text-gray-500">(+$2 a night)</span></span>
       </label>
 
-      <div class="relative mb-4">
-        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
-        <input id="cost" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
-          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
+      <div class="calc-note mb-5 flex items-start gap-2.5 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+        <svg class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-xs text-amber-800 leading-relaxed"><strong>Tip every morning, not at checkout.</strong> Rooms are often cleaned by a different person each day, so a lump sum at the end only reaches the last one. Leave cash with a note that says "Housekeeping".</p>
       </div>
 
-      <!-- Flat-rate presets — hotel tip amounts -->
-      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
-      <div class="flex flex-wrap gap-2 mb-5">
-        <span class="text-xs text-gray-500 self-center">Common:</span>
-        <button data-preset="5" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$5</button>
-        <button data-preset="10" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$10</button>
-        <button data-preset="20" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$20</button>
-        <button data-preset="30" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$30</button>
-      </div>
-
-      <!-- Daily tip callout -->
-      <div class="calc-note mb-5 flex items-start gap-2.5 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
-        <svg class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <p class="text-xs text-blue-800 leading-relaxed">
-          <strong>Tip daily, not at checkout.</strong> Housekeeping staff rotate, and the person who cleans on day 1 may not be there on your last day. Leave $3–5 cash each morning before you leave your room.
-        </p>
-      </div>
-
-      <details class="mb-5 group">
-        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
-          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-          Split tip with travel companions
-        </summary>
-        <div class="mt-3 flex items-center gap-3 pl-1">
-          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of people:</label>
-          <input id="split" type="number" value="1" min="1" max="20"
-            class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors">
-        </div>
-      </details>
-
-      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
-        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter an amount above to calculate</div>
-      </div>
-
-            <!-- Custom tip % -->
-      <div class="calc-after mt-4 flex items-center gap-3">
-        <label for="custom-pct" class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</label>
-        <div class="relative flex-1 max-w-[140px]">
-          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
-            autocomplete="off" style="font-size:16px"
-            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
-        </div>
-        <div id="custom-result" class="hidden flex-col items-start">
-          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
-          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
-          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
-        </div>
-      </div>
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-3 gap-2 min-h-[100px]" aria-live="polite"></div>
+      <p id="breakdown" class="calc-after mt-3 text-sm text-gray-600"></p>
 
       <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
         <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
@@ -421,91 +388,46 @@
   <p class="mt-5 text-[13px]">&copy; 2026 tipright.app</p>
 </footer>
 
-<script src="/assets/js/calculator.76e67f41cb.js"></script>
+<script src="/assets/js/calculator.fff2b11d30.js"></script>
 <script>
 (function () {
-  const costInput = document.getElementById('cost');
-  const splitInput = document.getElementById('split');
-  const resultsEl  = document.getElementById('results');
-  const shareBtn   = document.getElementById('share-btn');
+  // Per night, from the hotel-type table below: minimum / standard / generous
+  var RATES = {
+    budget:   { name: 'a budget hotel',   t: [2, 3, 5] },
+    standard: { name: 'a standard hotel', t: [3, 5, 7] },
+    upscale:  { name: 'an upscale hotel', t: [5, 7, 10] },
+    luxury:   { name: 'a luxury hotel or resort', t: [7, 10, 15] }
+  };
+  var EXTRA = 2;
+  var DEFAULTS = { h: 'standard', n: 3, x: 0 };
+  var q = TR.readQuery();
+  var nightsEl = document.getElementById('nights');
+  var extraEl = document.getElementById('extra');
+  var resultsEl = document.getElementById('results');
+  var breakdownEl = document.getElementById('breakdown');
+  var hotel = TR.bindChips(document.getElementById('hotel'), q.get('h') || DEFAULTS.h, function (v) { hotel = v; update(true); });
+  nightsEl.value = TR.clampInt(q.get('n'), 1, 60, DEFAULTS.n);
+  extraEl.checked = q.get('x') === '1';
 
-  function update() {
-    const cost  = TR.parseCost(costInput.value);
-    const split = parseInt(splitInput?.value) || 1;
-    if (cost === 0) {
-      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter an amount above to calculate</div>';
-      TR.writeURL({ cost: costInput.value, split });
-      return;
-    }
-    TR.renderResults(TR.calcTips(cost, split, 0), split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split });
+  function update(counted) {
+    var n = TR.clampInt(nightsEl.value, 1, 60, 1);
+    var add = extraEl.checked ? EXTRA : 0;
+    var r = RATES[hotel].t.map(function (x) { return x + add; });
+    var sub = function (x) { return n > 1 ? TR.fmt(x) + ' a night × ' + n : 'for one night'; };
+    TR.renderFlat([
+      { label: 'Minimum', amount: r[0] * n, sub: sub(r[0]) },
+      { label: 'Standard', amount: r[1] * n, sub: sub(r[1]), highlight: true },
+      { label: 'Generous', amount: r[2] * n, sub: sub(r[2]) }
+    ], resultsEl, counted);
+    breakdownEl.textContent = 'At ' + RATES[hotel].name + ', leave ' + TR.fmt(r[1]) + ' each morning' +
+      (n > 1 ? ', ' + n + ' times. Bring ' + TR.fmt(r[1] * n) + ' in small bills.' : '.');
+    TR.writeQuery({ h: hotel, n: n, x: extraEl.checked ? 1 : 0 }, DEFAULTS);
   }
 
-  const state = TR.readURL();
-  if (state.cost) {
-    costInput.value = state.cost;
-    if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; }
-    update();
-  }
-
-  costInput.addEventListener('input', update);
-  splitInput.addEventListener('input', update);
-  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
-  document.querySelectorAll('[data-preset]').forEach(btn => {
-    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
-  });
-
-
-  // FAQ
-  
-  
-
-  // Custom % handler
-  var customPctInput = document.getElementById('custom-pct');
-  var customResult   = document.getElementById('custom-result');
-  var customTipAmt   = document.getElementById('custom-tip-amount');
-  var customTotalAmt = document.getElementById('custom-total-amount');
-  var customPerPerson = document.getElementById('custom-per-person');
-
-  if (customPctInput) {
-    function updateCustom() {
-      var pct  = parseFloat(customPctInput.value);
-      var cost = TR.parseCost(costInput.value);
-      var taxEl = document.getElementById('tax');
-      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
-      var sp = parseInt(splitInput && splitInput.value) || 1;
-
-      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
-        var tip        = TR.round2(cost * pct / 100);
-        var grandTotal = TR.round2(cost + tax + tip);
-        var ceiled     = Math.ceil(tip);
-
-        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
-        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
-
-        if (sp > 1 && customPerPerson) {
-          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
-          customPerPerson.classList.remove('hidden');
-        } else if (customPerPerson) {
-          customPerPerson.classList.add('hidden');
-        }
-
-        customResult.classList.remove('hidden');
-        customResult.classList.add('flex');
-      } else {
-        customResult.classList.add('hidden');
-        customResult.classList.remove('flex');
-        if (customPerPerson) customPerPerson.classList.add('hidden');
-      }
-    }
-
-    customPctInput.addEventListener('input', updateCustom);
-    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    var taxInput = document.getElementById('tax');
-    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-  }
-
+  nightsEl.addEventListener('input', function () { update(true); });
+  extraEl.addEventListener('change', function () { update(true); });
+  document.getElementById('share-btn').addEventListener('click', function () { TR.shareResult(this); });
+  update(false);
 })();
 </script>
 </body>

@@ -137,67 +137,42 @@
   <section id="calculator" aria-label="Movers tip calculator">
     <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
 
-      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
-        Total move cost <span class="text-gray-500 font-normal">(or enter a flat amount)</span>
+      <p class="block text-sm font-medium text-gray-700 mb-2" id="move-label">What kind of move?</p>
+      <div id="move" role="group" aria-labelledby="move-label" class="flex flex-wrap gap-2 mb-5">
+        <button type="button" data-value="half" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Local, under 4 hrs</button>
+        <button type="button" data-value="full" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Local, full day</button>
+        <button type="button" data-value="long" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">8+ hours</button>
+        <button type="button" data-value="distance" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Long-distance</button>
+        <button type="button" data-value="piano" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Piano or specialty item</button>
+      </div>
+
+      <div class="flex items-center gap-3 mb-4">
+        <label for="crew" class="text-sm text-gray-700">Movers on the crew</label>
+        <input id="crew" type="number" inputmode="numeric" value="3" min="1" max="12" style="font-size:16px"
+          class="w-20 h-10 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+      </div>
+
+      <label class="flex items-start gap-2.5 mb-4 text-sm text-gray-700 cursor-pointer">
+        <input id="hard" type="checkbox" class="mt-0.5 w-5 h-5 flex-shrink-0 accent-[#0F6E56]">
+        <span>A hard move: stairs, no elevator, long carries, heat or very heavy furniture</span>
       </label>
 
-      <div class="relative mb-4">
-        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
-        <input id="cost" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
-          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
-      </div>
-
-      <!-- Presets — move cost ranges -->
-      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
-      <div class="flex flex-wrap gap-2 mb-5">
-        <span class="text-xs text-gray-500 self-center">Quick:</span>
-        <button data-preset="500" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$500</button>
-        <button data-preset="1000" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$1,000</button>
-        <button data-preset="1500" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$1,500</button>
-        <button data-preset="2000" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$2,000</button>
-      </div>
-
-      <!-- Per-mover callout -->
-      <div class="calc-note mb-5 flex items-start gap-2.5 bg-brand-pale border border-brand rounded-lg px-4 py-3">
-        <svg class="w-4 h-4 text-brand-dark flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-        <p class="text-xs text-brand-dark leading-relaxed">
-          <strong>Tip per mover, not as a group.</strong> Use the split field below to see the per-mover amount. Give each mover their tip in cash individually.
-        </p>
-      </div>
-
-      <!-- Number of movers split -->
-      <details class="mb-5 group" open>
-        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
-          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-          Number of movers in crew
-        </summary>
-        <div class="mt-3 flex items-center gap-3 pl-1">
-          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Movers:</label>
-          <input id="split" type="number" value="2" min="1" max="20"
-            class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors">
-          <span class="text-xs text-gray-500">Results will show tip per mover</span>
-        </div>
-      </details>
-
-      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
-        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your move cost above</div>
-      </div>
-
-            <!-- Custom tip % -->
-      <div class="calc-after mt-4 flex items-center gap-3">
-        <label for="custom-pct" class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</label>
-        <div class="relative flex-1 max-w-[140px]">
-          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
-            autocomplete="off" style="font-size:16px"
-            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
-        </div>
-        <div id="custom-result" class="hidden flex-col items-start">
-          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
-          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
-          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
+      <div class="flex items-center gap-3 mb-5">
+        <label for="cost" class="text-sm text-gray-700">Move cost <span class="text-gray-500">(optional)</span></label>
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">$</span>
+          <input id="cost" type="text" inputmode="decimal" placeholder="1,500" autocomplete="off" style="font-size:16px"
+            class="w-32 h-10 pl-7 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
         </div>
       </div>
+
+      <div class="calc-note mb-5 flex items-start gap-2.5 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
+        <svg class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-xs text-blue-800 leading-relaxed"><strong>Hand each mover their own tip</strong>, in cash, when the job is done. Giving it all to the crew lead does not guarantee it is shared evenly.</p>
+      </div>
+
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-3 gap-2 min-h-[100px]" aria-live="polite"></div>
+      <p id="breakdown" class="calc-after mt-3 text-sm text-gray-600"></p>
 
       <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
         <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
@@ -307,88 +282,53 @@
 <!--@calculator-->
 <script>
 (function () {
-  const costInput  = document.getElementById('cost');
-  const splitInput = document.getElementById('split');
-  const resultsEl  = document.getElementById('results');
-  const shareBtn   = document.getElementById('share-btn');
+  // Per mover, from the move-type table below: minimum / standard / generous
+  var RATES = {
+    half:     { name: 'a local move under 4 hours', t: [15, 25, 35] },
+    full:     { name: 'a full-day local move',      t: [30, 45, 60] },
+    long:     { name: 'a move of 8+ hours',         t: [50, 75, 100] },
+    distance: { name: 'a long-distance move',       t: [50, 75, 100] },
+    piano:    { name: 'a piano or specialty move',  t: [50, 80, 100] }
+  };
+  var DEFAULTS = { m: 'full', k: 3, h: 0, c: '' };
+  var q = TR.readQuery();
+  var crewEl = document.getElementById('crew');
+  var hardEl = document.getElementById('hard');
+  var costEl = document.getElementById('cost');
+  var resultsEl = document.getElementById('results');
+  var breakdownEl = document.getElementById('breakdown');
+  var move = TR.bindChips(document.getElementById('move'), q.get('m') || DEFAULTS.m, function (v) { move = v; update(true); });
+  crewEl.value = TR.clampInt(q.get('k'), 1, 12, DEFAULTS.k);
+  hardEl.checked = q.get('h') === '1';
+  if (q.get('c')) costEl.value = q.get('c');
 
-  function update() {
-    const cost  = TR.parseCost(costInput.value);
-    const split = parseInt(splitInput?.value) || 2;
-    if (cost === 0) {
-      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your move cost above</div>';
-      TR.writeURL({ cost: costInput.value, split });
-      return;
+  function update(counted) {
+    var k = TR.clampInt(crewEl.value, 1, 12, 1);
+    var r = RATES[move].t;
+    // a hard move is not a different rate, it is the top of the range
+    var pick = hardEl.checked ? 2 : 1;
+    var sub = function (x) { return k > 1 ? TR.fmt(x) + ' each × ' + k : 'for one mover'; };
+    TR.renderFlat([
+      { label: 'Minimum', amount: r[0] * k, sub: sub(r[0]), highlight: false },
+      { label: 'Standard', amount: r[1] * k, sub: sub(r[1]), highlight: pick === 1 },
+      { label: hardEl.checked ? 'For a hard move' : 'Generous', amount: r[2] * k, sub: sub(r[2]), highlight: pick === 2 }
+    ], resultsEl, counted);
+    var text = 'For ' + RATES[move].name + ', give each mover ' + TR.fmt(r[pick]) + '.';
+    var cost = TR.parseCost(costEl.value);
+    if (cost > 0) {
+      var lo = Math.round(cost * 0.05), hi = Math.round(cost * 0.10);
+      text += ' The other rule of thumb, 5–10% of the move, gives ' + TR.fmt(lo) + '–' + TR.fmt(hi) + ' for the crew' +
+        (k > 1 ? ' (' + TR.fmt(Math.round(lo / k)) + '–' + TR.fmt(Math.round(hi / k)) + ' each)' : '') +
+        '. Use whichever fits; per-mover amounts are more common on local moves.';
     }
-    TR.renderResults(TR.calcTips(cost, split, 0), split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split });
+    breakdownEl.textContent = text;
+    TR.writeQuery({ m: move, k: k, h: hardEl.checked ? 1 : 0, c: costEl.value.replace(/[^0-9.]/g, '') }, DEFAULTS);
   }
 
-  // Init — default split=2 movers
-  const state = TR.readURL();
-  if (state.cost) {
-    costInput.value = state.cost;
-    splitInput.value = state.split > 1 ? state.split : 2;
-    update();
-  }
-
-  costInput.addEventListener('input', update);
-  splitInput.addEventListener('input', update);
-  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
-  document.querySelectorAll('[data-preset]').forEach(btn => {
-    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
-  });
-
-
-  // FAQ
-  
-  
-
-  // Custom % handler
-  var customPctInput = document.getElementById('custom-pct');
-  var customResult   = document.getElementById('custom-result');
-  var customTipAmt   = document.getElementById('custom-tip-amount');
-  var customTotalAmt = document.getElementById('custom-total-amount');
-  var customPerPerson = document.getElementById('custom-per-person');
-
-  if (customPctInput) {
-    function updateCustom() {
-      var pct  = parseFloat(customPctInput.value);
-      var cost = TR.parseCost(costInput.value);
-      var taxEl = document.getElementById('tax');
-      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
-      var sp = parseInt(splitInput && splitInput.value) || 1;
-
-      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
-        var tip        = TR.round2(cost * pct / 100);
-        var grandTotal = TR.round2(cost + tax + tip);
-        var ceiled     = Math.ceil(tip);
-
-        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
-        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
-
-        if (sp > 1 && customPerPerson) {
-          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
-          customPerPerson.classList.remove('hidden');
-        } else if (customPerPerson) {
-          customPerPerson.classList.add('hidden');
-        }
-
-        customResult.classList.remove('hidden');
-        customResult.classList.add('flex');
-      } else {
-        customResult.classList.add('hidden');
-        customResult.classList.remove('flex');
-        if (customPerPerson) customPerPerson.classList.add('hidden');
-      }
-    }
-
-    customPctInput.addEventListener('input', updateCustom);
-    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    var taxInput = document.getElementById('tax');
-    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-  }
-
+  crewEl.addEventListener('input', function () { update(true); });
+  hardEl.addEventListener('change', function () { update(true); });
+  costEl.addEventListener('input', function () { update(true); });
+  document.getElementById('share-btn').addEventListener('click', function () { TR.shareResult(this); });
+  update(false);
 })();
 </script>

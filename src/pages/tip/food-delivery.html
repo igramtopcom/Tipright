@@ -309,7 +309,7 @@
     const cost  = TR.parseCost(costInput.value);
     const split = parseInt(splitInput?.value) || 1;
     if (cost === 0) { resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your order total above</div>'; TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' }); return; }
-    TR.renderResults(TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0), split, resultsEl);
+    TR.renderResults(TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0, undefined, 3), split, resultsEl);
     TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
   }
 

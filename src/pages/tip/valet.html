@@ -136,65 +136,30 @@
   <section id="calculator" aria-label="Valet tip calculator">
     <div class="calc-body bg-white rounded-xl border border-line p-5 sm:p-7">
 
-      <label for="cost" class="block text-sm font-medium text-gray-700 mb-2">
-        Enter tip amount <span class="text-gray-500 font-normal">(valet tips are flat, not % based)</span>
-      </label>
-
-      <div class="relative mb-4">
-        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-xl font-medium pointer-events-none select-none">$</span>
-        <input id="cost" type="text" inputmode="decimal" placeholder="0" autocomplete="off" style="font-size:20px"
-          class="w-full h-14 pl-9 pr-4 font-semibold rounded-xl border border-line bg-gray-50 text-gray-900 outline-none transition-all duration-150 focus:border-brand focus:bg-white focus:ring-2 focus:ring-brand/20">
+      <p class="block text-sm font-medium text-gray-700 mb-2" id="venue-label">Where are you parking?</p>
+      <div id="venue" role="group" aria-labelledby="venue-label" class="flex flex-wrap gap-2 mb-5">
+        <button type="button" data-value="casual" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Casual restaurant</button>
+        <button type="button" data-value="upscale" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Upscale restaurant</button>
+        <button type="button" data-value="hotel" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Hotel</button>
+        <button type="button" data-value="luxury" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Luxury hotel / resort</button>
+        <button type="button" data-value="event" class="px-3.5 py-2 rounded-full border text-sm font-medium transition-colors min-h-[40px] hover:border-brand bg-gray-100 border-transparent">Wedding or event</button>
       </div>
 
-      <!-- Flat-rate presets -->
-      <p class="text-xs text-gray-500 mt-1 mb-3">Enter the service price before tax. Deposits and fees not included.</p>
-      <div class="flex flex-wrap gap-2 mb-5">
-        <span class="text-xs text-gray-500 self-center">Common tips:</span>
-        <button data-preset="3" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$3</button>
-        <button data-preset="5" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$5</button>
-        <button data-preset="10" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$10</button>
-        <button data-preset="20" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$20</button>
+      <div class="flex items-center gap-3 mb-5">
+        <label for="pickups" class="text-sm text-gray-700">Times the car is brought to you</label>
+        <input id="pickups" type="number" inputmode="numeric" value="1" min="1" max="30" style="font-size:16px"
+          class="w-20 h-10 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
       </div>
 
-      <!-- Pick-up only callout -->
       <div class="calc-note mb-5 flex items-start gap-2.5 bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
         <svg class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         <p class="text-xs text-blue-800 leading-relaxed">
-          <strong>Tip at pick-up only</strong>, not at drop-off. The attendant receives the full tip when they return your car. Free valet still requires a tip.
+          <strong>Tip at pick-up only</strong>, not at drop-off, to the attendant who brings the car back. At a hotel that is every time you take the car out. Free valet still gets a tip.
         </p>
       </div>
 
-      <details class="mb-5 group">
-        <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
-          <svg class="w-4 h-4 transition-transform group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
-          Split tip with others
-        </summary>
-        <div class="mt-3 flex items-center gap-3 pl-1">
-          <label for="split" class="text-sm text-gray-600 whitespace-nowrap">Number of people:</label>
-          <input id="split" type="number" value="1" min="1" max="20"
-            class="w-20 h-10 rounded-lg border border-line text-center text-base font-medium focus:border-brand outline-none transition-colors">
-        </div>
-      </details>
-
-      <div id="results" class="grid grid-cols-2 sm:grid-cols-5 gap-2 min-h-[100px]">
-        <div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter a tip amount above</div>
-      </div>
-
-            <!-- Custom tip % -->
-      <div class="calc-after mt-4 flex items-center gap-3">
-        <label for="custom-pct" class="text-sm text-gray-500 whitespace-nowrap">Custom tip:</label>
-        <div class="relative flex-1 max-w-[140px]">
-          <input id="custom-pct" type="text" inputmode="decimal" placeholder="e.g. 22"
-            autocomplete="off" style="font-size:16px"
-            class="w-full h-10 pl-3 pr-8 rounded-xl border border-line bg-gray-50 text-gray-900 font-semibold text-center focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition-colors">
-          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm font-medium pointer-events-none">%</span>
-        </div>
-        <div id="custom-result" class="hidden flex-col items-start">
-          <span id="custom-tip-amount" class="text-lg font-bold text-gray-800"></span>
-          <span id="custom-total-amount" class="text-xs text-gray-500"></span>
-          <span id="custom-per-person" class="hidden text-sm font-bold text-brand-dark mt-0.5"></span>
-        </div>
-      </div>
+      <div id="results" class="grid grid-cols-2 sm:grid-cols-3 gap-2 min-h-[100px]" aria-live="polite"></div>
+      <p id="breakdown" class="calc-after mt-3 text-sm text-gray-600"></p>
 
       <div class="calc-after mt-4 pt-4 border-t border-gray-100 flex justify-end">
         <button id="share-btn" class="text-sm text-gray-500 hover:text-brand-dark transition-colors flex items-center gap-1.5 min-h-[44px] px-2">
@@ -277,82 +242,38 @@
 <!--@calculator-->
 <script>
 (function () {
-  const costInput = document.getElementById('cost');
-  const splitInput = document.getElementById('split');
-  const resultsEl  = document.getElementById('results');
-  const shareBtn   = document.getElementById('share-btn');
+  // Per pick-up, from the venue table below: minimum / standard / generous
+  var RATES = {
+    casual:  { name: 'casual restaurant',  t: [2, 3, 5] },
+    upscale: { name: 'upscale restaurant', t: [3, 5, 7] },
+    hotel:   { name: 'hotel',              t: [3, 5, 7] },
+    luxury:  { name: 'luxury hotel',       t: [5, 8, 10] },
+    event:   { name: 'wedding or event',   t: [3, 5, 10] }
+  };
+  var DEFAULTS = { v: 'casual', n: 1 };
+  var q = TR.readQuery();
+  var pickupsEl = document.getElementById('pickups');
+  var resultsEl = document.getElementById('results');
+  var breakdownEl = document.getElementById('breakdown');
+  var venue = TR.bindChips(document.getElementById('venue'), q.get('v') || DEFAULTS.v, function (v) { venue = v; update(true); });
+  pickupsEl.value = TR.clampInt(q.get('n'), 1, 30, DEFAULTS.n);
 
-  function update() {
-    const cost  = TR.parseCost(costInput.value);
-    const split = parseInt(splitInput?.value) || 1;
-    if (cost === 0) {
-      resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter a tip amount above</div>';
-      TR.writeURL({ cost: costInput.value, split });
-      return;
-    }
-    TR.renderResults(TR.calcTips(cost, split, 0), split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split });
+  function update(counted) {
+    var n = TR.clampInt(pickupsEl.value, 1, 30, 1);
+    var r = RATES[venue].t;
+    var each = function (x) { return n > 1 ? TR.fmt(x) + ' × ' + n + ' pick-ups' : 'per pick-up'; };
+    TR.renderFlat([
+      { label: 'Minimum', amount: r[0] * n, sub: each(r[0]) },
+      { label: 'Standard', amount: r[1] * n, sub: each(r[1]), highlight: true },
+      { label: 'Generous', amount: r[2] * n, sub: each(r[2]) }
+    ], resultsEl, counted);
+    breakdownEl.textContent = 'At a ' + RATES[venue].name + ', ' + TR.fmt(r[1]) + ' each time is standard. Go to ' + TR.fmt(r[2]) +
+      ' in bad weather, if they help with bags or a stroller, or keep the car up front for you.';
+    TR.writeQuery({ v: venue, n: n }, DEFAULTS);
   }
 
-  const state = TR.readURL();
-  if (state.cost) { costInput.value = state.cost; if (state.split > 1) { splitInput.value = state.split; document.querySelector('details').open = true; } update(); }
-
-  costInput.addEventListener('input', update);
-  splitInput.addEventListener('input', update);
-  shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
-  document.querySelectorAll('[data-preset]').forEach(btn => {
-    btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
-  });
-
-
-  
-  
-
-  // Custom % handler
-  var customPctInput = document.getElementById('custom-pct');
-  var customResult   = document.getElementById('custom-result');
-  var customTipAmt   = document.getElementById('custom-tip-amount');
-  var customTotalAmt = document.getElementById('custom-total-amount');
-  var customPerPerson = document.getElementById('custom-per-person');
-
-  if (customPctInput) {
-    function updateCustom() {
-      var pct  = parseFloat(customPctInput.value);
-      var cost = TR.parseCost(costInput.value);
-      var taxEl = document.getElementById('tax');
-      var tax  = taxEl ? TR.parseTax(taxEl.value) : 0;
-      var sp = parseInt(splitInput && splitInput.value) || 1;
-
-      if (!isNaN(pct) && pct > 0 && pct <= 100 && cost > 0) {
-        var tip        = TR.round2(cost * pct / 100);
-        var grandTotal = TR.round2(cost + tax + tip);
-        var ceiled     = Math.ceil(tip);
-
-        customTipAmt.textContent  = TR.fmt(ceiled) + ' tip';
-        customTotalAmt.textContent = 'Total: ' + TR.fmt(grandTotal);
-
-        if (sp > 1 && customPerPerson) {
-          customPerPerson.textContent = TR.fmt(TR.round2(grandTotal / sp)) + ' / person';
-          customPerPerson.classList.remove('hidden');
-        } else if (customPerPerson) {
-          customPerPerson.classList.add('hidden');
-        }
-
-        customResult.classList.remove('hidden');
-        customResult.classList.add('flex');
-      } else {
-        customResult.classList.add('hidden');
-        customResult.classList.remove('flex');
-        if (customPerPerson) customPerPerson.classList.add('hidden');
-      }
-    }
-
-    customPctInput.addEventListener('input', updateCustom);
-    costInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    if (splitInput) splitInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-    var taxInput = document.getElementById('tax');
-    if (taxInput) taxInput.addEventListener('input', function() { if (customPctInput.value) updateCustom(); });
-  }
-
+  pickupsEl.addEventListener('input', function () { update(true); });
+  document.getElementById('share-btn').addEventListener('click', function () { TR.shareResult(this); });
+  update(false);
 })();
 </script>

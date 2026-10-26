@@ -339,7 +339,7 @@
       TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
       return;
     }
-    TR.renderResults(TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0), split, resultsEl);
+    TR.renderResults(TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0, undefined, 5), split, resultsEl);
     TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
   }
 
