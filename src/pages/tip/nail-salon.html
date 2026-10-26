@@ -170,6 +170,12 @@
         <button data-preset="100" class="preset-btn px-3 py-2 rounded-full bg-gray-100 hover:bg-brand-light hover:text-brand-dark border border-transparent hover:border-brand text-sm font-medium transition-all duration-100 min-h-[36px]">$100</button>
       </div>
 
+      <div class="flex items-center gap-3 mb-5">
+        <label for="techs" class="text-sm text-gray-700">Technicians who worked on you <span class="text-gray-500">(e.g. one for hands, one for feet)</span></label>
+        <input id="techs" type="number" inputmode="numeric" value="1" min="1" max="4" style="font-size:16px"
+          class="w-20 h-10 rounded-lg border border-line bg-gray-50 text-gray-900 text-center text-base font-medium focus:border-brand outline-none transition-colors">
+      </div>
+
       <!-- Split toggle -->
       <details class="mb-5 group">
         <summary class="text-sm text-gray-500 cursor-pointer select-none hover:text-brand-dark transition-colors list-none flex items-center gap-1">
@@ -208,6 +214,7 @@
           Enter your service total above
         </div>
       </div>
+      <p id="techs-line" class="calc-after mt-3 text-sm text-gray-600 hidden"></p>
 
       <!-- Custom tip % -->
       <div class="calc-after mt-4 flex items-center gap-3">
@@ -376,17 +383,32 @@
     });
   }
 
+  // Each technician gets their own tip, and the $3 floor applies to each of them
+  const techsInput = document.getElementById('techs');
+  const techsLine = document.getElementById('techs-line');
+  const q = TR.readQuery();
+  techsInput.value = TR.clampInt(q.get('k'), 1, 4, 1);
+  techsInput.addEventListener('input', update);
+
   function update() {
     const cost  = TR.parseCost(costInput.value);
     const split = parseInt(splitInput?.value) || 1;
+    const techs = TR.clampInt(techsInput.value, 1, 4, 1);
+    TR.writeQuery({ c: String(costInput.value).replace(/[^0-9.]/g, ''), s: split > 1 ? split : '', t: taxInput ? taxInput.value.replace(/[^0-9.]/g, '') : '', k: techs > 1 ? techs : '' });
     if (cost === 0) {
       resultsEl.innerHTML = '<div class="col-span-2 sm:col-span-5 flex items-center justify-center text-gray-500 text-sm py-8">Enter your service total above</div>';
-      TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
+      techsLine.classList.add('hidden');
       return;
     }
-    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0, undefined, 3);
+    const tiers = TR.calcTips(cost, split, taxInput ? TR.parseTax(taxInput.value) : 0, undefined, 3 * techs);
     TR.renderResults(tiers, split, resultsEl);
-    TR.writeURL({ cost: costInput.value, split, tax: taxInput ? taxInput.value : '' });
+    if (techs > 1) {
+      const std = Math.ceil(tiers.find(t => t.highlight).tip);
+      techsLine.textContent = 'Split the ' + TR.fmt(std) + ' between your ' + techs + ' technicians by what each one did, about ' + TR.fmt(Math.ceil(std / techs)) + ' each if the work was even. Hand each their own tip, in cash.';
+      techsLine.classList.remove('hidden');
+    } else {
+      techsLine.classList.add('hidden');
+    }
   }
 
   const state = TR.readURL();
