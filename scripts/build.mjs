@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync, readdirSync, unlinkSync, mkdirSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { buildPages } from './lib/pages.mjs';
+import { writeSitemap } from './lib/sitemap.mjs';
 import { fileURLToPath } from 'node:url';
 
 const CRLF = String.fromCharCode(13, 10);
@@ -66,6 +67,7 @@ rmSync(join(root, '.cache'), { recursive: true, force: true });
 const cssAsset = emitted.find((a) => a.ext === 'css');
 const jsAsset = emitted.find((a) => a.ext === 'js');
 const built = buildPages(root, dist, `/${jsAsset.dir}/${jsAsset.name}`, `/${cssAsset.dir}/${cssAsset.name}`);
+const sitemapUrls = writeSitemap(root, dist, built);
 
 const pages = [];
 (function walk(dir) {
@@ -110,7 +112,7 @@ const updated = start === -1
 if (updated !== headers) writeFileSync(headersPath, updated);
 
 console.log('');
-console.log(`${built.length} pages rendered, ${built.reduce((n, p) => n + p.faq, 0)} FAQ entries inlined`);
+console.log(`${built.length} pages rendered, ${built.reduce((n, p) => n + p.faq, 0)} FAQ entries inlined, sitemap ${sitemapUrls} URLs`);
 for (const a of emitted) {
   console.log(`${a.name.padEnd(28)} ${(a.bytes / 1024).toFixed(1).padStart(6)} KB   ${patched.get(a.name)} page(s)`);
 }

@@ -44,7 +44,7 @@ export function buildPages(root, dist, calculatorHref, cssHref) {
         : join(dist, ...page.route.slice(1).split('/'), 'index.html');
     mkdirSync(dirname(out), { recursive: true });
     writeFileSync(out, html);
-    written.push({ route: page.route, bytes: html.length, faq: page.faq ? page.faq.length : 0 });
+    written.push({ route: page.route, robots: page.robots, source: f, bytes: html.length, faq: page.faq ? page.faq.length : 0 });
   }
   return written;
 }
