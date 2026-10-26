@@ -125,7 +125,7 @@
 <header class="bg-white">
   <div class="max-w-[672px] mx-auto px-4 py-6">
     <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">Airport Shuttle Tip Calculator</h1>
-    <p class="text-gray-500 text-sm mt-1">How much should you tip your airport shuttle driver?</p>
+    <p class="text-[15px] text-gray-700 mt-2 leading-snug"><strong class="font-semibold text-brand-dark">Tip $2–5 per person</strong> on a shared shuttle, 15–20% of the fare on a private one, plus $1–2 a bag.</p>
   </div>
 </header>
 <main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
@@ -202,7 +202,13 @@
             <th class="px-4 py-3 text-right font-medium text-[13px]">Notes</th>
           </tr>
         </thead>
-        <tbody id="ref-tbody"></tbody>
+        <tbody id="ref-tbody">
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Shared shuttle</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$2/person</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$4/person</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">+$1–2/bag</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Use split field</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Hotel shuttle (free)</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$2/person</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$4/person</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">+$1–2/bag</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Each way</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Private transfer</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$8 (15%)</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$10 (20%)</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">+$2/bag</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">On fare total</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Long-distance (1hr+)</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">15%</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">20%</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">+$2/bag</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Any type</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Early/late pickup</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$4/person</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$6/person</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">+$2/bag</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Before 6am / after 11pm</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
@@ -269,23 +275,6 @@
   shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
   document.querySelectorAll('[data-preset]').forEach(btn => { btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); }); });
 
-  // Custom ref table: by shuttle type
-  (function () {
-    const tbody = document.getElementById('ref-tbody');
-    if (!tbody) return;
-    const rows = [
-      { type: 'Shared shuttle',      min: '$2/person', std: '$4/person',  bag: '+$1–2/bag', note: 'Use split field' },
-      { type: 'Hotel shuttle (free)',min: '$2/person', std: '$4/person',  bag: '+$1–2/bag', note: 'Each way' },
-      { type: 'Private transfer',    min: '$8 (15%)',  std: '$10 (20%)', bag: '+$2/bag',   note: 'On fare total' },
-      { type: 'Long-distance (1hr+)',min: '15%',       std: '20%',       bag: '+$2/bag',   note: 'Any type' },
-      { type: 'Early/late pickup',   min: '$4/person', std: '$6/person', bag: '+$2/bag',   note: 'Before 6am / after 11pm' },
-    ];
-    rows.forEach((r, i) => {
-      const tr = document.createElement('tr'); tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-      [{ val: r.type, cls: 'font-medium text-gray-700' }, { val: r.min, cls: 'text-right text-gray-600' }, { val: r.std, cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' }, { val: r.bag, cls: 'text-right text-gray-600' }, { val: r.note, cls: 'text-right text-gray-500 text-xs' }].forEach(c => { const td = document.createElement('td'); td.className = 'px-4 py-2.5 text-sm ' + c.cls; td.textContent = c.val; tr.appendChild(td); });
-      tbody.appendChild(tr);
-    });
-  })();
 
   
   

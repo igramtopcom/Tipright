@@ -243,7 +243,7 @@
     <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">
       Massage Tip Calculator
     </h1>
-    <p class="text-gray-500 text-sm mt-1">How much should you tip your massage therapist?</p>
+    <p class="text-[15px] text-gray-700 mt-2 leading-snug"><strong class="font-semibold text-brand-dark">Tip your therapist 20%</strong> — $18 on a $90 massage, 25% for deep tissue or hot stone.</p>
   </div>
 </header>
 
@@ -366,7 +366,17 @@
             <th class="px-4 py-3 text-right font-medium text-[13px]">Total (20%)</th>
           </tr>
         </thead>
-        <tbody id="ref-tbody"></tbody>
+        <tbody id="ref-tbody">
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$60</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$9</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$12</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$15</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$72</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$75</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$11.25</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$15</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$18.75</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$90</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$90</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$13.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$18</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$22.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$108</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$100</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$15</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$20</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$25</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$120</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$120</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$18</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$24</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$30</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$144</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$150</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$22.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$30</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$37.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$180</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$180</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$27</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$36</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$45</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$216</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$200</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$30</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$40</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$240</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$250</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$37.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$50</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$62.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$300</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
@@ -469,7 +479,7 @@
   <p class="mt-5 text-[13px]">&copy; 2026 tipright.app</p>
 </footer>
 
-<script src="/assets/js/calculator.dbcdb7b093.js"></script>
+<script src="/assets/js/calculator.76e67f41cb.js"></script>
 <script>
 (function () {
   const costInput = document.getElementById('cost');
@@ -518,30 +528,6 @@
     btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
   });
 
-  // Quick Reference Table — massage price range $60–$250
-  (function buildRefTable() {
-    const AMOUNTS = [60, 75, 90, 100, 120, 150, 180, 200, 250];
-    const tbody = document.getElementById('ref-tbody');
-    if (!tbody) return;
-    AMOUNTS.forEach((amt, i) => {
-      const tr = document.createElement('tr');
-      tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-      const cells = [
-        { val: TR.fmt(amt),        cls: 'font-medium text-gray-700' },
-        { val: TR.fmt(amt * 0.15), cls: 'text-right text-gray-600' },
-        { val: TR.fmt(amt * 0.20), cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
-        { val: TR.fmt(amt * 0.25), cls: 'text-right text-gray-600' },
-        { val: TR.fmt(amt * 1.20), cls: 'text-right text-gray-500' },
-      ];
-      cells.forEach(c => {
-        const td = document.createElement('td');
-        td.className = 'px-4 py-2.5 text-sm ' + c.cls;
-        td.textContent = c.val;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  })();
 
   // FAQ
   

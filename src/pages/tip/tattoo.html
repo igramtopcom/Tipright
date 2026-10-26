@@ -132,7 +132,7 @@
     <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">
       Tattoo Tip Calculator
     </h1>
-    <p class="text-gray-500 text-sm mt-1">How much should you tip your tattoo artist?</p>
+    <p class="text-[15px] text-gray-700 mt-2 leading-snug"><strong class="font-semibold text-brand-dark">Tip your tattoo artist 20%</strong> of the total — $40 on a $200 tattoo, 25–30% for apprentices.</p>
   </div>
 </header>
 
@@ -248,7 +248,17 @@
             <th class="px-4 py-3 text-right font-medium text-[13px]">Total (20%)</th>
           </tr>
         </thead>
-        <tbody id="ref-tbody"></tbody>
+        <tbody id="ref-tbody">
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$50</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$7.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$10</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$12.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$60</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$75</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$11.25</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$15</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$18.75</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$90</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$100</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$15</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$20</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$25</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$120</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$150</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$22.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$30</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$37.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$180</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$200</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$30</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$40</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$240</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$250</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$37.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$50</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$62.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$300</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$300</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$45</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$60</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$75</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$360</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$400</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$60</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$80</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$100</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$480</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$500</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$75</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$100</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$125</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$600</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
@@ -401,30 +411,6 @@
     });
   });
 
-  // Quick Reference Table
-  (function buildRefTable() {
-    var AMOUNTS = [50, 75, 100, 150, 200, 250, 300, 400, 500];
-    var tbody = document.getElementById('ref-tbody');
-    if (!tbody) return;
-    AMOUNTS.forEach(function(amt, i) {
-      var tr = document.createElement('tr');
-      tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-      var cells = [
-        { val: TR.fmt(amt),        cls: 'font-medium text-gray-700' },
-        { val: TR.fmt(amt * 0.15), cls: 'text-right text-gray-600' },
-        { val: TR.fmt(amt * 0.20), cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
-        { val: TR.fmt(amt * 0.25), cls: 'text-right text-gray-600' },
-        { val: TR.fmt(amt * 1.20), cls: 'text-right text-gray-500' },
-      ];
-      cells.forEach(function(c) {
-        var td = document.createElement('td');
-        td.className = 'px-4 py-2.5 text-sm ' + c.cls;
-        td.textContent = c.val;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  })();
 
   // FAQ
   

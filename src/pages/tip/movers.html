@@ -128,7 +128,7 @@
 <header class="bg-white">
   <div class="max-w-[672px] mx-auto px-4 py-6">
     <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">Movers Tip Calculator</h1>
-    <p class="text-gray-500 text-sm mt-1">How much should you tip your moving crew?</p>
+    <p class="text-[15px] text-gray-700 mt-2 leading-snug"><strong class="font-semibold text-brand-dark">Tip $20–50 per mover</strong> for a local move, or 5–10% of the cost on bigger jobs. Cash, to each mover.</p>
   </div>
 </header>
 
@@ -222,7 +222,13 @@
             <th class="px-4 py-3 text-right font-medium text-[13px]">3-mover total</th>
           </tr>
         </thead>
-        <tbody id="ref-tbody"></tbody>
+        <tbody id="ref-tbody">
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Half-day local (&lt; 4hrs)</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$15</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$25</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$35</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">$75</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Full-day local (6+ hrs)</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$30</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$45</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$60</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">$135</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Long day (8+ hrs)</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$75</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$100</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">$225</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Long-distance move</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$75</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$100</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">$225</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Specialty items (piano)</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$80</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$100</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">$240</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
@@ -333,35 +339,6 @@
     btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
   });
 
-  // Custom ref table — per-mover by move type
-  (function () {
-    const tbody = document.getElementById('ref-tbody');
-    if (!tbody) return;
-    const rows = [
-      { label: 'Half-day local (< 4hrs)', min: '$15', std: '$25', gen: '$35', total: '$75'  },
-      { label: 'Full-day local (6+ hrs)',  min: '$30', std: '$45', gen: '$60', total: '$135' },
-      { label: 'Long day (8+ hrs)',         min: '$50', std: '$75', gen: '$100',total: '$225' },
-      { label: 'Long-distance move',        min: '$50', std: '$75', gen: '$100',total: '$225' },
-      { label: 'Specialty items (piano)',   min: '$50', std: '$80', gen: '$100',total: '$240' },
-    ];
-    rows.forEach((r, i) => {
-      const tr = document.createElement('tr');
-      tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-      [
-        { val: r.label, cls: 'font-medium text-gray-700' },
-        { val: r.min,   cls: 'text-right text-gray-600' },
-        { val: r.std,   cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
-        { val: r.gen,   cls: 'text-right text-gray-600' },
-        { val: r.total, cls: 'text-right text-gray-500 text-xs' },
-      ].forEach(c => {
-        const td = document.createElement('td');
-        td.className = 'px-4 py-2.5 text-sm ' + c.cls;
-        td.textContent = c.val;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  })();
 
   // FAQ
   

@@ -236,7 +236,7 @@
 <header class="bg-white">
   <div class="max-w-[672px] mx-auto px-4 py-6">
     <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">Personal Trainer Tip Calculator</h1>
-    <p class="text-gray-500 text-sm mt-1">How much should you tip a personal trainer?</p>
+    <p class="text-[15px] text-gray-700 mt-2 leading-snug"><strong class="font-semibold text-brand-dark">Usually not per session.</strong> The norm is a yearly holiday tip of one session’s cost.</p>
   </div>
 </header>
 <main class="max-w-[672px] mx-auto px-4 py-6 space-y-8">
@@ -313,7 +313,13 @@
             <th class="px-4 py-3 text-right font-medium text-[13px]">Per-session 15%</th>
           </tr>
         </thead>
-        <tbody id="ref-tbody"></tbody>
+        <tbody id="ref-tbody">
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$60/session</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$30</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$60</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$120</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$9</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$75/session</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$40</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$75</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$150</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$11</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$100/session</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$100</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$200</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$15</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$125/session</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$60</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$125</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$250</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$19</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$150/session</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$75</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$150</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$300</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$23</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
@@ -369,7 +375,7 @@
   <nav class="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2" aria-label="Footer"><a href="/about" class="hover:text-brand-dark transition-colors">About</a><span aria-hidden="true">&middot;</span><a href="/" class="hover:text-brand-dark transition-colors">All calculators</a><span aria-hidden="true">&middot;</span><a href="/privacy" class="hover:text-brand-dark transition-colors">Privacy</a><span aria-hidden="true">&middot;</span><a href="/terms" class="hover:text-brand-dark transition-colors">Terms</a><span aria-hidden="true">&middot;</span><a href="/contact" class="hover:text-brand-dark transition-colors">Contact</a></nav>
   <p class="mt-5 text-[13px]">&copy; 2026 tipright.app</p>
 </footer>
-<script src="/assets/js/calculator.dbcdb7b093.js"></script>
+<script src="/assets/js/calculator.76e67f41cb.js"></script>
 <script>
 (function () {
   const costInput = document.getElementById('cost');
@@ -390,23 +396,6 @@
   shareBtn.addEventListener('click', () => TR.shareResult(shareBtn));
   document.querySelectorAll('[data-preset]').forEach(btn => { btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); }); });
 
-  // Custom ref table: holiday tip by session rate
-  (function () {
-    const tbody = document.getElementById('ref-tbody');
-    if (!tbody) return;
-    const rates = [
-      { rate: '$60/session',  min: '$30', std: '$60',  two: '$120', per: '$9'  },
-      { rate: '$75/session',  min: '$40', std: '$75',  two: '$150', per: '$11' },
-      { rate: '$100/session', min: '$50', std: '$100', two: '$200', per: '$15' },
-      { rate: '$125/session', min: '$60', std: '$125', two: '$250', per: '$19' },
-      { rate: '$150/session', min: '$75', std: '$150', two: '$300', per: '$23' },
-    ];
-    rates.forEach((r, i) => {
-      const tr = document.createElement('tr'); tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-      [{ val: r.rate, cls: 'font-medium text-gray-700' }, { val: r.min, cls: 'text-right text-gray-600' }, { val: r.std, cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' }, { val: r.two, cls: 'text-right text-gray-600' }, { val: r.per, cls: 'text-right text-gray-500' }].forEach(c => { const td = document.createElement('td'); td.className = 'px-4 py-2.5 text-sm ' + c.cls; td.textContent = c.val; tr.appendChild(td); });
-      tbody.appendChild(tr);
-    });
-  })();
 
   
   

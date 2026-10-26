@@ -85,7 +85,29 @@ function writeURL(state) {
 }
 
 // ─── Share ─────────────────────────────────────────────────
+// ─── Analytics ─────────────────────────────────────────────
+// GA4's automatic events say a page was opened, not whether anyone used the
+// calculator on it. These three do. All of them are no-ops if gtag is blocked.
+const SERVICE = window.location.pathname.replace(/[/]index[.]html$/, '').replace(/[.]html$/, '').split('/').filter(Boolean).pop() || 'home';
+function track(name, params) {
+  try { if (typeof gtag === 'function') gtag('event', name, Object.assign({ service: SERVICE }, params || {})); }
+  catch (e) { /* analytics must never break the page */ }
+}
+// once per page view, after the visitor stops typing: "1", "12", "120" is one
+// calculation, not three
+let _calcTimer = null, _calcSent = false;
+function trackCalculate() {
+  if (_calcSent) return;
+  clearTimeout(_calcTimer);
+  _calcTimer = setTimeout(() => { _calcSent = true; track('calculate'); }, 1200);
+}
+document.addEventListener('click', (e) => {
+  const preset = e.target.closest && e.target.closest('[data-preset]');
+  if (preset) track('preset_click', { preset: preset.dataset.preset });
+});
+
 function shareResult(btnEl) {
+  track('share_click');
   const url = window.location.href;
   const share = async () => {
     if (navigator.share) {
@@ -109,6 +131,7 @@ function showToast(el, msg) {
 
 // ─── Render Results ────────────────────────────────────────
 function renderResults(results, split, container) {
+  trackCalculate();
   container.innerHTML = '';
   const showSplit = split > 1;
 

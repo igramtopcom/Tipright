@@ -613,6 +613,23 @@
     heroCTA.textContent = 'See full ' + heroService.options[heroService.selectedIndex].text.replace(/[^\w\s]/g, '').trim() + ' calculator →';
   }
 
+  // GA4: did anyone use the hero, and did it send them on to a calculator?
+  var calcTimer = null, calcSent = false;
+  function track(name, params) {
+    try { if (typeof gtag === 'function') gtag('event', name, params); } catch (e) {}
+  }
+  heroCost.addEventListener('input', function () {
+    if (calcSent || !parseCost(heroCost.value)) return;
+    clearTimeout(calcTimer);
+    calcTimer = setTimeout(function () {
+      calcSent = true;
+      track('calculate', { service: heroService.value, source: 'home' });
+    }, 1200);
+  });
+  heroCTA.addEventListener('click', function () {
+    track('hero_cta_click', { service: heroService.value });
+  });
+
   heroCost.addEventListener('input', updateHero);
   heroService.addEventListener('change', updateHero);
 })();

@@ -238,7 +238,7 @@
 <header class="bg-white">
   <div class="max-w-[672px] mx-auto px-4 py-6">
     <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">Valet Parking Tip Calculator</h1>
-    <p class="text-gray-500 text-sm mt-1">How much should you tip valet parking?</p>
+    <p class="text-[15px] text-gray-700 mt-2 leading-snug"><strong class="font-semibold text-brand-dark">Tip $2–5 at pick-up</strong> and $5–10 at luxury hotels or events. Nothing at drop-off.</p>
   </div>
 </header>
 
@@ -330,7 +330,13 @@
             <th class="px-4 py-3 text-right font-medium text-[13px]">Notes</th>
           </tr>
         </thead>
-        <tbody id="ref-tbody"></tbody>
+        <tbody id="ref-tbody">
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Casual restaurant</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$2</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$3</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$5</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Pick-up only</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Upscale restaurant</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$3</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$5</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$7</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Pick-up only</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Standard hotel</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$3</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$5</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$7</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Per retrieval</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Luxury hotel/resort</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$5</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$8</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$10</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Per retrieval</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">Special event</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$3</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$5</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$10</td><td class="px-4 py-2.5 text-sm text-right text-gray-500 text-xs">Weddings, galas</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
@@ -387,7 +393,7 @@
   <p class="mt-5 text-[13px]">&copy; 2026 tipright.app</p>
 </footer>
 
-<script src="/assets/js/calculator.dbcdb7b093.js"></script>
+<script src="/assets/js/calculator.76e67f41cb.js"></script>
 <script>
 (function () {
   const costInput = document.getElementById('cost');
@@ -417,30 +423,6 @@
     btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
   });
 
-  // Custom ref table — by venue type
-  (function () {
-    const tbody = document.getElementById('ref-tbody');
-    if (!tbody) return;
-    const rows = [
-      { label: 'Casual restaurant',   min: '$2', std: '$3',  gen: '$5',  note: 'Pick-up only' },
-      { label: 'Upscale restaurant',  min: '$3', std: '$5',  gen: '$7',  note: 'Pick-up only' },
-      { label: 'Standard hotel',      min: '$3', std: '$5',  gen: '$7',  note: 'Per retrieval' },
-      { label: 'Luxury hotel/resort', min: '$5', std: '$8',  gen: '$10', note: 'Per retrieval' },
-      { label: 'Special event',       min: '$3', std: '$5',  gen: '$10', note: 'Weddings, galas' },
-    ];
-    rows.forEach((r, i) => {
-      const tr = document.createElement('tr');
-      tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-      [
-        { val: r.label, cls: 'font-medium text-gray-700' },
-        { val: r.min,   cls: 'text-right text-gray-600' },
-        { val: r.std,   cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
-        { val: r.gen,   cls: 'text-right text-gray-600' },
-        { val: r.note,  cls: 'text-right text-gray-500 text-xs' },
-      ].forEach(c => { const td = document.createElement('td'); td.className = 'px-4 py-2.5 text-sm ' + c.cls; td.textContent = c.val; tr.appendChild(td); });
-      tbody.appendChild(tr);
-    });
-  })();
 
   
   

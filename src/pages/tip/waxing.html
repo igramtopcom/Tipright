@@ -132,7 +132,7 @@
     <h1 class="text-[28px] font-bold text-gray-900 tracking-tight leading-tight">
       Waxing Tip Calculator
     </h1>
-    <p class="text-gray-500 text-sm mt-1">How much should you tip your waxing esthetician?</p>
+    <p class="text-[15px] text-gray-700 mt-2 leading-snug"><strong class="font-semibold text-brand-dark">Tip 15–20%</strong> with a $3–5 minimum — $8–10 on a $50 Brazilian.</p>
   </div>
 </header>
 
@@ -252,7 +252,17 @@
             <th class="px-4 py-3 text-right font-medium text-[13px]">Total (20%)</th>
           </tr>
         </thead>
-        <tbody id="ref-tbody"></tbody>
+        <tbody id="ref-tbody">
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$20</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$3</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$4</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$5</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$24</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$30</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$4.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$6</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$7.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$36</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$40</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$6</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$8</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$10</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$48</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$50</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$7.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$10</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$12.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$60</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$60</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$9</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$12</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$15</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$72</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$70</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$10.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$14</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$17.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$84</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$90</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$13.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$18</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$22.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$108</td></tr>
+          <tr class="bg-gray-50"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$120</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$18</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$24</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$30</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$144</td></tr>
+          <tr class="bg-white"><td class="px-4 py-2.5 text-sm font-medium text-gray-700">$150</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$22.50</td><td class="px-4 py-2.5 text-sm text-right font-semibold text-brand-dark bg-brand-light/40">$30</td><td class="px-4 py-2.5 text-sm text-right text-gray-600">$37.50</td><td class="px-4 py-2.5 text-sm text-right text-gray-500">$180</td></tr>
+        </tbody>
       </table>
     </div>
   </section>
@@ -402,30 +412,6 @@
     btn.addEventListener('click', () => { costInput.value = btn.dataset.preset; update(); costInput.focus(); });
   });
 
-  // Quick Reference Table — waxing amounts
-  (function buildRefTable() {
-    const AMOUNTS = [20, 30, 40, 50, 60, 70, 90, 120, 150];
-    const tbody = document.getElementById('ref-tbody');
-    if (!tbody) return;
-    AMOUNTS.forEach((amt, i) => {
-      const tr = document.createElement('tr');
-      tr.className = i % 2 === 0 ? 'bg-white' : 'bg-gray-50';
-      const cells = [
-        { val: TR.fmt(amt),        cls: 'font-medium text-gray-700' },
-        { val: TR.fmt(amt * 0.15), cls: 'text-right text-gray-600' },
-        { val: TR.fmt(amt * 0.20), cls: 'text-right font-semibold text-brand-dark bg-brand-light/40' },
-        { val: TR.fmt(amt * 0.25), cls: 'text-right text-gray-600' },
-        { val: TR.fmt(amt * 1.20), cls: 'text-right text-gray-500' },
-      ];
-      cells.forEach(c => {
-        const td = document.createElement('td');
-        td.className = 'px-4 py-2.5 text-sm ' + c.cls;
-        td.textContent = c.val;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-    });
-  })();
 
   // FAQ
   
